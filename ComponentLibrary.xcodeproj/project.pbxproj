@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22B3C8C62D305FA900E14D28 /* ComponentLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		22B3C8D72D305FAB00E14D28 /* ComponentLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComponentLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		22B3C8E12D305FAB00E14D28 /* ComponentLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComponentLibraryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22B3C8C62D305FA900E14D28 /* ComponentLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ComponentLibrary.app; path = /Users/susanruan/Downloads/ComponentLibrary/build/Debug/ComponentLibrary.app; sourceTree = "<absolute>"; };
+		22B3C8D72D305FAB00E14D28 /* ComponentLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ComponentLibraryTests.xctest; path = /Users/susanruan/Downloads/ComponentLibrary/build/Debug/ComponentLibrary.app/Contents/PlugIns/ComponentLibraryTests.xctest; sourceTree = "<absolute>"; };
+		22B3C8E12D305FAB00E14D28 /* ComponentLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ComponentLibraryUITests.xctest; path = "/Users/susanruan/Downloads/ComponentLibrary/build/Debug/ComponentLibraryUITests-Runner.app/Contents/PlugIns/ComponentLibraryUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -78,18 +78,7 @@
 				22B3C8C82D305FA900E14D28 /* ComponentLibrary */,
 				22B3C8DA2D305FAB00E14D28 /* ComponentLibraryTests */,
 				22B3C8E42D305FAB00E14D28 /* ComponentLibraryUITests */,
-				22B3C8C72D305FA900E14D28 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		22B3C8C72D305FA900E14D28 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				22B3C8C62D305FA900E14D28 /* ComponentLibrary.app */,
-				22B3C8D72D305FAB00E14D28 /* ComponentLibraryTests.xctest */,
-				22B3C8E12D305FAB00E14D28 /* ComponentLibraryUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +185,7 @@
 			mainGroup = 22B3C8BD2D305FA900E14D28;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 22B3C8C72D305FA900E14D28 /* Products */;
+			productRefGroup = 22B3C8BD2D305FA900E14D28;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
