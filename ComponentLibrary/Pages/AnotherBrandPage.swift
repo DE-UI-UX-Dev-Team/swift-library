@@ -2,7 +2,7 @@
 //  AnotherBrandPage.swift
 //  ComponentLibrary
 //
-//  Created by susan ruan on 1/10/25.
+//  Created by UI/UX Development Team on 1/10/25.
 //
 
 import SwiftUI

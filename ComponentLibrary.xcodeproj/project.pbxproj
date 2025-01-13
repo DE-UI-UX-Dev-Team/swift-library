@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		22B3C8C62D305FA900E14D28 /* ComponentLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = ComponentLibrary.app; path = /Users/susanruan/Downloads/ComponentLibrary/build/Debug/ComponentLibrary.app; sourceTree = "<absolute>"; };
-		22B3C8D72D305FAB00E14D28 /* ComponentLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ComponentLibraryTests.xctest; path = /Users/susanruan/Downloads/ComponentLibrary/build/Debug/ComponentLibrary.app/Contents/PlugIns/ComponentLibraryTests.xctest; sourceTree = "<absolute>"; };
-		22B3C8E12D305FAB00E14D28 /* ComponentLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ComponentLibraryUITests.xctest; path = "/Users/susanruan/Downloads/ComponentLibrary/build/Debug/ComponentLibraryUITests-Runner.app/Contents/PlugIns/ComponentLibraryUITests.xctest"; sourceTree = "<absolute>"; };
+		22ED66C12D35B9F300F53E6D /* ComponentLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ComponentLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22ED66C22D35B9F300F53E6D /* ComponentLibraryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComponentLibraryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22ED66C32D35B9F300F53E6D /* ComponentLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComponentLibraryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -78,6 +78,9 @@
 				22B3C8C82D305FA900E14D28 /* ComponentLibrary */,
 				22B3C8DA2D305FAB00E14D28 /* ComponentLibraryTests */,
 				22B3C8E42D305FAB00E14D28 /* ComponentLibraryUITests */,
+				22ED66C12D35B9F300F53E6D /* ComponentLibrary.app */,
+				22ED66C22D35B9F300F53E6D /* ComponentLibraryTests.xctest */,
+				22ED66C32D35B9F300F53E6D /* ComponentLibraryUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,7 +106,7 @@
 			packageProductDependencies = (
 			);
 			productName = ComponentLibrary;
-			productReference = 22B3C8C62D305FA900E14D28 /* ComponentLibrary.app */;
+			productReference = 22ED66C12D35B9F300F53E6D /* ComponentLibrary.app */;
 			productType = "com.apple.product-type.application";
 		};
 		22B3C8D62D305FAB00E14D28 /* ComponentLibraryTests */ = {
@@ -126,7 +129,7 @@
 			packageProductDependencies = (
 			);
 			productName = ComponentLibraryTests;
-			productReference = 22B3C8D72D305FAB00E14D28 /* ComponentLibraryTests.xctest */;
+			productReference = 22ED66C22D35B9F300F53E6D /* ComponentLibraryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		22B3C8E02D305FAB00E14D28 /* ComponentLibraryUITests */ = {
@@ -149,7 +152,7 @@
 			packageProductDependencies = (
 			);
 			productName = ComponentLibraryUITests;
-			productReference = 22B3C8E12D305FAB00E14D28 /* ComponentLibraryUITests.xctest */;
+			productReference = 22ED66C32D35B9F300F53E6D /* ComponentLibraryUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */

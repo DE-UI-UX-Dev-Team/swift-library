@@ -2,7 +2,7 @@
 //  ColorToken.swift
 //  ComponentLibrary
 //
-//  Created by susan ruan on 1/9/25.
+//  Created by UI/UX Development Team on 1/9/25.
 //
 
 
