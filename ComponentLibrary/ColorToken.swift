@@ -9,24 +9,15 @@
 import SwiftUI
 
 enum ColorToken: String {
-    // List all token names as cases:
+    //Shared token list as cases
     case primaryBase
-    case primaryDark
-    case primaryDarker
     case primaryDarkest
-    case primaryLight
     case primaryLighter
     case primaryLightest
     case secondaryBase
-    case secondaryDark
-    case secondaryDarker
-    case secondaryDarkest
-    case secondaryLight
     case secondaryLighter
     case secondaryLightest
     case tertiaryBase
-    case tertiaryDark
-    case tertiaryDarker
     case tertiaryDarkest
     case tertiaryLighter
     case tertiaryLightest
@@ -79,6 +70,7 @@ enum ColorToken: String {
     case borderDefaultPrimarycase
     case borderDefaultSecondary
     case borderDefaultTertiary
+    case borderStatusError
     case borderStatusSuccess
     case borderStatusInfo
     case borderStatusWarning
@@ -98,10 +90,28 @@ enum ColorToken: String {
     case iconFeedbackWarning
     case iconFeedbackDisabled
     
-    // If you have 100 tokens, just keep listing them here.
+    //DE only
+    case primaryDark
+    case primaryDarker
+    case primaryLight
+    case secondaryDark
+    case secondaryDarker
+    case secondaryDarkest
+    case secondaryLight
+    case tertiaryDark
+    case tertiaryDarker
     
-    /// Convenience to retrieve the SwiftUI `Color` using the manager.
-    func color(_ colorScheme: ColorScheme) -> Color {
-        return ColorTokenManager.shared.color(for: self.rawValue, colorScheme: colorScheme)
-    }
+    // Reliant only
+    case greenLighter
+    case yellowLighter
+    
+    
+    func color(brand: String, colorScheme: ColorScheme) -> Color {
+            return ColorTokenManager.shared.color(
+                for: brand,
+                tokenName: self.rawValue,
+                colorScheme: colorScheme
+            )
+        }
+    
 }

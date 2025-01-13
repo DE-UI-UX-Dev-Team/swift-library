@@ -7,10 +7,12 @@
 
 import SwiftUI
 
+
+
 final class ColorTokenManager: ObservableObject {
     static let shared = ColorTokenManager()
     
-    private(set) var tokens: ColorTokens?
+    private(set) var tokens: AllBrandTokens?
 
     private init() {
         loadColorTokens()
@@ -24,44 +26,54 @@ final class ColorTokenManager: ObservableObject {
 
         do {
             let data = try Data(contentsOf: url)
-            tokens = try JSONDecoder().decode(ColorTokens.self, from: data)
+            tokens = try JSONDecoder().decode(AllBrandTokens.self, from: data)
         } catch {
             print("Failed to decode ColorTokens.json: \(error)")
         }
     }
     
-    /// Return the correct theme colors (light or dark) for the current color scheme.
-    private func currentThemeColors(for colorScheme: ColorScheme) -> ThemeColors? {
-        guard let tokens = tokens else { return nil }
+    // Return the SwiftUI Color for a specific brand, token, and color scheme.
+    func color(for brand: String, tokenName: String, colorScheme: ColorScheme) -> Color {
+        guard let tokens = tokens else { return .gray }
+
+        // Get the BrandThemes for the requested brand
+        let brandThemes: BrandThemes?
+        switch brand {
+        case "brandDE":
+            brandThemes = tokens.brandDE
+        case "brandReliant":
+            brandThemes = tokens.brandReliant
+        default:
+            brandThemes = nil
+        }
         
+
+        guard let brandThemes = brandThemes else {
+            return .gray
+        }
+
+        //  Pick light or dark
+        let themeColors: ThemeColors
         switch colorScheme {
         case .light:
-            return tokens.light
+            themeColors = brandThemes.light
         case .dark:
-            return tokens.dark
+            themeColors = brandThemes.dark
         @unknown default:
-            // Fallback or handle future color schemes
-            return tokens.light
+            themeColors = brandThemes.light
         }
-    }
-    
-    /// Get a SwiftUI Color for a given token name in the current (light/dark) theme.
-    func color(for tokenName: String, colorScheme: ColorScheme) -> Color {
-        guard
-            let themeColors = currentThemeColors(for: colorScheme),
-            let hexValue = themeColors.colors[tokenName]
-        else {
-            // Token name not found or tokens not loaded
-            return Color.gray
+        guard let hexValue = themeColors.colors[tokenName] else {
+            return .gray
         }
-        return Color(hex: hexValue) ?? Color.gray
+        
+        return Color(hex: hexValue) ?? .gray
     }
 }
 
+
 extension Color {
-    /// Initialize a SwiftUI Color from a hex string like "#RRGGBB" or "#RRGGBBAA".
+    // Initialize a SwiftUI Color from a hex string like "#RRGGBB" or "#RRGGBBAA".
     init?(hex: String) {
-        // Remove '#' or any non-hex characters
         let sanitizedHex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         
         var rgbValue: UInt64 = 0
