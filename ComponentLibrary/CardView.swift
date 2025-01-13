@@ -14,6 +14,8 @@ struct CardView: View {
     let backgroundColor: Color
     
     @Environment(\.colorScheme) var colorScheme
+    
+    @State private var selectedBrand: String = "brandDE"
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -21,7 +23,8 @@ struct CardView: View {
             Text(title)
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(ColorToken.grayscale900.color(colorScheme))
+                .foregroundColor(ColorToken.grayscale900.color( brand: selectedBrand,
+                                                                colorScheme: colorScheme))
 
             // List of items
             ForEach(items, id: \.text) { item in
@@ -32,7 +35,8 @@ struct CardView: View {
 
                     Text(item.text)
                         .font(.body)
-                        .foregroundColor(ColorToken.grayscale900.color(colorScheme))
+                        .foregroundColor(ColorToken.grayscale900.color( brand: selectedBrand,
+                                                                        colorScheme: colorScheme))
                 }
                 .padding(.bottom, 8)
                 .frame(maxWidth: .infinity, alignment: .leading)

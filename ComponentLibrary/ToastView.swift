@@ -17,6 +17,8 @@ struct ToastView: View {
         
         @Binding var isVisible: Bool
        @Environment(\.colorScheme) var colorScheme
+    
+    @State private var selectedBrand: String = "brandDE"
         
         var body: some View {
             if isVisible {
@@ -34,7 +36,8 @@ struct ToastView: View {
                         // Text
                         VStack(alignment: .leading, spacing: 10) {
                             Text(message)
-                                .foregroundColor(ColorToken.grayscale000.color(colorScheme))
+                                .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
+                                                                                colorScheme: colorScheme))
                                 .font(.subheadline)
                                 .multilineTextAlignment(.leading)
                             
@@ -52,7 +55,8 @@ struct ToastView: View {
                             }
                         }) {
                             Image(systemName: "xmark")
-                                .foregroundColor(ColorToken.grayscale000.color(colorScheme))
+                                .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
+                                                                                colorScheme: colorScheme))
                                 .padding(2)
                         }
                     }

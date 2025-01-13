@@ -12,6 +12,8 @@ struct AnotherPage: View {
     @State private var showModal = false
     @Environment(\.colorScheme) var colorScheme
     
+    @State private var selectedBrand: String = "brandDE"
+    
     
        private let cardItemsTwo: [(icon: String, text: String)] = [
         (icon: "xmark.circle", text: "Review your account settings before proceeding."),
@@ -27,8 +29,10 @@ struct AnotherPage: View {
                 CardView(
                                     title: "Steps for Completing Your Setup",
                                     items:cardItemsTwo,
-                                    iconColor: ColorToken.iconFeedbackError.color(colorScheme),
-                                    backgroundColor: ColorToken.containerFillSecondary4.color(colorScheme)
+                                    iconColor: ColorToken.iconFeedbackError.color( brand: selectedBrand,
+                                                                                   colorScheme: colorScheme),
+                                    backgroundColor: ColorToken.containerFillSecondary4.color( brand: selectedBrand,
+                                                                                               colorScheme: colorScheme)
                                 )
 
                 Button("Show Another Toast") {
@@ -44,13 +48,15 @@ struct AnotherPage: View {
             ToastView(
                 message: "Complete your Vivint offer!",
                 linkText: Text("Show Modal")
-                    .foregroundColor(ColorToken.grayscale000.color(colorScheme))
+                    .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
+                                                                    colorScheme: colorScheme))
                     .bold(),
                 linkAction: {
                     showModal = true
                 },
                 image: Image("monitor"),
-                backgroundColor:ColorToken.containerFillPrimary3.color(colorScheme),
+                backgroundColor:ColorToken.containerFillPrimary3.color( brand: selectedBrand,
+                                                                        colorScheme: colorScheme),
                 duration: 5.0,
                 isVisible: $showToast
             )
@@ -63,8 +69,8 @@ struct AnotherPage: View {
     }
 }
 
-struct AnotherPage_Previews: PreviewProvider {
-    static var previews: some View {
-        AnotherPage()
-    }
-}
+//struct AnotherPage_Previews: PreviewProvider {
+//    static var previews: some View {
+//        AnotherPage()
+//    }
+//}

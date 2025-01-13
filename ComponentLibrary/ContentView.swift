@@ -14,6 +14,9 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
       
     @Environment(\.openURL) var openURL
+    
+ 
+     @State private var selectedBrand: String = "brandDE"
 
        private let cardItems: [(icon: String, text: String)] = [
            (icon: "checkmark.circle", text: "First claim this offer. Then enroll by reviewing the terms and conditions."),
@@ -28,7 +31,8 @@ struct ContentView: View {
                     
                     Text("Sample Success Text")
                                     .padding()
-                                    .foregroundColor(ColorToken.greenAccessible.color(colorScheme))
+                                    .foregroundColor(ColorToken.greenAccessible.color( brand: selectedBrand,
+                                                                                       colorScheme: colorScheme))
                                     .font(.system(size: 32, weight: .heavy))
                     
                     Button("Show Toast") {
@@ -44,11 +48,15 @@ struct ContentView: View {
                     CardView(
                                         title: "What should I expect when I enroll in Home Base Essentials?",
                                         items: cardItems,
-iconColor:ColorToken.iconFeedbackSuccess.color(colorScheme),
-                                       backgroundColor:ColorToken.containerFillTertiaryDefault.color(colorScheme)
+iconColor:ColorToken.iconFeedbackSuccess.color( brand: selectedBrand,
+                                                colorScheme: colorScheme),
+                                       backgroundColor:ColorToken.containerFillTertiaryDefault.color( brand: selectedBrand,
+                                                                                                       colorScheme: colorScheme)
                                     )
                     
                     NavigationLink("Go to Another Page", value: "AnotherPage")
+                        .padding()
+                    NavigationLink("Go to Reliant Page", value: "AnotherBrandPage")
              
                 }
                 
@@ -57,12 +65,14 @@ iconColor:ColorToken.iconFeedbackSuccess.color(colorScheme),
                 ToastView(
                     message: "Complete your Vivint offer by scheduling your installation.",
                     linkText: Text("Schedule installation") .font(.subheadline)
-                        .foregroundColor(ColorToken.grayscale000.color(colorScheme)).bold(),
+                        .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
+                                                                        colorScheme: colorScheme)).bold(),
                     linkAction: {
                         openWebPage("https://www.vivint.com/")
                     },
                     image: Image("doorbell"),
-                    backgroundColor:ColorToken.grayscale800.color(colorScheme),
+                    backgroundColor:ColorToken.grayscale800.color( brand: selectedBrand,
+                                                                   colorScheme: colorScheme),
                     duration: 60.0,
                     isVisible: $showToast
                 )
@@ -71,10 +81,16 @@ iconColor:ColorToken.iconFeedbackSuccess.color(colorScheme),
             }
             .navigationTitle("MainPage")
             .navigationDestination(for: String.self) { value in
-                if value == "AnotherPage" {
+                switch value {
+                case "AnotherPage":
                     AnotherPage()
+                case "AnotherBrandPage":
+                    AnotherBrandPage()
+                default:
+                    EmptyView() // fallback
                 }
             }
+
         }
     }
     
@@ -91,10 +107,4 @@ iconColor:ColorToken.iconFeedbackSuccess.color(colorScheme),
 #Preview {
     ContentView()
 }
-
-//struct ContentView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        ContentView()
-//    }
-//}
 
