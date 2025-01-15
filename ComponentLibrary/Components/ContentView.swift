@@ -15,10 +15,10 @@ struct ContentView: View {
       
     @Environment(\.openURL) var openURL
     
- 
-     @State private var selectedBrand: String = "brandDE"
+    @State private var selectedBrand: String = "brandDE"
+    
 
-       private let cardItems: [(icon: String, text: String)] = [
+    private let cardItems: [(icon: String, text: String)] = [
            (icon: "checkmark.circle", text: "First claim this offer. Then enroll by reviewing the terms and conditions."),
            (icon: "checkmark.circle", text: "Schedule an installation for your doorbell and thermostat."),
            (icon: "checkmark.circle", text: "We will give you a call before installation. When they complete installation you will have access.")
@@ -28,6 +28,30 @@ struct ContentView: View {
         NavigationStack {
             ZStack {
                 VStack {
+                    //Typography token system test samples for Reliant
+                    Text("Heading 1")
+                                    .TypographyStyle(.h1, colorUsage: .headingDefault, brand: selectedBrand)
+                                
+                                // 2. Paragraph
+                                Text("Paragraph text")
+                                    .TypographyStyle(.p1, colorUsage: .paragraphDefault, brand: selectedBrand)
+                                
+                                // 3. Link
+                                Text("Link text underlined!")
+                                    .TypographyStyle(.link, colorUsage: .link, brand: selectedBrand)
+                                
+                                // 4. Error
+                                Text("Error message")
+                                    .TypographyStyle(.p2, colorUsage: .paragraphError, brand: selectedBrand)
+                                
+                                // 5. Primary button text
+                                Text("Primary button text")
+                                    .TypographyStyle(.primaryButton, colorUsage: .primaryButton, brand: selectedBrand)
+                                    .padding()
+                                    .background(ColorToken.containerFillTertiary1.color( brand: selectedBrand,colorScheme: colorScheme))
+                                    .cornerRadius(8)
+                    
+                    
                     
                     Text("Sample Success Text")
                                     .padding()
@@ -48,10 +72,9 @@ struct ContentView: View {
                     CardView(
                                         title: "What should I expect when I enroll in Home Base Essentials?",
                                         items: cardItems,
-iconColor:ColorToken.iconFeedbackSuccess.color( brand: selectedBrand,
+                                       iconColor:ColorToken.iconFeedbackSuccess.color( brand: selectedBrand,
                                                 colorScheme: colorScheme),
-                                       backgroundColor:ColorToken.containerFillTertiaryDefault.color( brand: selectedBrand,
-                                                                                                       colorScheme: colorScheme)
+                                       backgroundColor:ColorToken.containerFillTertiaryDefault.color( brand: selectedBrand,colorScheme: colorScheme)
                                     )
                     
                     NavigationLink("Go to Another Page", value: "AnotherPage")
