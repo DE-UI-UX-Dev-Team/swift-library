@@ -3,7 +3,7 @@
     "light": {
       "textStyles": {
         "h1": {
-          "fontName": "Basic Sans",
+          "fontName": "Inter18pt-Bold",
           "weight": "bold",
           "fontSize": 28,
           "lineHeight": 38,
@@ -12,7 +12,7 @@
         },
         
         "h2": {
-          "fontName": "Basic Sans",
+          "fontName": "Inter18pt-Black",
           "weight": "bold",
           "fontSize": 24,
           "lineHeight": 32,
@@ -76,7 +76,7 @@
           "underlined": false
         },
           "link": {
-          "fontName": "Inter",
+          "fontName": "Inter18pt-Medium",
           "weight": "medium",
           "fontSize": 16,
           "lineHeight": 24,

@@ -28,9 +28,21 @@ struct ContentView: View {
         NavigationStack {
             ZStack {
                 VStack {
+                    
+                    Text("Custom Inter Light Black Test!")
+                        .font(.custom("Inter18pt-Black", size: 24))
+                    Text("Custom Inter Bold Font Test!")
+                        .font(.custom("Inter18pt-Bold", size: 24))
+                    Text("Custom Inter Light Font Test!")
+                        .font(.custom("Inter18pt-Light", size: 24))
+   
+                    
                     //Typography token system test samples for Reliant
                     Text("Heading 1")
                                     .TypographyStyle(.h1, colorUsage: .headingDefault, brand: selectedBrand)
+                    Text("Heading 2")
+                                    .TypographyStyle(.h2, colorUsage: .headingDefault, brand: selectedBrand)
+                                
                                 
                                 // 2. Paragraph
                                 Text("Paragraph text")
@@ -54,10 +66,9 @@ struct ContentView: View {
                     
                     
                     Text("Sample Success Text")
-                                    .padding()
                                     .foregroundColor(ColorToken.greenAccessible.color( brand: selectedBrand,
                                                                                        colorScheme: colorScheme))
-                                    .font(.system(size: 32, weight: .heavy))
+                                    .font(.system(size: 26, weight: .heavy))
                     
                     Button("Show Toast") {
                         withAnimation {
@@ -65,7 +76,7 @@ struct ContentView: View {
                         }
                     
                     }
-                    .padding()
+//                    .padding()
                     
                     
                     // Card View
