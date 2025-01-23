@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// 1) Enums for clarity (text style & color usage)
+
 enum TypographyTextStyle: String {
     case h1
     case h2
@@ -43,7 +43,7 @@ enum TypographyColorUsage: String {
     case disabledButton
 }
 
-// 2) A ViewModifier that applies the style + color
+
 struct TypographyModifier: ViewModifier {
     @Environment(\.colorScheme) private var colorScheme
     let textStyle: TypographyTextStyle
@@ -53,28 +53,28 @@ struct TypographyModifier: ViewModifier {
     func body(content: Content) -> some View {
         let manager = TypographyTokenManager.shared
         
-        // 1. Retrieve font
+  
         let font = manager.font(
             for: brand,
             styleName: textStyle.rawValue,
             colorScheme: colorScheme
         )
         
-        // 2. Retrieve color
+   
         let textColor = manager.color(
             for: brand,
             usageName: colorUsage.rawValue,
             colorScheme: colorScheme
         )
         
-        // 3. Letter spacing
+ 
         let spacing = manager.letterSpacing(
             for: brand,
             styleName: textStyle.rawValue,
             colorScheme: colorScheme
         )
         
-        // 4. Underline
+
         let underlined = manager.isUnderlined(
             for: brand,
             styleName: textStyle.rawValue,
@@ -89,7 +89,7 @@ struct TypographyModifier: ViewModifier {
     }
 }
 
-// 3) Text extension for the desired syntax
+
 extension Text {
     func TypographyStyle(
         _ style: TypographyTextStyle,

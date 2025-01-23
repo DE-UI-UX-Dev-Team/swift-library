@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// 1) Represents a single text style from JSON
+
 struct TextStyleToken: Decodable {
     let fontName: String
     let weight: String
@@ -17,19 +17,19 @@ struct TextStyleToken: Decodable {
     let underlined: Bool
 }
 
-// 2) One theme (light/dark) with textStyles + colors
+
 struct ThemeAttributes: Decodable {
     let textStyles: [String: TextStyleToken]
     let colors: [String: String]
 }
 
-// 3) Each brand has light/dark
+
 struct TypographyBrandThemes: Decodable {
     let light: ThemeAttributes
     let dark: ThemeAttributes
 }
 
-// 4) Top-level with brandA, brandB
+
 struct AllTypographyTokens: Decodable {
     let brandDE: TypographyBrandThemes
     let brandReliant: TypographyBrandThemes

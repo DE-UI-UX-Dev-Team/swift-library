@@ -3,7 +3,7 @@
     "light": {
       "textStyles": {
         "h1": {
-          "fontName": "Inter18pt-Bold",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 28,
           "lineHeight": 38,
@@ -12,7 +12,7 @@
         },
         
         "h2": {
-          "fontName": "Inter18pt-Black",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 24,
           "lineHeight": 32,
@@ -20,7 +20,7 @@
           "underlined": false
         },
         "h3": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 20,
           "lineHeight": 28,
@@ -28,7 +28,7 @@
           "underlined": false
         },
         "h4": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 18,
           "lineHeight": 24,
@@ -36,7 +36,7 @@
           "underlined": false
         },
         "h5": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -44,7 +44,7 @@
           "underlined": false
         },
           "h6": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-SemiBold",
           "weight": "semibold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -52,7 +52,7 @@
           "underlined": false
         },
         "p1": {
-          "fontName": "Inter",
+          "fontName": "Inter18pt-Regular",
           "weight": "regular",
           "fontSize": 16,
           "lineHeight": 24,
@@ -60,7 +60,7 @@
           "underlined": false
         },
         "p2": {
-          "fontName": "Inter",
+          "fontName": "Inter18pt-Regular",
           "weight": "regular",
           "fontSize": 14,
           "lineHeight": 20,
@@ -68,7 +68,7 @@
           "underlined": false
         },
         "p3": {
-          "fontName": "Inter",
+          "fontName": "Inter18pt-Regular",
           "weight": "regular",
           "fontSize": 12,
           "lineHeight": 18,
@@ -76,7 +76,7 @@
           "underlined": false
         },
           "link": {
-          "fontName": "Inter18pt-Medium",
+          "fontName": "Inter18pt-Regular",
           "weight": "medium",
           "fontSize": 16,
           "lineHeight": 24,
@@ -84,7 +84,7 @@
           "underlined": true
         },
         "primaryButton": {
-          "fontName": "Inter",
+          "fontName": "BasicSans-Regular",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -92,7 +92,7 @@
           "underlined": false
         },
           "secondaryButton": {
-          "fontName": "Inter",
+          "fontName": "BasicSans-Regular",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -100,7 +100,7 @@
           "underlined": false
         },
           "tertiaryButton": {
-          "fontName": "Inter",
+          "fontName": "BasicSans-Regular",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -130,7 +130,7 @@
     "dark": {
       "textStyles": {
         "h1": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 28,
           "lineHeight": 38,
@@ -139,7 +139,7 @@
         },
         
         "h2": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 24,
           "lineHeight": 32,
@@ -147,7 +147,7 @@
           "underlined": false
         },
         "h3": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 20,
           "lineHeight": 28,
@@ -155,7 +155,7 @@
           "underlined": false
         },
         "h4": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 18,
           "lineHeight": 24,
@@ -163,7 +163,7 @@
           "underlined": false
         },
         "h5": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-Bold",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -171,7 +171,7 @@
           "underlined": false
         },
           "h6": {
-          "fontName": "Basic Sans",
+          "fontName": "BasicSans-SemiBold",
           "weight": "semibold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -179,7 +179,7 @@
           "underlined": false
         },
         "p1": {
-          "fontName": "Inter",
+          "fontName": "Inter18pt-Regular",
           "weight": "regular",
           "fontSize": 16,
           "lineHeight": 24,
@@ -187,7 +187,7 @@
           "underlined": false
         },
         "p2": {
-          "fontName": "Inter",
+          "fontName": "Inter18pt-Regular",
           "weight": "regular",
           "fontSize": 14,
           "lineHeight": 20,
@@ -195,7 +195,7 @@
           "underlined": false
         },
         "p3": {
-          "fontName": "Inter",
+          "fontName": "Inter18pt-Regular",
           "weight": "regular",
           "fontSize": 12,
           "lineHeight": 18,
@@ -203,7 +203,7 @@
           "underlined": false
         },
           "link": {
-          "fontName": "Inter",
+          "fontName": "Inter18pt-Regular",
           "weight": "medium",
           "fontSize": 16,
           "lineHeight": 24,
@@ -211,7 +211,7 @@
           "underlined": true
         },
         "primaryButton": {
-          "fontName": "Inter",
+          "fontName": "BasicSans-Regular",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -219,7 +219,7 @@
           "underlined": false
         },
           "secondaryButton": {
-          "fontName": "Inter",
+          "fontName": "BasicSans-Regular",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -227,7 +227,7 @@
           "underlined": false
         },
           "tertiaryButton": {
-          "fontName": "Inter",
+          "fontName": "BasicSans-Regular",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 24,
@@ -259,7 +259,7 @@
     "light": {
        "textStyles": {
         "h1": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Medium",
           "weight": "medium",
           "fontSize": 24,
           "lineHeight": 30,
@@ -268,7 +268,7 @@
         },
         
         "h2": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Medium",
           "weight": "medium",
           "fontSize": 20,
           "lineHeight": 24,
@@ -276,7 +276,7 @@
           "underlined": false
         },
         "h3": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "medium",
           "fontSize": 18,
           "lineHeight": 22,
@@ -284,7 +284,7 @@
           "underlined": false
         },
         "h4": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Bold",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 22,
@@ -292,7 +292,7 @@
           "underlined": false
         },
         "h5": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Medium",
           "weight": "medium",
           "fontSize": 14,
           "lineHeight": 18,
@@ -300,7 +300,7 @@
           "underlined": false
         },
           "h6": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 12,
           "lineHeight": 15,
@@ -308,7 +308,7 @@
           "underlined": false
         },
         "p1": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 13,
           "lineHeight": 18,
@@ -316,7 +316,7 @@
           "underlined": false
         },
         "p2": {
-          "fontName":"Effra",
+          "fontName":"NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 11,
           "lineHeight": 15,
@@ -324,7 +324,7 @@
           "underlined": false
         },
         "p3": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 11,
           "lineHeight": 15,
@@ -332,7 +332,7 @@
           "underlined": false
         },
           "link": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 13,
           "lineHeight": 16,
@@ -340,7 +340,7 @@
           "underlined": true
         },
         "primaryButton": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 13,
           "lineHeight": 18,
@@ -348,7 +348,7 @@
           "underlined": false
         },
           "secondaryButton": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 11,
           "lineHeight": 15,
@@ -356,7 +356,7 @@
           "underlined": false
         },
           "tertiaryButton": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 11,
           "lineHeight": 15,
@@ -386,7 +386,7 @@
     "dark": {
        "textStyles": {
         "h1": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Medium",
           "weight": "medium",
           "fontSize": 24,
           "lineHeight": 30,
@@ -395,7 +395,7 @@
         },
         
         "h2": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Medium",
           "weight": "medium",
           "fontSize": 20,
           "lineHeight": 24,
@@ -403,7 +403,7 @@
           "underlined": false
         },
         "h3": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "medium",
           "fontSize": 18,
           "lineHeight": 22,
@@ -411,7 +411,7 @@
           "underlined": false
         },
         "h4": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Bold",
           "weight": "bold",
           "fontSize": 16,
           "lineHeight": 22,
@@ -419,7 +419,7 @@
           "underlined": false
         },
         "h5": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Medium",
           "weight": "medium",
           "fontSize": 14,
           "lineHeight": 18,
@@ -427,7 +427,7 @@
           "underlined": false
         },
           "h6": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 12,
           "lineHeight": 15,
@@ -435,7 +435,7 @@
           "underlined": false
         },
         "p1": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 13,
           "lineHeight": 18,
@@ -443,7 +443,7 @@
           "underlined": false
         },
         "p2": {
-          "fontName":"Effra",
+          "fontName":"NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 11,
           "lineHeight": 15,
@@ -451,7 +451,7 @@
           "underlined": false
         },
         "p3": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 11,
           "lineHeight": 15,
@@ -459,7 +459,7 @@
           "underlined": false
         },
           "link": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 13,
           "lineHeight": 16,
@@ -467,7 +467,7 @@
           "underlined": true
         },
         "primaryButton": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 13,
           "lineHeight": 18,
@@ -475,7 +475,7 @@
           "underlined": false
         },
           "secondaryButton": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 11,
           "lineHeight": 15,
@@ -483,7 +483,7 @@
           "underlined": false
         },
           "tertiaryButton": {
-          "fontName": "Effra",
+          "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 11,
           "lineHeight": 15,
