@@ -277,7 +277,7 @@
         },
         "h3": {
           "fontName": "NRGEffraApp-Regular",
-          "weight": "medium",
+          "weight": "regular",
           "fontSize": 18,
           "lineHeight": 22,
           "letterSpacing": 0,
@@ -337,7 +337,7 @@
           "fontSize": 13,
           "lineHeight": 16,
           "letterSpacing": 0.5,
-          "underlined": true
+          "underlined": false
         },
         "primaryButton": {
           "fontName": "NRGEffraApp-Regular",
@@ -404,7 +404,7 @@
         },
         "h3": {
           "fontName": "NRGEffraApp-Regular",
-          "weight": "medium",
+          "weight": "regular",
           "fontSize": 18,
           "lineHeight": 22,
           "letterSpacing": 0,
@@ -430,7 +430,7 @@
           "fontName": "NRGEffraApp-Regular",
           "weight": "regular",
           "fontSize": 12,
-          "lineHeight": 15,
+          "lineHeight": 0,
           "letterSpacing": 0,
           "underlined": false
         },
@@ -464,7 +464,7 @@
           "fontSize": 13,
           "lineHeight": 16,
           "letterSpacing": 0.5,
-          "underlined": true
+          "underlined": false
         },
         "primaryButton": {
           "fontName": "NRGEffraApp-Regular",
