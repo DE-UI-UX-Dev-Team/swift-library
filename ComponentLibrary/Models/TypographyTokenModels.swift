@@ -7,30 +7,27 @@
 
 import SwiftUI
 
-
 struct TextStyleToken: Decodable {
     let fontName: String
     let weight: String
     let fontSize: CGFloat
     let lineHeight: CGFloat
     let letterSpacing: CGFloat
-    let underlined: Bool
 }
 
-
-struct ThemeAttributes: Decodable {
-    let textStyles: [String: TextStyleToken]
-    let colors: [String: String]
-}
-
-
-struct TypographyBrandThemes: Decodable {
-    let light: ThemeAttributes
-    let dark: ThemeAttributes
-}
-
-
-struct AllTypographyTokens: Decodable {
-    let brandDE: TypographyBrandThemes
-    let brandReliant: TypographyBrandThemes
+struct TypographyTokens: Decodable {
+    let brandDE: [String: TextStyleToken]
+    let brandReliant: [String: TextStyleToken]
+    
+    // Helper method to retrieve a token by brand + style key.
+    func value(for brand: String, style: String) -> TextStyleToken? {
+        switch brand.lowercased() {
+        case "brandde":
+            return brandDE[style]
+        case "brandreliant":
+            return brandReliant[style]
+        default:
+            return nil
+        }
+    }
 }

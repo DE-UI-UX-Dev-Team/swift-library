@@ -34,23 +34,22 @@ struct AnotherBrandPage: View {
                 
                 //Typography token system test samples for Reliant
                 Text("Heading 1")
-                                .TypographyStyle(.h1, colorUsage: .headingDefault, brand: selectedBrand)
+                                .typographyStyle(.h1,  brand: selectedBrand)
                             
-                            // 2. Paragraph
+                            //  Paragraph
                             Text("Paragraph text")
-                                .TypographyStyle(.p1, colorUsage: .paragraphDefault, brand: selectedBrand)
+                                .typographyStyle(.p1,  brand: selectedBrand)
                             
-                            // 3. Link
-                            Text("Link text underlined!")
-                                .TypographyStyle(.link, colorUsage: .link, brand: selectedBrand)
+                            // Inline Link
+                Text("Link text underlined!")
+                            .foregroundColor(ColorToken.primaryBase.color( brand: selectedBrand,
+                                                                             colorScheme: colorScheme))
+                            .typographyStyle(.p1, brand: selectedBrand)
                             
-                            // 4. Error
-                            Text("Error message")
-                                .TypographyStyle(.p2, colorUsage: .paragraphError, brand: selectedBrand)
-                            
-                            // 5. Primary button text
+
+                            // Primary button text
                             Text("Primary button text")
-                                .TypographyStyle(.primaryButton, colorUsage: .primaryButton, brand: selectedBrand)
+                                .typographyStyle(.primaryButton, brand: selectedBrand)
                                 .padding()
                                 .background(ColorToken.containerFillPrimaryBrand.color( brand: selectedBrand,colorScheme: colorScheme))
                                 .cornerRadius(8)

@@ -21,64 +21,61 @@ struct ReliantFontsPage: View {
                 Text("Reliant fonts Page")
                     .font(.custom("NRGEffraApp-Light", size: 24))
                     .padding()
-                Text("Custom Inter Light Black Test!")
+                Text("Custom Effra Light Black Test!")
                     .font(.custom("NRGEffraApp-Bold", size: 24))
                 Text("Heading 1 Reliant Test")
                     .font(.custom("NRGEffraApp-Medium", size: 28))
                 
                 
                 
-                //Typography token system test samples for Reliant
+                // Typography token system test samples for Reliant
                 Text("Heading 1")
-                    .TypographyStyle(.h1, colorUsage: .headingDefault, brand: selectedBrand)
+                    .typographyStyle(.h1,  brand: selectedBrand)
                 Text("Heading 2")
-                    .TypographyStyle(.h2, colorUsage: .headingDefault, brand: selectedBrand)
+                    .typographyStyle(.h2,  brand: selectedBrand)
                 Text("Heading 3")
-                    .TypographyStyle(.h3, colorUsage: .headingDefault, brand: selectedBrand)
+                    .typographyStyle(.h3,  brand: selectedBrand)
                 Text("Heading 4")
-                    .TypographyStyle(.h4, colorUsage: .headingDefault, brand: selectedBrand)
+                    .typographyStyle(.h4,  brand: selectedBrand)
                 Text("Heading 5")
-                    .TypographyStyle(.h5, colorUsage: .headingDefault, brand: selectedBrand)
+                    .typographyStyle(.h5,  brand: selectedBrand)
                 Text("Heading 6")
-                    .TypographyStyle(.h6, colorUsage: .headingDefault, brand: selectedBrand)
+                    .typographyStyle(.h6,  brand: selectedBrand)
                 
-                // 2. Paragraph
+                // Paragraph
                 Text("Paragraph 1")
-                    .TypographyStyle(.p1, colorUsage: .paragraphDefault, brand: selectedBrand)
+                    .typographyStyle(.p1,  brand: selectedBrand)
                 Text("Paragraph 2")
-                    .TypographyStyle(.p1, colorUsage: .paragraphDefault, brand: selectedBrand)
+                    .typographyStyle(.p1,  brand: selectedBrand)
                 Text("Paragraph 3")
-                    .TypographyStyle(.p1, colorUsage: .paragraphDefault, brand: selectedBrand)
+                    .typographyStyle(.p1, brand: selectedBrand)
                 
-                // 3. Link
+                // Inline Link
                 Text("Link text underlined!")
-                    .TypographyStyle(.link, colorUsage: .link, brand: selectedBrand)
+                            .foregroundColor(ColorToken.primaryBase.color( brand: selectedBrand,
+                                                                             colorScheme: colorScheme))
+                            .typographyStyle(.p1, brand: selectedBrand)
                 
-   
-                Text("Error message")
-                    .TypographyStyle(.p2, colorUsage: .paragraphError, brand: selectedBrand)
-                
-                // 5. Primary button text
+                // Primary button text
                 Text("Primary button text")
-                    .TypographyStyle(.primaryButton, colorUsage: .primaryButton, brand: selectedBrand)
+                    .typographyStyle(.primaryButton,  brand: selectedBrand)
                     .padding()
                     .background(ColorToken.containerFillPrimaryBrand.color( brand: selectedBrand,colorScheme: colorScheme))
                     .cornerRadius(8)
-                // 6. Secondary button text
+                // Secondary button text
                 Text("Secondary button text")
-                    .TypographyStyle(.secondaryButton, colorUsage: .secondaryButton, brand: selectedBrand)
+                    .typographyStyle(.secondaryButton, brand: selectedBrand)
                     .padding()
                     .background(ColorToken.containerFillSecondaryBrand.color( brand: selectedBrand,colorScheme: colorScheme))
                     .cornerRadius(8)
-                // 7. Tertiary button text
+                // Tertiary button text
                 Text("Tertiary button text")
-                    .TypographyStyle(.tertiaryButton, colorUsage: .tertiaryButton, brand: selectedBrand)
+                    .typographyStyle(.tertiaryButton,  brand: selectedBrand)
                     .padding()
-//                    .background(ColorToken.containerFillTertiary1.color( brand: selectedBrand,colorScheme: colorScheme))
                     .cornerRadius(8)
                 // 8. Disabled button text
                 Text("Disabled button text")
-                    .TypographyStyle(.primaryButton, colorUsage: .disabledButton, brand: selectedBrand)
+                    .typographyStyle(.primaryButton,  brand: selectedBrand)
                     .padding()
                     .background(ColorToken.containerFillStatusDisabled.color( brand: selectedBrand,colorScheme: colorScheme))
                     .cornerRadius(8)

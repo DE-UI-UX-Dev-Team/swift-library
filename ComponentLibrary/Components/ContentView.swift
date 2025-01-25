@@ -37,28 +37,29 @@ struct ContentView: View {
                         .font(.custom("Inter18pt-Light", size: 24))
    
                     
-                    //Typography token system test samples for Reliant
+                    // Typography token system test samples for Reliant
                     Text("Heading 1")
-                                    .TypographyStyle(.h1, colorUsage: .headingDefault, brand: selectedBrand)
+                                    .typographyStyle(.h1, brand: selectedBrand)
                     Text("Heading 2")
-                                    .TypographyStyle(.h2, colorUsage: .headingDefault, brand: selectedBrand)
+                                    .typographyStyle(.h2, brand: selectedBrand)
                                 
                                 
-                                // 2. Paragraph
+                                // Paragraph
                                 Text("Paragraph text")
-                                    .TypographyStyle(.p1, colorUsage: .paragraphDefault, brand: selectedBrand)
+                                    .typographyStyle(.p1, brand: selectedBrand)
                                 
-                                // 3. Link
-                                Text("Link text underlined!")
-                                    .TypographyStyle(.link, colorUsage: .link, brand: selectedBrand)
+                              // In-line Link
+                                    Text("Link text underlined!")
+                                                .underline()
+                                                .foregroundColor(ColorToken.primaryDarkest.color( brand: selectedBrand,
+                                                                                                 colorScheme: colorScheme))
+                                                .typographyStyle(.p2, brand: selectedBrand)
                                 
-                                // 4. Error
-                                Text("Error message")
-                                    .TypographyStyle(.p2, colorUsage: .paragraphError, brand: selectedBrand)
+          
                                 
-                                // 5. Primary button text
+                                //  Primary button text
                                 Text("Primary button text")
-                                    .TypographyStyle(.primaryButton, colorUsage: .primaryButton, brand: selectedBrand)
+                                    .typographyStyle(.primaryButton, brand: selectedBrand)
                                     .padding()
                                     .background(ColorToken.containerFillTertiary1.color( brand: selectedBrand,colorScheme: colorScheme))
                                     .cornerRadius(8)
@@ -76,7 +77,6 @@ struct ContentView: View {
                         }
                     
                     }
-//                    .padding()
                     
                     
                     // Card View

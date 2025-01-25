@@ -1,515 +1,174 @@
 {
   "brandDE": {
-    "light": {
-      "textStyles": {
-        "h1": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 28,
-          "lineHeight": 38,
-          "letterSpacing": 0.15,
-          "underlined": false
-        },
-        
-        "h2": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 24,
-          "lineHeight": 32,
-          "letterSpacing": 0.5,
-          "underlined": false
-        },
-        "h3": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 20,
-          "lineHeight": 28,
-          "letterSpacing": 0.15,
-          "underlined": false
-        },
-        "h4": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 18,
-          "lineHeight": 24,
-          "letterSpacing": 0.15,
-          "underlined": false
-        },
-        "h5": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.1,
-          "underlined": false
-        },
-          "h6": {
-          "fontName": "BasicSans-SemiBold",
-          "weight": "semibold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.5,
-          "underlined": false
-        },
-        "p1": {
-          "fontName": "Inter18pt-Regular",
-          "weight": "regular",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.5,
-          "underlined": false
-        },
-        "p2": {
-          "fontName": "Inter18pt-Regular",
-          "weight": "regular",
-          "fontSize": 14,
-          "lineHeight": 20,
-          "letterSpacing": 0.25,
-          "underlined": false
-        },
-        "p3": {
-          "fontName": "Inter18pt-Regular",
-          "weight": "regular",
-          "fontSize": 12,
-          "lineHeight": 18,
-          "letterSpacing": 0.25,
-          "underlined": false
-        },
-          "link": {
-          "fontName": "Inter18pt-Regular",
-          "weight": "medium",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.5,
-          "underlined": true
-        },
-        "primaryButton": {
-          "fontName": "BasicSans-Regular",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.4,
-          "underlined": false
-        },
-          "secondaryButton": {
-          "fontName": "BasicSans-Regular",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.4,
-          "underlined": false
-        },
-          "tertiaryButton": {
-          "fontName": "BasicSans-Regular",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.4,
-          "underlined": false
-        }
-      },
-      "colors": {
-        "headingDefault": "#000000",
-        "headingSecondary": "#6C6C6C",
-        "headingInverse": "#ffffff",
-        "paragraphDefault": "#000000",
-        "paragraphSecondary":  "#6C6C6C",
-        "paragraphLegal": "#969696",
-        "paragraphDisabled": "#c8c8c8",
-        "paragraphInverse": "#ffffff",
-        "paragraphError": "#ad1521",
-        "paragraphSuccess": "#005427",
-        "paragraphWarning": "#806F27",
-        "link": "#CD2500",
-        "primaryButton": "#000000",
-        "secondaryButton": "#000000",
-        "tertiaryButton": "#000000",
-        "disabledButton": "#c8c8c8"
-      }
+    "h1": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 28,
+      "lineHeight": 38,
+      "letterSpacing": 0.15
     },
-    "dark": {
-      "textStyles": {
-        "h1": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 28,
-          "lineHeight": 38,
-          "letterSpacing": 0.15,
-          "underlined": false
-        },
-        
-        "h2": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 24,
-          "lineHeight": 32,
-          "letterSpacing": 0.5,
-          "underlined": false
-        },
-        "h3": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 20,
-          "lineHeight": 28,
-          "letterSpacing": 0.15,
-          "underlined": false
-        },
-        "h4": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 18,
-          "lineHeight": 24,
-          "letterSpacing": 0.15,
-          "underlined": false
-        },
-        "h5": {
-          "fontName": "BasicSans-Bold",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.1,
-          "underlined": false
-        },
-          "h6": {
-          "fontName": "BasicSans-SemiBold",
-          "weight": "semibold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.5,
-          "underlined": false
-        },
-        "p1": {
-          "fontName": "Inter18pt-Regular",
-          "weight": "regular",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.5,
-          "underlined": false
-        },
-        "p2": {
-          "fontName": "Inter18pt-Regular",
-          "weight": "regular",
-          "fontSize": 14,
-          "lineHeight": 20,
-          "letterSpacing": 0.25,
-          "underlined": false
-        },
-        "p3": {
-          "fontName": "Inter18pt-Regular",
-          "weight": "regular",
-          "fontSize": 12,
-          "lineHeight": 18,
-          "letterSpacing": 0.25,
-          "underlined": false
-        },
-          "link": {
-          "fontName": "Inter18pt-Regular",
-          "weight": "medium",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.5,
-          "underlined": true
-        },
-        "primaryButton": {
-          "fontName": "BasicSans-Regular",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.4,
-          "underlined": false
-        },
-          "secondaryButton": {
-          "fontName": "BasicSans-Regular",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.4,
-          "underlined": false
-        },
-          "tertiaryButton": {
-          "fontName": "BasicSans-Regular",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 24,
-          "letterSpacing": 0.4,
-          "underlined": false
-        }
-      },
-      "colors": {
-        "headingDefault": "#fafafa",
-        "headingSecondary": "#f9f9f9",
-        "headingInverse": "#181818",
-        "paragraphDefault": "#ffffff",
-        "paragraphSecondary": "#f9f9f9",
-        "paragraphLegal": "#f9f9f9",
-        "paragraphDisabled": "#f5f5f5",
-        "paragraphInverse": "#000000",
-        "paragraphError": "#ffe2e1",
-        "paragraphSuccess": "#d1f0df",
-        "paragraphWarning": "#fed753",
-        "link": "#fe9843",
-        "primaryButton": "#fafafa",
-        "secondaryButton": "#fafafa",
-        "tertiaryButton": "#fafafa",
-        "disabledButton": "#f5f5f5"
-      }
+    "h2": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 24,
+      "lineHeight": 32,
+      "letterSpacing": 0.5
+    },
+    "h3": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 20,
+      "lineHeight": 28,
+      "letterSpacing": 0.15
+    },
+    "h4": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 18,
+      "lineHeight": 24,
+      "letterSpacing": 0.15
+    },
+    "h5": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.1
+    },
+    "h6": {
+      "fontName": "BasicSans-SemiBold",
+      "weight": "semibold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.5
+    },
+    "p1": {
+      "fontName": "Inter18pt-Regular",
+      "weight": "regular",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.5
+    },
+    "p2": {
+      "fontName": "Inter18pt-Regular",
+      "weight": "regular",
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0.25
+    },
+    "p3": {
+      "fontName": "Inter18pt-Regular",
+      "weight": "regular",
+      "fontSize": 12,
+      "lineHeight": 18,
+      "letterSpacing": 0.25
+    },
+    "primaryButton": {
+      "fontName": "BasicSans-Regular",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.4
+    },
+    "secondaryButton": {
+      "fontName": "BasicSans-Regular",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.4
+    },
+    "tertiaryButton": {
+      "fontName": "BasicSans-Regular",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.4
     }
   },
   "brandReliant": {
-    "light": {
-       "textStyles": {
-        "h1": {
-          "fontName": "NRGEffraApp-Medium",
-          "weight": "medium",
-          "fontSize": 24,
-          "lineHeight": 30,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        
-        "h2": {
-          "fontName": "NRGEffraApp-Medium",
-          "weight": "medium",
-          "fontSize": 20,
-          "lineHeight": 24,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "h3": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 18,
-          "lineHeight": 22,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "h4": {
-          "fontName": "NRGEffraApp-Bold",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 22,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "h5": {
-          "fontName": "NRGEffraApp-Medium",
-          "weight": "medium",
-          "fontSize": 14,
-          "lineHeight": 18,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-          "h6": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 12,
-          "lineHeight": 15,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "p1": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 13,
-          "lineHeight": 18,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "p2": {
-          "fontName":"NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 11,
-          "lineHeight": 15,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "p3": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 11,
-          "lineHeight": 15,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-          "link": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 13,
-          "lineHeight": 16,
-          "letterSpacing": 0.5,
-          "underlined": false
-        },
-        "primaryButton": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 13,
-          "lineHeight": 18,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-          "secondaryButton": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 11,
-          "lineHeight": 15,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-          "tertiaryButton": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 11,
-          "lineHeight": 15,
-          "letterSpacing": 0,
-          "underlined": false
-        }
-      },
-      "colors": {
-        "headingDefault": "#000000",
-        "headingSecondary": "#6C6C6C",
-        "headingInverse": "#ffffff",
-        "paragraphDefault": "#000000",
-        "paragraphSecondary": "#6C6C6C",
-        "paragraphLegal":"#6C6C6C",
-        "paragraphDisabled": "#818181",
-        "paragraphInverse": "#ffffff",
-        "paragraphError": "#dd1f27",
-        "paragraphSuccess": "#2f682c",
-        "paragraphWarning": "#a35c18",
-        "link": "#0c8ec7",
-        "primaryButton": "#FFFFFF",
-        "secondaryButton":"#0c8ec7",
-        "tertiaryButton": "#0c8ec7",
-        "disabledButton": "#818181"
-      }
+    "h1": {
+      "fontName": "NRGEffraApp-Medium",
+      "weight": "medium",
+      "fontSize": 24,
+      "lineHeight": 30,
+      "letterSpacing": 0
     },
-    "dark": {
-       "textStyles": {
-        "h1": {
-          "fontName": "NRGEffraApp-Medium",
-          "weight": "medium",
-          "fontSize": 24,
-          "lineHeight": 30,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        
-        "h2": {
-          "fontName": "NRGEffraApp-Medium",
-          "weight": "medium",
-          "fontSize": 20,
-          "lineHeight": 24,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "h3": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 18,
-          "lineHeight": 22,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "h4": {
-          "fontName": "NRGEffraApp-Bold",
-          "weight": "bold",
-          "fontSize": 16,
-          "lineHeight": 22,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "h5": {
-          "fontName": "NRGEffraApp-Medium",
-          "weight": "medium",
-          "fontSize": 14,
-          "lineHeight": 18,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-          "h6": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 12,
-          "lineHeight": 0,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "p1": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 13,
-          "lineHeight": 18,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "p2": {
-          "fontName":"NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 11,
-          "lineHeight": 15,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-        "p3": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 11,
-          "lineHeight": 15,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-          "link": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 13,
-          "lineHeight": 16,
-          "letterSpacing": 0.5,
-          "underlined": false
-        },
-        "primaryButton": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 13,
-          "lineHeight": 18,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-          "secondaryButton": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 11,
-          "lineHeight": 15,
-          "letterSpacing": 0,
-          "underlined": false
-        },
-          "tertiaryButton": {
-          "fontName": "NRGEffraApp-Regular",
-          "weight": "regular",
-          "fontSize": 11,
-          "lineHeight": 15,
-          "letterSpacing": 0,
-          "underlined": false
-        }
-      },
-      "colors": {
-        "headingDefault": "#ffffff",
-        "headingSecondary": "#a0b2b9",
-        "headingInverse": "#000000",
-        
-        "paragraphDefault": "#ffffff",
-        "paragraphSecondary": "#a0b2b9",
-        "paragraphLegal":"#a0b2b9",
-        "paragraphDisabled": "#7c8c93",
-        "paragraphInverse": "#000000",
-        "paragraphError": "#f06267",
-        "paragraphSuccess": "#68a664",
-        "paragraphWarning": "#fbbb61",
-        "link": "#0097D0",
-        "primaryButton": "#000000",
-        "secondaryButton": "#0097D0",
-        "tertiaryButton": "#0097D0",
-        "disabledButton": "#7c8c93"
-      }
+    "h2": {
+      "fontName": "NRGEffraApp-Medium",
+      "weight": "medium",
+      "fontSize": 20,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    },
+    "h3": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 18,
+      "lineHeight": 22,
+      "letterSpacing": 0
+    },
+    "h4": {
+      "fontName": "NRGEffraApp-Bold",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 22,
+      "letterSpacing": 0
+    },
+    "h5": {
+      "fontName": "NRGEffraApp-Medium",
+      "weight": "medium",
+      "fontSize": 14,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    "h6": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 12,
+      "lineHeight": 15,
+      "letterSpacing": 0
+    },
+    "p1": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 13,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    "p2": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 11,
+      "lineHeight": 15,
+      "letterSpacing": 0
+    },
+    "p3": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 11,
+      "lineHeight": 15,
+      "letterSpacing": 0
+    },
+    "primaryButton": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 13,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    "secondaryButton": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 11,
+      "lineHeight": 15,
+      "letterSpacing": 0
+    },
+    "tertiaryButton": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 11,
+      "lineHeight": 15,
+      "letterSpacing": 0
     }
   }
 }
