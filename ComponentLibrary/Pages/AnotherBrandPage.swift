@@ -32,14 +32,34 @@ struct AnotherBrandPage: View {
                                                                                    colorScheme: colorScheme))
                                 .font(.system(size: 32, weight: .heavy))
                 
+                //Typography token system test samples for Reliant
+                Text("Heading 1")
+                                .typographyStyle(.h1,  brand: selectedBrand)
+                            
+                            //  Paragraph
+                            Text("Paragraph text")
+                                .typographyStyle(.p1,  brand: selectedBrand)
+                            
+                            // Inline Link
+                Text("Link text underlined!")
+                            .foregroundColor(ColorToken.primaryBase.color( brand: selectedBrand,
+                                                                             colorScheme: colorScheme))
+                            .typographyStyle(.p1, brand: selectedBrand)
+                            
+
+                            // Primary button text
+                            Text("Primary button text")
+                                .typographyStyle(.primaryButton, brand: selectedBrand)
+                                .padding()
+                                .background(ColorToken.containerFillPrimaryBrand.color( brand: selectedBrand,colorScheme: colorScheme))
+                                .cornerRadius(8)
+                
                 // Card View
                 CardView(
                                     title: "Steps for Completing Your Setup",
                                     items:cardItemsTwo,
-                                    iconColor: ColorToken.tertiaryBase.color( brand: selectedBrand,
-                                                                                   colorScheme: colorScheme),
-                                    backgroundColor: ColorToken.primaryBase.color( brand: selectedBrand,
-                                                                                               colorScheme: colorScheme)
+                                    iconColor: ColorToken.tertiaryBase.color( brand: selectedBrand,colorScheme: colorScheme),
+                                    backgroundColor: ColorToken.primaryBase.color( brand: selectedBrand,colorScheme: colorScheme)
                                 )
 
                 
@@ -52,8 +72,8 @@ struct AnotherBrandPage: View {
     }
 }
 
-//struct AnotherBrandPage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AnotherBrandPage()
-//    }
-//}
+struct AnotherBrandPage_Previews: PreviewProvider {
+    static var previews: some View {
+        AnotherBrandPage()
+    }
+}

@@ -15,10 +15,10 @@ struct ContentView: View {
       
     @Environment(\.openURL) var openURL
     
- 
-     @State private var selectedBrand: String = "brandDE"
+    @State private var selectedBrand: String = "brandDE"
+    
 
-       private let cardItems: [(icon: String, text: String)] = [
+    private let cardItems: [(icon: String, text: String)] = [
            (icon: "checkmark.circle", text: "First claim this offer. Then enroll by reviewing the terms and conditions."),
            (icon: "checkmark.circle", text: "Schedule an installation for your doorbell and thermostat."),
            (icon: "checkmark.circle", text: "We will give you a call before installation. When they complete installation you will have access.")
@@ -29,11 +29,47 @@ struct ContentView: View {
             ZStack {
                 VStack {
                     
-                    Text("Sample Success Text")
+                    Text("Custom Inter Light Black Test!")
+                        .font(.custom("Inter18pt-Black", size: 24))
+                    Text("Custom Inter Bold Font Test!")
+                        .font(.custom("Inter18pt-Bold", size: 24))
+                    Text("Custom Inter Light Font Test!")
+                        .font(.custom("Inter18pt-Light", size: 24))
+   
+                    
+                    // Typography token system test samples for Reliant
+                    Text("Heading 1")
+                                    .typographyStyle(.h1, brand: selectedBrand)
+                    Text("Heading 2")
+                                    .typographyStyle(.h2, brand: selectedBrand)
+                                
+                                
+                                // Paragraph
+                                Text("Paragraph text")
+                                    .typographyStyle(.p1, brand: selectedBrand)
+                                
+                              // In-line Link
+                                    Text("Link text underlined!")
+                                                .underline()
+                                                .foregroundColor(ColorToken.primaryDarkest.color( brand: selectedBrand,
+                                                                                                 colorScheme: colorScheme))
+                                                .typographyStyle(.p2, brand: selectedBrand)
+                                
+          
+                                
+                                //  Primary button text
+                                Text("Primary button text")
+                                    .typographyStyle(.primaryButton, brand: selectedBrand)
                                     .padding()
+                                    .background(ColorToken.containerFillTertiary1.color( brand: selectedBrand,colorScheme: colorScheme))
+                                    .cornerRadius(8)
+                    
+                    
+                    
+                    Text("Sample Success Text")
                                     .foregroundColor(ColorToken.greenAccessible.color( brand: selectedBrand,
                                                                                        colorScheme: colorScheme))
-                                    .font(.system(size: 32, weight: .heavy))
+                                    .font(.system(size: 26, weight: .heavy))
                     
                     Button("Show Toast") {
                         withAnimation {
@@ -41,17 +77,15 @@ struct ContentView: View {
                         }
                     
                     }
-                    .padding()
                     
                     
                     // Card View
                     CardView(
                                         title: "What should I expect when I enroll in Home Base Essentials?",
                                         items: cardItems,
-iconColor:ColorToken.iconFeedbackSuccess.color( brand: selectedBrand,
+                                       iconColor:ColorToken.iconFeedbackSuccess.color( brand: selectedBrand,
                                                 colorScheme: colorScheme),
-                                       backgroundColor:ColorToken.containerFillTertiaryDefault.color( brand: selectedBrand,
-                                                                                                       colorScheme: colorScheme)
+                                       backgroundColor:ColorToken.containerFillTertiaryDefault.color( brand: selectedBrand,colorScheme: colorScheme)
                                     )
                     
                     NavigationLink("Go to Another Page", value: "AnotherPage")
