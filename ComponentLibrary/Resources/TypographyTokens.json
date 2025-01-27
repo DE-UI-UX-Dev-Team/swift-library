@@ -1,0 +1,174 @@
+{
+  "brandDE": {
+    "h1": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 28,
+      "lineHeight": 38,
+      "letterSpacing": 0.15
+    },
+    "h2": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 24,
+      "lineHeight": 32,
+      "letterSpacing": 0.5
+    },
+    "h3": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 20,
+      "lineHeight": 28,
+      "letterSpacing": 0.15
+    },
+    "h4": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 18,
+      "lineHeight": 24,
+      "letterSpacing": 0.15
+    },
+    "h5": {
+      "fontName": "BasicSans-Bold",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.1
+    },
+    "h6": {
+      "fontName": "BasicSans-SemiBold",
+      "weight": "semibold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.5
+    },
+    "p1": {
+      "fontName": "Inter18pt-Regular",
+      "weight": "regular",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.5
+    },
+    "p2": {
+      "fontName": "Inter18pt-Regular",
+      "weight": "regular",
+      "fontSize": 14,
+      "lineHeight": 20,
+      "letterSpacing": 0.25
+    },
+    "p3": {
+      "fontName": "Inter18pt-Regular",
+      "weight": "regular",
+      "fontSize": 12,
+      "lineHeight": 18,
+      "letterSpacing": 0.25
+    },
+    "primaryButton": {
+      "fontName": "BasicSans-Regular",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.4
+    },
+    "secondaryButton": {
+      "fontName": "BasicSans-Regular",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.4
+    },
+    "tertiaryButton": {
+      "fontName": "BasicSans-Regular",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.4
+    }
+  },
+  "brandReliant": {
+    "h1": {
+      "fontName": "NRGEffraApp-Medium",
+      "weight": "medium",
+      "fontSize": 24,
+      "lineHeight": 30,
+      "letterSpacing": 0
+    },
+    "h2": {
+      "fontName": "NRGEffraApp-Medium",
+      "weight": "medium",
+      "fontSize": 20,
+      "lineHeight": 24,
+      "letterSpacing": 0
+    },
+    "h3": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 18,
+      "lineHeight": 22,
+      "letterSpacing": 0
+    },
+    "h4": {
+      "fontName": "NRGEffraApp-Bold",
+      "weight": "bold",
+      "fontSize": 16,
+      "lineHeight": 22,
+      "letterSpacing": 0
+    },
+    "h5": {
+      "fontName": "NRGEffraApp-Medium",
+      "weight": "medium",
+      "fontSize": 14,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    "h6": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 12,
+      "lineHeight": 15,
+      "letterSpacing": 0
+    },
+    "p1": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 13,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    "p2": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 11,
+      "lineHeight": 15,
+      "letterSpacing": 0
+    },
+    "p3": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 11,
+      "lineHeight": 15,
+      "letterSpacing": 0
+    },
+    "primaryButton": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 13,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
+    "secondaryButton": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 11,
+      "lineHeight": 15,
+      "letterSpacing": 0
+    },
+    "tertiaryButton": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 11,
+      "lineHeight": 15,
+      "letterSpacing": 0
+    }
+  }
+}
