@@ -38,16 +38,16 @@ class SpacingManager {
 
     private func defaultSpacing() -> BrandSpacing {
         return BrandSpacing(
-            pageSpacing: PageSpacing(
-                margins: Margins(sides: 16, top: 24, bottom: 32),
+            pageLayout: PageLayout(
+                margins: Margins(horizontal: 16, top: 24, bottom: 32),
                 heights: Heights(
                     mobileSmall: 812, mobileRegular: 852,
                     mobileLarge: 932, tabletPortrait: 1040,
                     tabletLandscape: 768
                 ),
-                sectionGaps: SectionGaps(
+                sectionSpacing: SectionSpacing(
                     none: 0, xs: 8, s: 16, m: 16, l: 24,
-                    xl: 32, twoXL: 32, threeXL: 32, buttonGap: 24
+                    xl: 32, twoXL: 32, threeXL: 32, button: 24
                 )
             ),
             containerSpacing: ContainerSpacing(
@@ -55,7 +55,7 @@ class SpacingManager {
                     none: 0, xs: 4, s: 8, m: 16, l: 24, xl: 24, twoXL: 24
                 ),
                 gaps: ContainerGaps(
-                    none: 0, xs: 2, s: 4, m: 8, l: 16, xl: 24, iconGap: 10
+                    none: 0, xs: 2, s: 4, m: 8, l: 16, xl: 24, icon: 10
                 )
             )
         )

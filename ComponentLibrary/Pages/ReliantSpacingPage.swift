@@ -89,7 +89,7 @@ struct ReliantContainerSpacingVisualizer: View {
                     ReliantGapVisualizer(name: "M", gap: spacing.gaps.m)
                     ReliantGapVisualizer(name: "L", gap: spacing.gaps.l)
                     ReliantGapVisualizer(name: "XL", gap: spacing.gaps.xl)
-                    ReliantGapVisualizer(name: "Icon Gap", gap: spacing.gaps.iconGap)
+                    ReliantGapVisualizer(name: "Icon Gap", gap: spacing.gaps.icon)
                 }
             }
             .padding()

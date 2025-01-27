@@ -87,7 +87,7 @@ struct DeContainerSpacingVisualizer: View {
                     DeGapVisualizer(name: "M", gap: spacing.gaps.m)
                     DeGapVisualizer(name: "L", gap: spacing.gaps.l)
                     DeGapVisualizer(name: "XL", gap: spacing.gaps.xl)
-                    DeGapVisualizer(name: "Icon Gap", gap: spacing.gaps.iconGap)
+                    DeGapVisualizer(name: "Icon Gap", gap: spacing.gaps.icon)
                 }
             }
             .padding()

@@ -13,19 +13,19 @@ struct SpacingSystem: Codable {
 }
 
 struct BrandSpacing: Codable {
-    let pageSpacing: PageSpacing
+    let pageLayout: PageLayout
     let containerSpacing: ContainerSpacing
 }
 
 // Page Spacing Tokens
-struct PageSpacing: Codable {
+struct PageLayout: Codable {
     let margins: Margins
     let heights: Heights
-    let sectionGaps: SectionGaps
+    let sectionSpacing: SectionSpacing
 }
 
 struct Margins: Codable {
-    let sides, top, bottom: CGFloat
+    let horizontal, top, bottom: CGFloat
 }
 
 struct Heights: Codable {
@@ -33,8 +33,8 @@ struct Heights: Codable {
     let tabletPortrait, tabletLandscape: CGFloat
 }
 
-struct SectionGaps: Codable {
-    let none, xs, s, m, l, xl, twoXL, threeXL, buttonGap: CGFloat
+struct SectionSpacing: Codable {
+    let none, xs, s, m, l, xl, twoXL, threeXL, button: CGFloat
 }
 
 // Container Spacing Tokens
@@ -48,5 +48,5 @@ struct ContainerPadding: Codable {
 }
 
 struct ContainerGaps: Codable {
-    let none, xs, s, m, l, xl, iconGap: CGFloat
+    let none, xs, s, m, l, xl, icon: CGFloat
 }
