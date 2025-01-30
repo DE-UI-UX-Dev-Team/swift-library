@@ -1,0 +1,37 @@
+{
+  "brands": {
+    "brandDE": {
+      "borderStroke": {
+        "none": 0,
+        "thin": 1,
+        "regular": 2,
+        "thick": 3,
+        "bar": 1
+      },
+      "borderRadius": {
+        "none": 0,
+        "xs": 4,
+        "s": 4,
+        "m": 5,
+        "full": 999
+      }
+    },
+    "brandReliant": {
+      "borderStroke": {
+        "none": 0,
+        "thin": 1,
+        "regular": 1,
+        "thick": 1,
+        "bar": 1
+      },
+      "borderRadius": {
+        "none": 0,
+        "xs": 0,
+        "s": 4,
+        "m": 8,
+        "full": 999
+      }
+    }
+  }
+}
+
