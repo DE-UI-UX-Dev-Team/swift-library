@@ -1,42 +1,23 @@
-//
-//  ButtonComponent.swift
-//  ComponentLibrary
-//
-//  Created by UI/UX Development Team on 2/4/25.
-//
-
 import SwiftUI
 
-// MARK: - Supporting Types
-
-enum ButtonVariant {
-    case primary
-    case secondary
-    case tertiary
-    case disabled
+enum ButtonVariant: CaseIterable {
+    case primary, secondary, tertiary, disabled
 }
 
 enum ButtonSize {
-    case `default`
-    case small
+    case `default`, small
 }
 
-// Optional: Using an enum for brand improves type safety:
-enum Brand: String {
+enum Brand: String, CaseIterable {
     case de = "brandDE"
     case reliant = "brandReliant"
 }
 
-// A simple type-erased Shape to allow different shapes in one property.
 struct AnyShape: Shape {
-    // Mark the closure as @Sendable
     private let pathClosure: @Sendable (CGRect) -> Path
 
     init<S: Shape>(_ shape: S) {
-        // Annotate the closure as @Sendable when initializing
-        self.pathClosure = { @Sendable rect in
-            shape.path(in: rect)
-        }
+        self.pathClosure = { @Sendable rect in shape.path(in: rect) }
     }
 
     func path(in rect: CGRect) -> Path {
@@ -44,8 +25,75 @@ struct AnyShape: Shape {
     }
 }
 
+struct ButtonStyleConfig {
+    let backgroundColor: Color
+    let foregroundColor: Color
+    let borderColor: Color
+    let shape: AnyShape
+    let typographyStyle: MyTextStyle
+    let padding: CGFloat
 
-// MARK: - Unified Button Component
+    static func get(for brand: Brand, variant: ButtonVariant, colorScheme: ColorScheme) -> ButtonStyleConfig {
+        let style = brandStyles[brand] ?? defaultBrandStyle
+
+        return ButtonStyleConfig(
+            backgroundColor: style.getColor(for: variant, type: .background,brand: brand, colorScheme: colorScheme),
+            foregroundColor: style.getColor(for: variant, type: .foreground, brand: brand,colorScheme: colorScheme),
+            borderColor: style.getColor(for: variant, type: .border,brand: brand, colorScheme: colorScheme),
+            shape: style.shape,
+            typographyStyle: .primaryButton,
+            padding: style.padding
+        )
+    }
+
+    enum ColorType {
+        case background, foreground, border
+    }
+
+    struct BrandStyle {
+        let colors: [ButtonVariant: [ColorType: ColorToken]]
+        let shape: AnyShape
+        let padding: CGFloat
+
+        func getColor(for variant: ButtonVariant, type: ColorType, brand: Brand,colorScheme: ColorScheme) -> Color {
+            return colors[variant]?[type]?.color(brand: brand.rawValue, colorScheme: colorScheme) ?? .clear
+        }
+    }
+
+     static let brandStyles: [Brand: BrandStyle] = [
+        .de: BrandStyle(
+            colors: [
+                .primary: [.background: .containerFillTertiaryBrand, .foreground: .grayscale900, .border: .grayscale900],
+                .secondary: [.background: .containerFillGrayDefault, .foreground: .grayscale900, .border: .grayscale900],
+                .tertiary: [.background: .grayscale000, .foreground: .grayscale900, .border: .grayscale000],
+                .disabled: [.background: .grayscale300, .foreground: .grayscale600, .border: .grayscale300]
+            ],
+            shape: AnyShape(RoundedRectangle(cornerRadius: 4)),
+            padding: 16
+        ),
+        .reliant: BrandStyle(
+            colors: [
+                .primary: [.background: .primaryBase, .foreground: .grayscale000, .border: .primaryBase],
+                .secondary: [.background: .primaryLightest, .foreground: .primaryBase, .border: .primaryLightest],
+                .tertiary: [.background: .grayscale000, .foreground: .primaryBase, .border: .primaryBase],
+                .disabled: [.background: .grayscale400, .foreground: .grayscale600, .border: .grayscale300]
+            ],
+            shape: AnyShape(Capsule()),
+            padding: 15
+        )
+    ]
+
+     static let defaultBrandStyle = BrandStyle(
+        colors: [
+            .primary: [.background: .primaryBase, .foreground: .grayscale000, .border: .primaryBase],
+            .secondary: [.background: .primaryLightest, .foreground: .primaryBase, .border: .primaryLightest],
+            .tertiary: [.background: .grayscale000, .foreground: .primaryBase, .border: .primaryBase],
+            .disabled: [.background: .grayscale400, .foreground: .grayscale600, .border: .grayscale300]
+        ],
+        shape: AnyShape(RoundedRectangle(cornerRadius: 8)),
+        padding: 14
+    )
+}
 
 struct ButtonComponent: View {
     @Environment(\.colorScheme) var colorScheme
@@ -54,137 +102,57 @@ struct ButtonComponent: View {
     let title: String
     let variant: ButtonVariant
     let size: ButtonSize
-    var action: () -> Void = {}
+    let action: () -> Void
+
+    init(
+        selectedBrand: Brand,
+        title: String,
+        variant: ButtonVariant = .primary,
+        size: ButtonSize = .default,
+        action: @escaping () -> Void = {}
+    ) {
+        self.selectedBrand = selectedBrand
+        self.title = title
+        self.variant = variant
+        self.size = size
+        self.action = action
+    }
 
     var body: some View {
+        let styleConfig = ButtonStyleConfig.get(for: selectedBrand, variant: variant, colorScheme: colorScheme)
+
         Button(action: action) {
             Text(title)
-                .typographyStyle(buttonTypographyStyle, brand: selectedBrand.rawValue)
-                // Apply underline for tertiary variant For brandD
-                .modifier(UnderlineModifier(applyUnderline: selectedBrand == .de && variant == .tertiary, color: foregroundColor))
+                .typographyStyle(styleConfig.typographyStyle, brand: selectedBrand.rawValue)
+                .modifier(UnderlineModifier(applyUnderline: selectedBrand == .de && variant == .tertiary, color: styleConfig.foregroundColor))
                 .frame(maxWidth: .infinity, alignment: .center)
-                .padding(.vertical, verticalPadding)
+                .padding(.vertical, styleConfig.padding)
         }
         .frame(maxWidth: size == .default ? .infinity : 156)
-        .background(
-            backgroundShape
-                .fill(backgroundColor)
-        )
+        .background(styleConfig.shape.fill(styleConfig.backgroundColor))
         .brandBorderOverlay(
             brand: selectedBrand.rawValue,
             radiusKey: selectedBrand == .de ? .s : .full,
             strokeKey: .regular,
-            color: borderColor
+            color: styleConfig.borderColor
         )
-        .foregroundColor(foregroundColor)
-    }
-
-    // MARK: - Computed Properties
-
-    private var buttonTypographyStyle: MyTextStyle {
-        return .primaryButton
-    }
-
-    
-    private var verticalPadding: CGFloat {
-        // DE uses 16; Reliant uses 15.
-        return selectedBrand == .de ? 16 : 15
-    }
-    
-    private var backgroundShape: AnyShape {
-        // DE uses a RoundedRectangle; Reliant uses a Capsule.
-        if selectedBrand == .de {
-            return AnyShape(RoundedRectangle(cornerRadius: 4))
-        } else {
-            return AnyShape(Capsule())
-        }
-    }
-    
-    private var backgroundColor: Color {
-        switch selectedBrand {
-        case .de:
-            switch variant {
-            case .primary:
-                return ColorToken.containerFillTertiaryBrand.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .secondary:
-                return ColorToken.containerFillGrayDefault.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .tertiary:
-                return ColorToken.grayscale000.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .disabled:
-                return ColorToken.grayscale300.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            }
-        case .reliant:
-            switch variant {
-            case .primary:
-                return ColorToken.primaryBase.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .secondary:
-                return ColorToken.primaryLightest.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .tertiary:
-                return ColorToken.grayscale000.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .disabled:
-                return ColorToken.grayscale400.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            }
-        }
-    }
-    
-    private var foregroundColor: Color {
-        switch selectedBrand {
-        case .de:
-            switch variant {
-            case .primary, .secondary, .tertiary:
-                return ColorToken.grayscale900.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .disabled:
-                return ColorToken.grayscale600.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            }
-        case .reliant:
-            switch variant {
-            case .primary:
-                return ColorToken.grayscale000.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .secondary, .tertiary:
-                return ColorToken.primaryBase.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .disabled:
-                return ColorToken.grayscale600.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            }
-        }
-    }
-    
-    private var borderColor: Color {
-        switch selectedBrand {
-        case .de:
-            switch variant {
-            case .primary, .secondary:
-                return ColorToken.grayscale900.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .tertiary:
-                return .clear
-            case .disabled:
-                return ColorToken.grayscale300.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            }
-        case .reliant:
-            switch variant {
-            case .primary:
-                return ColorToken.primaryBase.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .secondary:
-                return ColorToken.primaryLightest.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .tertiary:
-                return ColorToken.primaryBase.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            case .disabled:
-                return ColorToken.grayscale300.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
-            }
-        }
+        .foregroundColor(styleConfig.foregroundColor)
     }
 }
-
-// MARK: - Underline Modifier (for brandDE tertiary buttons)
 
 struct UnderlineModifier: ViewModifier {
     let applyUnderline: Bool
     let color: Color
 
     func body(content: Content) -> some View {
-        if applyUnderline {
-            content.underline(true, color: color)
-        } else {
-            content
+        Group {
+            if applyUnderline {
+                content.underline(true, color: color)
+            } else {
+                content
+            }
         }
     }
+
 }
+
