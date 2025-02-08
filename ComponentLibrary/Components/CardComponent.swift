@@ -15,7 +15,8 @@ struct CardView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var selectedBrand: String = "brandDE"
+
+    @State private var selectedBrand: Brand = .de
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
