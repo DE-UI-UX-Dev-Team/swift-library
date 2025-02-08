@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct CardComponent: View {
     let title: String
     let items: [(icon: String, text: String)]
     let iconColor: Color

@@ -12,8 +12,8 @@ struct AnotherPage: View {
     @State private var showModal = false
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var selectedBrand: String = "brandDE"
-    
+ 
+    @State private var selectedBrand: Brand = .de
     
        private let cardItemsTwo: [(icon: String, text: String)] = [
         (icon: "xmark.circle", text: "Review your account settings before proceeding."),
@@ -26,7 +26,7 @@ struct AnotherPage: View {
             VStack {
                 
                 // Card View
-                CardView(
+                CardComponent(
                                     title: "Steps for Completing Your Setup",
                                     items:cardItemsTwo,
                                     iconColor: ColorToken.iconFeedbackError.color( brand: selectedBrand,
@@ -45,7 +45,7 @@ struct AnotherPage: View {
          
             }
             // Toast View
-            ToastView(
+            ToastComponent(
                 message: "Complete your Vivint offer!",
                 linkText: Text("Show Modal")
                     .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
@@ -64,7 +64,7 @@ struct AnotherPage: View {
         }
         .navigationTitle("AnotherPage")
         .sheet(isPresented: $showModal) {
-            CustomModalView(isPresented: $showModal)
+            CustomModalComponent(isPresented: $showModal)
                    }
     }
 }

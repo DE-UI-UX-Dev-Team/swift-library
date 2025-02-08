@@ -63,6 +63,13 @@
       "lineHeight": 18,
       "letterSpacing": 0.25
     },
+    "link": {
+      "fontName": "Inter18pt-Regular",
+      "weight": "regular",
+      "fontSize": 16,
+      "lineHeight": 24,
+      "letterSpacing": 0.5
+    },
     "primaryButton": {
       "fontName": "BasicSans-Regular",
       "weight": "bold",
@@ -131,7 +138,7 @@
     "p1": {
       "fontName": "NRGEffraApp-Regular",
       "weight": "regular",
-      "fontSize": 13,
+      "fontSize": 14,
       "lineHeight": 18,
       "letterSpacing": 0
     },
@@ -149,24 +156,31 @@
       "lineHeight": 15,
       "letterSpacing": 0
     },
+    "link": {
+      "fontName": "NRGEffraApp-Regular",
+      "weight": "regular",
+      "fontSize": 14,
+      "lineHeight": 18,
+      "letterSpacing": 0
+    },
     "primaryButton": {
       "fontName": "NRGEffraApp-Regular",
       "weight": "regular",
-      "fontSize": 13,
+      "fontSize": 14,
       "lineHeight": 18,
       "letterSpacing": 0
     },
     "secondaryButton": {
       "fontName": "NRGEffraApp-Regular",
       "weight": "regular",
-      "fontSize": 11,
+      "fontSize": 14,
       "lineHeight": 15,
       "letterSpacing": 0
     },
     "tertiaryButton": {
       "fontName": "NRGEffraApp-Regular",
       "weight": "regular",
-      "fontSize": 11,
+      "fontSize": 14,
       "lineHeight": 15,
       "letterSpacing": 0
     }

@@ -12,7 +12,8 @@ struct DeBorderPage: View {
  
     @Environment(\.colorScheme) var colorScheme
   
-    @State private var selectedBrand: String = "brandDE"
+
+    @State private var selectedBrand: Brand = .de
     
     var body: some View {
         ZStack {

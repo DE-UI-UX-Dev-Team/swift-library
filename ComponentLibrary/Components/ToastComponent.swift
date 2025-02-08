@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ToastView: View {
+struct ToastComponent: View {
         let message: String
         let linkText: Text
         let linkAction: () -> Void

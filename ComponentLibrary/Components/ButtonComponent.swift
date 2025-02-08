@@ -8,10 +8,6 @@ enum ButtonSize {
     case `default`, small
 }
 
-enum Brand: String, CaseIterable {
-    case de = "brandDE"
-    case reliant = "brandReliant"
-}
 
 struct AnyShape: Shape {
     private let pathClosure: @Sendable (CGRect) -> Path
@@ -56,7 +52,7 @@ struct ButtonStyleConfig {
         let padding: CGFloat
 
         func getColor(for variant: ButtonVariant, type: ColorType, brand: Brand,colorScheme: ColorScheme) -> Color {
-            return colors[variant]?[type]?.color(brand: brand.rawValue, colorScheme: colorScheme) ?? .clear
+            return colors[variant]?[type]?.color(brand: brand, colorScheme: colorScheme) ?? .clear
         }
     }
 
@@ -123,7 +119,7 @@ struct ButtonComponent: View {
 
         Button(action: action) {
             Text(title)
-                .typographyStyle(styleConfig.typographyStyle, brand: selectedBrand.rawValue)
+                .typographyStyle(styleConfig.typographyStyle, brand: selectedBrand)
                 .modifier(UnderlineModifier(applyUnderline: selectedBrand == .de && variant == .tertiary, color: styleConfig.foregroundColor))
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.vertical, styleConfig.padding)
@@ -131,7 +127,7 @@ struct ButtonComponent: View {
         .frame(maxWidth: size == .default ? .infinity : 156)
         .background(styleConfig.shape.fill(styleConfig.backgroundColor))
         .brandBorderOverlay(
-            brand: selectedBrand.rawValue,
+            brand: selectedBrand,
             radiusKey: selectedBrand == .de ? .s : .full,
             strokeKey: .regular,
             color: styleConfig.borderColor
@@ -140,19 +136,5 @@ struct ButtonComponent: View {
     }
 }
 
-struct UnderlineModifier: ViewModifier {
-    let applyUnderline: Bool
-    let color: Color
 
-    func body(content: Content) -> some View {
-        Group {
-            if applyUnderline {
-                content.underline(true, color: color)
-            } else {
-                content
-            }
-        }
-    }
-
-}
 

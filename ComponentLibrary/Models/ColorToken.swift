@@ -106,7 +106,7 @@ enum ColorToken: String {
     case yellowLighter
     
     
-    func color(brand: String, colorScheme: ColorScheme) -> Color {
+    func color(brand: Brand, colorScheme: ColorScheme) -> Color {
             return ColorTokenManager.shared.color(
                 for: brand,
                 tokenName: self.rawValue,

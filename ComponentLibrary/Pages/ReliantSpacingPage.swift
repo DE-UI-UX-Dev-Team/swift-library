@@ -98,8 +98,9 @@ struct ReliantContainerSpacingVisualizer: View {
 }
 
 struct ReliantContainerSpacingPage: View {
-    @State private var selectedBrand: String = "brandReliant"
-    @State private var spacing: ContainerSpacing = SpacingManager.shared.spacing(for: "brandReliant").containerSpacing
+
+    @State private var selectedBrand: Brand = .reliant
+    @State private var spacing: ContainerSpacing = SpacingManager.shared.spacing(for: .reliant).containerSpacing
 
     var body: some View {
         VStack {

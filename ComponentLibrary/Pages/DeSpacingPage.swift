@@ -96,8 +96,9 @@ struct DeContainerSpacingVisualizer: View {
 }
 
 struct DeContainerSpacingPage: View {
-    @State private var selectedBrand: String = "brandDE"
-    @State private var spacing: ContainerSpacing = SpacingManager.shared.spacing(for: "brandDE").containerSpacing
+
+    @State private var selectedBrand: Brand = .de
+    @State private var spacing: ContainerSpacing = SpacingManager.shared.spacing(for: .de).containerSpacing
 
     var body: some View {
         VStack {

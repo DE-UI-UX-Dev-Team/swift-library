@@ -79,7 +79,7 @@ extension BrandBorderTokens {
 extension View {
     // Adds an overlay of a RoundedRectangle with brand-specific corner radius & stroke width.
     func brandBorderOverlay(
-        brand: String,
+        brand: Brand,
         radiusKey: BorderRadiusKey,
         strokeKey: BorderStrokeKey,
         color: Color
