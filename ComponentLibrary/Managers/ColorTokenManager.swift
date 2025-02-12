@@ -47,7 +47,7 @@ final class ColorTokenManager: ObservableObject {
  
         // Retrieve themes for the brand
         guard let brandThemes = themes(for: brand) else {
-            os_log(.error, "Invalid brand name: %@", brand.rawValue)
+            os_log(.error, "Invalid brand name: %@", brand.identifier)
             return .gray
         }
  
@@ -56,7 +56,7 @@ final class ColorTokenManager: ObservableObject {
  
         // Retrieve the color token's hex value
         guard let hexValue = themeColors.colors[tokenName] else {
-            os_log(.error, "Token name '%@' not found for brand: %@", tokenName, brand.rawValue)
+            os_log(.error, "Token name '%@' not found for brand: %@", tokenName, brand.identifier)
             return .gray
         }
  
@@ -67,11 +67,14 @@ final class ColorTokenManager: ObservableObject {
     /// - Parameter brand: The name of the brand.
     /// - Returns: The `BrandThemes` object or `nil` if the brand is invalid.
     private func themes(for brand: Brand) -> BrandThemes? {
-        switch brand {
-               case .de:
-                   return tokens?.brandDE
-               case .reliant:
-                   return tokens?.brandReliant
-               }
+        guard let tokens = tokens else { return nil }
+
+        // Create a Mirror of the tokens object, which lets us inspect its properties at runtime.
+        let mirror = Mirror(reflecting: tokens)
+        
+        // Iterate over the properties (children) of the tokens object.
+        // Find the first property whose label (name) matches the brand's identifier.
+        return mirror.children.first { $0.label == brand.identifier }?.value as? BrandThemes
     }
+
 }

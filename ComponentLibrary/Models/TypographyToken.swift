@@ -19,10 +19,11 @@ enum MyTextStyle: String {
 extension View {
     func typographyStyle(_ style: MyTextStyle, brand: Brand) -> some View {
         let manager = TypographyTokenManager.shared
-        let styleToken = manager.tokens?.value(for: brand.rawValue, style: style.rawValue)
+        // Pass brand directly instead of brand.identifier
+        let styleToken = manager.tokens?.value(for: brand, style: style.rawValue)
         
-        let font = manager.font(for: brand.rawValue, styleName: style.rawValue)
-        let kerning = manager.letterSpacing(for: brand.rawValue, styleName: style.rawValue)
+        let font = manager.font(for: brand, styleName: style.rawValue)
+        let kerning = manager.letterSpacing(for: brand, styleName: style.rawValue)
         
         let lineHeight = styleToken?.lineHeight ?? 0
         let fontSize = styleToken?.fontSize ?? 0
@@ -34,4 +35,3 @@ extension View {
             .lineSpacing(spacing)
     }
 }
-
