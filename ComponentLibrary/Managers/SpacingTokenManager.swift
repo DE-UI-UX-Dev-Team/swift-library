@@ -33,7 +33,7 @@ class SpacingManager {
         guard let system = spacingSystem else {
             fatalError("Spacing system is not loaded.")
         }
-        return system.brands[brand.rawValue] ?? defaultSpacing()
+        return system.brands[brand.identifier] ?? defaultSpacing()
     }
 
     private func defaultSpacing() -> BrandSpacing {
