@@ -13,15 +13,15 @@ struct TagView: View {
     let text: String
     let style: TagStyle
     let selectedBrand: Brand
-    let icon: Image?  // Optional icon
-    let iconPosition: IconPosition?  // Optional position
+    let icon: Image?
+    let iconPosition: IconPosition?
 
     init(
         text: String,
         style: TagStyle,
         selectedBrand: Brand,
-        icon: Image? = nil,   // Default is nil
-        iconPosition: IconPosition? = nil  // Default is nil
+        icon: Image? = nil,
+        iconPosition: IconPosition? = nil
     ) {
         self.text = text
         self.style = style
@@ -35,7 +35,7 @@ struct TagView: View {
 
     /// Corrected `cornerRadius` property
     var cornerRadius: CGFloat {
-        if let borderTokens = borderManager.tokens(for: selectedBrand) {  // ✅ Fixed incorrect parameter
+        if let borderTokens = borderManager.tokens(for: selectedBrand) {
             switch selectedBrand {
             case .de:
                 return borderTokens.borderRadius.full
@@ -43,7 +43,7 @@ struct TagView: View {
                 return borderTokens.borderRadius.s
             }
         }
-        return 0 // Provide a default value if borderTokens is nil
+        return 0 
     }
 
     /// Corrected `backgroundColor` property
