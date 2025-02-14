@@ -7,7 +7,7 @@
 import SwiftUI
 import Foundation
 
-// Spacing Design Token Models
+
 struct SpacingSystem: Codable {
     let brands: [String: BrandSpacing]
 }
@@ -17,7 +17,6 @@ struct BrandSpacing: Codable {
     let containerSpacing: ContainerSpacing
 }
 
-// Page Spacing Tokens
 struct PageLayout: Codable {
     let margins: Margins
     let heights: Heights
@@ -37,7 +36,6 @@ struct SectionSpacing: Codable {
     let none, xs, s, m, l, xl, twoXL, threeXL, button: CGFloat
 }
 
-// Container Spacing Tokens
 struct ContainerSpacing: Codable {
     let padding: ContainerPadding
     let gaps: ContainerGaps

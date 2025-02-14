@@ -2,10 +2,13 @@ import SwiftUI
 
 struct ComponentLibraryHome: View {
     @State private var searchText = ""
-
     let components: [(String, AnyView, String)] = [
         ("Buttons", AnyView(ButtonView()), "rectangle.grid.1x2"),
-        ("ReliantFontsPage", AnyView(ReliantFontsPage()), "rectangle.fill.on.rectangle.fill"),
+        ("Links", AnyView(LinkPage()), "rectangle.grid.1x2"),
+        ("ColorTokenSystem", AnyView(ColorSwatches()), "rectangle.fill.on.rectangle.fill"),
+        ("TypographyTokenSystem", AnyView(ReliantFontsPage()), "rectangle.fill.on.rectangle.fill"),
+        ("BorderTokenSystem", AnyView(ReliantBorderPage()), "rectangle.fill.on.rectangle.fill"),
+        ("SpacingTokenSystem", AnyView(SpacingPage()), "rectangle.fill.on.rectangle.fill"),
     ]
 
     var filteredComponents: [(String, AnyView, String)] {
@@ -44,5 +47,11 @@ struct ComponentLibraryHome: View {
                 }
             }
         }
+    }
+}
+
+struct ComponentLibraryHome_Previews: PreviewProvider {
+    static var previews: some View {
+        ComponentLibraryHome()
     }
 }

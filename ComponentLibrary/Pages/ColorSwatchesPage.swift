@@ -14,7 +14,6 @@ struct ColorSwatches: View {
     
     var body: some View {
         VStack(spacing: 16) {
-            // Row 1
             Text("Primary")
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
@@ -47,7 +46,6 @@ struct ColorSwatches: View {
                
             }
             
-            // Row 2
             Text("Secondary")
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
@@ -80,7 +78,6 @@ struct ColorSwatches: View {
                     .frame(width: 60, height: 60)
                 
             }
-            // Row 3
             Text("Tertiary")
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
@@ -112,7 +109,7 @@ struct ColorSwatches: View {
                     .frame(width: 60, height: 60)
                 
             }
-            // Row 4
+
             Text("Red")
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
@@ -143,7 +140,7 @@ struct ColorSwatches: View {
                     )
                     .frame(width: 60, height: 60)
             }
-            // Row 5
+
             Text("Green")
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
@@ -174,7 +171,7 @@ struct ColorSwatches: View {
                     )
                     .frame(width: 60, height: 60)
             }
-            // Row 6
+
             Text("Yellow")
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
@@ -206,7 +203,7 @@ struct ColorSwatches: View {
                     .frame(width: 60, height: 60)
             }
             
-            // Row 7
+
             Text("Grayscale")
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
@@ -239,7 +236,6 @@ struct ColorSwatches: View {
             }
             
         }
-//        .padding()
     }
 }
 

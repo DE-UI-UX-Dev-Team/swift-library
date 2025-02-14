@@ -110,23 +110,6 @@ struct ReliantBorderPage: View {
                                                     radiusKey: .full,
                                                     strokeKey: .thick,
                                                     color:ColorToken.secondaryBase.color( brand: selectedBrand,colorScheme: colorScheme) )
-                // button
-//                Button(action: {}) {
-//                            Text("Primary button")
-//                                .font(.system(size: 16, weight: .medium))
-//                                .padding(.horizontal, 24)
-//                                .padding(.vertical, 12)
-//                                .background(Color.blue)
-//                                .foregroundColor(.white)
-//                                .cornerRadius(8)
-//                                .brandBorderOverlay(
-//                                                    brand: selectedBrand,
-//                                                    radiusKey: .m,
-//                                                    strokeKey: .regular,
-//                                                    color: .black
-//                                                )
-//                        }
-//
             }
             .navigationTitle("ReliantBorderPage")
         }

@@ -14,7 +14,6 @@ struct LinkPage: View {
         var body: some View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-                    // 1. Standalone Link
                     Text("Standalone Link:")
                         .typographyStyle(.h3,  brand: selectedBrand)
                     LinkComponent(
@@ -29,7 +28,6 @@ struct LinkPage: View {
                     
                     Divider()
                     
-                    // 2. Inline Link (embedded in a sentence)
                     Text("Inline Link:")
                         .typographyStyle(.h3,  brand: selectedBrand)
                     HStack(alignment: .firstTextBaseline, spacing: 0) {
@@ -48,7 +46,6 @@ struct LinkPage: View {
                     
                     Divider()
                     
-                    // 3. Accordion Link (toggling without extra content)
                     Text("Accordion Link (No Extra Content):")
                         .typographyStyle(.h3,  brand: selectedBrand)
                     LinkComponent(
@@ -66,7 +63,6 @@ struct LinkPage: View {
                     
                     Divider()
                     
-                    // 4. Accordion Link with Additional Content
                     Text("Accordion Link (With Additional Content):")
                         .typographyStyle(.h3,  brand: selectedBrand)
                     VStack(alignment: .leading, spacing: 8) {
@@ -82,7 +78,6 @@ struct LinkPage: View {
                             }
                         )
                         if isAccordionExpandedWithContent {
-                            // Additional content shown when expanded.
                             Text("Here is some extra content revealed by the accordion link. It could be any view!")
                                 .typographyStyle(.p1,  brand: selectedBrand)
                                 .padding()

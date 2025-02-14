@@ -35,7 +35,6 @@ final class TypographyTokenManager: ObservableObject {
     
     func font(for brand: Brand, styleName: String) -> Font {
             guard let styleToken = tokens?.value(for: brand, style: styleName) else {
-                // fallback if style or brand not found
                 return .system(size: 16)
             }
             var font = Font.custom(styleToken.fontName, size: styleToken.fontSize)
@@ -60,7 +59,6 @@ final class TypographyTokenManager: ObservableObject {
             return styleToken.lineHeight - styleToken.fontSize
         }
         
-        // MARK: - Private
         
         private func fontWeight(from str: String) -> Font.Weight? {
             switch str.lowercased() {

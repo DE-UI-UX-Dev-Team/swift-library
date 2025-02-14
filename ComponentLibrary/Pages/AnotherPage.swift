@@ -24,8 +24,6 @@ struct AnotherPage: View {
     var body: some View {
         ZStack {
             VStack {
-                
-                // Card View
                 CardComponent(
                                     title: "Steps for Completing Your Setup",
                                     items:cardItemsTwo,
@@ -42,9 +40,8 @@ struct AnotherPage: View {
                 }
                 .padding()
                 
-         
             }
-            // Toast View
+
             ToastComponent(
                 message: "Complete your Vivint offer!",
                 linkText: Text("Show Modal")
@@ -69,8 +66,4 @@ struct AnotherPage: View {
     }
 }
 
-//struct AnotherPage_Previews: PreviewProvider {
-//    static var previews: some View {
-//        AnotherPage()
-//    }
-//}
+
