@@ -25,10 +25,8 @@ struct DeFontsPage: View {
                     .font(.custom("BasicSans-Light", size: 24))
                 Text("Test Heading 1")
                     .font(.custom("BasicSans-Bold", size: 28))
-                
                     .padding()
                 
-                //Typography token system test samples for Reliant
                 Text("Heading 1")
                    .typographyStyle(.h1,  brand: selectedBrand)
                 Text("Heading 2")
@@ -42,7 +40,6 @@ struct DeFontsPage: View {
                 Text("Heading 6")
                    .typographyStyle(.h6,  brand: selectedBrand)
                 
-                // Paragraph
                 Text("Paragraph 1")
                    .typographyStyle(.p1, brand: selectedBrand)
                 Text("Paragraph 2")
@@ -52,8 +49,6 @@ struct DeFontsPage: View {
                 
           
             
-                
-//                 In-line Link
                 Text("Link text underlined!")
                             .underline()
                             .foregroundColor(ColorToken.primaryDarkest.color( brand: selectedBrand,
@@ -62,25 +57,25 @@ struct DeFontsPage: View {
                 
 
                
-                // Primary button text
+
                 Text("Primary button text")
                    .typographyStyle(.primaryButton,  brand: selectedBrand)
                     .padding()
                     .background(ColorToken.containerFillTertiary1.color( brand: selectedBrand,colorScheme: colorScheme))
                     .cornerRadius(8)
-                // Secondary button text
+
                 Text("Secondary button text")
                    .typographyStyle(.secondaryButton, brand: selectedBrand)
                     .padding()
                     .background(ColorToken.containerFillSecondaryBrand.color( brand: selectedBrand,colorScheme: colorScheme))
                     .cornerRadius(8)
-                // Tertiary button text
+
                 Text("Tertiary button text")
                    .typographyStyle(.tertiaryButton, brand: selectedBrand)
                     .padding()
 
                     .cornerRadius(8)
-                // Disabled button text
+
                 Text("Disabled button text")
                    .typographyStyle(.primaryButton, brand: selectedBrand)
                     .padding()

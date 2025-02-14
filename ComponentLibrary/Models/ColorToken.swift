@@ -9,7 +9,7 @@
 import SwiftUI
 
 enum ColorToken: String {
-    //Shared token list as cases
+    //Shared token list
     case primaryBase
     case primaryDarkest
     case primaryLighter

@@ -19,7 +19,6 @@ enum MyTextStyle: String {
 extension View {
     func typographyStyle(_ style: MyTextStyle, brand: Brand) -> some View {
         let manager = TypographyTokenManager.shared
-        // Pass brand directly instead of brand.identifier
         let styleToken = manager.tokens?.value(for: brand, style: style.rawValue)
         
         let font = manager.font(for: brand, styleName: style.rawValue)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - Manager
+
 class BorderManager: ObservableObject {
     static let shared = BorderManager()
     

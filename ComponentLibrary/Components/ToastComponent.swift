@@ -27,14 +27,12 @@ struct ToastComponent: View {
                     Spacer()
                     
                     HStack(spacing: 20) {
-                        // Image
                         image
                             .resizable()
                             .scaledToFit()
                             .frame(width: 66, height: 66)
                             .clipShape(RoundedRectangle(cornerRadius: 8))
                         
-                        // Text
                         VStack(alignment: .leading, spacing: 10) {
                             Text(message)
                                 .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
@@ -42,14 +40,12 @@ struct ToastComponent: View {
                                 .font(.subheadline)
                                 .multilineTextAlignment(.leading)
                             
-                            // Clickable link
                             Button(action: linkAction) {
                                 linkText
                             }
                         }
 
                         
-                        // Close button
                         Button(action: {
                             withAnimation {
                                 isVisible = false
@@ -70,7 +66,6 @@ struct ToastComponent: View {
                 .transition(.move(edge: .bottom))
                 .animation(.easeInOut, value: isVisible)
                 .onAppear {
-   // Schedule hiding the toast based on `duration`
                     DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
                         withAnimation {
                             isVisible = false

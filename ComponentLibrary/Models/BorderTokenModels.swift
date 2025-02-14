@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// MARK: - Models
 struct BorderBrandTokens: Decodable {
     let brands: [String: BrandBorderTokens]
 }
@@ -33,7 +32,6 @@ struct BorderRadius: Decodable {
     let full: CGFloat
 }
 
-// MARK: - Enums
 enum BorderStrokeKey {
     case none, thin, regular, thick, bar
 }
@@ -42,7 +40,6 @@ enum BorderRadiusKey {
     case none, xs, s, m, full
 }
 
-// MARK: - BrandBorderTokens extension to fetch numeric values
 extension BrandBorderTokens {
     func strokeValue(_ key: BorderStrokeKey) -> CGFloat {
         switch key {
@@ -75,9 +72,8 @@ extension BrandBorderTokens {
     }
 }
 
-// MARK: - SwiftUI View Extensions
+
 extension View {
-    // Adds an overlay of a RoundedRectangle with brand-specific corner radius & stroke width.
     func brandBorderOverlay(
         brand: Brand,
         radiusKey: BorderRadiusKey,

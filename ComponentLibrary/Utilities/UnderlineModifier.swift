@@ -1,6 +1,6 @@
 import SwiftUI
 
-// MARK: - Underline Modifier
+
 struct UnderlineModifier: ViewModifier {
     let applyUnderline: Bool
     let color: Color

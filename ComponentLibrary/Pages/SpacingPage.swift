@@ -13,20 +13,15 @@ struct SpacingPage: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var selectedBrand: Brand = .reliant
     
-    // A computed property that fetches the spacing tokens based on the selectedBrand
     private var brandSpacing: BrandSpacing {
         SpacingManager.shared.spacing(for: selectedBrand)
     }
     
     var body: some View {
         VStack(spacing: 0) {
-            
             ScrollView {
-                
-                // Vertical stack controlling spacing between sections
                 VStack(spacing: brandSpacing.pageLayout.sectionSpacing.xl) {
                     
-                    // 1) "Thank you" block
                     VStack(spacing: brandSpacing.pageLayout.sectionSpacing.s) {
                         Image(systemName: "checkmark.circle")
                             .font(.system(size: 36))
@@ -39,16 +34,9 @@ struct SpacingPage: View {
                         Text("We are processing your sign up for <plan name>. Please check your email nrgtest1050 @nrg.com for confirmation.")
                             .typographyStyle(.p1,  brand: selectedBrand)
                     }
-                    // Some horizontal padding for content inside
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.xl)
-//                    .brandBorderOverlay(
-//                                        brand: selectedBrand,
-//                                        radiusKey: .none,
-//                                        strokeKey: .thin,
-//                                        color:ColorToken.primaryBase.color( brand: selectedBrand,colorScheme: colorScheme) )
+
                     
-                    
-                    // 2) Confirmation Details Card
                     VStack(alignment: .leading,spacing: brandSpacing.containerSpacing.gaps.m) {
                         Text("Confirmation details Confirmation details").typographyStyle(.h3,  brand: selectedBrand)
                         Text("Request submitted on 01/01/2023").typographyStyle(.p1,  brand: selectedBrand)
@@ -59,16 +47,8 @@ struct SpacingPage: View {
                     .cornerRadius(8)
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
                     .frame(width: .infinity, alignment: .leading)
-//                    .brandBorderOverlay(
-//                        brand: selectedBrand,
-//                        radiusKey: .none,
-//                        strokeKey: .thin,
-//                        color: ColorToken.primaryBase.color(brand: selectedBrand, colorScheme: colorScheme)
-//                    )
 
-                    
-                    
-                    // 3) Tab Row Example
+
                     HStack {
                         Text("Account").foregroundColor(.secondary)
                         Spacer()
@@ -80,19 +60,13 @@ struct SpacingPage: View {
                     }
                     .typographyStyle(.p1,  brand: selectedBrand)
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.s)
-//                    .brandBorderOverlay(
-//                                        brand: selectedBrand,
-//                                        radiusKey: .none,
-//                                        strokeKey: .thin,
-//                                        color:ColorToken.primaryBase.color( brand: selectedBrand,colorScheme: colorScheme) )
                     
-                    // 4) Plan Details Card
                     VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.m) {
                         
                         Text("2 FREE DAYS PER WEEK")
                             .typographyStyle(.h3,  brand: selectedBrand)
                         
-                        //   PlanChips
+
                         HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
                             PlanChip(text: "12 months", brandSpacing: brandSpacing)
                             PlanChip(text: "Fixed rate", brandSpacing: brandSpacing)
@@ -106,7 +80,6 @@ struct SpacingPage: View {
                             .typographyStyle(.p1,  brand: selectedBrand)
                             .foregroundColor(.secondary)
                         
-                        // Badges
                         HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
                             BadgeView(text: "Recommended",
                                       backgroundColor: ColorToken.tertiaryBase.color( brand: selectedBrand,colorScheme: colorScheme))
@@ -114,7 +87,6 @@ struct SpacingPage: View {
                                       backgroundColor: ColorToken.primaryBase.color( brand: selectedBrand,colorScheme: colorScheme) )
                         }.typographyStyle(.p3,  brand: selectedBrand)
                         
-                        // Price row
                         HStack {
                             Text("18.5¢/kWh")
                                 .typographyStyle(.h2,  brand: selectedBrand)
@@ -140,17 +112,7 @@ struct SpacingPage: View {
                             .fill(ColorToken.grayscale000.color(brand: selectedBrand, colorScheme: colorScheme))
                     )
                     .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 2)
-//                    .brandBorderOverlay(
-//                                        brand: selectedBrand,
-//                                        radiusKey: .m,
-//                                        strokeKey: .thin,
-//                                        color:ColorToken.grayscale300.color( brand: selectedBrand,colorScheme: colorScheme) )
-                    
-                    
 
-                    
-                    
-                    // 5) Bottom Button
                     ButtonComponent(
                         selectedBrand: selectedBrand,
                         title: "Button",
@@ -160,22 +122,11 @@ struct SpacingPage: View {
                         print("Secondary tapped")
                     }
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.m)
-//                    .brandBorderOverlay(
-//                                        brand: selectedBrand,
-//                                        radiusKey: .none,
-//                                        strokeKey: .thin,
-//                                        color:ColorToken.primaryBase.color( brand: selectedBrand,colorScheme: colorScheme) )
-//                    
                 }
-                // Add bottom margin
+
                 .padding(.bottom, brandSpacing.pageLayout.margins.bottom)
                 .padding(.horizontal, brandSpacing.pageLayout.margins.horizontal)
                 .padding(.top, brandSpacing.pageLayout.margins.top)
-//                .brandBorderOverlay(
-//                                    brand: selectedBrand,
-//                                    radiusKey: .m,
-//                                    strokeKey: .thin,
-//                                    color:ColorToken.tertiaryBase.color( brand: selectedBrand,colorScheme: colorScheme) )
                 
             }
         }
@@ -183,9 +134,7 @@ struct SpacingPage: View {
     }
 }
 
-// MARK: - Supporting Subviews
 
-/// A simple "chip" for e.g. "12 months" or "Fixed rate"
 struct PlanChip: View {
     let text: String
     let brandSpacing: BrandSpacing
@@ -200,7 +149,7 @@ struct PlanChip: View {
     }
 }
 
-// A basic "badge" for something like "Recommended" or "$200 bill credit"
+
 struct BadgeView: View {
     let text: String
     let backgroundColor: Color
