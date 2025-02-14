@@ -20,14 +20,12 @@ struct CardComponent: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            // Header
             Text(title)
                 .font(.headline)
                 .fontWeight(.bold)
                 .foregroundColor(ColorToken.grayscale900.color( brand: selectedBrand,
                                                                 colorScheme: colorScheme))
 
-            // List of items
             ForEach(items, id: \.text) { item in
                 HStack(alignment: .top, spacing: 12) {
                     Image(systemName: item.icon)

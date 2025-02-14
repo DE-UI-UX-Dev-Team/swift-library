@@ -22,7 +22,6 @@ struct ReliantFontsPage: View {
                     .font(.custom("NRGEffraApp-Light", size: 24))
                     .padding()
                 
-                // Typography token system test samples for Reliant
                 Text("Heading 1")
                     .typographyStyle(.h1,  brand: selectedBrand)
                 Text("Heading 2")
@@ -36,7 +35,7 @@ struct ReliantFontsPage: View {
                 Text("Heading 6")
                     .typographyStyle(.h6,  brand: selectedBrand)
                 
-                // Paragraph
+
                 Text("Paragraph 1")
                     .typographyStyle(.p1,  brand: selectedBrand)
                 Text("Paragraph 2")
@@ -44,9 +43,7 @@ struct ReliantFontsPage: View {
                 Text("Paragraph 3")
                     .typographyStyle(.p1, brand: selectedBrand)
                 
-//                Text("link")
-//                    .typographyStyle(.link, brand: selectedBrand)
-                // Inline Link
+
                 Text("Link text underlined!").foregroundColor(ColorToken.primaryBase.color( brand: selectedBrand, colorScheme: colorScheme)).typographyStyle(.p1, brand: selectedBrand)
                 
                 Text("Primary button text").typographyStyle(.primaryButton,brand: selectedBrand).foregroundColor(ColorToken.grayscale000.color(brand: selectedBrand, colorScheme: colorScheme)).padding().background(ColorToken.primaryBase.color( brand: selectedBrand,colorScheme: colorScheme))

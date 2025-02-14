@@ -9,10 +9,7 @@
 import SwiftUI
 
 struct DeBorderPage: View {
- 
     @Environment(\.colorScheme) var colorScheme
-  
-
     @State private var selectedBrand: Brand = .de
     
     var body: some View {
@@ -31,7 +28,7 @@ struct DeBorderPage: View {
                                                     color: .black
                                                 )
                     .padding()
-                // button
+
                 Button(action: {}) {
                             Text("Primary button")
                                 .font(.system(size: 16, weight: .medium))

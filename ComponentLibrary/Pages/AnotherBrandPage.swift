@@ -11,7 +11,6 @@ struct AnotherBrandPage: View {
  
     @Environment(\.colorScheme) var colorScheme
     
-    // Use Reliant brand color tokens
     @State private var selectedBrand: Brand = .reliant
     
     
@@ -32,29 +31,25 @@ struct AnotherBrandPage: View {
                                                                                    colorScheme: colorScheme))
                                 .font(.system(size: 32, weight: .heavy))
                 
-                //Typography token system test samples for Reliant
                 Text("Heading 1")
                                 .typographyStyle(.h1,  brand: selectedBrand)
                             
-                            //  Paragraph
-                            Text("Paragraph text")
+
+                Text("Paragraph text")
                                 .typographyStyle(.p1,  brand: selectedBrand)
-                            
-                            // Inline Link
+
                 Text("Link text underlined!")
                             .foregroundColor(ColorToken.primaryBase.color( brand: selectedBrand,
                                                                              colorScheme: colorScheme))
                             .typographyStyle(.p1, brand: selectedBrand)
                             
 
-                            // Primary button text
                             Text("Primary button text")
                                 .typographyStyle(.primaryButton, brand: selectedBrand)
                                 .padding()
                                 .background(ColorToken.containerFillPrimaryBrand.color( brand: selectedBrand,colorScheme: colorScheme))
                                 .cornerRadius(8)
                 
-                // Card View
                 CardComponent(
                                     title: "Steps for Completing Your Setup",
                                     items:cardItemsTwo,

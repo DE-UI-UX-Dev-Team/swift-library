@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomModalComponent: View {
-    @Binding var isPresented: Bool // Binding to close the modal
+    @Binding var isPresented: Bool 
 
     var body: some View {
         ZStack {

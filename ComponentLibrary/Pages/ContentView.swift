@@ -37,18 +37,15 @@ struct ContentView: View {
                         .font(.custom("Inter18pt-Light", size: 24))
    
                     
-                    // Typography token system test samples for Reliant
                     Text("Heading 1")
                                     .typographyStyle(.h1, brand: selectedBrand)
                     Text("Heading 2")
                                     .typographyStyle(.h2, brand: selectedBrand)
                                 
                                 
-                                // Paragraph
                                 Text("Paragraph text")
                                     .typographyStyle(.p1, brand: selectedBrand)
                                 
-                              // In-line Link
                                     Text("Link text underlined!")
                                                 .underline()
                                                 .foregroundColor(ColorToken.primaryDarkest.color( brand: selectedBrand,
@@ -57,7 +54,6 @@ struct ContentView: View {
                                 
           
                                 
-                                //  Primary button text
                                 Text("Primary button text")
                                     .typographyStyle(.primaryButton, brand: selectedBrand)
                                     .padding()
@@ -79,7 +75,6 @@ struct ContentView: View {
                     }
                     
                     
-                    // Card View
                     CardComponent(
                                         title: "What should I expect when I enroll in Home Base Essentials?",
                                         items: cardItems,
@@ -95,7 +90,6 @@ struct ContentView: View {
                 }
                 
                 
-                // Toast View
                 ToastComponent(
                     message: "Complete your Vivint offer by scheduling your installation.",
                     linkText: Text("Schedule installation") .font(.subheadline)
@@ -121,14 +115,14 @@ struct ContentView: View {
                 case "AnotherBrandPage":
                     AnotherBrandPage()
                 default:
-                    EmptyView() // fallback
+                    EmptyView()
                 }
             }
 
         }
     }
     
-    // Cross-platform way to open a webpage in SwiftUI
+
      func openWebPage(_ urlString: String) {
          guard let url = URL(string: urlString) else {
              print("Invalid URL: \(urlString)")

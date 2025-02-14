@@ -19,7 +19,6 @@ struct TypographyTokens: Decodable {
     let brandDE: [String: TextStyleToken]
     let brandReliant: [String: TextStyleToken]
     
-    // Helper method to retrieve a token by brand + style key.
     func value(for brand: Brand, style: String) -> TextStyleToken? {
         switch brand {
         case .de:
