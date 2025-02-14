@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct SeparatorDemoPage: View {
-    @State private var selectedBrand: String = "brandReliant"
+    @State private var selectedBrand: Brand = .reliant
+
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
@@ -23,35 +24,35 @@ struct SeparatorDemoPage: View {
                 
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
                     .typographyStyle(.p1,  brand: selectedBrand)
-                if let brand = Brand(rawValue: selectedBrand) {
+                
                     ButtonComponent(
-                        selectedBrand: brand,
+                        selectedBrand: selectedBrand,
                         title: "Button",
                         variant: .primary,
                         size: .default
                     )
-                }
+                
                 
                 // **Horizontal Separator without label**
-                if let brand = Brand(rawValue: selectedBrand) {
-                    SeparatorComponent(selectedBrand: brand, type: .horizontal, label: "OR")
-                }
+               
+                    SeparatorComponent(selectedBrand: selectedBrand, type: .horizontal, label: "OR")
+                
                 
                 Text("Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.").typographyStyle(.p1,  brand: selectedBrand)
-                if let brand = Brand(rawValue: selectedBrand) {
+               
                     ButtonComponent(
-                        selectedBrand: brand,
+                        selectedBrand: selectedBrand,
                         title: "Button",
                         variant: .secondary,
                         size: .default
                     )
-                }
+                
                 
                 Spacer().frame(height: 10)
                 // **Horizontal Separator with label**
-                if let brand = Brand(rawValue: selectedBrand) {
-                    SeparatorComponent(selectedBrand: brand, type: .horizontal)
-                }
+                
+                    SeparatorComponent(selectedBrand: selectedBrand, type: .horizontal)
+                
                 Spacer().frame(height: 10)
                 
                 Text("This is an example of a **vertical separator**:")
@@ -80,9 +81,9 @@ struct SeparatorDemoPage: View {
                     
                     // **Vertical Separator (No Label)**
                     
-                    if let brand = Brand(rawValue: selectedBrand) {
-                        SeparatorComponent(selectedBrand: brand, type: .vertical)
-                    }
+                    
+                        SeparatorComponent(selectedBrand: selectedBrand, type: .vertical)
+                    
                     
                     // **Second Column - Pricing**
                     VStack(spacing: 8) {
@@ -115,7 +116,7 @@ struct SeparatorDemoPage: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                         
                         ButtonComponent(
-                            selectedBrand: Brand(rawValue: selectedBrand)!,
+                            selectedBrand: selectedBrand,
                             title: "Continue with Email",
                             variant: .primary,
                             size: .default
@@ -123,9 +124,9 @@ struct SeparatorDemoPage: View {
                     }
                     
                     // **Vertical Separator with "OR"**
-                    if let brand = Brand(rawValue: selectedBrand) {
-                        SeparatorComponent(selectedBrand: brand, type: .vertical, label: "OR")
-                    }
+                  
+                        SeparatorComponent(selectedBrand: selectedBrand, type: .vertical, label: "OR")
+                    
                     
                     // **Second Column - Sign In with Social Media**
                     VStack(spacing: 8) {
@@ -134,14 +135,14 @@ struct SeparatorDemoPage: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                         
                         ButtonComponent(
-                            selectedBrand: Brand(rawValue: selectedBrand)!,
+                            selectedBrand: selectedBrand,
                             title: "Continue with Google",
                             variant: .secondary,
                             size: .default
                         )
                         
                         ButtonComponent(
-                            selectedBrand: Brand(rawValue: selectedBrand)!,
+                            selectedBrand: selectedBrand,
                             title: "Continue with Apple",
                             variant: .secondary,
                             size: .default

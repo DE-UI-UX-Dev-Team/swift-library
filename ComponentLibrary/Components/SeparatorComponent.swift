@@ -22,7 +22,8 @@ struct SeparatorComponent: View {
     }
 
     var body: some View {
-        let separatorColor = ColorToken.grayscale900.color(brand: selectedBrand.rawValue, colorScheme: colorScheme)
+        let separatorColor = ColorToken.grayscale900.color( brand: selectedBrand,
+                                                            colorScheme: colorScheme)
 
         if type == .horizontal {
             HStack(spacing: label == nil ? 0 : 8) { //No extra space if label is nil
