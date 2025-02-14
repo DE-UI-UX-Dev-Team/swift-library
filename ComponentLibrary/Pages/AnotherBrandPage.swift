@@ -12,7 +12,7 @@ struct AnotherBrandPage: View {
     @Environment(\.colorScheme) var colorScheme
     
     // Use Reliant brand color tokens
-    @State private var selectedBrand: String = "brandReliant"
+    @State private var selectedBrand: Brand = .reliant
     
     
        private let cardItemsTwo: [(icon: String, text: String)] = [
@@ -55,7 +55,7 @@ struct AnotherBrandPage: View {
                                 .cornerRadius(8)
                 
                 // Card View
-                CardView(
+                CardComponent(
                                     title: "Steps for Completing Your Setup",
                                     items:cardItemsTwo,
                                     iconColor: ColorToken.tertiaryBase.color( brand: selectedBrand,colorScheme: colorScheme),

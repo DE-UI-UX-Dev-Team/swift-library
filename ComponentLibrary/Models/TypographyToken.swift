@@ -13,11 +13,13 @@ enum MyTextStyle: String {
     case h1, h2, h3, h4, h5, h6
     case p1, p2, p3
     case primaryButton, secondaryButton, tertiaryButton
+    case link
 }
 
-extension Text {
-    func typographyStyle(_ style: MyTextStyle, brand: String) -> some View {
+extension View {
+    func typographyStyle(_ style: MyTextStyle, brand: Brand) -> some View {
         let manager = TypographyTokenManager.shared
+        // Pass brand directly instead of brand.identifier
         let styleToken = manager.tokens?.value(for: brand, style: style.rawValue)
         
         let font = manager.font(for: brand, styleName: style.rawValue)
@@ -33,4 +35,3 @@ extension Text {
             .lineSpacing(spacing)
     }
 }
-

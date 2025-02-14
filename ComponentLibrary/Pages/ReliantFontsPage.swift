@@ -12,21 +12,15 @@ struct ReliantFontsPage: View {
     @State private var showModal = false
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var selectedBrand: String = "brandReliant"
-    
+    @State private var selectedBrand: Brand = .reliant
+
     
     var body: some View {
         ZStack {
             VStack {
-                Text("Reliant fonts Page")
+                Text("Font Page")
                     .font(.custom("NRGEffraApp-Light", size: 24))
                     .padding()
-                Text("Custom Effra Light Black Test!")
-                    .font(.custom("NRGEffraApp-Bold", size: 24))
-                Text("Heading 1 Reliant Test")
-                    .font(.custom("NRGEffraApp-Medium", size: 28))
-                
-                
                 
                 // Typography token system test samples for Reliant
                 Text("Heading 1")
@@ -50,35 +44,15 @@ struct ReliantFontsPage: View {
                 Text("Paragraph 3")
                     .typographyStyle(.p1, brand: selectedBrand)
                 
+//                Text("link")
+//                    .typographyStyle(.link, brand: selectedBrand)
                 // Inline Link
-                Text("Link text underlined!")
-                            .foregroundColor(ColorToken.primaryBase.color( brand: selectedBrand,
-                                                                             colorScheme: colorScheme))
-                            .typographyStyle(.p1, brand: selectedBrand)
+                Text("Link text underlined!").foregroundColor(ColorToken.primaryBase.color( brand: selectedBrand, colorScheme: colorScheme)).typographyStyle(.p1, brand: selectedBrand)
                 
-                // Primary button text
-                Text("Primary button text")
-                    .typographyStyle(.primaryButton,  brand: selectedBrand)
-                    .padding()
-                    .background(ColorToken.containerFillPrimaryBrand.color( brand: selectedBrand,colorScheme: colorScheme))
-                    .cornerRadius(8)
-                // Secondary button text
-                Text("Secondary button text")
-                    .typographyStyle(.secondaryButton, brand: selectedBrand)
-                    .padding()
-                    .background(ColorToken.containerFillSecondaryBrand.color( brand: selectedBrand,colorScheme: colorScheme))
-                    .cornerRadius(8)
-                // Tertiary button text
-                Text("Tertiary button text")
-                    .typographyStyle(.tertiaryButton,  brand: selectedBrand)
-                    .padding()
-                    .cornerRadius(8)
-                // 8. Disabled button text
-                Text("Disabled button text")
-                    .typographyStyle(.primaryButton,  brand: selectedBrand)
-                    .padding()
-                    .background(ColorToken.containerFillStatusDisabled.color( brand: selectedBrand,colorScheme: colorScheme))
-                    .cornerRadius(8)
+                Text("Primary button text").typographyStyle(.primaryButton,brand: selectedBrand).foregroundColor(ColorToken.grayscale000.color(brand: selectedBrand, colorScheme: colorScheme)).padding().background(ColorToken.primaryBase.color( brand: selectedBrand,colorScheme: colorScheme))
+                Text("Secondary button text").typographyStyle(.secondaryButton, brand: selectedBrand).foregroundColor(ColorToken.primaryBase.color(brand: selectedBrand, colorScheme: colorScheme)).padding().background(ColorToken.primaryLightest.color( brand: selectedBrand,colorScheme: colorScheme))
+                Text("Tertiary button text").typographyStyle(.tertiaryButton,brand: selectedBrand).background(ColorToken.grayscale000.color( brand: selectedBrand,colorScheme: colorScheme)).foregroundColor(ColorToken.primaryBase.color(brand: selectedBrand, colorScheme: colorScheme)).padding().brandBorderOverlay(brand: selectedBrand,radiusKey: .none,strokeKey: .regular,color: ColorToken.primaryBase.color( brand: selectedBrand, colorScheme: colorScheme))
+                Text("Disabled button text").typographyStyle(.primaryButton,brand: selectedBrand).foregroundColor(ColorToken.grayscale600.color(brand: selectedBrand, colorScheme: colorScheme)).padding() .background(ColorToken.containerFillStatusDisabled.color( brand: selectedBrand,colorScheme: colorScheme))
                 
             }
             .navigationTitle("ReliantFontsPage")

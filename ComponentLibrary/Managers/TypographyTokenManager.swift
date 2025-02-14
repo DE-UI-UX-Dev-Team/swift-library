@@ -33,7 +33,7 @@ final class TypographyTokenManager: ObservableObject {
         }
     }
     
-    func font(for brand: String, styleName: String) -> Font {
+    func font(for brand: Brand, styleName: String) -> Font {
             guard let styleToken = tokens?.value(for: brand, style: styleName) else {
                 // fallback if style or brand not found
                 return .system(size: 16)
@@ -46,14 +46,14 @@ final class TypographyTokenManager: ObservableObject {
             return font
         }
         
-        func letterSpacing(for brand: String, styleName: String) -> CGFloat {
+        func letterSpacing(for brand: Brand, styleName: String) -> CGFloat {
             guard let styleToken = tokens?.value(for: brand, style: styleName) else {
                 return 0
             }
             return styleToken.letterSpacing
         }
         
-        func lineSpacing(for brand: String, styleName: String) -> CGFloat {
+        func lineSpacing(for brand: Brand, styleName: String) -> CGFloat {
             guard let styleToken = tokens?.value(for: brand, style: styleName) else {
                 return 0
             }

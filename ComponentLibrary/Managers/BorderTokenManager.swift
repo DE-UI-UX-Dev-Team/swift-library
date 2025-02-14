@@ -31,7 +31,7 @@ class BorderManager: ObservableObject {
         }
     }
     
-    func tokens(for brandKey: String) -> BrandBorderTokens? {
-        return allBrands[brandKey]
+    func tokens(for brandKey: Brand) -> BrandBorderTokens? {
+        return allBrands[brandKey.identifier]
     }
 }

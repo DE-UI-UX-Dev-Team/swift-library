@@ -12,7 +12,7 @@ struct DeFontsPage: View {
     @State private var showModal = false
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var selectedBrand: String = "brandDE"
+    @State private var selectedBrand: Brand = .de
     
     
     var body: some View {

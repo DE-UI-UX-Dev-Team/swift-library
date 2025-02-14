@@ -39,7 +39,7 @@ final class ColorTokenManager: ObservableObject {
     //   - tokenName: The name of the color token.
     //   - colorScheme: The current color scheme (`.light` or `.dark`).
     //- Returns: A `Color` object or a default gray color if no match is found.
-    func color(for brand: String, tokenName: String, colorScheme: ColorScheme) -> Color {
+    func color(for brand: Brand, tokenName: String, colorScheme: ColorScheme) -> Color {
         guard tokens != nil else  {
             os_log(.error, "Color tokens not loaded. Returning default gray color.")
             return .gray
@@ -47,7 +47,7 @@ final class ColorTokenManager: ObservableObject {
  
         // Retrieve themes for the brand
         guard let brandThemes = themes(for: brand) else {
-            os_log(.error, "Invalid brand name: %@", brand)
+            os_log(.error, "Invalid brand name: %@", brand.identifier)
             return .gray
         }
  
@@ -56,7 +56,7 @@ final class ColorTokenManager: ObservableObject {
  
         // Retrieve the color token's hex value
         guard let hexValue = themeColors.colors[tokenName] else {
-            os_log(.error, "Token name '%@' not found for brand: %@", tokenName, brand)
+            os_log(.error, "Token name '%@' not found for brand: %@", tokenName, brand.identifier)
             return .gray
         }
  
@@ -66,14 +66,15 @@ final class ColorTokenManager: ObservableObject {
     /// Retrieves themes for the specified brand.
     /// - Parameter brand: The name of the brand.
     /// - Returns: The `BrandThemes` object or `nil` if the brand is invalid.
-    private func themes(for brand: String) -> BrandThemes? {
-        switch brand {
-        case "brandDE":
-            return tokens?.brandDE
-        case "brandReliant":
-            return tokens?.brandReliant
-        default:
-            return nil
-        }
+    private func themes(for brand: Brand) -> BrandThemes? {
+        guard let tokens = tokens else { return nil }
+
+        // Create a Mirror of the tokens object, which lets us inspect its properties at runtime.
+        let mirror = Mirror(reflecting: tokens)
+        
+        // Iterate over the properties (children) of the tokens object.
+        // Find the first property whose label (name) matches the brand's identifier.
+        return mirror.children.first { $0.label == brand.identifier }?.value as? BrandThemes
     }
+
 }

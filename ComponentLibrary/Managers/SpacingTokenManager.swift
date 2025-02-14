@@ -29,11 +29,11 @@ class SpacingManager {
         }
     }
 
-    func spacing(for brand: String) -> BrandSpacing {
+    func spacing(for brand: Brand) -> BrandSpacing {
         guard let system = spacingSystem else {
             fatalError("Spacing system is not loaded.")
         }
-        return system.brands[brand] ?? defaultSpacing()
+        return system.brands[brand.identifier] ?? defaultSpacing()
     }
 
     private func defaultSpacing() -> BrandSpacing {
@@ -66,7 +66,7 @@ class SpacingManager {
 
 
 struct BrandSpacingKey: EnvironmentKey {
-    static let defaultValue: BrandSpacing = SpacingManager.shared.spacing(for: "brandDE")
+    static let defaultValue: BrandSpacing = SpacingManager.shared.spacing(for:  .de)
 }
 
 extension EnvironmentValues {
@@ -78,8 +78,8 @@ extension EnvironmentValues {
 
 
 struct ApplyBrandSpacing: ViewModifier {
-    let brand: String
-
+    let brand: Brand
+    
     func body(content: Content) -> some View {
         let spacing = SpacingManager.shared.spacing(for: brand)
         content.environment(\.brandSpacing, spacing)
@@ -87,7 +87,7 @@ struct ApplyBrandSpacing: ViewModifier {
 }
 
 extension View {
-    func applyBrandSpacing(brand: String) -> some View {
+    func applyBrandSpacing(brand: Brand) -> some View {
         self.modifier(ApplyBrandSpacing(brand: brand))
     }
 }

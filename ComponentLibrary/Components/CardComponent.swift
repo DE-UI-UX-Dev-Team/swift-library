@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CardView: View {
+struct CardComponent: View {
     let title: String
     let items: [(icon: String, text: String)]
     let iconColor: Color
@@ -15,7 +15,8 @@ struct CardView: View {
     
     @Environment(\.colorScheme) var colorScheme
     
-    @State private var selectedBrand: String = "brandDE"
+
+    @State private var selectedBrand: Brand = .de
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {

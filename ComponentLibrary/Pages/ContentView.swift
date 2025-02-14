@@ -15,7 +15,7 @@ struct ContentView: View {
       
     @Environment(\.openURL) var openURL
     
-    @State private var selectedBrand: String = "brandDE"
+    @State private var selectedBrand: Brand = .de
     
 
     private let cardItems: [(icon: String, text: String)] = [
@@ -80,7 +80,7 @@ struct ContentView: View {
                     
                     
                     // Card View
-                    CardView(
+                    CardComponent(
                                         title: "What should I expect when I enroll in Home Base Essentials?",
                                         items: cardItems,
                                        iconColor:ColorToken.iconFeedbackSuccess.color( brand: selectedBrand,
@@ -96,7 +96,7 @@ struct ContentView: View {
                 
                 
                 // Toast View
-                ToastView(
+                ToastComponent(
                     message: "Complete your Vivint offer by scheduling your installation.",
                     linkText: Text("Schedule installation") .font(.subheadline)
                         .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,

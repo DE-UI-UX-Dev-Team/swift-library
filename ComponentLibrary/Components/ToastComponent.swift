@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ToastView: View {
+struct ToastComponent: View {
         let message: String
         let linkText: Text
         let linkAction: () -> Void
@@ -18,7 +18,8 @@ struct ToastView: View {
         @Binding var isVisible: Bool
        @Environment(\.colorScheme) var colorScheme
     
-    @State private var selectedBrand: String = "brandDE"
+
+    @State private var selectedBrand: Brand = .de
         
         var body: some View {
             if isVisible {
