@@ -116,8 +116,7 @@ struct SpacingPage: View {
                     ButtonComponent(
                         selectedBrand: selectedBrand,
                         title: "Button",
-                        variant: .primary,
-                        size: .default
+                        variant: .primary
                     ) {
                         print("Secondary tapped")
                     }
