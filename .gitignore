@@ -1,0 +1,9 @@
+.swiftpm/
+*.xcuserdatad/
+*.xcuserdata/
+xcuserdata/
+DerivedData/
+.build/
+Pods/
+*.DS_Store
+
