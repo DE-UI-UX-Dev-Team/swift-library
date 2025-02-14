@@ -70,33 +70,30 @@ struct LinkComponent: View {
 
 // MARK: - Link Style Config
 struct LinkStyleConfig {
-    let foregroundColor: Color
-    let applyUnderline: Bool
-    let typographyStyle: MyTextStyle
+let foregroundColor: Color
+let applyUnderline: Bool
+let typographyStyle: MyTextStyle
 
-    static func get(for brand: Brand, colorScheme: ColorScheme) -> LinkStyleConfig {
-        switch brand {
-        case .de:
-            return LinkStyleConfig(
-                foregroundColor: ColorToken.primaryDarkest.color(
-                    brand: brand,
-                    colorScheme: colorScheme
-                ),
-                applyUnderline: true,
-                typographyStyle: .link
-            )
-        case .reliant:
-            return LinkStyleConfig(
-                foregroundColor: ColorToken.primaryBase.color(
-                    brand: brand,
-                    colorScheme: colorScheme
-                ),
-                applyUnderline: false,
-                typographyStyle: .link
-            )
-        }
-    }
+static func get(for brand: Brand, colorScheme: ColorScheme) -> LinkStyleConfig {
+    // Use a dictionary instead of a switch case for brand-based styles
+    let styles: [Brand: LinkStyleConfig] = [
+        .de: LinkStyleConfig(
+            foregroundColor: ColorToken.primaryDarkest.color(brand: .de, colorScheme: colorScheme),
+            applyUnderline: true,
+            typographyStyle: .link
+        ),
+        .reliant: LinkStyleConfig(
+            foregroundColor: ColorToken.primaryBase.color(brand: .reliant, colorScheme: colorScheme),
+            applyUnderline: false,
+            typographyStyle: .link
+        )
+    ]
+    
+    return styles[brand] ?? styles[.de]!
 }
+}
+
+
 
 
 
