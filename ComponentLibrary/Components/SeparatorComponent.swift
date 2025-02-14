@@ -9,12 +9,12 @@ struct SeparatorComponent: View {
     @Environment(\.colorScheme) var colorScheme
     let selectedBrand: Brand
     let type: SeparatorType
-    let label: String? //Optional label
+    let label: String?
 
     init(
         selectedBrand: Brand,
         type: SeparatorType = .horizontal,
-        label: String? = nil //Default is no label
+        label: String? = nil
     ) {
         self.selectedBrand = selectedBrand
         self.type = type
@@ -26,7 +26,7 @@ struct SeparatorComponent: View {
                                                             colorScheme: colorScheme)
 
         if type == .horizontal {
-            HStack(spacing: label == nil ? 0 : 8) { //No extra space if label is nil
+            HStack(spacing: label == nil ? 0 : 8) {
                 Rectangle()
                     .frame(height: 1)
                     .foregroundColor(separatorColor)
@@ -42,7 +42,7 @@ struct SeparatorComponent: View {
                     .foregroundColor(separatorColor)
             }
         } else { //Vertical Separator
-            VStack(spacing: label == nil ? 0 : 4) { //No extra space if label is nil
+            VStack(spacing: label == nil ? 0 : 4) {
                 Rectangle()
                     .frame(width: 1)
                     .foregroundColor(separatorColor)

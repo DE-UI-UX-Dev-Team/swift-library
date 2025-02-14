@@ -1,9 +1,3 @@
-//
-//  SeparatorDemoPage.swift
-//  ComponentLibrary
-//
-//  Created by UI/UX Development Team on 2/7/25.
-//
 
 import SwiftUI
 
@@ -28,13 +22,10 @@ struct SeparatorDemoPage: View {
                     ButtonComponent(
                         selectedBrand: selectedBrand,
                         title: "Button",
-                        variant: .primary,
-                        size: .default
+                        variant: .primary
                     )
                 
                 
-                // **Horizontal Separator without label**
-               
                     SeparatorComponent(selectedBrand: selectedBrand, type: .horizontal, label: "OR")
                 
                 
@@ -43,13 +34,10 @@ struct SeparatorDemoPage: View {
                     ButtonComponent(
                         selectedBrand: selectedBrand,
                         title: "Button",
-                        variant: .secondary,
-                        size: .default
+                        variant: .secondary
                     )
                 
-                
                 Spacer().frame(height: 10)
-                // **Horizontal Separator with label**
                 
                     SeparatorComponent(selectedBrand: selectedBrand, type: .horizontal)
                 
@@ -58,7 +46,6 @@ struct SeparatorDemoPage: View {
                 Text("This is an example of a **vertical separator**:")
                     .typographyStyle(.h4,  brand: selectedBrand)
                 
-                // **HStack with Vertical Separator Demo**
                 HStack {
                     // **First Column - Features**
                     VStack(spacing: 8) {
@@ -79,13 +66,8 @@ struct SeparatorDemoPage: View {
                             .frame(maxWidth: .infinity, alignment: .center)
                     }
                     
-                    // **Vertical Separator (No Label)**
-                    
-                    
                         SeparatorComponent(selectedBrand: selectedBrand, type: .vertical)
                     
-                    
-                    // **Second Column - Pricing**
                     VStack(spacing: 8) {
                         Text("Pricing")
                             .typographyStyle(.h5, brand: selectedBrand)
@@ -107,9 +89,9 @@ struct SeparatorDemoPage: View {
                 Spacer().frame(height: 10)
                 Text("Vertical separator with Label:")
                     .typographyStyle(.h4,  brand: selectedBrand)
-                // **HStack with Vertical Separator and "OR" Label**
+                
                 HStack {
-                    // **First Column - Sign In**
+                    
                     VStack(spacing: 8) {
                         Text("Sign In with Email")
                             .typographyStyle(.h5, brand: selectedBrand)
@@ -119,16 +101,12 @@ struct SeparatorDemoPage: View {
                             selectedBrand: selectedBrand,
                             title: "Continue with Email",
                             variant: .primary,
-                            size: .default
+                            size: .small
                         )
                     }
                     
-                    // **Vertical Separator with "OR"**
-                  
                         SeparatorComponent(selectedBrand: selectedBrand, type: .vertical, label: "OR")
                     
-                    
-                    // **Second Column - Sign In with Social Media**
                     VStack(spacing: 8) {
                         Text("Sign In with Social Media")
                             .typographyStyle(.h5, brand: selectedBrand)
@@ -138,22 +116,18 @@ struct SeparatorDemoPage: View {
                             selectedBrand: selectedBrand,
                             title: "Continue with Google",
                             variant: .secondary,
-                            size: .default
+                            size: .small
                         )
                         
                         ButtonComponent(
                             selectedBrand: selectedBrand,
                             title: "Continue with Apple",
                             variant: .secondary,
-                            size: .default
+                            size: .small
                         )
                     }
                 }
                 .padding()
-                
-                
-                
-                
             }
             .padding()
         }
