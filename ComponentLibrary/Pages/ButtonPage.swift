@@ -20,8 +20,7 @@ struct ButtonView: View {
                     ButtonComponent(
                         selectedBrand: selectedBrand,
                         title: "Button show toast",
-                        variant: .primary,
-                        size: .default
+                        variant: .primary
                     ) {
                         withAnimation {
                             showToast = true
@@ -31,8 +30,7 @@ struct ButtonView: View {
                     ButtonComponent(
                         selectedBrand: selectedBrand,
                         title: "Button",
-                        variant: .secondary,
-                        size: .default
+                        variant: .secondary
                     ) {
                         print("Secondary tapped")
                     }
@@ -40,8 +38,7 @@ struct ButtonView: View {
                     ButtonComponent(
                         selectedBrand: selectedBrand,
                         title: "Button",
-                        variant: .tertiary,
-                        size: .default
+                        variant: .tertiary
                     ) {
                         print("Tertiary tapped")
                     }
@@ -49,11 +46,9 @@ struct ButtonView: View {
                     ButtonComponent(
                         selectedBrand: selectedBrand,
                         title: "Button",
-                        variant: .disabled,
-                        size: .default
+                        variant: .disabled
                     )
                     
-                    // Small-sized buttons
                     ButtonComponent(
                         selectedBrand: selectedBrand,
                         title: "Small Button",

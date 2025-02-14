@@ -4,8 +4,9 @@ enum ButtonVariant: CaseIterable {
     case primary, secondary, tertiary, disabled
 }
 
+
 enum ButtonSize {
-    case `default`, small
+    case small
 }
 
 
@@ -97,14 +98,14 @@ struct ButtonComponent: View {
     let selectedBrand: Brand
     let title: String
     let variant: ButtonVariant
-    let size: ButtonSize
+    let size: ButtonSize?
     let action: () -> Void
 
     init(
         selectedBrand: Brand,
         title: String,
         variant: ButtonVariant = .primary,
-        size: ButtonSize = .default,
+        size: ButtonSize? = nil,
         action: @escaping () -> Void = {}
     ) {
         self.selectedBrand = selectedBrand
@@ -116,6 +117,15 @@ struct ButtonComponent: View {
 
     var body: some View {
         let styleConfig = ButtonStyleConfig.get(for: selectedBrand, variant: variant, colorScheme: colorScheme)
+        
+        let buttonMaxWidth: CGFloat? = {
+                 switch size {
+                 case .small:
+                     return 156
+                 case .none:
+                     return .infinity
+                 }
+             }()
 
         Button(action: action) {
             Text(title)
@@ -124,7 +134,7 @@ struct ButtonComponent: View {
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.vertical, styleConfig.padding)
         }
-        .frame(maxWidth: size == .default ? .infinity : 156)
+        .frame(maxWidth: buttonMaxWidth)
         .background(styleConfig.shape.fill(styleConfig.backgroundColor))
         .brandBorderOverlay(
             brand: selectedBrand,
