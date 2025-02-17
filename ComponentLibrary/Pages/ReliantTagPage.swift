@@ -69,8 +69,6 @@ struct TagDemoPage: View {
                         icon: Image(systemName: "arrow.up"),
                         iconPosition: .left
                     )
-                    
-                
             }
             .padding()
         }

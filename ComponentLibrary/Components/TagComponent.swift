@@ -33,18 +33,16 @@ struct TagView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var borderManager = BorderManager.shared
 
-    /// Corrected `cornerRadius` property
     var cornerRadius: CGFloat {
-        if let borderTokens = borderManager.tokens(for: selectedBrand) {
-            switch selectedBrand {
-            case .de:
-                return borderTokens.borderRadius.full
-            case .reliant:
-                return borderTokens.borderRadius.s
-            }
+            guard let borderTokens = borderManager.tokens(for: selectedBrand) else { return 0 }
+            
+            let cornerMapping: [Brand: CGFloat] = [
+                .de: borderTokens.borderRadius.full,
+                .reliant: borderTokens.borderRadius.s
+            ]
+            
+            return cornerMapping[selectedBrand] ?? 0
         }
-        return 0 
-    }
 
     /// Corrected `backgroundColor` property
     var backgroundColor: Color {
@@ -58,7 +56,9 @@ struct TagView: View {
         case .success:
             return ColorToken.greenLight.color(brand: selectedBrand, colorScheme: colorScheme)
         }
-    }  // ✅ Corrected misplaced bracket
+    }
+    
+ 
 
     /// Corrected `textColor` property
     var textColor: Color {
