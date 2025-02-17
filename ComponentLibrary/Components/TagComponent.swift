@@ -44,7 +44,6 @@ struct TagView: View {
             return cornerMapping[selectedBrand] ?? 0
         }
 
-    /// Corrected `backgroundColor` property
     var backgroundColor: Color {
         switch style {
         case .active(let colorToken):
@@ -58,9 +57,6 @@ struct TagView: View {
         }
     }
     
- 
-
-    /// Corrected `textColor` property
     var textColor: Color {
         switch style {
         case .active:
@@ -74,7 +70,6 @@ struct TagView: View {
         }
     }
 
-    /// The main `body` View
     var body: some View {
         HStack(spacing: 6) {
             if let icon = icon, iconPosition == .left {

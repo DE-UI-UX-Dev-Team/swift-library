@@ -12,7 +12,6 @@ struct TagDemoPage: View {
                     Text("Active Tags")
                         .font(.headline)
 
-                    // Tag with an icon
                     TagView(
                         text: "Recommended",
                         style: .active(ColorToken.tertiaryBase),
@@ -21,14 +20,12 @@ struct TagDemoPage: View {
                         iconPosition: .left
                     )
 
-                    // Tag without an icon
                     TagView(
                         text: "$200 Bill Credit",
                         style: .active(ColorToken.primaryBase),
                         selectedBrand: selectedBrand
                     )
                     
-                    // Tag without an icon=
                     TagView(
                         text: "Tag Label",
                         style: .active(ColorToken.greenBase),
@@ -40,7 +37,6 @@ struct TagDemoPage: View {
                     Text("Inactive Tags")
                         .font(.headline)
 
-                    // Tag without an icon
                     TagView(
                         text: "Inactive",
                         style: .inactive,
@@ -52,7 +48,6 @@ struct TagDemoPage: View {
                     Text("Status Tags")
                         .font(.headline)
 
-                    // Tag with an icon
                     TagView(
                         text: "-10%",
                         style: .warning,
@@ -61,7 +56,6 @@ struct TagDemoPage: View {
                         iconPosition: .left
                     )
 
-                    // Tag without an icon
                     TagView(
                         text: "+20%",
                         style: .success,
