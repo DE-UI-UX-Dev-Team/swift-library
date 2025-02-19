@@ -31,7 +31,9 @@ struct ButtonStyleConfig {
     let padding: CGFloat
 
     static func get(for brand: Brand, variant: ButtonVariant, colorScheme: ColorScheme) -> ButtonStyleConfig {
-        let style = brandStyles[brand] ?? defaultBrandStyle
+        guard let style = brandStyles[brand] else {
+                  fatalError("No style found for brand: \(brand)")
+              }
 
         return ButtonStyleConfig(
             backgroundColor: style.getColor(for: variant, type: .background,brand: brand, colorScheme: colorScheme),
@@ -94,21 +96,19 @@ struct ButtonStyleConfig {
 
 struct ButtonComponent: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.brand) private var brand
 
-    let selectedBrand: Brand
     let title: String
     let variant: ButtonVariant
     let size: ButtonSize?
     let action: () -> Void
 
     init(
-        selectedBrand: Brand,
         title: String,
         variant: ButtonVariant = .primary,
         size: ButtonSize? = nil,
         action: @escaping () -> Void = {}
     ) {
-        self.selectedBrand = selectedBrand
         self.title = title
         self.variant = variant
         self.size = size
@@ -116,7 +116,7 @@ struct ButtonComponent: View {
     }
 
     var body: some View {
-        let styleConfig = ButtonStyleConfig.get(for: selectedBrand, variant: variant, colorScheme: colorScheme)
+        let styleConfig = ButtonStyleConfig.get(for: brand, variant: variant, colorScheme: colorScheme)
         
         let buttonMaxWidth: CGFloat? = {
                  switch size {
@@ -129,16 +129,16 @@ struct ButtonComponent: View {
 
         Button(action: action) {
             Text(title)
-                .typographyStyle(styleConfig.typographyStyle, brand: selectedBrand)
-                .modifier(UnderlineModifier(applyUnderline: selectedBrand == .de && variant == .tertiary, color: styleConfig.foregroundColor))
+                .typographyStyle(styleConfig.typographyStyle, brand: brand)
+                .modifier(UnderlineModifier(applyUnderline: brand == .de && variant == .tertiary, color: styleConfig.foregroundColor))
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.vertical, styleConfig.padding)
         }
         .frame(maxWidth: buttonMaxWidth)
         .background(styleConfig.shape.fill(styleConfig.backgroundColor))
         .brandBorderOverlay(
-            brand: selectedBrand,
-            radiusKey: selectedBrand == .de ? .s : .full,
+            brand: brand,
+            radiusKey: brand == .de ? .s : .full,
             strokeKey: .regular,
             color: styleConfig.borderColor
         )

@@ -10,8 +10,9 @@ import SwiftUI
 struct AnotherBrandPage: View {
  
     @Environment(\.colorScheme) var colorScheme
-    
-    @State private var selectedBrand: Brand = .reliant
+
+    @Environment(\.brand) private var brand
+
     
     
        private let cardItemsTwo: [(icon: String, text: String)] = [
@@ -27,34 +28,34 @@ struct AnotherBrandPage: View {
                 Text("Reliant Page")
                                 .padding()
                                 .padding()
-                                .foregroundColor(ColorToken.secondaryBase.color( brand: selectedBrand,
+                                .foregroundColor(ColorToken.secondaryBase.color( brand: brand,
                                                                                    colorScheme: colorScheme))
                                 .font(.system(size: 32, weight: .heavy))
                 
                 Text("Heading 1")
-                                .typographyStyle(.h1,  brand: selectedBrand)
+                                .typographyStyle(.h1,  brand: brand)
                             
 
                 Text("Paragraph text")
-                                .typographyStyle(.p1,  brand: selectedBrand)
+                                .typographyStyle(.p1,  brand: brand)
 
                 Text("Link text underlined!")
-                            .foregroundColor(ColorToken.primaryBase.color( brand: selectedBrand,
+                            .foregroundColor(ColorToken.primaryBase.color( brand: brand,
                                                                              colorScheme: colorScheme))
-                            .typographyStyle(.p1, brand: selectedBrand)
+                            .typographyStyle(.p1, brand: brand)
                             
 
                             Text("Primary button text")
-                                .typographyStyle(.primaryButton, brand: selectedBrand)
+                                .typographyStyle(.primaryButton, brand: brand)
                                 .padding()
-                                .background(ColorToken.containerFillPrimaryBrand.color( brand: selectedBrand,colorScheme: colorScheme))
+                                .background(ColorToken.containerFillPrimaryBrand.color( brand: brand,colorScheme: colorScheme))
                                 .cornerRadius(8)
                 
                 CardComponent(
                                     title: "Steps for Completing Your Setup",
                                     items:cardItemsTwo,
-                                    iconColor: ColorToken.tertiaryBase.color( brand: selectedBrand,colorScheme: colorScheme),
-                                    backgroundColor: ColorToken.primaryBase.color( brand: selectedBrand,colorScheme: colorScheme)
+                                    iconColor: ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme),
+                                    backgroundColor: ColorToken.primaryBase.color( brand: brand,colorScheme: colorScheme)
                                 )
 
                 
@@ -69,6 +70,8 @@ struct AnotherBrandPage: View {
 
 struct AnotherBrandPage_Previews: PreviewProvider {
     static var previews: some View {
-        AnotherBrandPage()
+        PreviewWrapper { brand in
+            AnotherBrandPage()
+        }
     }
 }

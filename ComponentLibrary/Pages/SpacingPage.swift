@@ -11,10 +11,10 @@ import SwiftUI
 
 struct SpacingPage: View {
     @Environment(\.colorScheme) var colorScheme
-    @State private var selectedBrand: Brand = .reliant
+    @Environment(\.brand) private var brand
     
     private var brandSpacing: BrandSpacing {
-        SpacingManager.shared.spacing(for: selectedBrand)
+        SpacingManager.shared.spacing(for: brand)
     }
     
     var body: some View {
@@ -25,25 +25,25 @@ struct SpacingPage: View {
                     VStack(spacing: brandSpacing.pageLayout.sectionSpacing.s) {
                         Image(systemName: "checkmark.circle")
                             .font(.system(size: 36))
-                            .foregroundColor(ColorToken.greenBase.color( brand: selectedBrand,colorScheme: colorScheme))
+                            .foregroundColor(ColorToken.greenBase.color( brand: brand,colorScheme: colorScheme))
                         
                         Text("Thank you for signing up!")
-                            .foregroundColor(ColorToken.greenBase.color( brand: selectedBrand,colorScheme: colorScheme))
-                            .typographyStyle(.h3,  brand: selectedBrand)
+                            .foregroundColor(ColorToken.greenBase.color( brand: brand,colorScheme: colorScheme))
+                            .typographyStyle(.h3,  brand: brand)
                         
                         Text("We are processing your sign up for <plan name>. Please check your email nrgtest1050 @nrg.com for confirmation.")
-                            .typographyStyle(.p1,  brand: selectedBrand)
+                            .typographyStyle(.p1,  brand: brand)
                     }
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.xl)
 
                     
                     VStack(alignment: .leading,spacing: brandSpacing.containerSpacing.gaps.m) {
-                        Text("Confirmation details Confirmation details").typographyStyle(.h3,  brand: selectedBrand)
-                        Text("Request submitted on 01/01/2023").typographyStyle(.p1,  brand: selectedBrand)
-                        Text("Confirmation number  0000123456778901").typographyStyle(.p1,  brand: selectedBrand)
+                        Text("Confirmation details Confirmation details").typographyStyle(.h3,  brand: brand)
+                        Text("Request submitted on 01/01/2023").typographyStyle(.p1,  brand: brand)
+                        Text("Confirmation number  0000123456778901").typographyStyle(.p1,  brand: brand)
                     }
                     .padding(brandSpacing.containerSpacing.padding.l)
-                    .background(ColorToken.grayscale000.color(brand: selectedBrand, colorScheme: colorScheme))
+                    .background(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme))
                     .cornerRadius(8)
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
                     .frame(width: .infinity, alignment: .leading)
@@ -58,46 +58,45 @@ struct SpacingPage: View {
                         Spacer()
                         Text("Documents").foregroundColor(.secondary)
                     }
-                    .typographyStyle(.p1,  brand: selectedBrand)
+                    .typographyStyle(.p1,  brand: brand)
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.s)
                     
                     VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.m) {
                         
                         Text("2 FREE DAYS PER WEEK")
-                            .typographyStyle(.h3,  brand: selectedBrand)
+                            .typographyStyle(.h3,  brand: brand)
                         
 
                         HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
                             PlanChip(text: "12 months", brandSpacing: brandSpacing)
                             PlanChip(text: "Fixed rate", brandSpacing: brandSpacing)
                             PlanChip(text: "100% solar", brandSpacing: brandSpacing)
-                        }.typographyStyle(.p3,  brand: selectedBrand)
+                        }.typographyStyle(.p3,  brand: brand)
                         
                         Text("Reliant Truly Free Nights 100% Solar 12 plan")
-                            .typographyStyle(.h3,  brand: selectedBrand)
+                            .typographyStyle(.h3,  brand: brand)
                         
                         Text("Straightforward plan with locked-in energy charge")
-                            .typographyStyle(.p1,  brand: selectedBrand)
+                            .typographyStyle(.p1,  brand: brand)
                             .foregroundColor(.secondary)
                         
                         HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
                             BadgeView(text: "Recommended",
-                                      backgroundColor: ColorToken.tertiaryBase.color( brand: selectedBrand,colorScheme: colorScheme))
+                                      backgroundColor: ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme))
                             BadgeView(text: "$200 bill credit",
-                                      backgroundColor: ColorToken.primaryBase.color( brand: selectedBrand,colorScheme: colorScheme) )
-                        }.typographyStyle(.p3,  brand: selectedBrand)
+                                      backgroundColor: ColorToken.primaryBase.color( brand: brand,colorScheme: colorScheme) )
+                        }.typographyStyle(.p3,  brand: brand)
                         
                         HStack {
                             Text("18.5¢/kWh")
-                                .typographyStyle(.h2,  brand: selectedBrand)
+                                .typographyStyle(.h2,  brand: brand)
                             Spacer()
                             Text("price at 2,000 kWh")
-                                .typographyStyle(.p1,  brand: selectedBrand)
+                                .typographyStyle(.p1,  brand: brand)
                                 .foregroundColor(.secondary)
                         }
                         
                         LinkComponent(
-                            selectedBrand: selectedBrand,
                             text: "View plan details",
                             variant: .text,
                             isInline: false,
@@ -109,12 +108,11 @@ struct SpacingPage: View {
                     .padding(brandSpacing.containerSpacing.padding.m)
                     .background(
                         RoundedRectangle(cornerRadius: 8)
-                            .fill(ColorToken.grayscale000.color(brand: selectedBrand, colorScheme: colorScheme))
+                            .fill(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme))
                     )
                     .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 2)
 
                     ButtonComponent(
-                        selectedBrand: selectedBrand,
                         title: "Button",
                         variant: .primary
                     ) {
