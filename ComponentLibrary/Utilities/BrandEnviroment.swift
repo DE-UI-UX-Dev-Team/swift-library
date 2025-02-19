@@ -2,7 +2,7 @@
 //  BrandEnviroment.swift
 //  ComponentLibrary
 //
-//  Created by Christopher Coleman on 2/19/25.
+//  Created by UI/UX Development on 2/19/25.
 //
 
 import SwiftUI

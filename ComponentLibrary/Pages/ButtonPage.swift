@@ -10,8 +10,7 @@ import SwiftUI
 struct ButtonView: View {
     @State private var showToast = false
     @Environment(\.colorScheme) var colorScheme
-//    @State private var selectedBrand: Brand = .de
-    
+    @Environment(\.brand) private var brand
     
     var body: some View {
         GeometryReader { geometry in
@@ -81,21 +80,21 @@ struct ButtonView: View {
             .overlay(
                 VStack {
                     
-//                    ToastComponent(
-//                        message: "Complete your Vivint offer by scheduling your installation.",
-//                        linkText: Text("Schedule installation")
-//                            .font(.subheadline)
-//                            .foregroundColor(ColorToken.grayscale000.color(brand: selectedBrand, colorScheme: colorScheme)),
-//                        linkAction: {
-//                            print("Link tapped")
-//                        },
-//                        image: Image("doorbell"),
-//                        backgroundColor: ColorToken.grayscale800.color(brand: selectedBrand, colorScheme: colorScheme),
-//                        duration: 60.0,
-//                        isVisible: $showToast
-//                    )
-//                    
-//                    .animation(.easeInOut, value: showToast)
+                    ToastComponent(
+                        message: "Complete your Vivint offer by scheduling your installation.",
+                        linkText: Text("Schedule installation")
+                            .font(.subheadline)
+                            .foregroundColor(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)),
+                        linkAction: {
+                            print("Link tapped")
+                        },
+                        image: Image("doorbell"),
+                        backgroundColor: ColorToken.grayscale800.color(brand: brand, colorScheme: colorScheme),
+                        duration: 60.0,
+                        isVisible: $showToast
+                    )
+                    
+                    .animation(.easeInOut, value: showToast)
                 }
             )
         }
