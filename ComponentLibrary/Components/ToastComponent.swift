@@ -16,10 +16,9 @@ struct ToastComponent: View {
         let duration: TimeInterval
         
         @Binding var isVisible: Bool
-       @Environment(\.colorScheme) var colorScheme
-    
+        @Environment(\.colorScheme) var colorScheme
+        @Environment(\.brand) private var brand
 
-    @State private var selectedBrand: Brand = .de
         
         var body: some View {
             if isVisible {
@@ -35,7 +34,7 @@ struct ToastComponent: View {
                         
                         VStack(alignment: .leading, spacing: 10) {
                             Text(message)
-                                .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
+                                .foregroundColor(ColorToken.grayscale000.color( brand: brand,
                                                                                 colorScheme: colorScheme))
                                 .font(.subheadline)
                                 .multilineTextAlignment(.leading)
@@ -52,7 +51,7 @@ struct ToastComponent: View {
                             }
                         }) {
                             Image(systemName: "xmark")
-                                .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
+                                .foregroundColor(ColorToken.grayscale000.color( brand: brand,
                                                                                 colorScheme: colorScheme))
                                 .padding(2)
                         }

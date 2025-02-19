@@ -1,6 +1,10 @@
 import SwiftUI
 
 struct TagView: View {
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.brand) private var brand
+    @ObservedObject private var borderManager = BorderManager.shared
+    
     enum TagStyle {
         case active(ColorToken)
         case inactive, warning, success
@@ -12,61 +16,57 @@ struct TagView: View {
     
     let text: String
     let style: TagStyle
-    let selectedBrand: Brand
     let icon: Image?
     let iconPosition: IconPosition?
 
     init(
         text: String,
         style: TagStyle,
-        selectedBrand: Brand,
         icon: Image? = nil,
         iconPosition: IconPosition? = nil
     ) {
         self.text = text
         self.style = style
-        self.selectedBrand = selectedBrand
         self.icon = icon
         self.iconPosition = iconPosition
     }
     
-    @Environment(\.colorScheme) var colorScheme
-    @ObservedObject private var borderManager = BorderManager.shared
+   
 
     var cornerRadius: CGFloat {
-            guard let borderTokens = borderManager.tokens(for: selectedBrand) else { return 0 }
+            guard let borderTokens = borderManager.tokens(for: brand) else { return 0 }
             
             let cornerMapping: [Brand: CGFloat] = [
                 .de: borderTokens.borderRadius.full,
                 .reliant: borderTokens.borderRadius.s
             ]
             
-            return cornerMapping[selectedBrand] ?? 0
+            return cornerMapping[brand] ?? 0
         }
 
     var backgroundColor: Color {
         switch style {
         case .active(let colorToken):
-            return colorToken.color(brand: selectedBrand, colorScheme: colorScheme)
+            return colorToken.color(brand: brand, colorScheme: colorScheme)
         case .inactive:
-            return ColorToken.grayscale300.color(brand: selectedBrand, colorScheme: colorScheme)
+            return ColorToken.grayscale300.color(brand: brand, colorScheme: colorScheme)
         case .warning:
-            return ColorToken.redLight.color(brand: selectedBrand, colorScheme: colorScheme)
+            return ColorToken.redLight.color(brand: brand, colorScheme: colorScheme)
         case .success:
-            return ColorToken.greenLight.color(brand: selectedBrand, colorScheme: colorScheme)
+            return ColorToken.greenLight.color(brand: brand, colorScheme: colorScheme)
         }
     }
     
     var textColor: Color {
         switch style {
         case .active:
-            return ColorToken.grayscale000.color(brand: selectedBrand, colorScheme: colorScheme)
+            return ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
         case .inactive:
-            return ColorToken.grayscale900.color(brand: selectedBrand, colorScheme: colorScheme)
+            return ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)
         case .warning:
-            return ColorToken.redAccessible.color(brand: selectedBrand, colorScheme: colorScheme)
+            return ColorToken.redAccessible.color(brand: brand, colorScheme: colorScheme)
         case .success:
-            return ColorToken.greenBase.color(brand: selectedBrand, colorScheme: colorScheme)
+            return ColorToken.greenBase.color(brand: brand, colorScheme: colorScheme)
         }
     }
 

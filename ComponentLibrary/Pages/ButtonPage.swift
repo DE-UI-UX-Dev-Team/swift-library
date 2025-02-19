@@ -10,15 +10,13 @@ import SwiftUI
 struct ButtonView: View {
     @State private var showToast = false
     @Environment(\.colorScheme) var colorScheme
-    @State private var selectedBrand: Brand = .reliant
-    
+    @Environment(\.brand) private var brand
     
     var body: some View {
         GeometryReader { geometry in
             ZStack {
                 VStack(spacing: 14) {
                     ButtonComponent(
-                        selectedBrand: selectedBrand,
                         title: "Button show toast",
                         variant: .primary
                     ) {
@@ -28,7 +26,6 @@ struct ButtonView: View {
                     }
                     
                     ButtonComponent(
-                        selectedBrand: selectedBrand,
                         title: "Button",
                         variant: .secondary
                     ) {
@@ -36,7 +33,6 @@ struct ButtonView: View {
                     }
                     
                     ButtonComponent(
-                        selectedBrand: selectedBrand,
                         title: "Button",
                         variant: .tertiary
                     ) {
@@ -44,13 +40,11 @@ struct ButtonView: View {
                     }
                     
                     ButtonComponent(
-                        selectedBrand: selectedBrand,
                         title: "Button",
                         variant: .disabled
                     )
                     
                     ButtonComponent(
-                        selectedBrand: selectedBrand,
                         title: "Small Button",
                         variant: .primary,
                         size: .small
@@ -59,7 +53,6 @@ struct ButtonView: View {
                     }
                     
                     ButtonComponent(
-                        selectedBrand: selectedBrand,
                         title: "Small Button",
                         variant: .secondary,
                         size: .small
@@ -68,7 +61,6 @@ struct ButtonView: View {
                     }
                     
                     ButtonComponent(
-                        selectedBrand: selectedBrand,
                         title: "Small Button",
                         variant: .tertiary,
                         size: .small
@@ -77,7 +69,6 @@ struct ButtonView: View {
                     }
                     
                     ButtonComponent(
-                        selectedBrand: selectedBrand,
                         title: "Small Button",
                         variant: .disabled,
                         size: .small
@@ -93,12 +84,12 @@ struct ButtonView: View {
                         message: "Complete your Vivint offer by scheduling your installation.",
                         linkText: Text("Schedule installation")
                             .font(.subheadline)
-                            .foregroundColor(ColorToken.grayscale000.color(brand: selectedBrand, colorScheme: colorScheme)),
+                            .foregroundColor(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)),
                         linkAction: {
                             print("Link tapped")
                         },
                         image: Image("doorbell"),
-                        backgroundColor: ColorToken.grayscale800.color(brand: selectedBrand, colorScheme: colorScheme),
+                        backgroundColor: ColorToken.grayscale800.color(brand: brand, colorScheme: colorScheme),
                         duration: 60.0,
                         isVisible: $showToast
                     )
@@ -112,6 +103,8 @@ struct ButtonView: View {
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView()
+        PreviewWrapper { brand in
+            ButtonView()
+        }
     }
 }
