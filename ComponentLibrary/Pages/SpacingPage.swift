@@ -165,6 +165,8 @@ struct BadgeView: View {
 
 struct SpacingPage_Previews: PreviewProvider {
     static var previews: some View {
-        SpacingPage()
+        PreviewWrapper { brand in
+            SpacingPage()
+        }
     }
 }
