@@ -1,11 +1,11 @@
 import SwiftUI
 
 struct TagDemoPage: View {
-    @State private var selectedBrand: Brand = .reliant
+    @Environment(\.brand) private var brand
     var body: some View {
         VStack(spacing: 20) {
             Text("Tag Component Demo")
-                .typographyStyle(.h1, brand: selectedBrand)
+                .typographyStyle(.h1, brand: brand)
 
             VStack(spacing: 10) {
                 
@@ -15,21 +15,18 @@ struct TagDemoPage: View {
                     TagView(
                         text: "Recommended",
                         style: .active(ColorToken.tertiaryBase),
-                        selectedBrand: selectedBrand,
                         icon: Image(systemName: "star.fill"),
                         iconPosition: .left
                     )
 
                     TagView(
                         text: "$200 Bill Credit",
-                        style: .active(ColorToken.primaryBase),
-                        selectedBrand: selectedBrand
+                        style: .active(ColorToken.primaryBase)
                     )
                     
                     TagView(
                         text: "Tag Label",
-                        style: .active(ColorToken.greenBase),
-                        selectedBrand: selectedBrand
+                        style: .active(ColorToken.greenBase)
                     )
 
                     Spacer().frame(height: 10)
@@ -39,8 +36,7 @@ struct TagDemoPage: View {
 
                     TagView(
                         text: "Inactive",
-                        style: .inactive,
-                        selectedBrand: selectedBrand
+                        style: .inactive
                     )
 
                     Spacer().frame(height: 10)
@@ -51,7 +47,6 @@ struct TagDemoPage: View {
                     TagView(
                         text: "-10%",
                         style: .warning,
-                        selectedBrand: selectedBrand,
                         icon: Image(systemName: "arrow.down"),
                         iconPosition: .left
                     )
@@ -59,7 +54,6 @@ struct TagDemoPage: View {
                     TagView(
                         text: "+20%",
                         style: .success,
-                        selectedBrand: selectedBrand,
                         icon: Image(systemName: "arrow.up"),
                         iconPosition: .left
                     )

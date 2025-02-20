@@ -11,9 +11,7 @@ struct AnotherPage: View {
     @State private var showToast = false
     @State private var showModal = false
     @Environment(\.colorScheme) var colorScheme
-    
- 
-    @State private var selectedBrand: Brand = .de
+    @Environment(\.brand) private var brand
     
        private let cardItemsTwo: [(icon: String, text: String)] = [
         (icon: "xmark.circle", text: "Review your account settings before proceeding."),
@@ -27,9 +25,9 @@ struct AnotherPage: View {
                 CardComponent(
                                     title: "Steps for Completing Your Setup",
                                     items:cardItemsTwo,
-                                    iconColor: ColorToken.iconFeedbackError.color( brand: selectedBrand,
+                                    iconColor: ColorToken.iconFeedbackError.color( brand: brand,
                                                                                    colorScheme: colorScheme),
-                                    backgroundColor: ColorToken.containerFillSecondary4.color( brand: selectedBrand,
+                                    backgroundColor: ColorToken.containerFillSecondary4.color( brand: brand,
                                                                                                colorScheme: colorScheme)
                                 )
 
@@ -45,14 +43,14 @@ struct AnotherPage: View {
             ToastComponent(
                 message: "Complete your Vivint offer!",
                 linkText: Text("Show Modal")
-                    .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
+                    .foregroundColor(ColorToken.grayscale000.color( brand: brand,
                                                                     colorScheme: colorScheme))
                     .bold(),
                 linkAction: {
                     showModal = true
                 },
                 image: Image("monitor"),
-                backgroundColor:ColorToken.containerFillPrimary3.color( brand: selectedBrand,
+                backgroundColor:ColorToken.containerFillPrimary3.color( brand: brand,
                                                                         colorScheme: colorScheme),
                 duration: 5.0,
                 isVisible: $showToast

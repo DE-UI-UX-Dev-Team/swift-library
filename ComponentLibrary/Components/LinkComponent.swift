@@ -14,21 +14,19 @@ enum LinkVariant {
 
 struct LinkComponent: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.brand) private var brand
 
-let selectedBrand: Brand
 let text: String
 let variant: LinkVariant
 let isInline: Bool
 let action: () -> Void
 
 init(
-    selectedBrand: Brand,
     text: String,
     variant: LinkVariant,
     isInline: Bool = false,
     action: @escaping () -> Void = {}
 ) {
-    self.selectedBrand = selectedBrand
     self.text = text
     self.variant = variant
     self.isInline = isInline
@@ -36,7 +34,7 @@ init(
 }
 
 var body: some View {
-    let style = LinkStyleConfig.get(for: selectedBrand, colorScheme: colorScheme)
+    let style = LinkStyleConfig.get(for: brand, colorScheme: colorScheme)
     
     Button(action: action) {
         HStack(spacing: 4) {
@@ -58,7 +56,7 @@ private func createStyledText(style: LinkStyleConfig) -> some View {
         if isInline {
             baseText
         } else {
-            baseText.typographyStyle(style.typographyStyle, brand: selectedBrand)
+            baseText.typographyStyle(style.typographyStyle, brand: brand)
         }
     }
     .foregroundColor(style.foregroundColor)

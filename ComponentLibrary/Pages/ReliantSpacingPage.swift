@@ -100,14 +100,14 @@ struct ReliantContainerSpacingVisualizer: View {
 struct ReliantContainerSpacingPage: View {
 
     @State private var selectedBrand: Brand = .reliant
-    @State private var spacing: ContainerSpacing = SpacingManager.shared.spacing(for: .reliant).containerSpacing
+    @State private var spacing: ContainerSpacing = SpacingTokenManager.shared.spacing(for: .reliant).containerSpacing
 
     var body: some View {
         VStack {
 
             ReliantContainerSpacingVisualizer(spacing: spacing)
                 .onChange(of: selectedBrand) {
-                    spacing = SpacingManager.shared.spacing(for: selectedBrand).containerSpacing
+                    spacing = SpacingTokenManager.shared.spacing(for: selectedBrand).containerSpacing
                 }
 
         }

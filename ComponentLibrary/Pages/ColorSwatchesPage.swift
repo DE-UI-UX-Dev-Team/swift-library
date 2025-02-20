@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColorSwatches: View {
     @Environment(\.colorScheme) private var colorScheme
-    @State private var selectedBrand: Brand = .de
+    @Environment(\.brand) private var brand
     
     
     var body: some View {
@@ -20,7 +20,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.primaryBase.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -29,7 +29,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.primaryDarkest.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -38,7 +38,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.primaryLighter.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -53,7 +53,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.secondaryBase.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -62,7 +62,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.secondaryLighter.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -71,7 +71,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.secondaryLightest.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -84,7 +84,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.tertiaryBase.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -93,7 +93,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.tertiaryDarkest.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -102,7 +102,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.tertiaryLighter.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -116,7 +116,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.redAccessible.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -125,7 +125,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.redBase.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -134,7 +134,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.redLight.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -147,7 +147,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.greenAccessible.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -156,7 +156,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.greenBase.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -165,7 +165,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.greenEco.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -178,7 +178,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.yellowAccessible.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -187,7 +187,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.yellowBase.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -196,7 +196,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.yellowLight.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -210,7 +210,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.grayscale300.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -219,7 +219,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.grayscale600.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -228,7 +228,7 @@ struct ColorSwatches: View {
                 Rectangle()
                     .fill(
                         ColorToken.grayscale900.color(
-                            brand: selectedBrand,
+                            brand: brand,
                             colorScheme: colorScheme
                         )
                     )
@@ -242,7 +242,9 @@ struct ColorSwatches: View {
 
 struct ColorSwatches_Previews: PreviewProvider {
     static var previews: some View {
-        ColorSwatches()
+        PreviewWrapper { brand in
+            ColorSwatches()
+        }
     }
 }
 

@@ -16,14 +16,14 @@ struct CardComponent: View {
     @Environment(\.colorScheme) var colorScheme
     
 
-    @State private var selectedBrand: Brand = .de
+    @Environment(\.brand) private var brand
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(title)
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(ColorToken.grayscale900.color( brand: selectedBrand,
+                .foregroundColor(ColorToken.grayscale900.color( brand: brand,
                                                                 colorScheme: colorScheme))
 
             ForEach(items, id: \.text) { item in
@@ -34,7 +34,7 @@ struct CardComponent: View {
 
                     Text(item.text)
                         .font(.body)
-                        .foregroundColor(ColorToken.grayscale900.color( brand: selectedBrand,
+                        .foregroundColor(ColorToken.grayscale900.color( brand: brand,
                                                                         colorScheme: colorScheme))
                 }
                 .padding(.bottom, 8)

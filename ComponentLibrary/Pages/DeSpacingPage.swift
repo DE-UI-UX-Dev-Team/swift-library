@@ -98,13 +98,13 @@ struct DeContainerSpacingVisualizer: View {
 struct DeContainerSpacingPage: View {
 
     @State private var selectedBrand: Brand = .de
-    @State private var spacing: ContainerSpacing = SpacingManager.shared.spacing(for: .de).containerSpacing
+    @State private var spacing: ContainerSpacing = SpacingTokenManager.shared.spacing(for: .de).containerSpacing
 
     var body: some View {
         VStack {
             DeContainerSpacingVisualizer(spacing: spacing)
                 .onChange(of: selectedBrand) {
-                    spacing = SpacingManager.shared.spacing(for: selectedBrand).containerSpacing
+                    spacing = SpacingTokenManager.shared.spacing(for: selectedBrand).containerSpacing
                 }
 
         }

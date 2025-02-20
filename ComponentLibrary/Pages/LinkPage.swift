@@ -9,15 +9,14 @@ import SwiftUI
 struct LinkPage: View {
         @State private var isAccordionExpandedSimple = false
         @State private var isAccordionExpandedWithContent = false
-        @State private var selectedBrand: Brand = .de
+    @Environment(\.brand) private var brand
 
         var body: some View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     Text("Standalone Link:")
-                        .typographyStyle(.h3,  brand: selectedBrand)
+                        .typographyStyle(.h3,  brand: brand)
                     LinkComponent(
-                        selectedBrand: selectedBrand,
                         text: "Tap Me (Standalone)",
                         variant: .text,
                         isInline: false,
@@ -29,11 +28,10 @@ struct LinkPage: View {
                     Divider()
                     
                     Text("Inline Link:")
-                        .typographyStyle(.h3,  brand: selectedBrand)
+                        .typographyStyle(.h3,  brand: brand)
                     HStack(alignment: .firstTextBaseline, spacing: 0) {
                         Text("This is an ")
                         LinkComponent(
-                            selectedBrand: selectedBrand,
                             text: "inline link",
                             variant: .text,
                             isInline: true,
@@ -42,14 +40,14 @@ struct LinkPage: View {
                             }
                         )
                         Text(" embedded.")
-                    }.typographyStyle(.p1, brand: selectedBrand)
+                    }.typographyStyle(.p1, brand: brand)
                     
                     Divider()
                     
                     Text("Accordion Link (No Extra Content):")
-                        .typographyStyle(.h3,  brand: selectedBrand)
+                        .typographyStyle(.h3,  brand: brand)
                     LinkComponent(
-                        selectedBrand: selectedBrand,
+
                         text: "Toggle Accordion",
                         variant: .accordion(isExpanded: isAccordionExpandedSimple),
                         isInline: false,
@@ -64,10 +62,9 @@ struct LinkPage: View {
                     Divider()
                     
                     Text("Accordion Link (With Additional Content):")
-                        .typographyStyle(.h3,  brand: selectedBrand)
+                        .typographyStyle(.h3,  brand: brand)
                     VStack(alignment: .leading, spacing: 8) {
-                        LinkComponent(
-                            selectedBrand: selectedBrand,
+                        LinkComponent( 
                             text: "Show/Hide Details",
                             variant: .accordion(isExpanded: isAccordionExpandedWithContent),
                             isInline: false,
@@ -79,7 +76,7 @@ struct LinkPage: View {
                         )
                         if isAccordionExpandedWithContent {
                             Text("Here is some extra content revealed by the accordion link. It could be any view!")
-                                .typographyStyle(.p1,  brand: selectedBrand)
+                                .typographyStyle(.p1,  brand: brand)
                                 .padding()
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(8)
@@ -94,7 +91,9 @@ struct LinkPage: View {
 
 struct LinkPage_Previews: PreviewProvider {
     static var previews: some View {
-        LinkPage()
+        PreviewWrapper { brand in
+            LinkPage()
+        }
     }
 }
 

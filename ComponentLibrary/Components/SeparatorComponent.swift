@@ -7,22 +7,21 @@ enum SeparatorType {
  
 struct SeparatorComponent: View {
     @Environment(\.colorScheme) var colorScheme
-    let selectedBrand: Brand
+    @Environment(\.brand) private var brand
+    
     let type: SeparatorType
     let label: String?
  
     init(
-        selectedBrand: Brand,
         type: SeparatorType = .horizontal,
         label: String? = nil
     ) {
-        self.selectedBrand = selectedBrand
         self.type = type
         self.label = label
     }
  
     var body: some View {
-        let separatorColor = ColorToken.grayscale900.color( brand: selectedBrand,
+        let separatorColor = ColorToken.grayscale900.color( brand: brand,
                                                             colorScheme: colorScheme)
  
         if type == .horizontal {

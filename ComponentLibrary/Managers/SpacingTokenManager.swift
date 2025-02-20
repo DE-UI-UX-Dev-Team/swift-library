@@ -1,43 +1,39 @@
-//
-//  SpacingTokenManager.swift
-//  ComponentLibrary
-//
-//  Created by UI/UX Development Team  on 1/24/25.
-//
+////
+////  SpacingTokenManager.swift
+////  ComponentLibrary
+////
+////  Created by UI/UX Development Team  on 1/24/25.
+////
 import SwiftUI
+import os.log
 
-
-class SpacingManager {
-    static let shared = SpacingManager()
-    var spacingSystem: SpacingSystem?
+final class SpacingTokenManager: ObservableObject {
+    static let shared = SpacingTokenManager()
+    @Published private(set) var spacingSystem: SpacingSystem?
 
     private init() {
-        loadSpacingSystem()
+        loadTokens()
     }
 
-    private func loadSpacingSystem() {
+    private func loadTokens() {
         guard let url = Bundle.main.url(forResource: "SpacingTokens", withExtension: "json") else {
-            fatalError("Failed to locate SpacingTokens.json in the app bundle.")
-           
+            os_log(.error, "SpacingTokens.json not found in the app bundle.")
+            return
         }
-
         do {
             let data = try Data(contentsOf: url)
             spacingSystem = try JSONDecoder().decode(SpacingSystem.self, from: data)
         } catch {
-            fatalError("Failed to load or decode SpacingTokens.json: \(error)")
+            os_log(.error, "Failed to load or decode SpacingTokens.json: %@", error.localizedDescription)
         }
     }
 
     func spacing(for brand: Brand) -> BrandSpacing {
-        guard let system = spacingSystem else {
-            fatalError("Spacing system is not loaded.")
-        }
-        return system.brands[brand.identifier] ?? defaultSpacing()
+        spacingSystem?.brands[brand.identifier] ?? defaultSpacing()
     }
 
     private func defaultSpacing() -> BrandSpacing {
-        return BrandSpacing(
+        BrandSpacing(
             pageLayout: PageLayout(
                 margins: Margins(horizontal: 16, top: 24, bottom: 32),
                 heights: Heights(
@@ -62,34 +58,5 @@ class SpacingManager {
     }
 }
 
-
-
-
-struct BrandSpacingKey: EnvironmentKey {
-    static let defaultValue: BrandSpacing = SpacingManager.shared.spacing(for:  .de)
-}
-
-extension EnvironmentValues {
-    var brandSpacing: BrandSpacing {
-        get { self[BrandSpacingKey.self] }
-        set { self[BrandSpacingKey.self] = newValue }
-    }
-}
-
-
-struct ApplyBrandSpacing: ViewModifier {
-    let brand: Brand
-    
-    func body(content: Content) -> some View {
-        let spacing = SpacingManager.shared.spacing(for: brand)
-        content.environment(\.brandSpacing, spacing)
-    }
-}
-
-extension View {
-    func applyBrandSpacing(brand: Brand) -> some View {
-        self.modifier(ApplyBrandSpacing(brand: brand))
-    }
-}
 
 
