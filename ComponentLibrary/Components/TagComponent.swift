@@ -3,7 +3,7 @@ import SwiftUI
 struct TagView: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) private var brand
-    @ObservedObject private var borderManager = BorderManager.shared
+    @ObservedObject private var borderManager = BorderTokenManager.shared
     
     enum TagStyle {
         case active(ColorToken)
