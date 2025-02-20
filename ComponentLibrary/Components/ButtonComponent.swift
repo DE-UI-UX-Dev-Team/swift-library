@@ -10,18 +10,6 @@ enum ButtonSize {
 }
 
 
-struct AnyShape: Shape {
-    private let pathClosure: @Sendable (CGRect) -> Path
-
-    init<S: Shape>(_ shape: S) {
-        self.pathClosure = { @Sendable rect in shape.path(in: rect) }
-    }
-
-    func path(in rect: CGRect) -> Path {
-        pathClosure(rect)
-    }
-}
-
 struct ButtonStyleConfig {
     let backgroundColor: Color
     let foregroundColor: Color

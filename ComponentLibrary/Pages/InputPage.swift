@@ -13,43 +13,44 @@ struct InputPage: View {
     @Environment(\.colorScheme) var colorScheme
     @State private var selectedBrand: Brand = .reliant
     
-    // Single radio & checkbox state
-        @State private var singleRadioValue: String = ""
-        @State private var singleCheckboxValues: String = ""
-    @State private var singleCheckboxDisValues: String = "isDisabled"
+
+    @State private var singleRadioValue: String = ""
+    @State private var singleRadioDisValue: String = ""
+    @State private var singleCheckboxValue: String = ""
+    @State private var singleCheckboxErrValue: String = ""
+    @State private var singleCheckboxDisValue: String = ""
+    @State private var groupRadioEValue: String = "EA"
+    @State private var groupedRadioValue: String = "A"
+    @State private var groupedCheckboxValue: String = "b"
         
-        // Grouped radio & checkbox state
-       @State private var groupRadioEValue: String = ""
-        @State private var groupedRadioValue: String = ""
-   
-        @State private var groupedCheckboxValue: String = "b"
-        
-        
-        // Single radio/checkbox options could also be external if needed,
-        // but here we only have one for each single example
-        let singleRadioOptions: [InputOption] = [
+    let singleRadioOption: [InputOption] = [
             InputOption(label: "Accept Terms", value: "accepted")
         ]
-        
-        let singleCheckboxOptions: [InputOption] = [
+    
+    let singleRadioDisOption: [InputOption] = [
+        InputOption(label: "Disabled Radio", value: "Disabled Radio")
+    ]
+        let singleCheckboxOption: [InputOption] = [
             InputOption(label: "Enable Notifications", value: "notif")
         ]
+    let singleCheckboxErrOption: [InputOption] = [
+        InputOption(label: "Error Checkbox", value: "errcheckbox")
+    ]
       let singleCheckboxDisabled: [InputOption] = [
-        InputOption(label: "Disabled", value: "isDisabled")
+        InputOption(label: "Disabled Checkbox", value: "isDisabled")
     ]
         
-    // Options for grouped radios
+
     let groupRadioErrors: [InputOption] = [
-        InputOption(label: "Error A", value: "EA"),
-        InputOption(label: "Error B", value: "EB")
+        InputOption(label: "Error Selected", value: "EA"),
+        InputOption(label: "Error Unselected", value: "EB")
     ]
-        // Options for grouped radios
+  
         let groupRadioOptions: [InputOption] = [
-            InputOption(label: "Radio A", value: "A"),
-            InputOption(label: "Radio B", value: "B")
+            InputOption(label: "Radio Normal Selected", value: "A"),
+            InputOption(label: "Radio Normal Unselected", value: "B")
         ]
         
-        // Options for grouped checkboxes
         let groupCheckboxOptions: [InputOption] = [
             InputOption(label: "Checkbox A", value: "a"),
             InputOption(label: "Checkbox B", value: "b"),
@@ -59,79 +60,82 @@ struct InputPage: View {
         var body: some View {
             NavigationView {
                 ScrollView {
-                    VStack(alignment: .leading, spacing: 24) {
+                    VStack(alignment: .leading, spacing: 8) {
                         
-                        // MARK: Single Radio
-                        Text("Single Radio")
-                            .font(.title2)
-                        // Single Radio
-                                            InputComponent(
+                        Text("Single Radio & Grouped Radios")
+                            .typographyStyle(.h3, brand: selectedBrand)
+                        
+                             InputComponent(
                                                 selectedBrand: selectedBrand,
                                                 variant: .radio,
                                                 value: $singleRadioValue,
-                                                options: singleRadioOptions,
-                                                label: "Single Radio"
+                                                options: singleRadioOption
                                                
                                             )
                                             
-                                            // Single Checkbox
-                                            InputComponent(
-                                                selectedBrand: selectedBrand,
-                                                variant: .checkbox,
-                                                value: $singleCheckboxValues,
-                                                options: singleCheckboxOptions,
-                                                label: "Single Checkbox",
-                                                hasError: true
-                                            )
                         InputComponent(
-                            selectedBrand: selectedBrand,
-                            variant: .checkbox,
-                            value: $singleCheckboxDisValues,
-                            options: singleCheckboxDisabled,
-                            label: "Single Checkbox",
-//                            hasError: true,
-                            isDisabled: true
-                            
-                        )
-                         //Grouped Radio
+                                           selectedBrand: selectedBrand,
+                                           variant: .radio,
+                                           value: $singleRadioDisValue,
+                                           options: singleRadioDisOption,
+                                           isDisabled: true
+                                          
+                                       )
+
                         InputComponent(
-                            selectedBrand: selectedBrand,
-                            variant: .radio,
-                            value: $groupRadioEValue,
+                                              selectedBrand: selectedBrand,
+                                              variant: .radio,
+                                              value: $groupedRadioValue,
+                                              options: groupRadioOptions
+
+                                          )
+                        InputComponent(
+                          selectedBrand: selectedBrand,
+                         variant: .radio,
+                        value: $groupRadioEValue,
                             options:groupRadioErrors,
-                            label: "Grouped Radio",
+                          label: "Radio Label",
                           hasError: true
                         )
                                             
-                                            // Grouped Radio
-                                            InputComponent(
-                                                selectedBrand: selectedBrand,
-                                                variant: .radio,
-                                                value: $groupedRadioValue,
-                                                options: groupRadioOptions,
-                                                label: "Grouped Radio"
-                                            )
+       
+
+                        Spacer()
+                        
+                        Text("Single Checkbox & Grouped Checkboxes")
+                            .typographyStyle(.h3, brand: selectedBrand)
+                        InputComponent(
+                                                 selectedBrand: selectedBrand,
+                                                 variant: .checkbox,
+                                                 value: $singleCheckboxValue,
+                                                 options: singleCheckboxOption
+                                             )
+                        
+                        InputComponent(
+                                                 selectedBrand: selectedBrand,
+                                                 variant: .checkbox,
+                                                 value: $singleCheckboxErrValue,
+                                                 options: singleCheckboxErrOption,
+                                                 hasError: true
+                                             )
+                     InputComponent(
+                             selectedBrand: selectedBrand,
+                             variant: .checkbox,
+                             value: $singleCheckboxDisValue,
+                             options: singleCheckboxDisabled,
+                             isDisabled: true
+                             
+                         )
                         
                         
-                                         // Grouped Checkboxes
+
                                             InputComponent(
                                                 selectedBrand: selectedBrand,
                                                 variant: .checkbox,
                                                 value: $groupedCheckboxValue,
                                                 options: groupCheckboxOptions,
-                                                label: "Grouped Checkboxes"
+                                                label: "Checkboxe Label"
                                             )
-                      
-                                            
-                                            // Brand Picker
-                                            Picker("Brand", selection: $selectedBrand) {
-                                                ForEach(Brand.allCases, id: \.self) { brand in
-                                                    Text(brand.rawValue).tag(brand)
-                                                }
-                                            }
-                                            .pickerStyle(SegmentedPickerStyle())
-                        
-                        // Additional layout
                     }
                     .padding()
                 }

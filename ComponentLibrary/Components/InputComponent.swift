@@ -6,24 +6,20 @@
 //
 
 import SwiftUI
-//.buttonStyle(PlainButtonStyle())
 
 
-// MARK: - 1) InputVariant
 enum InputVariant: CaseIterable {
     case radio
     case checkbox
 }
 
-// MARK: - 2) InputState
-enum InputState {
+enum InputState: Hashable {
     case normal
     case selected
     case disabled
     case error
 }
 
-// MARK: - 5) InputOption
 struct InputOption: Identifiable {
     let id = UUID()
     let label: String
@@ -31,8 +27,73 @@ struct InputOption: Identifiable {
 }
 
 
+struct InputStyleConfig {
+    struct CheckboxConfig {
+        let sizeMultiplier: CGFloat
+        let borderStroke: CGFloat
+        let colors: [InputState: (border: ColorToken, fill: ColorToken, check: ColorToken)]
+    }
+    
+    struct RadioConfig {
+        let borderStroke: CGFloat
+        let colors: [InputState: (border: ColorToken, fill: ColorToken, dot: ColorToken)]
+    }
+    
+    let checkbox: CheckboxConfig
+    let radio: RadioConfig
+    
+    static let styles: [Brand: InputStyleConfig] = [
+        .de: InputStyleConfig(
+            checkbox: CheckboxConfig(
+                sizeMultiplier: 1.2,
+                borderStroke: 3,
+                colors: [
+                    .disabled: (.grayscale500, .grayscale500, .grayscale000),
+                    .error: (.redAccessible, .redLight, .redAccessible),
+                    .normal: (.grayscale900, .grayscale000, .grayscale000),
+                    .selected: (.grayscale900, .primaryLighter, .grayscale900)
+                ]
+            ),
+            radio: RadioConfig(
+                borderStroke: 3,
+                colors: [
+                    .disabled: (.grayscale500, .grayscale300, .grayscale000),
+                    .error: (.redAccessible, .redLight, .redAccessible),
+                    .normal: (.grayscale900, .grayscale000, .grayscale000),
+                    .selected: (.grayscale900, .primaryLighter, .grayscale900)
+                ]
+            )
+        ),
+        .reliant: InputStyleConfig(
+            checkbox: CheckboxConfig(
+                sizeMultiplier: 1.0,
+                borderStroke: 2,
+                colors: [
+                    .disabled: (.grayscale500, .grayscale000, .grayscale000),
+                    .error: (.redAccessible, .grayscale000, .redAccessible),
+                    .normal: (.grayscale700, .grayscale000, .grayscale000),
+                    .selected: (.grayscale900, .grayscale900, .grayscale000)
+                ]
+            ),
+            radio: RadioConfig(
+                borderStroke: 2,
+                colors: [
+                    .disabled: (.grayscale500, .grayscale000, .grayscale000),
+                    .error: (.redAccessible, .grayscale000, .redAccessible),
+                    .normal: (.grayscale700, .grayscale000, .grayscale000),
+                    .selected: (.grayscale900, .grayscale000, .grayscale900)
+                ]
+            )
+        )
+    ]
+    
+    static func forBrand(_ brand: Brand) -> InputStyleConfig {
+        styles[brand] ?? styles[.de]!
+    }
 
- // MARK: - 9) InputComponent
+}
+
+
 struct InputComponent: View {
     @Environment(\.colorScheme) var colorScheme
     let selectedBrand: Brand
@@ -43,17 +104,14 @@ struct InputComponent: View {
     var hasError: Bool = false
     var isDisabled: Bool = false
     
+    private var style: InputStyleConfig { InputStyleConfig.forBrand(selectedBrand) }
+    
     var body: some View {
-        
         VStack(alignment: .leading, spacing: 4) {
             if let label = label {
                 Text(label)
-                    .typographyStyle(.p2, brand: selectedBrand)
-                    .foregroundColor(
-                        isDisabled
-                            ? ColorToken.grayscale500.color(brand: selectedBrand, colorScheme: colorScheme)
-                            : ColorToken.grayscale900.color(brand: selectedBrand, colorScheme: colorScheme)
-                    )
+                    .typographyStyle(.p1, brand: selectedBrand)
+                    .foregroundColor(colorFor(isDisabled: isDisabled))
             }
             
             switch variant {
@@ -61,57 +119,46 @@ struct InputComponent: View {
                 ForEach(options) { option in
                     let selectedValues = value.split(separator: ",").map(String.init)
                     let isSelected = selectedValues.contains(option.value)
-                    
                     Button(action: {
                         guard !isDisabled else { return }
                         var newValues = Set(selectedValues)
-                        if isSelected {
-                            newValues.remove(option.value)
-                        } else {
-                            newValues.insert(option.value)
-                        }
+                        if isSelected { newValues.remove(option.value) } else { newValues.insert(option.value) }
                         value = newValues.joined(separator: ",")
                     }) {
                         HStack {
-                            // CUSTOM CHECKBOX
                             CustomCheckbox(
                                 isSelected: isSelected,
                                 isDisabled: isDisabled,
                                 isError: hasError,
-                                size: 24,
                                 brand: selectedBrand,
                                 colorScheme: colorScheme
                             )
-                            
                             Text(option.label)
-                                .foregroundColor(isDisabled ? .gray : .black)
+                                .typographyStyle(.p2, brand: selectedBrand)
+                                .foregroundColor(colorFor(isDisabled: isDisabled))
                         }
                     }
                     .buttonStyle(PlainButtonStyle())
                     .disabled(isDisabled)
                 }
-                
             case .radio:
                 ForEach(options) { option in
                     let isSelected = (value == option.value)
-                    
                     Button(action: {
                         guard !isDisabled else { return }
                         value = option.value
                     }) {
                         HStack {
-                            // CUSTOM RADIO
                             CustomRadioButton(
                                 isSelected: isSelected,
                                 isDisabled: isDisabled,
-                                isError: hasError,  // Updated to use hasError
-                                size: 24,
+                                isError: hasError,
                                 brand: selectedBrand,
                                 colorScheme: colorScheme
                             )
-                            
                             Text(option.label)
-                                .foregroundColor(isDisabled ? .gray : .black)
+                                .typographyStyle(.p2, brand: selectedBrand)
+                                .foregroundColor(colorFor(isDisabled: isDisabled))
                         }
                     }
                     .buttonStyle(PlainButtonStyle())
@@ -121,219 +168,90 @@ struct InputComponent: View {
         }
         .padding(8)
     }
+    
+    private func colorFor(isDisabled: Bool) -> Color {
+        (isDisabled ? ColorToken.grayscale500 : ColorToken.grayscale900)
+            .color(brand: selectedBrand, colorScheme: colorScheme)
+    }
 }
 
-
-// custom-colored radio button and checkbox
 
 struct CustomCheckbox: View {
     var isSelected: Bool
     var isDisabled: Bool
     var isError: Bool
     var size: CGFloat = 18
-
     var brand: Brand
     var colorScheme: ColorScheme
-
+    
+    private var config: InputStyleConfig.CheckboxConfig { InputStyleConfig.forBrand(brand).checkbox }
+    
     var body: some View {
-        let colors = checkboxColors(
-            isSelected: isSelected,
-            isDisabled: isDisabled,
-            isError: isError,
-            brand: brand,
-            colorScheme: colorScheme
-        )
+        let state = stateFor(isSelected: isSelected, isDisabled: isDisabled, isError: isError)
+        let colors = config.colors[state] ?? config.colors[.normal]!
+        let checkboxSize = size * config.sizeMultiplier
         
         ZStack {
-            // 1) Outer square (border)
             RoundedRectangle(cornerRadius: 4)
-                .strokeBorder(colors.border, lineWidth: 3)
-                .frame(width: size, height: size)
-
-            // 2) Inner fill
+                .strokeBorder(colors.border.color(brand: brand, colorScheme: colorScheme), lineWidth: config.borderStroke)
+                .frame(width: checkboxSize, height: checkboxSize)
             RoundedRectangle(cornerRadius: 2)
-                .fill(colors.fill)
-                .frame(width: size * 0.8, height: size * 0.8)
-
-            // 3) Checkmark if selected
+                .fill(colors.fill.color(brand: brand, colorScheme: colorScheme))
+                .frame(width: checkboxSize * 0.8, height: checkboxSize * 0.8)
             if isSelected {
                 Image(systemName: "checkmark")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: size * 0.5, height: size * 0.5)
-                    .foregroundColor(colors.check)
-                    .font(.system(size: size * 0.5, weight: .black))
+                    .frame(width: checkboxSize * 0.5, height: checkboxSize * 0.5)
+                    .foregroundColor(colors.check.color(brand: brand, colorScheme: colorScheme))
+                    .font(.system(size: checkboxSize * 0.5, weight: .black))
             }
         }
     }
     
-    // MARK: - Decide colors for each state combination
-    private func checkboxColors(
-        isSelected: Bool,
-        isDisabled: Bool,
-        isError: Bool,
-        brand: Brand,
-        colorScheme: ColorScheme
-    ) -> (border: Color, fill: Color, check: Color) {
-        
-        switch (isDisabled, isError, isSelected) {
-        // DISABLED + UNSELECTED
-        case (true, _, false):
-            return (
-                border: ColorToken.grayscale500.color(brand: brand, colorScheme: colorScheme),
-                fill:   ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme),
-                check:  .clear
-            )
-        // DISABLED + SELECTED
-        case (true, _, true):
-            return (
-                border: ColorToken.grayscale500.color(brand: brand, colorScheme: colorScheme),
-                fill:   ColorToken.grayscale500.color(brand: brand, colorScheme: colorScheme),
-                check:  ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
-            )
-            
-        // ERROR + UNSELECTED
-        case (_, true, false):
-            return (
-                border: ColorToken.redAccessible.color(brand: brand, colorScheme: colorScheme),
-                fill:    ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme),
-                check:   ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
-            )
-        // ERROR + SELECTED
-        case (_, true, true):
-            let fill = (brand == .de)
-        ? ColorToken.redLight.color(brand: brand, colorScheme: colorScheme)
-        : ColorToken.redAccessible.color(brand: brand, colorScheme: colorScheme)
-            let check = (brand == .de)
-        ? ColorToken.redAccessible.color(brand: brand, colorScheme: colorScheme)
-        : ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
-            return (
-                border: ColorToken.redAccessible.color(brand: brand, colorScheme: colorScheme),fill,check)
-            
-        // NORMAL + UNSELECTED
-        case (_, _, false):
-            let border = (brand == .de)
-                ? ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)
-                : ColorToken.grayscale700.color(brand: brand, colorScheme: colorScheme)
-            return (border,ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme) , .clear)
-        // NORMAL + SELECTED
-        case (_, _, true):
-                // Normal & selected:
-                let fill = (brand == .de)
-                    ? ColorToken.primaryLighter.color(brand: brand, colorScheme: colorScheme)
-                    : ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)
-            let check = (brand == .de)
-                ? ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)
-                : ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
-                return (ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme), fill, check)
-        }
+    private func stateFor(isSelected: Bool, isDisabled: Bool, isError: Bool) -> InputState {
+        if isDisabled { return .disabled }
+        if isError { return .error }
+        return isSelected ? .selected : .normal
     }
 }
 
 
 struct CustomRadioButton: View {
-    // States
     var isSelected: Bool
     var isDisabled: Bool
     var isError: Bool
-
-    // Sizing
     var size: CGFloat = 20
-
-    // Brand + color scheme
     var brand: Brand
     var colorScheme: ColorScheme
-
+    
+    private var config: InputStyleConfig.RadioConfig { InputStyleConfig.forBrand(brand).radio }
+    
     var body: some View {
-        // Compute the colors for border, fill, dot
-        let colors = radioColors(
-            isSelected: isSelected,
-            isDisabled: isDisabled,
-            isError: isError,
-            brand: brand,
-            colorScheme: colorScheme
-        )
+        let state = stateFor(isSelected: isSelected, isDisabled: isDisabled, isError: isError)
+        let colors = config.colors[state] ?? config.colors[.normal]!
         
         ZStack {
-            // 1) Outer circle (border)
             Circle()
-                .strokeBorder(colors.border, lineWidth: 3)
+                .strokeBorder(colors.border.color(brand: brand, colorScheme: colorScheme), lineWidth: config.borderStroke)
                 .frame(width: size, height: size)
-            
-            // 2) Inner fill
             Circle()
-                .fill(colors.fill)
+                .fill(colors.fill.color(brand: brand, colorScheme: colorScheme))
                 .frame(width: size * 0.7, height: size * 0.7)
-            
-            // 3) Dot if selected
             if isSelected {
                 Circle()
-                    .fill(colors.dot)
+                    .fill(colors.dot.color(brand: brand, colorScheme: colorScheme))
                     .frame(width: size * 0.4, height: size * 0.4)
             }
         }
     }
     
-    // MARK: - Use your color tokens in the switch
-    private func radioColors(
-        isSelected: Bool,
-        isDisabled: Bool,
-        isError: Bool,
-        brand: Brand,
-        colorScheme: ColorScheme
-    ) -> (border: Color, fill: Color, dot: Color) {
-        
-        switch (isDisabled, isError, isSelected) {
-            
-        // DISABLED + unselected
-        case (true, _, false):
-            return (
-                border: ColorToken.grayscale500.color(brand: brand, colorScheme: colorScheme),
-                fill:   ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme),
-                dot:    .clear
-            )
-        // DISABLED + selected
-        case (true, _, true):
-            return (
-                border: ColorToken.grayscale500.color(brand: brand, colorScheme: colorScheme),
-                fill:   ColorToken.grayscale300.color(brand: brand, colorScheme: colorScheme),
-                dot:   ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
-            )
-            
-        // ERROR + unselected
-        case (_, true, false):
-            let border = (brand == .de)
-                ? ColorToken.redAccessible.color(brand: brand, colorScheme: colorScheme)
-                : ColorToken.grayscale700.color(brand: brand, colorScheme: colorScheme)
-            let fill = (brand == .de)
-                ? ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
-                : ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
-            return (border, fill, .clear)
-            
-        // ERROR + selected
-        case (_, true, true):
-                // Error & selected:
-                let fill = (brand == .de)
-            ? ColorToken.redLight.color(brand: brand, colorScheme: colorScheme)
-            : ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
-                return (ColorToken.redAccessible.color(brand: brand, colorScheme: colorScheme), fill, ColorToken.redAccessible.color(brand: brand, colorScheme: colorScheme))
-            
-        // NORMAL + unselected
-        case (_, _, false):
-            let border = (brand == .de)
-                ? ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)
-                : ColorToken.grayscale700.color(brand: brand, colorScheme: colorScheme)
-            return (border, ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme), .clear)
-
-        case (_, _, true):
-                // Normal & selected:
-                let fill = (brand == .de)
-                    ? ColorToken.primaryLighter.color(brand: brand, colorScheme: colorScheme)
-                    : ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
-            let check = (brand == .de)
-                ? ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)
-                : ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)
-                return (ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme), fill, check)
-        }
+    private func stateFor(isSelected: Bool, isDisabled: Bool, isError: Bool) -> InputState {
+        if isDisabled { return .disabled }
+        if isError { return .error }
+        return isSelected ? .selected : .normal
     }
 }
+
+
+
