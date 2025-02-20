@@ -14,7 +14,7 @@ struct SpacingPage: View {
     @Environment(\.brand) private var brand
     
     private var brandSpacing: BrandSpacing {
-        SpacingManager.shared.spacing(for: brand)
+        SpacingTokenManager.shared.spacing(for: brand)
     }
     
     var body: some View {

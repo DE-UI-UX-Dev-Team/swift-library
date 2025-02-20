@@ -80,7 +80,7 @@ extension View {
         strokeKey: BorderStrokeKey,
         color: Color
     ) -> some View {
-        let tokens = BorderManager.shared.tokens(for: brand)
+        let tokens = BorderTokenManager.shared.tokens(for: brand)
         let cornerRadius = tokens?.radiusValue(radiusKey) ?? 0
         let strokeWidth  = tokens?.strokeValue(strokeKey) ?? 0
         

@@ -29,9 +29,22 @@
 		22ED66C32D35B9F300F53E6D /* ComponentLibraryUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ComponentLibraryUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		6BD70FC82D66EFC900641B5A /* Exceptions for "ComponentLibrary" folder in "ComponentLibrary" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 22B3C8C52D305FA900E14D28 /* ComponentLibrary */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		22B3C8C82D305FA900E14D28 /* ComponentLibrary */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				6BD70FC82D66EFC900641B5A /* Exceptions for "ComponentLibrary" folder in "ComponentLibrary" target */,
+			);
 			path = ComponentLibrary;
 			sourceTree = "<group>";
 		};

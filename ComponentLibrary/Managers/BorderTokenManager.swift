@@ -1,37 +1,37 @@
+////
+////  BorderTokenManager .swift
+////  ComponentLibrary
+////
+////  Created by UI/UX Development Team on 1/29/25.
+////
 //
-//  BorderTokenManager .swift
-//  ComponentLibrary
-//
-//  Created by UI/UX Development Team on 1/29/25.
-//
-
 import SwiftUI
+import os.log
 
 
-class BorderManager: ObservableObject {
-    static let shared = BorderManager()
-    
+final class BorderTokenManager: ObservableObject {
+    static let shared = BorderTokenManager()
     @Published private(set) var allBrands: [String: BrandBorderTokens] = [:]
-    
+
     private init() {
-        loadBorderTokens()
+        loadTokens()
     }
-    
-    private func loadBorderTokens() {
+
+    private func loadTokens() {
         guard let url = Bundle.main.url(forResource: "BorderTokens", withExtension: "json") else {
-            fatalError("borderTokens.json not found in the app bundle.")
+            os_log(.error, "BorderTokens.json not found in the app bundle.")
+            return
         }
-        
         do {
             let data = try Data(contentsOf: url)
             let decoded = try JSONDecoder().decode(BorderBrandTokens.self, from: data)
             self.allBrands = decoded.brands
         } catch {
-            fatalError("Failed to load/parse borderTokens.json: \(error)")
+            os_log(.error, "Failed to load/parse BorderTokens.json: %@", error.localizedDescription)
         }
     }
-    
-    func tokens(for brandKey: Brand) -> BrandBorderTokens? {
-        return allBrands[brandKey.identifier]
+
+    func tokens(for brand: Brand) -> BrandBorderTokens? {
+        allBrands[brand.identifier]
     }
 }
