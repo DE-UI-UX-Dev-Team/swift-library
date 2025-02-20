@@ -16,10 +16,13 @@ struct InputPage: View {
     // Single radio & checkbox state
         @State private var singleRadioValue: String = ""
         @State private var singleCheckboxValues: String = ""
+    @State private var singleCheckboxDisValues: String = "isDisabled"
         
         // Grouped radio & checkbox state
+       @State private var groupRadioEValue: String = ""
         @State private var groupedRadioValue: String = ""
-        @State private var groupedCheckboxValue: String = ""
+   
+        @State private var groupedCheckboxValue: String = "b"
         
         
         // Single radio/checkbox options could also be external if needed,
@@ -31,7 +34,15 @@ struct InputPage: View {
         let singleCheckboxOptions: [InputOption] = [
             InputOption(label: "Enable Notifications", value: "notif")
         ]
+      let singleCheckboxDisabled: [InputOption] = [
+        InputOption(label: "Disabled", value: "isDisabled")
+    ]
         
+    // Options for grouped radios
+    let groupRadioErrors: [InputOption] = [
+        InputOption(label: "Error A", value: "EA"),
+        InputOption(label: "Error B", value: "EB")
+    ]
         // Options for grouped radios
         let groupRadioOptions: [InputOption] = [
             InputOption(label: "Radio A", value: "A"),
@@ -59,8 +70,8 @@ struct InputPage: View {
                                                 variant: .radio,
                                                 value: $singleRadioValue,
                                                 options: singleRadioOptions,
-                                                label: "Single Radio",
-                                                status: .warning("You must accept the Terms!")
+                                                label: "Single Radio"
+                                               
                                             )
                                             
                                             // Single Checkbox
@@ -70,8 +81,27 @@ struct InputPage: View {
                                                 value: $singleCheckboxValues,
                                                 options: singleCheckboxOptions,
                                                 label: "Single Checkbox",
-                                                status: .error("Notifications are required.")
+                                                hasError: true
                                             )
+                        InputComponent(
+                            selectedBrand: selectedBrand,
+                            variant: .checkbox,
+                            value: $singleCheckboxDisValues,
+                            options: singleCheckboxDisabled,
+                            label: "Single Checkbox",
+//                            hasError: true,
+                            isDisabled: true
+                            
+                        )
+                         //Grouped Radio
+                        InputComponent(
+                            selectedBrand: selectedBrand,
+                            variant: .radio,
+                            value: $groupRadioEValue,
+                            options:groupRadioErrors,
+                            label: "Grouped Radio",
+                          hasError: true
+                        )
                                             
                                             // Grouped Radio
                                             InputComponent(
@@ -79,9 +109,10 @@ struct InputPage: View {
                                                 variant: .radio,
                                                 value: $groupedRadioValue,
                                                 options: groupRadioOptions,
-                                                label: "Grouped Radio",
-                                                status: .success("All set!")
+                                                label: "Grouped Radio"
                                             )
+                        
+                        
                                          // Grouped Checkboxes
                                             InputComponent(
                                                 selectedBrand: selectedBrand,
@@ -90,6 +121,7 @@ struct InputPage: View {
                                                 options: groupCheckboxOptions,
                                                 label: "Grouped Checkboxes"
                                             )
+                      
                                             
                                             // Brand Picker
                                             Picker("Brand", selection: $selectedBrand) {
@@ -103,7 +135,7 @@ struct InputPage: View {
                     }
                     .padding()
                 }
-                .navigationBarTitle("Modular Inputs", displayMode: .inline)
+
             }
         }
 }
