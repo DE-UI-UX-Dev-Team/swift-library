@@ -66,7 +66,8 @@ struct TagDemoPage: View {
 
 struct TagDemoPage_Previews: PreviewProvider {
     static var previews: some View {
-        TagDemoPage()
+        PreviewWrapper { brand in
+            TagDemoPage()
+        }
     }
 }
-

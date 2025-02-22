@@ -131,7 +131,9 @@ struct SeparatorDemoPage: View {
 
 struct SeparatorDemoPage_Previews: PreviewProvider {
    static var previews: some View {
-       SeparatorDemoPage()
+       PreviewWrapper { brand in
+           SeparatorDemoPage()
+       }
    }
 }
 

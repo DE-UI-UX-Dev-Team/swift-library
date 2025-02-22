@@ -2,167 +2,170 @@
 //  SpacingPage.swift
 //  ComponentLibrary
 //
-//  Created by UI/UX Development Team on 2/13/25.
+//  Created by UI/UX Development Team on 1/25/25.
 //
+
 
 import SwiftUI
 
-
-
-struct SpacingPage: View {
+struct PaddingVisualizer: View {
     @Environment(\.colorScheme) var colorScheme
+    @Environment(\.brand) private var brand
+    let name: String
+    let padding: CGFloat
+
+    private var color: Color {
+        switch name {
+        case "None": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.1)
+        case "XS", "S": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.3)
+        case "M": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.5)
+        case "L", "XL": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.7)
+        case "2XL": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.9)
+        default: return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.3)
+        }
+    }
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text(name)
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            
+            Rectangle()
+                .fill(color)
+                .cornerRadius(8)
+                .frame(height: 50)
+                .padding(padding)
+                .overlay(
+                    Text("\(Int(padding))")
+                        .foregroundColor(.black)
+                        .font(.subheadline)
+                        .bold()
+                )
+                .background(Color.gray.opacity(0.3))
+                .cornerRadius(8)
+                .shadow(color: .gray.opacity(0.1), radius: 4)
+        }
+    }
+}
+
+struct GapVisualizer: View {
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.brand) private var brand
+    let name: String
+    let gap: CGFloat
+
+    private var color: Color {
+        switch name {
+        case "None": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.1)
+        case "XS", "S": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.3)
+        case "M": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.5)
+        case "L", "XL": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.7)
+        case "Icon Gap": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.9)
+        default: return Color.green.opacity(0.3)
+        }
+    }
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text(name)
+                .font(.subheadline)
+                .foregroundColor(.gray)
+            
+            HStack {
+                Circle()
+                    .fill(color)
+                    .frame(width: 20, height: 20)
+                Spacer()
+                    .frame(width: gap)
+                Circle()
+                    .fill(color)
+                    .frame(width: 20, height: 20)
+            }
+            .padding()
+            .overlay(
+                Text("\(Int(gap))")
+                    .foregroundColor(.black)
+                    .font(.caption)
+                    .bold()
+            )
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(8)
+            .shadow(color: .gray.opacity(0.1), radius: 4)
+        }
+    }
+}
+
+
+struct ContainerSpacingVisualizer: View {
     @Environment(\.brand) private var brand
     
     private var brandSpacing: BrandSpacing {
         SpacingTokenManager.shared.spacing(for: brand)
     }
-    
+    let spacing: ContainerSpacing
+
     var body: some View {
-        VStack(spacing: 0) {
-            ScrollView {
-                VStack(spacing: brandSpacing.pageLayout.sectionSpacing.xl) {
-                    
-                    VStack(spacing: brandSpacing.pageLayout.sectionSpacing.s) {
-                        Image(systemName: "checkmark.circle")
-                            .font(.system(size: 36))
-                            .foregroundColor(ColorToken.greenBase.color( brand: brand,colorScheme: colorScheme))
-                        
-                        Text("Thank you for signing up!")
-                            .foregroundColor(ColorToken.greenBase.color( brand: brand,colorScheme: colorScheme))
-                            .typographyStyle(.h3,  brand: brand)
-                        
-                        Text("We are processing your sign up for <plan name>. Please check your email nrgtest1050 @nrg.com for confirmation.")
-                            .typographyStyle(.p1,  brand: brand)
-                    }
-                    .padding(.horizontal, brandSpacing.containerSpacing.padding.xl)
-
-                    
-                    VStack(alignment: .leading,spacing: brandSpacing.containerSpacing.gaps.m) {
-                        Text("Confirmation details Confirmation details").typographyStyle(.h3,  brand: brand)
-                        Text("Request submitted on 01/01/2023").typographyStyle(.p1,  brand: brand)
-                        Text("Confirmation number  0000123456778901").typographyStyle(.p1,  brand: brand)
-                    }
-                    .padding(brandSpacing.containerSpacing.padding.l)
-                    .background(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme))
-                    .cornerRadius(8)
-                    .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-                    .frame(width: .infinity, alignment: .leading)
-
-
-                    HStack {
-                        Text("Account").foregroundColor(.secondary)
-                        Spacer()
-                        Text("New contract").foregroundColor(.secondary)
-                        Spacer()
-                        Text("New plan").fontWeight(.semibold)
-                        Spacer()
-                        Text("Documents").foregroundColor(.secondary)
-                    }
-                    .typographyStyle(.p1,  brand: brand)
-                    .padding(.horizontal, brandSpacing.containerSpacing.padding.s)
-                    
-                    VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.m) {
-                        
-                        Text("2 FREE DAYS PER WEEK")
-                            .typographyStyle(.h3,  brand: brand)
-                        
-
-                        HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
-                            PlanChip(text: "12 months", brandSpacing: brandSpacing)
-                            PlanChip(text: "Fixed rate", brandSpacing: brandSpacing)
-                            PlanChip(text: "100% solar", brandSpacing: brandSpacing)
-                        }.typographyStyle(.p3,  brand: brand)
-                        
-                        Text("Reliant Truly Free Nights 100% Solar 12 plan")
-                            .typographyStyle(.h3,  brand: brand)
-                        
-                        Text("Straightforward plan with locked-in energy charge")
-                            .typographyStyle(.p1,  brand: brand)
-                            .foregroundColor(.secondary)
-                        
-                        HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
-                            BadgeView(text: "Recommended",
-                                      backgroundColor: ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme))
-                            BadgeView(text: "$200 bill credit",
-                                      backgroundColor: ColorToken.primaryBase.color( brand: brand,colorScheme: colorScheme) )
-                        }.typographyStyle(.p3,  brand: brand)
-                        
-                        HStack {
-                            Text("18.5¢/kWh")
-                                .typographyStyle(.h2,  brand: brand)
-                            Spacer()
-                            Text("price at 2,000 kWh")
-                                .typographyStyle(.p1,  brand: brand)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        LinkComponent(
-                            text: "View plan details",
-                            variant: .text,
-                            isInline: false,
-                            action: {
-                                print("Standalone link tapped")
-                            }
-                        )
-                    }
-                    .padding(brandSpacing.containerSpacing.padding.m)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme))
-                    )
-                    .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 2)
-
-                    ButtonComponent(
-                        title: "Button",
-                        variant: .primary
-                    ) {
-                        print("Secondary tapped")
-                    }
-                    .padding(.horizontal, brandSpacing.containerSpacing.padding.m)
+        ScrollView {
+            VStack(spacing: brandSpacing.pageLayout.sectionSpacing.xl){
+            VStack(alignment: .leading) {
+                Text(" Container Padding")
+                    .font(.title3)
+                    .bold()
+                    .padding(.bottom, 4)
+                
+                VStack(spacing: 16) {
+                    PaddingVisualizer(name: "None", padding: spacing.padding.none)
+                    PaddingVisualizer(name: "XS", padding: spacing.padding.xs)
+                    PaddingVisualizer(name: "S", padding: spacing.padding.s)
+                    PaddingVisualizer(name: "M", padding: spacing.padding.m)
+                    PaddingVisualizer(name: "L", padding: spacing.padding.l)
+                    PaddingVisualizer(name: "XL", padding: spacing.padding.xl)
+                    PaddingVisualizer(name: "2XL", padding: spacing.padding.twoXL)
                 }
-
-                .padding(.bottom, brandSpacing.pageLayout.margins.bottom)
-                .padding(.horizontal, brandSpacing.pageLayout.margins.horizontal)
-                .padding(.top, brandSpacing.pageLayout.margins.top)
                 
             }
+            .border(Color.green, width: 1)
+            
+                VStack{
+                                Text("Container Gaps")
+                                    .font(.title3)
+                                    .bold()
+                    
+                    LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 16) {
+                        GapVisualizer(name: "None", gap: spacing.gaps.none)
+                        GapVisualizer(name: "XS", gap: spacing.gaps.xs)
+                        GapVisualizer(name: "S", gap: spacing.gaps.s)
+                        GapVisualizer(name: "M", gap: spacing.gaps.m)
+                        GapVisualizer(name: "L", gap: spacing.gaps.l)
+                        GapVisualizer(name: "XL", gap: spacing.gaps.xl)
+                        GapVisualizer(name: "Icon Gap", gap: spacing.gaps.icon)
+                    }
+                   
+                }.border(Color.green, width: 1)}
+            }
         }
-        .background(Color.gray.opacity(0.05).edgesIgnoringSafeArea(.all))
     }
-}
 
-
-struct PlanChip: View {
-    let text: String
-    let brandSpacing: BrandSpacing
+struct SpacingPage: View {
+    @Environment(\.brand) private var brand
     
+    private var brandSpacing: BrandSpacing {
+        SpacingTokenManager.shared.spacing(for: brand)
+    }
+
     var body: some View {
-        Text(text)
-            .font(.caption)
-            .padding(.horizontal, brandSpacing.containerSpacing.padding.xs)
-            .padding(.vertical, brandSpacing.containerSpacing.padding.xs)
-            .background(Color.gray.opacity(0.15))
-            .cornerRadius(4)
+        ScrollView {
+            VStack() {
+                ContainerSpacingVisualizer(spacing: brandSpacing.containerSpacing)            }
+            .padding(.top, brandSpacing.pageLayout.margins.top)
+            .padding(.bottom, brandSpacing.pageLayout.margins.bottom)
+            .padding(.horizontal, brandSpacing.pageLayout.margins.horizontal)
+            .border(Color.red, width: 1)
+            
+        }
     }
 }
-
-
-struct BadgeView: View {
-    let text: String
-    let backgroundColor: Color
-    
-    var body: some View {
-        Text(text)
-            .font(.caption)
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-            .background(backgroundColor)
-            .cornerRadius(4)
-            .foregroundColor(.white)
-    }
-}
-
-
 struct SpacingPage_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper { brand in
@@ -170,3 +173,7 @@ struct SpacingPage_Previews: PreviewProvider {
         }
     }
 }
+
+
+
+

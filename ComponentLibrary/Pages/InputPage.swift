@@ -11,7 +11,7 @@ import SwiftUI
 
 struct InputPage: View {
     @Environment(\.colorScheme) var colorScheme
-    @State private var selectedBrand: Brand = .reliant
+    @Environment(\.brand) private var brand
     
 
     @State private var singleRadioValue: String = ""
@@ -62,11 +62,10 @@ struct InputPage: View {
                 ScrollView {
                     VStack(alignment: .leading, spacing: 8) {
                         
-                        Text("Single Radio & Grouped Radios")
-                            .typographyStyle(.h3, brand: selectedBrand)
+                        Text("Single & Grouped Radios")
+                            .typographyStyle(.h3, brand: brand)
                         
                              InputComponent(
-                                                selectedBrand: selectedBrand,
                                                 variant: .radio,
                                                 value: $singleRadioValue,
                                                 options: singleRadioOption
@@ -74,7 +73,6 @@ struct InputPage: View {
                                             )
                                             
                         InputComponent(
-                                           selectedBrand: selectedBrand,
                                            variant: .radio,
                                            value: $singleRadioDisValue,
                                            options: singleRadioDisOption,
@@ -83,14 +81,12 @@ struct InputPage: View {
                                        )
 
                         InputComponent(
-                                              selectedBrand: selectedBrand,
                                               variant: .radio,
                                               value: $groupedRadioValue,
                                               options: groupRadioOptions
 
                                           )
                         InputComponent(
-                          selectedBrand: selectedBrand,
                          variant: .radio,
                         value: $groupRadioEValue,
                             options:groupRadioErrors,
@@ -102,24 +98,21 @@ struct InputPage: View {
 
                         Spacer()
                         
-                        Text("Single Checkbox & Grouped Checkboxes")
-                            .typographyStyle(.h3, brand: selectedBrand)
+                        Text("Singl & Grouped Checkboxes")
+                            .typographyStyle(.h3, brand: brand)
                         InputComponent(
-                                                 selectedBrand: selectedBrand,
                                                  variant: .checkbox,
                                                  value: $singleCheckboxValue,
                                                  options: singleCheckboxOption
                                              )
                         
                         InputComponent(
-                                                 selectedBrand: selectedBrand,
                                                  variant: .checkbox,
                                                  value: $singleCheckboxErrValue,
                                                  options: singleCheckboxErrOption,
                                                  hasError: true
                                              )
                      InputComponent(
-                             selectedBrand: selectedBrand,
                              variant: .checkbox,
                              value: $singleCheckboxDisValue,
                              options: singleCheckboxDisabled,
@@ -130,7 +123,6 @@ struct InputPage: View {
                         
 
                                             InputComponent(
-                                                selectedBrand: selectedBrand,
                                                 variant: .checkbox,
                                                 value: $groupedCheckboxValue,
                                                 options: groupCheckboxOptions,
@@ -146,6 +138,8 @@ struct InputPage: View {
 
 struct InputPage_Previews: PreviewProvider {
     static var previews: some View {
-        InputPage()
+        PreviewWrapper { brand in
+            InputPage()
+        }
     }
 }

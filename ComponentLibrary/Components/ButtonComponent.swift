@@ -28,7 +28,7 @@ struct ButtonStyleConfig {
             foregroundColor: style.getColor(for: variant, type: .foreground, brand: brand,colorScheme: colorScheme),
             borderColor: style.getColor(for: variant, type: .border,brand: brand, colorScheme: colorScheme),
             shape: style.shape,
-            typographyStyle: .primaryButton,
+            typographyStyle: .button,
             padding: style.padding
         )
     }

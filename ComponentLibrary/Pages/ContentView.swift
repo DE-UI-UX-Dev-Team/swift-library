@@ -12,10 +12,9 @@ import SwiftUI
 struct ContentView: View {
     @State private var showToast = false
     @Environment(\.colorScheme) var colorScheme
-      
+    @Environment(\.brand) private var brand
     @Environment(\.openURL) var openURL
     
-    @State private var selectedBrand: Brand = .de
     
 
     private let cardItems: [(icon: String, text: String)] = [
@@ -38,32 +37,32 @@ struct ContentView: View {
    
                     
                     Text("Heading 1")
-                                    .typographyStyle(.h1, brand: selectedBrand)
+                                    .typographyStyle(.h1, brand: brand)
                     Text("Heading 2")
-                                    .typographyStyle(.h2, brand: selectedBrand)
+                                    .typographyStyle(.h2, brand: brand)
                                 
                                 
                                 Text("Paragraph text")
-                                    .typographyStyle(.p1, brand: selectedBrand)
+                                    .typographyStyle(.p1, brand: brand)
                                 
                                     Text("Link text underlined!")
                                                 .underline()
-                                                .foregroundColor(ColorToken.primaryDarkest.color( brand: selectedBrand,
+                                                .foregroundColor(ColorToken.primaryDarkest.color( brand: brand,
                                                                                                  colorScheme: colorScheme))
-                                                .typographyStyle(.p2, brand: selectedBrand)
+                                                .typographyStyle(.p2, brand: brand)
                                 
           
                                 
                                 Text("Primary button text")
-                                    .typographyStyle(.primaryButton, brand: selectedBrand)
+                                    .typographyStyle(.button, brand: brand)
                                     .padding()
-                                    .background(ColorToken.containerFillTertiary1.color( brand: selectedBrand,colorScheme: colorScheme))
+                                    .background(ColorToken.containerFillTertiary1.color( brand: brand,colorScheme: colorScheme))
                                     .cornerRadius(8)
                     
                     
                     
                     Text("Sample Success Text")
-                                    .foregroundColor(ColorToken.greenAccessible.color( brand: selectedBrand,
+                                    .foregroundColor(ColorToken.greenAccessible.color( brand: brand,
                                                                                        colorScheme: colorScheme))
                                     .font(.system(size: 26, weight: .heavy))
                     
@@ -78,14 +77,11 @@ struct ContentView: View {
                     CardComponent(
                                         title: "What should I expect when I enroll in Home Base Essentials?",
                                         items: cardItems,
-                                       iconColor:ColorToken.iconFeedbackSuccess.color( brand: selectedBrand,
+                                       iconColor:ColorToken.iconFeedbackSuccess.color( brand: brand,
                                                 colorScheme: colorScheme),
-                                       backgroundColor:ColorToken.containerFillTertiaryDefault.color( brand: selectedBrand,colorScheme: colorScheme)
+                                       backgroundColor:ColorToken.containerFillTertiaryDefault.color( brand: brand,colorScheme: colorScheme)
                                     )
-                    
-                    NavigationLink("Go to Another Page", value: "AnotherPage")
-                        .padding()
-                    NavigationLink("Go to Reliant Page", value: "AnotherBrandPage")
+
              
                 }
                 
@@ -93,13 +89,13 @@ struct ContentView: View {
                 ToastComponent(
                     message: "Complete your Vivint offer by scheduling your installation.",
                     linkText: Text("Schedule installation") .font(.subheadline)
-                        .foregroundColor(ColorToken.grayscale000.color( brand: selectedBrand,
+                        .foregroundColor(ColorToken.grayscale000.color( brand: brand,
                                                                         colorScheme: colorScheme)).bold(),
                     linkAction: {
                         openWebPage("https://www.vivint.com/")
                     },
                     image: Image("doorbell"),
-                    backgroundColor:ColorToken.grayscale800.color( brand: selectedBrand,
+                    backgroundColor:ColorToken.grayscale800.color( brand: brand,
                                                                    colorScheme: colorScheme),
                     duration: 60.0,
                     isVisible: $showToast
@@ -108,16 +104,6 @@ struct ContentView: View {
             
             }
             .navigationTitle("MainPage")
-            .navigationDestination(for: String.self) { value in
-                switch value {
-                case "AnotherPage":
-                    AnotherPage()
-                case "AnotherBrandPage":
-                    AnotherBrandPage()
-                default:
-                    EmptyView()
-                }
-            }
 
         }
     }
@@ -135,4 +121,3 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
-
