@@ -52,7 +52,6 @@ struct FontsPage: View {
                 Text("Disabled button text").typographyStyle(.button,brand: brand).foregroundColor(ColorToken.grayscale600.color(brand: brand, colorScheme: colorScheme)).padding() .background(ColorToken.containerFillStatusDisabled.color( brand: brand,colorScheme: colorScheme))
                 
             }
-            .navigationTitle("ReliantFontsPage")
         }
     }
 }

@@ -10,14 +10,13 @@ import SwiftUI
 
 
 struct ConfirmationPage: View {
-    @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
+        @Environment(\.colorScheme) var colorScheme
+        @Environment(\.brand) private var brand
         
         private var brandSpacing: BrandSpacing {
             SpacingTokenManager.shared.spacing(for: brand)
         }
         
-    
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
@@ -32,17 +31,11 @@ struct ConfirmationPage: View {
                             .foregroundColor(ColorToken.greenBase.color( brand: brand,colorScheme: colorScheme))
                             .typographyStyle(.h3,  brand: brand)
                         
-                        Text("We are processing your sign up for <plan name>. Please check your email nrgtest1050 @nrg.com for confirmation.")
+                        Text(" We are processing your sign up for <plan name>. Please check your email nrgtest1050 @nrg.com for confirmation.")
                             .typographyStyle(.p1,  brand: brand)
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
-                    .padding(.horizontal, brandSpacing.containerSpacing.padding.m)
-//                    .brandBorderOverlay(
-//                                        brand: brand,
-//                                        radiusKey: .s,
-//                                        strokeKey: .regular,
-//                                        color:ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme) )
-
+                    .padding(.horizontal, brandSpacing.containerSpacing.padding.s)
                     
                     VStack(alignment: .leading,spacing: brandSpacing.containerSpacing.gaps.m) {
                         Text("Confirmation details").typographyStyle(.h3,  brand: brand)
@@ -51,16 +44,11 @@ struct ConfirmationPage: View {
                     }
                     .frame(maxWidth: .infinity,alignment: .leading)
                     .padding(brandSpacing.containerSpacing.padding.m)
-                    .background(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme))
+                    .background(ColorToken.grayscale400.color(brand: brand, colorScheme: colorScheme))
                     .cornerRadius(8)
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
-//                    .brandBorderOverlay(
-//                                        brand: brand,
-//                                        radiusKey: .s,
-//                                        strokeKey: .regular,
-//                                        color:ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme) )
-
-
+                    
+                    
                     HStack {
                         Text("Account").foregroundColor(.secondary)
                         Spacer()
@@ -71,12 +59,8 @@ struct ConfirmationPage: View {
                         Text("Document").foregroundColor(.secondary)
                     }
                     .typographyStyle(.p1,  brand: brand)
-                    .padding(.horizontal, brandSpacing.containerSpacing.padding.m)
-//                    .brandBorderOverlay(
-//                                        brand: brand,
-//                                        radiusKey: .s,
-//                                        strokeKey: .regular,
-//                                        color:ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme) )
+                    .padding(.horizontal, brandSpacing.containerSpacing.padding.none)
+                    
                     
                     VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.m) {
                         
@@ -113,7 +97,7 @@ struct ConfirmationPage: View {
                                 style: .active(ColorToken.tertiaryBase),
                                 iconPosition: .left
                             )
-
+                            
                             TagView(
                                 text: "$200 Bill Credit",
                                 style: .active(ColorToken.primaryBase)
@@ -139,48 +123,34 @@ struct ConfirmationPage: View {
                         )
                     }
                     .padding(brandSpacing.containerSpacing.padding.m)
-                    .background(
-                        RoundedRectangle(cornerRadius: 8)
-                            .fill(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme))
-                    )
-                    .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 2)
-//                    .brandBorderOverlay(
-//                                        brand: brand,
-//                                        radiusKey: .s,
-//                                        strokeKey: .regular,
-//                                        color:ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme) )
-    
+                    .brandBorderOverlay(
+                        brand: brand,
+                        radiusKey: .m,
+                        strokeKey: .thick,
+                        color:ColorToken.grayscale400.color( brand: brand,colorScheme: colorScheme) )
+
+                    
                     ButtonComponent(
                         title: "Button",
                         variant: .primary
                     ) {
                         print("Secondary tapped")
                     }
-//                    .brandBorderOverlay(
-//                                        brand: brand,
-//                                        radiusKey: .s,
-//                                        strokeKey: .regular,
-//                                        color:ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme) )
                 }
-                .padding(.bottom, brandSpacing.pageLayout.margins.bottom)
-                .padding(.horizontal, brandSpacing.pageLayout.margins.horizontal)
-                .padding(.top, brandSpacing.pageLayout.margins.top)
-//                .brandBorderOverlay(
-//                                    brand: brand,
-//                                    radiusKey: .s,
-//                                    strokeKey: .regular,
-//                                    color:ColorToken.primaryBase.color( brand: brand,colorScheme: colorScheme) )
-              
+                
+                
                 
             }
+            
         }
-//        .edgesIgnoringSafeArea(.all)
-        .background(Color.gray.opacity(0.05).edgesIgnoringSafeArea(.all))
+        .padding(.bottom, brandSpacing.pageLayout.margins.bottom)
+        .padding(.horizontal, brandSpacing.pageLayout.margins.horizontal)
+        .padding(.top, brandSpacing.pageLayout.margins.top)
+        .background(Color.gray.opacity(0.05).edgesIgnoringSafeArea(.horizontal))
 //        .frame(height: brandSpacing.pageLayout.heights.mobileSmall)
-
     }
-}
-
+        
+    }
 
 
 

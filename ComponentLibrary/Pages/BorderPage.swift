@@ -111,7 +111,6 @@ struct BorderPage: View {
                                                     strokeKey: .thick,
                                                     color:ColorToken.secondaryBase.color( brand: brand,colorScheme: colorScheme) )
             }
-            .navigationTitle("ReliantBorderPage")
         }
     }
 }
