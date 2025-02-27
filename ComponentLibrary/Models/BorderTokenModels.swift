@@ -92,7 +92,7 @@ struct BrandBorderOverlayModifier: ViewModifier {
 }
 
 extension View {
-    func brandBorderOverlay(radiusKey: BorderRadiusKey, strokeKey: BorderStrokeKey, color: Color) -> some View {
-        modifier(BrandBorderOverlayModifier(radiusKey: radiusKey, strokeKey: strokeKey, color: color))
+    func brandBorderOverlay(radiusKey: BorderRadiusKey, strokeKey: BorderStrokeKey, color: Color? = nil) -> some View {
+        modifier(BrandBorderOverlayModifier(radiusKey: radiusKey, strokeKey: strokeKey, color: color ?? .clear))
     }
 }
