@@ -11,6 +11,9 @@ struct ColorSwatches: View {
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.brand) private var brand
     
+    private func colorToken(_ token: ColorToken) -> Color {
+            token.color(brand: brand, colorScheme: colorScheme)
+        }
     
     var body: some View {
         VStack(spacing: 16) {
@@ -18,30 +21,15 @@ struct ColorSwatches: View {
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
                 Rectangle()
-                    .fill(
-                        ColorToken.primaryBase.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.primaryBase))
                     .frame(width: 60, height: 60)
                
                 Rectangle()
-                    .fill(
-                        ColorToken.primaryDarkest.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.primaryDarkest))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.primaryLighter.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.primaryLighter))
                     .frame(width: 60, height: 60)
                
             }
@@ -51,30 +39,15 @@ struct ColorSwatches: View {
             HStack(spacing: 16) {
                
                 Rectangle()
-                    .fill(
-                        ColorToken.secondaryBase.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.secondaryBase))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.secondaryLighter.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.secondaryLighter))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.secondaryLightest.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.secondaryLightest))
                     .frame(width: 60, height: 60)
                 
             }
@@ -82,30 +55,15 @@ struct ColorSwatches: View {
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
                 Rectangle()
-                    .fill(
-                        ColorToken.tertiaryBase.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.tertiaryBase))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.tertiaryDarkest.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.tertiaryDarkest))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.tertiaryLighter.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.tertiaryLighter))
                     .frame(width: 60, height: 60)
                 
             }
@@ -114,30 +72,15 @@ struct ColorSwatches: View {
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
                 Rectangle()
-                    .fill(
-                        ColorToken.redAccessible.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.redAccessible))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.redBase.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.redBase))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.redLight.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.redLight))
                     .frame(width: 60, height: 60)
             }
 
@@ -145,30 +88,15 @@ struct ColorSwatches: View {
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
                 Rectangle()
-                    .fill(
-                        ColorToken.greenAccessible.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.greenAccessible))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.greenBase.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.greenBase))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.greenEco.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.greenEco))
                     .frame(width: 60, height: 60)
             }
 
@@ -176,30 +104,15 @@ struct ColorSwatches: View {
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
                 Rectangle()
-                    .fill(
-                        ColorToken.yellowAccessible.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.yellowAccessible))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.yellowBase.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.yellowBase))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.yellowLight.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.yellowLight))
                     .frame(width: 60, height: 60)
             }
             
@@ -208,30 +121,15 @@ struct ColorSwatches: View {
                 .font(.custom("NRGEffraApp-Light", size: 16))
             HStack(spacing: 16) {
                 Rectangle()
-                    .fill(
-                        ColorToken.grayscale300.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.grayscale300))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.grayscale600.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.grayscale600))
                     .frame(width: 60, height: 60)
                 
                 Rectangle()
-                    .fill(
-                        ColorToken.grayscale900.color(
-                            brand: brand,
-                            colorScheme: colorScheme
-                        )
-                    )
+                    .fill(colorToken(.grayscale900))
                     .frame(width: 60, height: 60)
             }
             

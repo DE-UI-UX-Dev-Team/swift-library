@@ -117,7 +117,7 @@ struct ButtonComponent: View {
 
         Button(action: action) {
             Text(title)
-                .typographyStyle(styleConfig.typographyStyle, brand: brand)
+                .typographyStyle(styleConfig.typographyStyle)
                 .modifier(UnderlineModifier(applyUnderline: brand == .de && variant == .tertiary, color: styleConfig.foregroundColor))
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.vertical, styleConfig.padding)
@@ -125,7 +125,6 @@ struct ButtonComponent: View {
         .frame(maxWidth: buttonMaxWidth)
         .background(styleConfig.shape.fill(styleConfig.backgroundColor))
         .brandBorderOverlay(
-            brand: brand,
             radiusKey: brand == .de ? .s : .full,
             strokeKey: .regular,
             color: styleConfig.borderColor

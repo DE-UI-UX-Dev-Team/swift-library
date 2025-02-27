@@ -37,24 +37,24 @@ struct ContentView: View {
    
                     
                     Text("Heading 1")
-                                    .typographyStyle(.h1, brand: brand)
+                                    .typographyStyle(.h1)
                     Text("Heading 2")
-                                    .typographyStyle(.h2, brand: brand)
+                                    .typographyStyle(.h2)
                                 
                                 
                                 Text("Paragraph text")
-                                    .typographyStyle(.p1, brand: brand)
+                                    .typographyStyle(.p1)
                                 
                                     Text("Link text underlined!")
                                                 .underline()
                                                 .foregroundColor(ColorToken.primaryDarkest.color( brand: brand,
                                                                                                  colorScheme: colorScheme))
-                                                .typographyStyle(.p2, brand: brand)
+                                                .typographyStyle(.p2)
                                 
           
                                 
                                 Text("Primary button text")
-                                    .typographyStyle(.button, brand: brand)
+                                    .typographyStyle(.button)
                                     .padding()
                                     .background(ColorToken.containerFillTertiary1.color( brand: brand,colorScheme: colorScheme))
                                     .cornerRadius(8)

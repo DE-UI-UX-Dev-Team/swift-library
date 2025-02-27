@@ -63,7 +63,7 @@ struct InputPage: View {
                     VStack(alignment: .leading, spacing: 8) {
                         
                         Text("Single & Grouped Radios")
-                            .typographyStyle(.h3, brand: brand)
+                            .typographyStyle(.h3)
                         
                              InputComponent(
                                                 variant: .radio,
@@ -99,7 +99,7 @@ struct InputPage: View {
                         Spacer()
                         
                         Text("Singl & Grouped Checkboxes")
-                            .typographyStyle(.h3, brand: brand)
+                            .typographyStyle(.h3)
                         InputComponent(
                                                  variant: .checkbox,
                                                  value: $singleCheckboxValue,

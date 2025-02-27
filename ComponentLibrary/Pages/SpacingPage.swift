@@ -11,17 +11,20 @@ import SwiftUI
 struct PaddingVisualizer: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) private var brand
+    private func colorToken(_ token: ColorToken) -> Color {
+        token.color(brand: brand, colorScheme: colorScheme)
+    }
     let name: String
     let padding: CGFloat
 
     private var color: Color {
         switch name {
-        case "None": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.1)
-        case "XS", "S": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.3)
-        case "M": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.5)
-        case "L", "XL": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.7)
-        case "2XL": return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.9)
-        default: return ColorToken.primaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.3)
+        case "None": return colorToken(.primaryBase).opacity(0.1)
+        case "XS", "S": return colorToken(.primaryBase).opacity(0.3)
+        case "M": return colorToken(.primaryBase).opacity(0.5)
+        case "L", "XL": return colorToken(.primaryBase).opacity(0.7)
+        case "2XL": return colorToken(.primaryBase).opacity(0.9)
+        default: return colorToken(.primaryBase).opacity(0.3)
         }
     }
 
@@ -52,16 +55,19 @@ struct PaddingVisualizer: View {
 struct GapVisualizer: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) private var brand
+    private func colorToken(_ token: ColorToken) -> Color {
+        token.color(brand: brand, colorScheme: colorScheme)
+    }
     let name: String
     let gap: CGFloat
 
     private var color: Color {
         switch name {
-        case "None": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.1)
-        case "XS", "S": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.3)
-        case "M": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.5)
-        case "L", "XL": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.7)
-        case "Icon Gap": return ColorToken.tertiaryBase.color(brand: brand,colorScheme: colorScheme).opacity(0.9)
+        case "None": return colorToken(.tertiaryBase).opacity(0.1)
+        case "XS", "S": return colorToken(.tertiaryBase).opacity(0.3)
+        case "M": return colorToken(.tertiaryBase).opacity(0.5)
+        case "L", "XL": return colorToken(.tertiaryBase).opacity(0.7)
+        case "Icon Gap": return colorToken(.tertiaryBase).opacity(0.9)
         default: return Color.green.opacity(0.3)
         }
     }
@@ -125,7 +131,6 @@ struct ContainerSpacingVisualizer: View {
                 }
                 
             }
-            .border(Color.green, width: 1)
             
                 VStack{
                                 Text("Container Gaps")
@@ -142,8 +147,8 @@ struct ContainerSpacingVisualizer: View {
                         GapVisualizer(name: "Icon Gap", gap: spacing.gaps.icon)
                     }
                    
-                }.border(Color.green, width: 1)}
-            }
+                }}
+        }.border(Color.green, width: 2)
         }
     }
 
@@ -161,7 +166,7 @@ struct SpacingPage: View {
             .padding(.top, brandSpacing.pageLayout.margins.top)
             .padding(.bottom, brandSpacing.pageLayout.margins.bottom)
             .padding(.horizontal, brandSpacing.pageLayout.margins.horizontal)
-            .border(Color.red, width: 1)
+            .border(Color.red, width: 2)
             
         }
     }

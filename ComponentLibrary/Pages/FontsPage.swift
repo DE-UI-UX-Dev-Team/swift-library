@@ -1,5 +1,5 @@
 //
-//  ReliantFontsPage.swift
+//  FontsPage.swift
 //  ComponentLibrary
 //
 //  Created by UI/UX Development Team  on 1/21/25.
@@ -10,9 +10,12 @@ import SwiftUI
 struct FontsPage: View {
     @State private var showToast = false
     @State private var showModal = false
-    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.brand) private var brand
     
+    private func colorToken(_ token: ColorToken) -> Color {
+        token.color(brand: brand, colorScheme: colorScheme)
+    }
 
     
     var body: some View {
@@ -23,44 +26,66 @@ struct FontsPage: View {
                     .padding()
                 
                 Text("Heading 1")
-                    .typographyStyle(.h1,  brand: brand)
+                    .typographyStyle(.h1) 
                 Text("Heading 2")
-                    .typographyStyle(.h2,  brand: brand)
+                    .typographyStyle(.h2)
                 Text("Heading 3")
-                    .typographyStyle(.h3,  brand: brand)
+                    .typographyStyle(.h3)
                 Text("Heading 4")
-                    .typographyStyle(.h4,  brand: brand)
+                    .typographyStyle(.h4)
                 Text("Heading 5")
-                    .typographyStyle(.h5,  brand: brand)
+                    .typographyStyle(.h5)
                 Text("Heading 6")
-                    .typographyStyle(.h6,  brand: brand)
+                    .typographyStyle(.h6)
                 
-
                 Text("Paragraph 1")
-                    .typographyStyle(.p1,  brand: brand)
+                    .typographyStyle(.p1)
                 Text("Paragraph 2")
-                    .typographyStyle(.p1,  brand: brand)
+                    .typographyStyle(.p1)
                 Text("Paragraph 3")
-                    .typographyStyle(.p1, brand: brand)
+                    .typographyStyle(.p1)
                 
+                Text("Link text underlined!")
+                    .foregroundColor(colorToken(.primaryBase))
+                    .typographyStyle(.p1)
+                
+                Text("Primary button text")
+                    .typographyStyle(.button)
+                    .foregroundColor(colorToken(.grayscale000))
+                    .padding()
+                    .background(colorToken(.primaryBase))
+             
+                
+                Text("Secondary button text")
+                    .typographyStyle(.button)
+                    .foregroundColor(colorToken(.primaryBase))
+                    .padding()
+                    .background(colorToken(.primaryLightest))
+               
+                
+                Text("Tertiary button text")
+                    .typographyStyle(.button)
+                    .background(colorToken(.grayscale000))
+                    .foregroundColor(colorToken(.primaryBase))
+                    .padding()
+                    .brandBorderOverlay(radiusKey: .none, strokeKey: .regular, color: colorToken(.primaryBase))
 
-                Text("Link text underlined!").foregroundColor(ColorToken.primaryBase.color( brand: brand, colorScheme: colorScheme)).typographyStyle(.p1, brand: brand)
                 
-                Text("Primary button text").typographyStyle(.button,brand: brand).foregroundColor(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)).padding().background(ColorToken.primaryBase.color( brand: brand,colorScheme: colorScheme))
-                Text("Secondary button text").typographyStyle(.button, brand: brand).foregroundColor(ColorToken.primaryBase.color(brand: brand, colorScheme: colorScheme)).padding().background(ColorToken.primaryLightest.color( brand: brand,colorScheme: colorScheme))
-                Text("Tertiary button text").typographyStyle(.button,brand: brand).background(ColorToken.grayscale000.color( brand: brand,colorScheme: colorScheme)).foregroundColor(ColorToken.primaryBase.color(brand: brand, colorScheme: colorScheme)).padding().brandBorderOverlay(brand: brand,radiusKey: .none,strokeKey: .regular,color: ColorToken.primaryBase.color( brand: brand, colorScheme: colorScheme))
-                Text("Disabled button text").typographyStyle(.button,brand: brand).foregroundColor(ColorToken.grayscale600.color(brand: brand, colorScheme: colorScheme)).padding() .background(ColorToken.containerFillStatusDisabled.color( brand: brand,colorScheme: colorScheme))
-                
+                Text("Disabled button text")
+                    .typographyStyle(.button)
+                    .foregroundColor(colorToken(.grayscale600))
+                    .padding()
+                    .background(colorToken(.containerFillStatusDisabled))
             }
         }
     }
 }
-    
-    struct FontsPage_Previews: PreviewProvider {
-        static var previews: some View {
-            PreviewWrapper { brand in
-                FontsPage()
-            }
+
+struct FontsPage_Previews: PreviewProvider {
+    static var previews: some View {
+        PreviewWrapper { brand in
+            FontsPage()
         }
     }
+}
 

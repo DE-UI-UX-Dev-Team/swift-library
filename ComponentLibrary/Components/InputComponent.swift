@@ -8,15 +8,11 @@
 import SwiftUI
 
 enum InputVariant: CaseIterable {
-    case radio
-    case checkbox
+    case radio, checkbox
 }
 
 enum InputState: Hashable {
-    case normal
-    case selected
-    case disabled
-    case error
+    case normal, selected, disabled, error
 }
 
 struct InputOption: Identifiable {
@@ -107,7 +103,7 @@ struct InputComponent: View {
         VStack(alignment: .leading,spacing: brandSpacing.containerSpacing.gaps.m) {
             if let label = label {
                 Text(label)
-                    .typographyStyle(.p1, brand: brand)
+                    .typographyStyle(.p1)
                     .foregroundColor(colorFor(isDisabled: isDisabled))
             }
             
@@ -134,7 +130,7 @@ struct InputComponent: View {
                                 colorScheme: colorScheme
                             )
                             Text(option.label)
-                                .typographyStyle(.p2, brand: brand)
+                                .typographyStyle(.p2)
                                 .foregroundColor(colorFor(isDisabled: isDisabled))
                         }
                     }
@@ -156,7 +152,7 @@ struct InputComponent: View {
                                 colorScheme: colorScheme
                             )
                             Text(option.label)
-                                .typographyStyle(.p2, brand: brand)
+                                .typographyStyle(.p2)
                                 .foregroundColor(colorFor(isDisabled: isDisabled))
                         }
                     }
@@ -192,7 +188,6 @@ struct CustomCheckbox: View {
                 .fill(colors.fill.color(brand: brand, colorScheme: colorScheme))
                 .frame(width: checkboxSize, height: checkboxSize)
                 .brandBorderOverlay(
-                    brand: brand,
                     radiusKey: .s,
                     strokeKey: .thick,
                     color: colors.border.color(brand: brand, colorScheme: colorScheme)
@@ -234,7 +229,6 @@ struct CustomRadioButton: View {
                 .fill(colors.fill.color(brand: brand, colorScheme: colorScheme))
                 .frame(width: radioSize, height: radioSize)
                 .brandBorderOverlay(
-                    brand: brand,
                     radiusKey: .full,
                     strokeKey: .thick,
                     color: colors.border.color(brand: brand, colorScheme: colorScheme)

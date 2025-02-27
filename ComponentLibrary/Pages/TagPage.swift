@@ -5,7 +5,7 @@ struct TagDemoPage: View {
     var body: some View {
         VStack(spacing: 20) {
             Text("Tag Component Demo")
-                .typographyStyle(.h1, brand: brand)
+                .typographyStyle(.h1)
 
             VStack(spacing: 10) {
                 

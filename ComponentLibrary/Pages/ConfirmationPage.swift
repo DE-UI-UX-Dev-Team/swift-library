@@ -16,6 +16,10 @@ struct ConfirmationPage: View {
         private var brandSpacing: BrandSpacing {
             SpacingTokenManager.shared.spacing(for: brand)
         }
+    
+      private func colorToken(_ token: ColorToken) -> Color {
+            token.color(brand: brand, colorScheme: colorScheme)
+        }
         
     var body: some View {
         VStack(spacing: 0) {
@@ -25,26 +29,26 @@ struct ConfirmationPage: View {
                     VStack(spacing: brandSpacing.containerSpacing.gaps.s) {
                         Image(systemName: "checkmark.circle")
                             .font(.system(size: 36))
-                            .foregroundColor(ColorToken.greenBase.color( brand: brand,colorScheme: colorScheme))
+                            .foregroundColor(colorToken(.greenBase))
                         
                         Text("Thank you for signing up!")
-                            .foregroundColor(ColorToken.greenBase.color( brand: brand,colorScheme: colorScheme))
-                            .typographyStyle(.h3,  brand: brand)
+                            .foregroundColor(colorToken(.greenBase))
+                            .typographyStyle(.h3)
                         
                         Text(" We are processing your sign up for <plan name>. Please check your email nrgtest1050 @nrg.com for confirmation.")
-                            .typographyStyle(.p1,  brand: brand)
+                            .typographyStyle(.p1)
                     }
                     .frame(maxWidth: .infinity, alignment: .center)
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.s)
                     
                     VStack(alignment: .leading,spacing: brandSpacing.containerSpacing.gaps.m) {
-                        Text("Confirmation details").typographyStyle(.h3,  brand: brand)
-                        Text("Request submitted on 01/01/2023").typographyStyle(.p1,  brand: brand)
-                        Text("Confirmation number  0000123456778901").typographyStyle(.p1,  brand: brand)
+                        Text("Confirmation details").typographyStyle(.h3)
+                        Text("Request submitted on 01/01/2023").typographyStyle(.p1)
+                        Text("Confirmation number  0000123456778901").typographyStyle(.p1)
                     }
                     .frame(maxWidth: .infinity,alignment: .leading)
                     .padding(brandSpacing.containerSpacing.padding.m)
-                    .background(ColorToken.grayscale400.color(brand: brand, colorScheme: colorScheme))
+                    .background(colorToken(.grayscale400))
                     .cornerRadius(8)
                     .shadow(color: Color.black.opacity(0.1), radius: 4, x: 0, y: 2)
                     
@@ -58,14 +62,14 @@ struct ConfirmationPage: View {
                         Spacer()
                         Text("Document").foregroundColor(.secondary)
                     }
-                    .typographyStyle(.p1,  brand: brand)
+                    .typographyStyle(.p1)
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.none)
                     
                     
                     VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.m) {
                         
                         Text("2 FREE DAYS PER WEEK")
-                            .typographyStyle(.h3,  brand: brand)
+                            .typographyStyle(.h3)
                         HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
                             TagView(
                                 text: "12 months",
@@ -85,10 +89,10 @@ struct ConfirmationPage: View {
                         }
                         
                         Text("Reliant Truly Free Nights 100% Solar 12 plan")
-                            .typographyStyle(.h3,  brand: brand)
+                            .typographyStyle(.h3)
                         
                         Text("Straightforward plan with locked-in energy charge")
-                            .typographyStyle(.p1,  brand: brand)
+                            .typographyStyle(.p1)
                             .foregroundColor(.secondary)
                         
                         HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
@@ -106,10 +110,10 @@ struct ConfirmationPage: View {
                         
                         HStack {
                             Text("18.5¢/kWh")
-                                .typographyStyle(.h2,  brand: brand)
+                                .typographyStyle(.h2)
                             Spacer()
                             Text("price at 2,000 kWh")
-                                .typographyStyle(.p1,  brand: brand)
+                                .typographyStyle(.p1)
                                 .foregroundColor(.secondary)
                         }
                         
@@ -124,10 +128,10 @@ struct ConfirmationPage: View {
                     }
                     .padding(brandSpacing.containerSpacing.padding.m)
                     .brandBorderOverlay(
-                        brand: brand,
                         radiusKey: .m,
                         strokeKey: .thick,
-                        color:ColorToken.grayscale400.color( brand: brand,colorScheme: colorScheme) )
+                        color:colorToken(.grayscale400)
+                    )
 
                     
                     ButtonComponent(
@@ -162,3 +166,4 @@ struct ConfirmationPage_Previews: PreviewProvider {
         }
     }
 }
+

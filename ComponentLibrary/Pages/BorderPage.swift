@@ -1,5 +1,5 @@
 //
-//  ReliantBorderPage.swift
+//  BorderPage.swift
 //  ComponentLibrary
 //
 //  Created by UI/UX Development Team  on 1/29/25.
@@ -12,6 +12,11 @@ import SwiftUI
 struct BorderPage: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) private var brand
+
+    
+    private func colorToken(_ token: ColorToken) -> Color {
+        token.color(brand: brand, colorScheme: colorScheme)
+    }
 
     
     var body: some View {
@@ -29,43 +34,41 @@ struct BorderPage: View {
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
                                                     radiusKey: .none,
                                                     strokeKey: .none,
-                                                    color:ColorToken.primaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.primaryBase))
                 
                 Text("Thin")
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
+                                                   
                                                     radiusKey: .none,
                                                     strokeKey: .thin,
-                                                    color:ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.tertiaryBase))
                 Text("Regular")
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
+                                                   
                                                     radiusKey: .none,
                                                     strokeKey: .regular,
-                                                    color:ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.tertiaryBase) )
                 Text("Thick")
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
+                                                    
                                                     radiusKey: .none,
                                                     strokeKey: .thick,
-                                                    color:ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.tertiaryBase) )
                 Text("Bar")
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
                                                     radiusKey: .none,
                                                     strokeKey: .bar,
-                                                    color:ColorToken.tertiaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.tertiaryBase) )
                 
                 Text("Border Radius")
                     .font(.custom("Inter18pt-Bold", size: 18))
@@ -74,42 +77,42 @@ struct BorderPage: View {
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
+                                                   
                                                     radiusKey: .none,
                                                     strokeKey: .thick,
-                                                    color:ColorToken.secondaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.secondaryBase) )
                 Text("XS")
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
+                                                    
                                                     radiusKey: .xs,
                                                     strokeKey: .thick,
-                                                    color:ColorToken.secondaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.secondaryBase) )
                 Text("S")
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
+                                                   
                                                     radiusKey: .s,
                                                     strokeKey: .thick,
-                                                    color:ColorToken.secondaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.secondaryBase) )
                 Text("M")
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
+                                                   
                                                     radiusKey: .m,
                                                     strokeKey: .thick,
-                                                    color:ColorToken.secondaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.secondaryBase) )
                 Text("Full")
                     .padding(.vertical, 8)
                         .padding(.horizontal, 65)
                                 .brandBorderOverlay(
-                                                    brand: brand,
+                                                  
                                                     radiusKey: .full,
                                                     strokeKey: .thick,
-                                                    color:ColorToken.secondaryBase.color( brand: brand,colorScheme: colorScheme) )
+                                                    color:colorToken(.secondaryBase) )
             }
         }
     }
