@@ -141,17 +141,13 @@ struct ConfirmationPage: View {
                         print("Secondary tapped")
                     }
                 }
-                
-                
-                
+ 
             }
             
         }
-        .padding(.bottom, brandSpacing.pageLayout.margins.bottom)
-        .padding(.horizontal, brandSpacing.pageLayout.margins.horizontal)
-        .padding(.top, brandSpacing.pageLayout.margins.top)
-        .background(Color.gray.opacity(0.05).edgesIgnoringSafeArea(.horizontal))
-//        .frame(height: brandSpacing.pageLayout.heights.mobileSmall)
+        .pageMargins()
+        .frame(maxHeight: PageMaxHeights.heightForDevice())
+
     }
         
     }
