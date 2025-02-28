@@ -146,7 +146,6 @@ struct ConfirmationPage: View {
             
         }
         .pageMargins()
-        .frame(maxHeight: PageMaxHeights.heightForDevice())
 
     }
         

@@ -21,7 +21,6 @@ struct SpacingPage: View {
             VStack() {
                 ContainerSpacingVisualizer(spacing: brandSpacing.containerSpacing)            }
             .pageMargins()
-            .frame(maxHeight: PageMaxHeights.heightForDevice())
             .border(Color.red, width: 2)
         }
     }
