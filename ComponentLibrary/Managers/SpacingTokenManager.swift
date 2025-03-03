@@ -36,11 +36,6 @@ final class SpacingTokenManager: ObservableObject {
         BrandSpacing(
             pageLayout: PageLayout(
                 margins: Margins(horizontal: 16, top: 24, bottom: 32),
-                heights: Heights(
-                    mobileSmall: 812, mobileRegular: 852,
-                    mobileLarge: 932, tabletPortrait: 1040,
-                    tabletLandscape: 768
-                ),
                 sectionSpacing: SectionSpacing(
                     none: 0, xs: 8, s: 16, m: 16, l: 24,
                     xl: 32, twoXL: 32, threeXL: 32, button: 24

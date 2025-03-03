@@ -19,17 +19,11 @@ struct BrandSpacing: Codable {
 
 struct PageLayout: Codable {
     let margins: Margins
-    let heights: Heights
     let sectionSpacing: SectionSpacing
 }
 
 struct Margins: Codable {
     let horizontal, top, bottom: CGFloat
-}
-
-struct Heights: Codable {
-    let mobileSmall, mobileRegular, mobileLarge: CGFloat
-    let tabletPortrait, tabletLandscape: CGFloat
 }
 
 struct SectionSpacing: Codable {

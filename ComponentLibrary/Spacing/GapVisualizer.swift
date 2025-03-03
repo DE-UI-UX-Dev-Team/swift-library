@@ -13,6 +13,10 @@ struct GapVisualizer: View {
     private func colorToken(_ token: ColorToken) -> Color {
         token.color(brand: brand, colorScheme: colorScheme)
     }
+    
+    private var brandSpacing: BrandSpacing {
+        SpacingTokenManager.shared.spacing(for: brand)
+    }
     let name: String
     let gap: CGFloat
 
