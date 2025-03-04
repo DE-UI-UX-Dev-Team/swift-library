@@ -9,7 +9,7 @@ import SwiftUI
 
 
 private struct BrandKey: EnvironmentKey {
-    static let defaultValue: Brand = .de
+    static let defaultValue: Brand = .reliant
 }
 
 private struct BrandSpacingKey: EnvironmentKey {

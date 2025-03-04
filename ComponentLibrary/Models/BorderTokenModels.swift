@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct BorderBrandTokens: Decodable {
     let brands: [String: BrandBorderTokens]
 }
@@ -72,22 +73,26 @@ extension BrandBorderTokens {
     }
 }
 
+struct BrandBorderOverlayModifier: ViewModifier {
+    let radiusKey: BorderRadiusKey
+    let strokeKey: BorderStrokeKey
+    let color: Color
+    @Environment(\.brand) private var brand
 
-extension View {
-    func brandBorderOverlay(
-        brand: Brand,
-        radiusKey: BorderRadiusKey,
-        strokeKey: BorderStrokeKey,
-        color: Color
-    ) -> some View {
+    func body(content: Content) -> some View {
         let tokens = BorderTokenManager.shared.tokens(for: brand)
         let cornerRadius = tokens?.radiusValue(radiusKey) ?? 0
-        let strokeWidth  = tokens?.strokeValue(strokeKey) ?? 0
-        
-        return self.overlay(
+        let strokeWidth = tokens?.strokeValue(strokeKey) ?? 0
+
+        return content.overlay(
             RoundedRectangle(cornerRadius: cornerRadius)
                 .stroke(color, lineWidth: strokeWidth)
         )
     }
 }
 
+extension View {
+    func brandBorderOverlay(radiusKey: BorderRadiusKey, strokeKey: BorderStrokeKey, color: Color? = nil) -> some View {
+        modifier(BrandBorderOverlayModifier(radiusKey: radiusKey, strokeKey: strokeKey, color: color ?? .clear))
+    }
+}

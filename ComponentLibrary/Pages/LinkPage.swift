@@ -15,7 +15,7 @@ struct LinkPage: View {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     Text("Standalone Link:")
-                        .typographyStyle(.h3,  brand: brand)
+                        .typographyStyle(.h3)
                     LinkComponent(
                         text: "Tap Me (Standalone)",
                         variant: .text,
@@ -28,7 +28,7 @@ struct LinkPage: View {
                     Divider()
                     
                     Text("Inline Link:")
-                        .typographyStyle(.h3,  brand: brand)
+                        .typographyStyle(.h3)
                     HStack(alignment: .firstTextBaseline, spacing: 0) {
                         Text("This is an ")
                         LinkComponent(
@@ -40,12 +40,12 @@ struct LinkPage: View {
                             }
                         )
                         Text(" embedded.")
-                    }.typographyStyle(.p1, brand: brand)
+                    }.typographyStyle(.p1)
                     
                     Divider()
                     
                     Text("Accordion Link (No Extra Content):")
-                        .typographyStyle(.h3,  brand: brand)
+                        .typographyStyle(.h3)
                     LinkComponent(
 
                         text: "Toggle Accordion",
@@ -62,7 +62,7 @@ struct LinkPage: View {
                     Divider()
                     
                     Text("Accordion Link (With Additional Content):")
-                        .typographyStyle(.h3,  brand: brand)
+                        .typographyStyle(.h3)
                     VStack(alignment: .leading, spacing: 8) {
                         LinkComponent( 
                             text: "Show/Hide Details",
@@ -76,7 +76,7 @@ struct LinkPage: View {
                         )
                         if isAccordionExpandedWithContent {
                             Text("Here is some extra content revealed by the accordion link. It could be any view!")
-                                .typographyStyle(.p1,  brand: brand)
+                                .typographyStyle(.p1)
                                 .padding()
                                 .background(Color.gray.opacity(0.2))
                                 .cornerRadius(8)

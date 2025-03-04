@@ -5,9 +5,13 @@ struct ComponentLibraryHome: View {
     let components: [(String, AnyView, String)] = [
         ("Buttons", AnyView(ButtonView()), "rectangle.grid.1x2"),
         ("Links", AnyView(LinkPage()), "rectangle.grid.1x2"),
+        ("Tags", AnyView(TagDemoPage()), "rectangle.grid.1x2"),
+        ("Separator", AnyView(SeparatorDemoPage()), "rectangle.grid.1x2"),
+        ("Input", AnyView(InputPage()), "rectangle.grid.1x2"),
+        ("Confirmation Page", AnyView(ConfirmationPage()), "dock.rectangle"),
         ("ColorTokenSystem", AnyView(ColorSwatches()), "rectangle.fill.on.rectangle.fill"),
-        ("TypographyTokenSystem", AnyView(ReliantFontsPage()), "rectangle.fill.on.rectangle.fill"),
-        ("BorderTokenSystem", AnyView(ReliantBorderPage()), "rectangle.fill.on.rectangle.fill"),
+        ("TypographyTokenSystem", AnyView(FontsPage()), "rectangle.fill.on.rectangle.fill"),
+        ("BorderTokenSystem", AnyView(BorderPage()), "rectangle.fill.on.rectangle.fill"),
         ("SpacingTokenSystem", AnyView(SpacingPage()), "rectangle.fill.on.rectangle.fill"),
     ]
 

@@ -10,23 +10,10 @@ enum ButtonSize {
 }
 
 
-struct AnyShape: Shape {
-    private let pathClosure: @Sendable (CGRect) -> Path
-
-    init<S: Shape>(_ shape: S) {
-        self.pathClosure = { @Sendable rect in shape.path(in: rect) }
-    }
-
-    func path(in rect: CGRect) -> Path {
-        pathClosure(rect)
-    }
-}
-
 struct ButtonStyleConfig {
     let backgroundColor: Color
     let foregroundColor: Color
     let borderColor: Color
-    let shape: AnyShape
     let typographyStyle: MyTextStyle
     let padding: CGFloat
 
@@ -39,8 +26,7 @@ struct ButtonStyleConfig {
             backgroundColor: style.getColor(for: variant, type: .background,brand: brand, colorScheme: colorScheme),
             foregroundColor: style.getColor(for: variant, type: .foreground, brand: brand,colorScheme: colorScheme),
             borderColor: style.getColor(for: variant, type: .border,brand: brand, colorScheme: colorScheme),
-            shape: style.shape,
-            typographyStyle: .primaryButton,
+            typographyStyle: .button,
             padding: style.padding
         )
     }
@@ -51,7 +37,6 @@ struct ButtonStyleConfig {
 
     struct BrandStyle {
         let colors: [ButtonVariant: [ColorType: ColorToken]]
-        let shape: AnyShape
         let padding: CGFloat
 
         func getColor(for variant: ButtonVariant, type: ColorType, brand: Brand,colorScheme: ColorScheme) -> Color {
@@ -67,7 +52,6 @@ struct ButtonStyleConfig {
                 .tertiary: [.background: .grayscale000, .foreground: .grayscale900, .border: .grayscale000],
                 .disabled: [.background: .grayscale300, .foreground: .grayscale600, .border: .grayscale300]
             ],
-            shape: AnyShape(RoundedRectangle(cornerRadius: 4)),
             padding: 16
         ),
         .reliant: BrandStyle(
@@ -77,7 +61,6 @@ struct ButtonStyleConfig {
                 .tertiary: [.background: .grayscale000, .foreground: .primaryBase, .border: .primaryBase],
                 .disabled: [.background: .grayscale400, .foreground: .grayscale600, .border: .grayscale300]
             ],
-            shape: AnyShape(Capsule()),
             padding: 15
         )
     ]
@@ -89,8 +72,7 @@ struct ButtonStyleConfig {
             .tertiary: [.background: .grayscale000, .foreground: .primaryBase, .border: .primaryBase],
             .disabled: [.background: .grayscale400, .foreground: .grayscale600, .border: .grayscale300]
         ],
-        shape: AnyShape(RoundedRectangle(cornerRadius: 8)),
-        padding: 14
+        padding:15
     )
 }
 
@@ -117,6 +99,8 @@ struct ButtonComponent: View {
 
     var body: some View {
         let styleConfig = ButtonStyleConfig.get(for: brand, variant: variant, colorScheme: colorScheme)
+        let borderTokens = BorderTokenManager.shared.tokens(for: brand)
+        let cornerRadius = borderTokens?.radiusValue(brand == .de ? .s : .full) ?? 0
         
         let buttonMaxWidth: CGFloat? = {
                  switch size {
@@ -129,15 +113,17 @@ struct ButtonComponent: View {
 
         Button(action: action) {
             Text(title)
-                .typographyStyle(styleConfig.typographyStyle, brand: brand)
+                .typographyStyle(styleConfig.typographyStyle)
                 .modifier(UnderlineModifier(applyUnderline: brand == .de && variant == .tertiary, color: styleConfig.foregroundColor))
                 .frame(maxWidth: .infinity, alignment: .center)
                 .padding(.vertical, styleConfig.padding)
         }
         .frame(maxWidth: buttonMaxWidth)
-        .background(styleConfig.shape.fill(styleConfig.backgroundColor))
+        .background(
+                    RoundedRectangle(cornerRadius: cornerRadius)
+                        .fill(styleConfig.backgroundColor)
+                )
         .brandBorderOverlay(
-            brand: brand,
             radiusKey: brand == .de ? .s : .full,
             strokeKey: .regular,
             color: styleConfig.borderColor

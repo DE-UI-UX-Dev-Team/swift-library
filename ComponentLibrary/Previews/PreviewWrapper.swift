@@ -17,7 +17,6 @@ struct PreviewWrapper<Content: View>: View {
                 .environment(\.brand, brand) 
                 .previewDisplayName("\(brand)")
                 .previewLayout(.sizeThatFits)
-                .padding()
         }
     }
 }

@@ -30,7 +30,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		6BD70FC82D66EFC900641B5A /* Exceptions for "ComponentLibrary" folder in "ComponentLibrary" target */ = {
+		223EBAE32D67C81D0057DACA /* Exceptions for "ComponentLibrary" folder in "ComponentLibrary" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -43,7 +43,7 @@
 		22B3C8C82D305FA900E14D28 /* ComponentLibrary */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
-				6BD70FC82D66EFC900641B5A /* Exceptions for "ComponentLibrary" folder in "ComponentLibrary" target */,
+				223EBAE32D67C81D0057DACA /* Exceptions for "ComponentLibrary" folder in "ComponentLibrary" target */,
 			);
 			path = ComponentLibrary;
 			sourceTree = "<group>";

@@ -56,7 +56,7 @@ private func createStyledText(style: LinkStyleConfig) -> some View {
         if isInline {
             baseText
         } else {
-            baseText.typographyStyle(style.typographyStyle, brand: brand)
+            baseText.typographyStyle(style.typographyStyle)
         }
     }
     .foregroundColor(style.foregroundColor)
