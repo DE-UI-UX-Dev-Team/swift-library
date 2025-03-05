@@ -83,7 +83,7 @@ enum ColorToken: String {
     case containerFillStatusInfo
     case containerFillStatusWarning
     case containerFillStatusDisabled
-    case borderDefaultPrimarycase
+    case borderDefaultPrimary
     case borderDefaultSecondary
     case borderDefaultTertiary
     case borderStatusError
