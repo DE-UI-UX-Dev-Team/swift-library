@@ -4,26 +4,23 @@ struct StepperPage: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 50) {
+            VStack {
                 Text("Stepper Demo Page")
                     .typographyStyle(.h1)
                 VStack(spacing:120){
                     
-                    StepperView(
-                        steps: 3,
+                    StepperComponent(
                         currentStep: 2,
                         labels: ["New Address", "Transfer Dates", "Verification"]
                     )
-                    StepperView(
-                        steps: 4,
+                    StepperComponent(
                         currentStep: 3,
                         labels: ["New Address", "Transfer Dates", "Verification","Submit"]
                     )
-                    StepperView(
-                        steps: 5,
-                        currentStep: 4,
+                    StepperComponent(
+                        currentStep:4,
                         intermediateSteps: [3],
-                        labels: ["Select Plan", "About you", "StartDate","Add-ons","Review","Submit"] // ✅ "Add-ons" will be used for intermediate
+                        labels: ["Select Plan", "About you", "StartDate","Add-ons","Review","Submit","final"] // ✅ "Add-ons" will be used for intermediate
                     )
                 }
             } .pageMargins()
