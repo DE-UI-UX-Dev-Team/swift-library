@@ -49,7 +49,7 @@ struct ButtonStyleConfig {
             colors: [
                 .primary: [.background: .containerFillTertiaryBrand, .foreground: .grayscale900, .border: .grayscale900],
                 .secondary: [.background: .containerFillGrayDefault, .foreground: .grayscale900, .border: .grayscale900],
-                .tertiary: [.background: .grayscale000, .foreground: .grayscale900, .border: .grayscale000],
+                .tertiary: [.background: .transparent, .foreground: .grayscale900, .border: .transparent],
                 .disabled: [.background: .grayscale300, .foreground: .grayscale600, .border: .grayscale300]
             ],
             padding: 16
