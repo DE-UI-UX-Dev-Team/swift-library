@@ -20,7 +20,7 @@ struct StepperPage: View {
                     StepperComponent(
                         currentStep:4,
                         intermediateSteps: [3],
-                        labels: ["Select Plan", "About you", "StartDate","Add-ons","Review","Submit","final"] // ✅ "Add-ons" will be used for intermediate
+                        labels: ["Select Plan", "About you", "StartDate","Add-ons","Review","Submit","final"]
                     )
                 }
             } .pageMargins()

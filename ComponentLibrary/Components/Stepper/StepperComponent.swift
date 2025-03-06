@@ -16,7 +16,7 @@ struct StepperComponent: View {
     
     private var computedStepCount: Int {
         if let intermediateSteps = intermediateSteps, !intermediateSteps.isEmpty {
-            return max(labels.count - 1, 1) // Ensure it doesn't become zero
+            return max(labels.count - 1, 1)
         }
         return labels.count
     }
@@ -27,19 +27,16 @@ struct StepperComponent: View {
         for step in 1...computedStepCount {
             stepList.append(step)
             if intermediateSteps?.contains(step) ?? false {
-                stepList.append(step + StepConstants.intermediateStepOffset) // Unique identifier for intermediate step
+                stepList.append(step + StepConstants.intermediateStepOffset)
             }
         }
         return stepList
     }
     
     private func isStepCompleted(_ step: Int) -> Bool {
-        // Regular steps are completed if they are less than the current step
         if step < currentStep {
             return true
         }
-
-        // Intermediate steps should be marked completed only if their corresponding main step is completed
         if step >= StepConstants.intermediateStepOffset {
             let correspondingStep = step - StepConstants.intermediateStepOffset
             return intermediateSteps?.contains(correspondingStep) ?? false && correspondingStep < currentStep
