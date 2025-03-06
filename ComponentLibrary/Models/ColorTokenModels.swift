@@ -57,35 +57,30 @@ enum ColorToken: String {
     case grayscale700
     case grayscale800
     case grayscale900
-    
+    case transparent
     case pageFillGrayDefault
-    case pageFillGrayLighter
-    case pageFillGrayLight
-    case pageFillPrimaryBrand
+    case pageFillGray1
+    case pageFillGray2
     case containerFillGrayDefault
     case containerFillGray1
     case containerFillGray2
+    case containerFillGray3
+    case containerFillGrayInverse
     case containerFillPrimaryDefault
     case containerFillPrimaryBrand
     case containerFillPrimary1
-    case containerFillPrimary2
-    case containerFillPrimary3
     case containerFillSecondaryDefault
     case containerFillSecondaryBrand
-    case containerFillSecondary1
-    case containerFillSecondary2
-    case containerFillSecondary3
-    case containerFillSecondary4
     case containerFillTertiaryDefault
     case containerFillTertiaryBrand
     case containerFillTertiary1
+    case containerFillStatusError
     case containerFillStatusSuccess
     case containerFillStatusInfo
     case containerFillStatusWarning
     case containerFillStatusDisabled
-    case borderDefaultPrimarycase
+    case borderDefaultPrimary
     case borderDefaultSecondary
-    case borderDefaultTertiary
     case borderStatusError
     case borderStatusSuccess
     case borderStatusInfo
@@ -94,17 +89,11 @@ enum ColorToken: String {
     case iconDefaultAccessible
     case iconDefaultInverse
     case iconDefaultPrimary
-    case iconDefaultPrimaryAlt
-    case iconDefaultSecondary
-    case iconDefaultSecondaryAlt
-    case iconDefaultTertiary
-    case iconDefaultTertiaryAlt
-    case iconDefaultEcoGreen
+    case iconFeedbackDisabled
     case iconFeedbackError
     case iconFeedbackSuccess
     case iconFeedbackInfo
     case iconFeedbackWarning
-    case iconFeedbackDisabled
     
     //DE only
     case primaryDark
@@ -116,10 +105,53 @@ enum ColorToken: String {
     case secondaryLight
     case tertiaryDark
     case tertiaryDarker
+    case pageFillGray3
+    case pageFillPrimaryBrand
+    case pageFillPrimaryDefault
+    case pageFillSecondaryDefault
+    case pageFillSecondaryBrand
+    case containerFillPastelAlt
+    case containerFillPastelAlt2
+    case containerFillSecondaryPressed
+    case containerFillTertiaryBrandAlt
+    case containerFillGreenEco
+    case containerFillStatusErrorDark
+    case containerFillStatusSuccessDark
+    case borderStatusErrorBar
+    case borderStatusSuccessBar
+    case borderStateDisabledAlt
+    case borderStateInactive
+    case borderStateActive
+    case borderStateFocus
+    case iconStateInactive
+    case iconFeedbackActionable
+    case iconFeedbackErrorCustom
+    case iconFeedbackSuccessCustom
+    case iconFeedbackInfoCustom
+    case iconFeedbackWarningCustom
+    case iconIllustrativePrimary1
+    case iconIllustrativePrimary2
+    case iconIllustrativeSecondary
+    case iconIllustrativeTertiary
+    case iconIllustrativeEcoGreen
+    case iconIllustrativeOutline
+    
     
     // Reliant only
     case greenLighter
     case yellowLighter
+    case borderDefaultSecondaryAlt
+    case borderDefaultTertiary
+    case iconDefaultPrimaryAlt
+    case iconDefaultSecondary
+    case iconDefaultSecondaryAlt
+    case iconDefaultTertiary
+    case iconDefaultTertiaryAlt
+    case iconDefaultEcoGreen
+    case iconDefaultGreenUI
+    case iconDefaultSolar
+    
+    
     
     
     func color(brand: Brand, colorScheme: ColorScheme) -> Color {
