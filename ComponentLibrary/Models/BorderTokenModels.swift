@@ -30,6 +30,7 @@ struct BorderRadius: Decodable {
     let xs: CGFloat
     let s: CGFloat
     let m: CGFloat
+    let l: CGFloat
     let full: CGFloat
 }
 
@@ -38,7 +39,7 @@ enum BorderStrokeKey {
 }
 
 enum BorderRadiusKey {
-    case none, xs, s, m, full
+    case none, xs, s, m, l, full
 }
 
 extension BrandBorderTokens {
@@ -67,6 +68,8 @@ extension BrandBorderTokens {
             return borderRadius.s
         case .m:
             return borderRadius.m
+        case .l:
+            return borderRadius.l
         case .full:
             return borderRadius.full
         }
