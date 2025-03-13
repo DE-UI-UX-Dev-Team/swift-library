@@ -8,6 +8,9 @@ enum SeparatorType {
 struct SeparatorComponent: View {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) private var brand
+    private func colorToken(_ token: ColorToken) -> Color {
+        token.color(brand: brand, colorScheme: colorScheme)
+    }
     
     let type: SeparatorType
     let label: String?
@@ -21,8 +24,7 @@ struct SeparatorComponent: View {
     }
  
     var body: some View {
-        let separatorColor = ColorToken.grayscale900.color( brand: brand,
-                                                            colorScheme: colorScheme)
+        let separatorColor = colorToken( brand == .de ?.borderDefaultSecondary:.borderDefaultTertiary)
  
         if type == .horizontal {
             HStack(spacing: label == nil ? 0 : 8) {

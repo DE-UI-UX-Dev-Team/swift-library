@@ -40,5 +40,5 @@ struct ContainerPadding: Codable {
 }
 
 struct ContainerGaps: Codable {
-    let none, xs, s, m, l, xl, icon: CGFloat
+    let none, xs, s, m, l, xl, twoXL, icon: CGFloat
 }

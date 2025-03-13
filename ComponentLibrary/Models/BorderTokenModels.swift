@@ -99,3 +99,18 @@ extension View {
         modifier(BrandBorderOverlayModifier(radiusKey: radiusKey, strokeKey: strokeKey, color: color ?? .clear))
     }
 }
+
+
+// Shared border utilities for Corner radius
+enum BorderUtilities {
+    static var borderManager: BorderTokenManager {
+        BorderTokenManager.shared
+    }
+    
+    static func cornerRadius(for brand: Brand) -> BorderRadius {
+        guard let borderTokens = borderManager.tokens(for: brand) else {
+            return BorderRadius(none: 0, xs: 2, s: 4, m: 6, l: 8, full: 999)
+        }
+        return borderTokens.borderRadius
+    }
+}

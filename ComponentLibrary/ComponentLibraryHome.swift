@@ -8,6 +8,7 @@ struct ComponentLibraryHome: View {
         ("Tags", AnyView(TagDemoPage()), "rectangle.grid.1x2"),
         ("Separator", AnyView(SeparatorDemoPage()), "rectangle.grid.1x2"),
         ("Input", AnyView(InputPage()), "rectangle.grid.1x2"),
+        ("Plan Card", AnyView(PlanCardPage()), "inset.filled.rectangle"),
         ("Confirmation Page", AnyView(ConfirmationPage()), "dock.rectangle"),
         ("ColorTokenSystem", AnyView(ColorSwatches()), "rectangle.fill.on.rectangle.fill"),
         ("TypographyTokenSystem", AnyView(FontsPage()), "rectangle.fill.on.rectangle.fill"),

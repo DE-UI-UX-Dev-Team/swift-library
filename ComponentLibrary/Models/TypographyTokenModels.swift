@@ -35,6 +35,7 @@ enum MyTextStyle: String {
     case p1, p2, p3
     case button
     case link
+    case cardRate
 }
 
 
