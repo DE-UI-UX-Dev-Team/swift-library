@@ -1,8 +1,5 @@
 import SwiftUI
 
-enum PlanCardVariant {
-    case selected, unselected
-}
 
 struct PlanCard: View, Identifiable {
     let id = UUID()
@@ -21,6 +18,8 @@ struct PlanCard: View, Identifiable {
         token.color(brand: brand, colorScheme: colorScheme)
     }
     
+    @State private var isToggleOn: Bool = false
+    @State private var isSelected: Bool = false
 
     
     let cardTitle: String
@@ -33,8 +32,7 @@ struct PlanCard: View, Identifiable {
     let link: LinkComponent?
     let planImage: Image?
     let withAutoPay: Bool
-    let cardState: PlanCardVariant?
-    @State private var isToggleOn: Bool = false
+
     
     init(
         cardTitle: String,
@@ -47,7 +45,7 @@ struct PlanCard: View, Identifiable {
         link: LinkComponent? = nil,
         planImage: Image? = nil,
         withAutoPay: Bool = false,
-        cardState: PlanCardVariant? = nil
+        isSelected: Bool = false
     ) {
         self.cardTitle = cardTitle
         self.title = title
@@ -59,12 +57,10 @@ struct PlanCard: View, Identifiable {
         self.link = link
         self.planImage = planImage
         self.withAutoPay = withAutoPay
-        self.cardState = cardState
+        self._isSelected = State(initialValue: isSelected)
     }
     
-    private var isSelected: Bool {
-        cardState == .selected
-    }
+
     
     var body: some View {
         VStack(spacing: 0) {
@@ -81,6 +77,9 @@ struct PlanCard: View, Identifiable {
             strokeKey: .regular,
             color: isSelected ? colorToken(brand == .de ? .borderDefaultPrimary : .primaryBase) : colorToken(brand == .de ? .borderDefaultSecondary : .borderDefaultTertiary)
         )
+                .onTapGesture {
+                        isSelected.toggle()
+                }
     }
     
 
@@ -94,7 +93,7 @@ struct PlanCard: View, Identifiable {
             if isSelected {
                 Image(systemName: "checkmark.circle.fill")
                     .foregroundColor(colorToken(brand == .de ? .iconDefaultAccessible : .iconDefaultPrimary))
-                    .font(.system(size: 24))
+                    .font(.system(size: 18))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

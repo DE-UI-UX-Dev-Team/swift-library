@@ -26,8 +26,7 @@ struct PlanCardPage: View {
                 action: { print("View plan details") }
             ),
             planImage: Image("placeholder"),
-            withAutoPay: true,
-            cardState: .selected
+            withAutoPay: true
         ),
         PlanCard(
             cardTitle: "FREE FROM 8 P.M. FRIDAY TO 12 A.M. MONDAY",
@@ -47,8 +46,7 @@ struct PlanCardPage: View {
                 action: { print("Link clicked for Plan B") }
             ),
             planImage: Image("monitor"),
-            withAutoPay: false,
-            cardState: .unselected
+            withAutoPay: false
         )
     ]
     
