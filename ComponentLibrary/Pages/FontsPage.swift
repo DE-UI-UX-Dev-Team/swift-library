@@ -7,16 +7,11 @@
 
 import SwiftUI
 
-struct FontsPage: View {
+struct FontsPage: View, BrandStyleSupport{
     @State private var showToast = false
     @State private var showModal = false
-    @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.brand) private var brand
-    
-    private func colorToken(_ token: ColorToken) -> Color {
-        token.color(brand: brand, colorScheme: colorScheme)
-    }
-
+    @Environment(\.colorScheme)  var colorScheme
+    @Environment(\.brand) var brand
     
     var body: some View {
         ZStack {

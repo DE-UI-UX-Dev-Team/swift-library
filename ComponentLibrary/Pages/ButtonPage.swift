@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct ButtonView: View {
+struct ButtonView: View, BrandStyleSupport {
     @State private var showToast = false
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
+    @Environment(\.brand)  var brand
     
     
     var body: some View {
@@ -85,12 +85,12 @@ struct ButtonView: View {
                         message: "Complete your Vivint offer by scheduling your installation.",
                         linkText: Text("Schedule installation")
                             .font(.subheadline)
-                            .foregroundColor(ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)),
+                            .foregroundColor(colorToken(.grayscale000)),
                         linkAction: {
                             print("Link tapped")
                         },
                         image: Image("doorbell"),
-                        backgroundColor: ColorToken.grayscale800.color(brand: brand, colorScheme: colorScheme),
+                        backgroundColor:colorToken(.grayscale800),
                         duration: 60.0,
                         isVisible: $showToast
                     )

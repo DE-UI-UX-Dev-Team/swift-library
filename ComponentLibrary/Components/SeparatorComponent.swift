@@ -1,16 +1,12 @@
 import SwiftUI
  
 enum SeparatorType {
-    case horizontal
-    case vertical
+    case horizontal, vertical
 }
  
-struct SeparatorComponent: View {
+struct SeparatorComponent: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
-    private func colorToken(_ token: ColorToken) -> Color {
-        token.color(brand: brand, colorScheme: colorScheme)
-    }
+    @Environment(\.brand) var brand
     
     let type: SeparatorType
     let label: String?
@@ -34,7 +30,7 @@ struct SeparatorComponent: View {
                 
                 if let label = label {
                     Text(label)
-                        .font(.system(size: 14, weight: .medium))
+                        .typographyStyle(.p2)
                         .foregroundColor(separatorColor)
                 }
                 
@@ -51,7 +47,7 @@ struct SeparatorComponent: View {
                 if let label = label {
                     VStack {
                         Text(label)
-                            .font(.system(size: 14, weight: .medium))
+                            .typographyStyle(.p2)
                             .foregroundColor(separatorColor)
                     
                     }

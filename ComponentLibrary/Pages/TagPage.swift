@@ -1,7 +1,9 @@
 import SwiftUI
 
-struct TagDemoPage: View {
-    @Environment(\.brand) private var brand
+struct TagDemoPage: View, BrandStyleSupport {
+    @Environment(\.brand) var brand
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         VStack(spacing: 20) {
             Text("Tag Component Demo")
@@ -14,19 +16,19 @@ struct TagDemoPage: View {
 
                     TagView(
                         text: "Recommended",
-                        style: .active(ColorToken.tertiaryBase),
+                        style: .active(.tertiaryBase),
                         icon: Image(systemName: "star.fill"),
                         iconPosition: .left
                     )
 
                     TagView(
                         text: "$200 Bill Credit",
-                        style: .active(ColorToken.primaryBase)
+                        style: .active(.primaryBase)
                     )
                     
                     TagView(
                         text: "Tag Label",
-                        style: .active(ColorToken.greenBase)
+                        style: .active(.greenBase)
                     )
 
                     Spacer().frame(height: 10)

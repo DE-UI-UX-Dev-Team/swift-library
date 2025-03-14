@@ -7,12 +7,10 @@
 
 import SwiftUI
 
-struct PageMarginModifier: ViewModifier {
-    @Environment(\.brand) private var brand
+struct PageMarginModifier: ViewModifier, BrandStyleSupport {
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.brand) var brand
     
-    private var brandSpacing: BrandSpacing {
-        SpacingTokenManager.shared.spacing(for: brand)
-    }
     
     func body(content: Content) -> some View {
         content

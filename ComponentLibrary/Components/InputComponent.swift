@@ -83,19 +83,16 @@ struct InputStyleConfig {
     }
 }
 
-struct InputComponent: View {
+struct InputComponent: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
+    @Environment(\.brand) var brand
     let variant: InputVariant
     @Binding var value: String
     var options: [InputOption]
     var label: String? = nil
     var hasError: Bool = false
     var isDisabled: Bool = false
-    private var brandSpacing: BrandSpacing {
-        SpacingTokenManager.shared.spacing(for: brand)
-    }
-    
+
     
     private var style: InputStyleConfig { InputStyleConfig.forBrand(brand) }
     
@@ -126,8 +123,7 @@ struct InputComponent: View {
                             CustomCheckbox(
                                 isSelected: isSelected,
                                 isDisabled: isDisabled,
-                                isError: hasError,
-                                colorScheme: colorScheme
+                                isError: hasError
                             )
                             Text(option.label)
                                 .typographyStyle(.p2)
@@ -148,8 +144,7 @@ struct InputComponent: View {
                             CustomRadioButton(
                                 isSelected: isSelected,
                                 isDisabled: isDisabled,
-                                isError: hasError,
-                                colorScheme: colorScheme
+                                isError: hasError
                             )
                             Text(option.label)
                                 .typographyStyle(.p2)
@@ -164,17 +159,16 @@ struct InputComponent: View {
     }
     
     private func colorFor(isDisabled: Bool) -> Color {
-        (isDisabled ? ColorToken.grayscale500 : ColorToken.grayscale900)
-            .color(brand: brand, colorScheme: colorScheme)
+        colorToken(isDisabled ? .grayscale500 : .grayscale900)
     }
 }
 
-struct CustomCheckbox: View {
-    @Environment(\.brand) private var brand
+struct CustomCheckbox: View, BrandStyleSupport {
+    @Environment(\.brand) var brand
+    @Environment(\.colorScheme) var colorScheme
     var isSelected: Bool
     var isDisabled: Bool
     var isError: Bool
-    var colorScheme: ColorScheme
     
     private var config: InputStyleConfig.CheckboxConfig { InputStyleConfig.forBrand(brand).checkbox }
     
@@ -185,19 +179,19 @@ struct CustomCheckbox: View {
         
         ZStack {
             RoundedRectangle(cornerRadius: 0) // Initial radius doesn't matter as it's overridden
-                .fill(colors.fill.color(brand: brand, colorScheme: colorScheme))
+                .fill(colorToken(colors.fill))
                 .frame(width: checkboxSize, height: checkboxSize)
                 .brandBorderOverlay(
                     radiusKey: .s,
                     strokeKey: .thick,
-                    color: colors.border.color(brand: brand, colorScheme: colorScheme)
+                    color: colorToken(colors.border)
                 )
             if isSelected {
                 Image(systemName: "checkmark")
                     .resizable()
                     .scaledToFit()
                     .frame(width: checkboxSize * 0.6, height: checkboxSize * 0.6)
-                    .foregroundColor(colors.check.color(brand: brand, colorScheme: colorScheme))
+                    .foregroundColor(colorToken(colors.check))
                     .font(.system(size: checkboxSize * 0.6, weight: .black))
             }
         }
@@ -210,12 +204,12 @@ struct CustomCheckbox: View {
     }
 }
 
-struct CustomRadioButton: View {
-    @Environment(\.brand) private var brand
+struct CustomRadioButton: View , BrandStyleSupport {
+    @Environment(\.brand) var brand
+    @Environment(\.colorScheme) var colorScheme
     var isSelected: Bool
     var isDisabled: Bool
     var isError: Bool
-    var colorScheme: ColorScheme
     
     private var config: InputStyleConfig.RadioConfig { InputStyleConfig.forBrand(brand).radio }
     
@@ -226,16 +220,16 @@ struct CustomRadioButton: View {
         
         ZStack {
             Circle()
-                .fill(colors.fill.color(brand: brand, colorScheme: colorScheme))
+                .fill(colorToken(colors.fill))
                 .frame(width: radioSize, height: radioSize)
                 .brandBorderOverlay(
                     radiusKey: .full,
                     strokeKey: .thick,
-                    color: colors.border.color(brand: brand, colorScheme: colorScheme)
+                    color: colorToken(colors.border)
                 )
             if isSelected {
                 Circle()
-                    .fill(colors.dot.color(brand: brand, colorScheme: colorScheme))
+                    .fill(colorToken(colors.dot))
                     .frame(width: radioSize * 0.4, height: radioSize * 0.4)
             }
         }

@@ -1,11 +1,11 @@
 import SwiftUI
 
-struct StepperComponent: View {
+struct StepperComponent: View, BrandStyleSupport  {
     let currentStep: Int
     let intermediateSteps: [Int]?
     let labels: [String]
     
-    @Environment(\.brand) private var brand
+    @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
 
     init(currentStep: Int, intermediateSteps: [Int]? = nil,labels: [String]) {
@@ -62,7 +62,7 @@ struct StepperComponent: View {
                             
                             Text(labels[safe: index] ?? "")
                                 .typographyStyle(.p3)
-                                .foregroundColor(ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme))
+                                .foregroundColor(colorToken(.grayscale900))
                                 .multilineTextAlignment(.center)
                                 .offset(y: StepConstants.textOffset)
                         }

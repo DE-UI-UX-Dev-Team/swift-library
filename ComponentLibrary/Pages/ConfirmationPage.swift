@@ -9,17 +9,10 @@ import SwiftUI
 
 
 
-struct ConfirmationPage: View {
+struct ConfirmationPage: View, BrandStyleSupport {
         @Environment(\.colorScheme) var colorScheme
-        @Environment(\.brand) private var brand
+        @Environment(\.brand) var brand
         
-        private var brandSpacing: BrandSpacing {
-            SpacingTokenManager.shared.spacing(for: brand)
-        }
-    
-      private func colorToken(_ token: ColorToken) -> Color {
-            token.color(brand: brand, colorScheme: colorScheme)
-        }
         
     var body: some View {
         VStack(spacing: 0) {
@@ -98,13 +91,13 @@ struct ConfirmationPage: View {
                         HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
                             TagView(
                                 text: "Recommended",
-                                style: .active(ColorToken.tertiaryBase),
+                                style: .active(.tertiaryBase),
                                 iconPosition: .left
                             )
                             
                             TagView(
                                 text: "$200 Bill Credit",
-                                style: .active(ColorToken.primaryBase)
+                                style: .active(.primaryBase)
                             )
                         }
                         

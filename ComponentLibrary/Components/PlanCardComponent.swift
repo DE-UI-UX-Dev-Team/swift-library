@@ -1,23 +1,11 @@
 import SwiftUI
 
 
-struct PlanCard: View, Identifiable {
+struct PlanCard: View, Identifiable, BrandStyleSupport {
     let id = UUID()
-    @Environment(\.brand) private var brand
-    @Environment(\.colorScheme) private var colorScheme
-    
-    private var brandSpacing: BrandSpacing {
-        SpacingTokenManager.shared.spacing(for: brand)
-    }
-    
-    private var cornerRadius: BorderRadius {
-        BorderUtilities.cornerRadius(for: brand)
-    }
-    
-    private func colorToken(_ token: ColorToken) -> Color {
-        token.color(brand: brand, colorScheme: colorScheme)
-    }
-    
+    @Environment(\.brand)  var brand
+    @Environment(\.colorScheme)  var colorScheme
+
     @State private var isToggleOn: Bool = false
     @State private var isSelected: Bool = false
 

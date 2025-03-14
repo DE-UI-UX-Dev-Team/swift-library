@@ -7,13 +7,10 @@
 import SwiftUI
 
 
-struct ColorSwatches: View {
-    @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.brand) private var brand
-    
-    private func colorToken(_ token: ColorToken) -> Color {
-            token.color(brand: brand, colorScheme: colorScheme)
-        }
+struct ColorSwatches: View, BrandStyleSupport {
+    @Environment(\.colorScheme)  var colorScheme
+    @Environment(\.brand)  var brand
+
     
     var body: some View {
         VStack(spacing: 16) {

@@ -7,16 +7,10 @@
 
 import SwiftUI
 
-struct GapVisualizer: View {
+struct GapVisualizer: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
-    private func colorToken(_ token: ColorToken) -> Color {
-        token.color(brand: brand, colorScheme: colorScheme)
-    }
+    @Environment(\.brand) var brand
     
-    private var brandSpacing: BrandSpacing {
-        SpacingTokenManager.shared.spacing(for: brand)
-    }
     let name: String
     let gap: CGFloat
 
@@ -62,12 +56,10 @@ struct GapVisualizer: View {
 }
 
 
-struct ContainerSpacingVisualizer: View {
-    @Environment(\.brand) private var brand
+struct ContainerSpacingVisualizer: View, BrandStyleSupport {
+    @Environment(\.brand) var brand
+    @Environment(\.colorScheme) var colorScheme
     
-    private var brandSpacing: BrandSpacing {
-        SpacingTokenManager.shared.spacing(for: brand)
-    }
     let spacing: ContainerSpacing
 
     var body: some View {

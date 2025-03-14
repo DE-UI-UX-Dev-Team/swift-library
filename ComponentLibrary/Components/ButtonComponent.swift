@@ -76,9 +76,9 @@ struct ButtonStyleConfig {
     )
 }
 
-struct ButtonComponent: View {
+struct ButtonComponent: View, BrandStyleSupport  {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
+    @Environment(\.brand)  var brand
 
     let title: String
     let variant: ButtonVariant
@@ -99,8 +99,6 @@ struct ButtonComponent: View {
 
     var body: some View {
         let styleConfig = ButtonStyleConfig.get(for: brand, variant: variant, colorScheme: colorScheme)
-        let borderTokens = BorderTokenManager.shared.tokens(for: brand)
-        let cornerRadius = borderTokens?.radiusValue(brand == .de ? .s : .full) ?? 0
         
         let buttonMaxWidth: CGFloat? = {
                  switch size {
@@ -120,7 +118,7 @@ struct ButtonComponent: View {
         }
         .frame(maxWidth: buttonMaxWidth)
         .background(
-                    RoundedRectangle(cornerRadius: cornerRadius)
+            RoundedRectangle(cornerRadius: brand == .de ? cornerRadius.s : cornerRadius.full)
                         .fill(styleConfig.backgroundColor)
                 )
         .brandBorderOverlay(

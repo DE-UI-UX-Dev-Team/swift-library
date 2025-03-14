@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StepView: View {
+struct StepView: View, BrandStyleSupport {
     let stepNumber: Int
     let isCompleted: Bool
     let isIntermediateComplete: Bool
@@ -8,7 +8,7 @@ struct StepView: View {
     let isIntermediate: Bool
 
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
+    @Environment(\.brand)  var brand
 
     private var stepState: StepState {
         if isCompleted {
@@ -22,7 +22,7 @@ struct StepView: View {
     }
 
     private var style: StepperStyleConfig {
-        StepperStyleConfig.get(for: brand, stepState: stepState, colorScheme: colorScheme)
+        StepperStyleConfig.get(for: self, stepState: stepState)
     }
 
     var body: some View {
