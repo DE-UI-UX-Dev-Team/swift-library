@@ -76,6 +76,13 @@
       "fontSize": 16,
       "lineHeight": 24,
       "letterSpacing": 0.4
+    },
+    "cardRate": {
+      "fontName": "Inter18pt-Regular",
+      "weight": "regular",
+      "fontSize": 32,
+      "lineHeight": 24,
+      "letterSpacing": 0.5
     }
   },
   "brandReliant": {

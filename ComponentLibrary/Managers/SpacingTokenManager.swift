@@ -46,7 +46,7 @@ final class SpacingTokenManager: ObservableObject {
                     none: 0, xs: 4, s: 8, m: 16, l: 24, xl: 24, twoXL: 24
                 ),
                 gaps: ContainerGaps(
-                    none: 0, xs: 2, s: 4, m: 8, l: 16, xl: 24, icon: 10
+                    none: 0, xs: 2, s: 4, m: 8, l: 16, xl: 24,twoXL: 32, icon: 10
                 )
             )
         )

@@ -30,6 +30,7 @@ struct BorderRadius: Decodable {
     let xs: CGFloat
     let s: CGFloat
     let m: CGFloat
+    let l: CGFloat
     let full: CGFloat
 }
 
@@ -38,7 +39,7 @@ enum BorderStrokeKey {
 }
 
 enum BorderRadiusKey {
-    case none, xs, s, m, full
+    case none, xs, s, m, l, full
 }
 
 extension BrandBorderTokens {
@@ -67,6 +68,8 @@ extension BrandBorderTokens {
             return borderRadius.s
         case .m:
             return borderRadius.m
+        case .l:
+            return borderRadius.l
         case .full:
             return borderRadius.full
         }
@@ -94,5 +97,20 @@ struct BrandBorderOverlayModifier: ViewModifier {
 extension View {
     func brandBorderOverlay(radiusKey: BorderRadiusKey, strokeKey: BorderStrokeKey, color: Color? = nil) -> some View {
         modifier(BrandBorderOverlayModifier(radiusKey: radiusKey, strokeKey: strokeKey, color: color ?? .clear))
+    }
+}
+
+
+// Shared border utilities for Corner radius
+enum BorderUtilities {
+    static var borderManager: BorderTokenManager {
+        BorderTokenManager.shared
+    }
+    
+    static func cornerRadius(for brand: Brand) -> BorderRadius {
+        guard let borderTokens = borderManager.tokens(for: brand) else {
+            return BorderRadius(none: 0, xs: 2, s: 4, m: 6, l: 8, full: 999)
+        }
+        return borderTokens.borderRadius
     }
 }
