@@ -1,5 +1,6 @@
 import SwiftUI
 
+
 struct StepperStyleConfig {
     let fillColor: Color
     let strokeColor: Color
@@ -8,30 +9,22 @@ struct StepperStyleConfig {
     let intermediateFillColor: Color
     let intermediateStrokeColor: Color
     
-    static func get(for brand: Brand, stepState: StepState, colorScheme: ColorScheme) -> StepperStyleConfig {
-        let style = brandStyles[brand] ?? defaultBrandStyle
-
+    static func get(for context: some BrandStyleSupport, stepState: StepState) -> StepperStyleConfig {
+        let style = brandStyles[context.brand] ?? defaultBrandStyle
+        let colors = style.colors[stepState] ?? StepperColors.defaultColors
+        
         return StepperStyleConfig(
-            fillColor: style.getColor(for: stepState, type: .fill, brand: brand, colorScheme: colorScheme),
-            strokeColor: style.getColor(for: stepState, type: .stroke, brand: brand, colorScheme: colorScheme),
-            checkmarkColor: style.getColor(for: stepState, type: .checkmark, brand: brand, colorScheme: colorScheme),
-            textColor: style.getColor(for: stepState, type: .text, brand: brand, colorScheme: colorScheme),
-            intermediateFillColor: style.getColor(for: stepState, type: .intermediateFill, brand: brand, colorScheme: colorScheme),
-            intermediateStrokeColor: style.getColor(for: stepState, type: .intermediateStroke, brand: brand, colorScheme: colorScheme)
+            fillColor: context.colorToken(colors.fill),
+            strokeColor: context.colorToken(colors.stroke),
+            checkmarkColor: context.colorToken(colors.checkmark),
+            textColor: context.colorToken(colors.text),
+            intermediateFillColor: context.colorToken(colors.intermediateFill),
+            intermediateStrokeColor: context.colorToken(colors.intermediateStroke)
         )
-    }
-
-    enum ColorType {
-        case fill, stroke, checkmark, text, intermediateFill, intermediateStroke
     }
 
     struct BrandStyle {
         let colors: [StepState: StepperColors]
-        
-        func getColor(for state: StepState, type: ColorType, brand: Brand, colorScheme: ColorScheme) -> Color {
-            let colorSet = colors[state] ?? StepperColors.defaultColors
-            return colorSet.getColor(for: type, brand: brand, colorScheme: colorScheme)
-        }
     }
     
     struct StepperColors {
@@ -41,17 +34,6 @@ struct StepperStyleConfig {
         let text: ColorToken
         let intermediateFill: ColorToken
         let intermediateStroke: ColorToken
-
-        func getColor(for type: ColorType, brand: Brand, colorScheme: ColorScheme) -> Color {
-            switch type {
-            case .fill: return fill.color(brand: brand, colorScheme: colorScheme)
-            case .stroke: return stroke.color(brand: brand, colorScheme: colorScheme)
-            case .checkmark: return checkmark.color(brand: brand, colorScheme: colorScheme)
-            case .text: return text.color(brand: brand, colorScheme: colorScheme)
-            case .intermediateFill: return intermediateFill.color(brand: brand, colorScheme: colorScheme)
-            case .intermediateStroke: return intermediateStroke.color(brand: brand, colorScheme: colorScheme)
-            }
-        }
 
         static let defaultColors = StepperColors(
             fill: .primaryBase, stroke: .primaryBase, checkmark: .primaryBase, text: .grayscale000,

@@ -7,24 +7,21 @@
 
 import SwiftUI
 
-struct CardComponent: View {
+struct CardComponent: View, BrandStyleSupport {
     let title: String
     let items: [(icon: String, text: String)]
     let iconColor: Color
     let backgroundColor: Color
     
     @Environment(\.colorScheme) var colorScheme
-    
-
-    @Environment(\.brand) private var brand
+    @Environment(\.brand) var brand
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text(title)
                 .font(.headline)
                 .fontWeight(.bold)
-                .foregroundColor(ColorToken.grayscale900.color( brand: brand,
-                                                                colorScheme: colorScheme))
+                .foregroundColor(colorToken(.grayscale900))
 
             ForEach(items, id: \.text) { item in
                 HStack(alignment: .top, spacing: 12) {
@@ -34,8 +31,7 @@ struct CardComponent: View {
 
                     Text(item.text)
                         .font(.body)
-                        .foregroundColor(ColorToken.grayscale900.color( brand: brand,
-                                                                        colorScheme: colorScheme))
+                        .foregroundColor(colorToken(.grayscale900))
                 }
                 .padding(.bottom, 8)
                 .frame(maxWidth: .infinity, alignment: .leading)

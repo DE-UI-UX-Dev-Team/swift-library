@@ -9,12 +9,10 @@
 import SwiftUI
 
 
-struct SpacingPage: View {
-    @Environment(\.brand) private var brand
-    
-    private var brandSpacing: BrandSpacing {
-        SpacingTokenManager.shared.spacing(for: brand)
-    }
+struct SpacingPage: View, BrandStyleSupport {
+    @Environment(\.brand)  var brand
+    @Environment(\.colorScheme) var colorScheme
+
 
     var body: some View {
         ScrollView {

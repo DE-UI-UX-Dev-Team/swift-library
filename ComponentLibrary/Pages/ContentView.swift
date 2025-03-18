@@ -9,16 +9,12 @@
 import SwiftUI
 
 
-struct ContentView: View {
+struct ContentView: View, BrandStyleSupport {
     @State private var showToast = false
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
+    @Environment(\.brand) var brand
     @Environment(\.openURL) var openURL
     
-    
-      private func colorToken(_ token: ColorToken) -> Color {
-            token.color(brand: brand, colorScheme: colorScheme)
-        }
 
     private let cardItems: [(icon: String, text: String)] = [
            (icon: "checkmark.circle", text: "First claim this offer. Then enroll by reviewing the terms and conditions."),

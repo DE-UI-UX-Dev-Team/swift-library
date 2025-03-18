@@ -1,13 +1,10 @@
 
 import SwiftUI
 
-struct PriceRate: View {
-    @Environment(\.brand) private var brand
+struct PriceRate: View, BrandStyleSupport {
+    @Environment(\.brand)  var brand
+    @Environment(\.colorScheme)  var colorScheme
  
-    private var brandSpacing: BrandSpacing {
-        SpacingTokenManager.shared.spacing(for: brand)
-    }
-    
     let price: String
     let unit: String
 

@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct StepConnector: View {
+struct StepConnector: View, BrandStyleSupport  {
     let isActive: Bool
     let isDotted: Bool
     let isIntermediate: Bool
     let isIntermediateComplete: Bool
 
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
+    @Environment(\.brand) var brand
 
     struct BrandConnectorStyle {
         let activeColor: Color
@@ -21,18 +21,18 @@ struct StepConnector: View {
     private var connectorColor: Color {
         let brandStyles: [Brand: BrandConnectorStyle] = [
             .de: BrandConnectorStyle(
-                activeColor: ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme),
-                inactiveColor: ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)
+                activeColor: colorToken(.grayscale900),
+                inactiveColor: colorToken(.grayscale900)
             ),
             .reliant: BrandConnectorStyle(
-                activeColor: ColorToken.primaryBase.color(brand: brand, colorScheme: colorScheme),
-                inactiveColor: ColorToken.borderDefaultSecondary.color(brand: brand, colorScheme: colorScheme)
+                activeColor: colorToken(.primaryBase),
+                inactiveColor: colorToken(.borderDefaultSecondary)
             )
         ]
 
         let defaultStyle = BrandConnectorStyle(
-            activeColor: ColorToken.borderDefaultPrimary.color(brand: brand, colorScheme: colorScheme),
-            inactiveColor: ColorToken.borderDefaultPrimary.color(brand: brand, colorScheme: colorScheme)
+            activeColor: colorToken(.borderDefaultPrimary),
+            inactiveColor: colorToken(.borderDefaultPrimary)
         )
 
         return (brandStyles[brand] ?? defaultStyle).getColor(isActive: isActive, isDotted: isDotted, isIntermediateComplete: isIntermediateComplete)
