@@ -63,6 +63,13 @@
       "lineHeight": 18,
       "letterSpacing": 0.25
     },
+    "p4": {
+      "fontName": "Inter18pt-Bold",
+      "weight": "bold",
+      "fontSize": 10,
+      "lineHeight": 16,
+      "letterSpacing": 0.25
+    },
     "link": {
       "fontName": "Inter18pt-Regular",
       "weight": "regular",

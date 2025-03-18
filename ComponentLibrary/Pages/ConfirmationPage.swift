@@ -138,7 +138,8 @@ struct ConfirmationPage: View, BrandStyleSupport {
             }
             
         }
-        .pageMargins()
+        .padding(.top, brandSpacing.pageLayout.margins.top)
+        .padding(.horizontal, brandSpacing.pageLayout.margins.horizontal)
 
     }
         
