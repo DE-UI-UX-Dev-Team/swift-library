@@ -1,9 +1,8 @@
 import SwiftUI
 
-struct TagView: View {
+struct TagView: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
-    @ObservedObject private var borderManager = BorderTokenManager.shared
+    @Environment(\.brand)  var brand
     
     enum TagStyle {
         case active(ColorToken)
@@ -31,42 +30,30 @@ struct TagView: View {
         self.iconPosition = iconPosition
     }
     
-   
-
-    var cornerRadius: CGFloat {
-            guard let borderTokens = borderManager.tokens(for: brand) else { return 0 }
-            
-            let cornerMapping: [Brand: CGFloat] = [
-                .de: borderTokens.borderRadius.full,
-                .reliant: borderTokens.borderRadius.s
-            ]
-            
-            return cornerMapping[brand] ?? 0
-        }
 
     var backgroundColor: Color {
         switch style {
         case .active(let colorToken):
-            return colorToken.color(brand: brand, colorScheme: colorScheme)
+            return self.colorToken(colorToken)
         case .inactive:
-            return ColorToken.grayscale300.color(brand: brand, colorScheme: colorScheme)
+            return colorToken(.grayscale300)
         case .warning:
-            return ColorToken.redLight.color(brand: brand, colorScheme: colorScheme)
+            return colorToken(.redLight)
         case .success:
-            return ColorToken.greenLight.color(brand: brand, colorScheme: colorScheme)
+            return colorToken(.greenLight)
         }
     }
     
     var textColor: Color {
         switch style {
         case .active:
-            return ColorToken.grayscale000.color(brand: brand, colorScheme: colorScheme)
+            return colorToken(.grayscale000)
         case .inactive:
-            return ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)
+            return colorToken(.grayscale900)
         case .warning:
-            return ColorToken.redAccessible.color(brand: brand, colorScheme: colorScheme)
+            return colorToken(.redAccessible)
         case .success:
-            return ColorToken.greenBase.color(brand: brand, colorScheme: colorScheme)
+            return colorToken(.greenBase)
         }
     }
 
@@ -93,7 +80,7 @@ struct TagView: View {
         .padding(.vertical, 5)
         .background(backgroundColor)
         .foregroundColor(textColor)
-        .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
+        .clipShape(RoundedRectangle(cornerRadius: brand == .de ? cornerRadius.full: cornerRadius.s))
     }
 }
 

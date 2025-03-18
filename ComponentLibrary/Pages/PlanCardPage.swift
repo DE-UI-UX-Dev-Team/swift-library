@@ -1,7 +1,10 @@
 
 import SwiftUI
 
-struct PlanCardPage: View {
+struct PlanCardPage: View, BrandStyleSupport {
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.brand)  var brand
+    
     private let mimicPlans: [PlanCard] = [
         PlanCard(
             cardTitle: "2 FREE DAYS PER WEEK",
@@ -15,8 +18,8 @@ struct PlanCardPage: View {
                 TagView(text: "100% solar", style: .inactive)
             ],
             promotionalTags: [
-                TagView(text: "Recommended", style: .active(ColorToken.tertiaryBase), iconPosition: .left),
-                TagView(text: "$200 Bill Credit", style: .active(ColorToken.primaryBase), iconPosition: nil),
+                TagView(text: "Recommended", style: .active(.tertiaryBase), iconPosition: .left),
+                TagView(text: "$200 Bill Credit", style: .active(.primaryBase), iconPosition: nil),
                 
             ],
             link: LinkComponent(

@@ -9,14 +9,9 @@
 
 import SwiftUI
 
-struct BorderPage: View {
+struct BorderPage: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
-    @Environment(\.brand) private var brand
-
-    
-    private func colorToken(_ token: ColorToken) -> Color {
-        token.color(brand: brand, colorScheme: colorScheme)
-    }
+    @Environment(\.brand)  var brand
 
     
     var body: some View {

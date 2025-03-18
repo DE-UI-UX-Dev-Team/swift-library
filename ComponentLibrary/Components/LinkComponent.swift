@@ -12,9 +12,9 @@ enum LinkVariant {
     case accordion(isExpanded: Bool)
 }
 
-struct LinkComponent: View {
-    @Environment(\.colorScheme) private var colorScheme
-    @Environment(\.brand) private var brand
+struct LinkComponent: View, BrandStyleSupport {
+    @Environment(\.colorScheme) var colorScheme
+    @Environment(\.brand)  var brand
 
 let text: String
 let variant: LinkVariant
@@ -34,7 +34,7 @@ init(
 }
 
 var body: some View {
-    let style = LinkStyleConfig.get(for: brand, colorScheme: colorScheme)
+    let style = LinkStyleConfig.get(for: self)
     
     Button(action: action) {
         HStack(spacing: 4) {
@@ -78,22 +78,22 @@ let foregroundColor: Color
 let applyUnderline: Bool
 let typographyStyle: MyTextStyle
 
-static func get(for brand: Brand, colorScheme: ColorScheme) -> LinkStyleConfig {
+static func get(for context: some BrandStyleSupport) -> LinkStyleConfig {
     // Use a dictionary instead of a switch case for brand-based styles
     let styles: [Brand: LinkStyleConfig] = [
         .de: LinkStyleConfig(
-            foregroundColor: ColorToken.primaryDarkest.color(brand: .de, colorScheme: colorScheme),
+            foregroundColor: context.colorToken(.primaryDarkest),
             applyUnderline: true,
             typographyStyle: .link
         ),
         .reliant: LinkStyleConfig(
-            foregroundColor: ColorToken.primaryBase.color(brand: .reliant, colorScheme: colorScheme),
+            foregroundColor: context.colorToken(.primaryBase),
             applyUnderline: false,
             typographyStyle: .link
         )
     ]
     
-    return styles[brand] ?? styles[.de]!
+    return styles[context.brand] ?? styles[.de]!
 }
 }
 
