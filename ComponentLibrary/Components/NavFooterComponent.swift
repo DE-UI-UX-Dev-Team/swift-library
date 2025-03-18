@@ -54,10 +54,10 @@ struct NavFooter<Content: View>: View, BrandStyleSupport {
             Spacer()
             SeparatorComponent(type: .horizontal)
             HStack(alignment: brand == .de ?.center : .top) {
-                ForEach(tabItems.indices, id: \.self) { index in
+                ForEach(Array(tabItems.enumerated()), id: \.element.id) { index, item in
                     TabBarItem(
-                        imageName: tabItems[index].imageName,
-                        title: tabItems[index].title,
+                        imageName: item.imageName,
+                        title: item.title,
                         isSelected: selectedTab == index
                     ) {
                         selectedTab = index
