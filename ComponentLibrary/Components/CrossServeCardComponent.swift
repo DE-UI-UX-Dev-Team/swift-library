@@ -2,7 +2,7 @@ import SwiftUI
 
 
 
-struct BenefitCard: View {
+struct CrossServeCard: View {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
     
@@ -29,7 +29,7 @@ struct BenefitCard: View {
     var buttonText: String?
     var buttonVariant: ButtonVariant?
     var footerText: String?
-    var price: BenefitPrice?
+    var price: CrossServeCardPrice?
     var footerLink: String?
     var imageOnRight: Bool = false
     var backgroundColor: ColorToken?
@@ -63,7 +63,7 @@ struct BenefitCard: View {
                                     }
                                     
                                     if brandImage == nil && tag == nil && enrollText == nil {
-                                        BenefitCardContent
+                                        CrossServeCardContent
                                     }
                                 }
                                 Spacer()
@@ -79,7 +79,7 @@ struct BenefitCard: View {
                                 }
                             }
                             if brandImage != nil || tag != nil || enrollText != nil {
-                                BenefitCardContent
+                                CrossServeCardContent
                             }
                         }
                     } else {
@@ -114,7 +114,7 @@ struct BenefitCard: View {
                                         .frame(height: 19)
                                 }
                                 
-                                BenefitCardContent
+                                CrossServeCardContent
                                 
                                 if let link = link {
                                     LinkComponent(
@@ -140,7 +140,7 @@ struct BenefitCard: View {
                     SeparatorComponent(type: .horizontal)
                         .padding(.vertical, brandSpacing.containerSpacing.padding.s)
                     
-                    BenefitCardFooter
+                    CrossServeCardFooter
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -164,7 +164,7 @@ struct BenefitCard: View {
     }
     
     @ViewBuilder
-    private var BenefitCardContent: some View {
+    private var CrossServeCardContent: some View {
         VStack(alignment: .leading) {
             Text(title)
                 .typographyStyle(.h4)
@@ -179,7 +179,7 @@ struct BenefitCard: View {
     }
     
     @ViewBuilder
-    private var BenefitCardFooter: some View {
+    private var CrossServeCardFooter: some View {
         VStack {
             if let price = price, let footerLink = footerLink {
                 HStack {
@@ -202,7 +202,7 @@ struct BenefitCard: View {
     }
 }
 
-struct BenefitPrice: View {
+struct CrossServeCardPrice: View {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
     

@@ -1,9 +1,9 @@
 import SwiftUI
-struct BenefitsCard_Previews: PreviewProvider {
+struct CrossServeCardPrice_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
             VStack(spacing: 20) {
-                BenefitCard(
+                CrossServeCard(
                     image: "mask",
                     tag: "Included",
                     tagColor: .greenAccessible,
@@ -13,7 +13,7 @@ struct BenefitsCard_Previews: PreviewProvider {
                     isSelected: true
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "doorbell",
                     tag: "Included",
                     tagColor:.greenAccessible,
@@ -21,20 +21,20 @@ struct BenefitsCard_Previews: PreviewProvider {
                     title: "Home Base Essentials",
                     description: "Get a Vivint Smart Thermostat,  Doorbell Camera Pro and installation for FREE!",
                     link: "View details",
-                    price: BenefitPrice(oldPrice: "$299", newPrice: "Free", subtext: "Installation included", subtextColor: .iconDefaultGreenUI),
+                    price: CrossServeCardPrice(oldPrice: "$299", newPrice: "Free", subtext: "Installation included", subtextColor: .iconDefaultGreenUI),
                     footerLink: "Activate"
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "maskRewards",
                     title: "Reliant Rewards",
                     description: "Reliant Rewards lets you earn points to redeem for bill credits, Amazon gift cards, and more.",
                     link: "View details",
-                    price: BenefitPrice(newPrice: "0 POINTS", subtext: "as of 01/13/2025"),
+                    price: CrossServeCardPrice(newPrice: "0 POINTS", subtext: "as of 01/13/2025"),
                     footerLink: "Add"
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "doorbell",
                     tag: "Included",
                     tagColor: .greenAccessible,
@@ -43,31 +43,31 @@ struct BenefitsCard_Previews: PreviewProvider {
                     title: "Home Base Essentials",
                     description: "Get a Vivint Smart Thermostat,  Doorbell Camera Pro and installation for FREE!",
                     link: "View details",
-                    price: BenefitPrice(newPrice: "$240", subtext: "Your estimated average bill for next month"),
+                    price: CrossServeCardPrice(newPrice: "$240", subtext: "Your estimated average bill for next month"),
                     footerLink: "Manage"
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "doorbell",
                     title: "A/C Heat Protect",
                     description: "Keep cool summer – get protected against costly AC repairs",
                     link: "View details",
-                    price:BenefitPrice( newPrice: "Free"),
+                    price:CrossServeCardPrice( newPrice: "Free"),
                     footerLink: "Add item"
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "doorbell",
                     brandImage: "brand",
                     title: "Home Base Essentials",
                     description: "Get a Vivint Smart Thermostat,  Doorbell Camera Pro and installation for FREE!",
                     link: "View details",
-                    price:BenefitPrice( newPrice: "Free"),
+                    price:CrossServeCardPrice( newPrice: "Free"),
                     footerLink: "Add item",
                     isSelected: true
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "doorbell",
                     tag: "Pending",
                     tagColor: .grayscale400,
@@ -79,7 +79,7 @@ struct BenefitsCard_Previews: PreviewProvider {
                     footerText: "Need more help? Talk to an agent 1-XXX-XXX-XXXX"
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "doorbell",
                     tag: "Homeowner exclusive",
                     tagColor: .tertiaryBase,
@@ -90,7 +90,7 @@ struct BenefitsCard_Previews: PreviewProvider {
                     buttonVariant: .primary
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "doorbell",
                     title: "Average billing",
                     description: "Designed to make bill amounts more predictable and easier to handle by averaging electricity costs",
@@ -98,7 +98,7 @@ struct BenefitsCard_Previews: PreviewProvider {
                     buttonVariant: .secondary
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "doorbell",
                     tag: "Pending Schedule",
                     tagColor: .grayscale400,
@@ -111,7 +111,7 @@ struct BenefitsCard_Previews: PreviewProvider {
                     imageOnRight: true
                 )
                 
-                BenefitCard(
+                CrossServeCard(
                     image: "update",
                     title: "You are eligible to renew your plan",
                     description: "Your current plan is ending soon, and you are eligible to renew now.",
