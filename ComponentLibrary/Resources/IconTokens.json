@@ -1,0 +1,31 @@
+{
+  "brands": {
+    "brandDE": {
+      "utility": {
+        "small": 16,
+        "medium": 24,
+        "large": 32,
+      },
+      "illustrative": {
+        "small": 40,
+        "medium": 60,
+        "large": 80,
+        "xLarge": 120
+      }
+    },
+    "brandReliant": {
+      "utility": {
+        "small": 16,
+        "medium": 24,
+        "large": 48,
+      },
+      "illustrative": {
+        "small": 48,
+        "medium": 60,
+        "large": 80,
+        "xLarge": 120
+      }
+    }
+  }
+}
+
