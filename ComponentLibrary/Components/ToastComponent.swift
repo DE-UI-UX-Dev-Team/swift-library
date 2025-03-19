@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ToastComponent: View {
+struct Toast: View {
         let message: String
         let linkText: Text
         let linkAction: () -> Void
@@ -39,13 +39,13 @@ struct ToastComponent: View {
                                 .font(.subheadline)
                                 .multilineTextAlignment(.leading)
                             
-                            Button(action: linkAction) {
+                            SwiftUI.Button(action: linkAction) {
                                 linkText
                             }
                         }
 
                         
-                        Button(action: {
+                        SwiftUI.Button(action: {
                             withAnimation {
                                 isVisible = false
                             }

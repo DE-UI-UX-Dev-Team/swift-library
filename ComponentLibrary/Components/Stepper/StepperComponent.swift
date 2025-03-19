@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StepperComponent: View, BrandStyleSupport  {
+struct Stepper: View, BrandStyleSupport  {
     let currentStep: Int
     let intermediateSteps: [Int]?
     let labels: [String]

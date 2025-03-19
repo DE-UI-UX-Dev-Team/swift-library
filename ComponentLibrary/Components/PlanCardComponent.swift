@@ -15,9 +15,9 @@ struct PlanCard: View, Identifiable, BrandStyleSupport {
     let subtitle: String
     let priceRate: PriceRate
     let priceDescription: String
-    let tags: [TagView]?
-    let promotionalTags: [TagView]?
-    let link: LinkComponent?
+    let tags: [Tag]?
+    let promotionalTags: [Tag]?
+    let link: Link?
     let planImage: Image?
     let withAutoPay: Bool
 
@@ -28,9 +28,9 @@ struct PlanCard: View, Identifiable, BrandStyleSupport {
         subtitle: String ,
         priceRate: PriceRate,
         priceDescription: String,
-        tags: [TagView]? = nil,
-        promotionalTags: [TagView]? = nil,
-        link: LinkComponent? = nil,
+        tags: [Tag]? = nil,
+        promotionalTags: [Tag]? = nil,
+        link: Link? = nil,
         planImage: Image? = nil,
         withAutoPay: Bool = false,
         isSelected: Bool = false
@@ -55,7 +55,7 @@ struct PlanCard: View, Identifiable, BrandStyleSupport {
             PlanCardHeader
             PlanCardContent
             if brand == .reliant {
-                SeparatorComponent(type: .horizontal)
+                Separator(type: .horizontal)
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.m)
             }
             PlanCardFooter

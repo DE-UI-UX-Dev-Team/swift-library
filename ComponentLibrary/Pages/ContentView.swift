@@ -63,7 +63,7 @@ struct ContentView: View, BrandStyleSupport {
                         .foregroundColor(colorToken(.greenAccessible))
                                     .font(.system(size: 26, weight: .heavy))
                     
-                    Button("Show Toast") {
+                    SwiftUI.Button("Show Toast") {
                         withAnimation {
                             showToast = true
                         }
@@ -71,7 +71,7 @@ struct ContentView: View, BrandStyleSupport {
                     }
                     
                     
-                    CardComponent(
+                    Card(
                                         title: "What should I expect when I enroll in Home Base Essentials?",
                                         items: cardItems,
                                        iconColor:colorToken(.iconFeedbackSuccess),
@@ -82,7 +82,7 @@ struct ContentView: View, BrandStyleSupport {
                 }
                 
                 
-                ToastComponent(
+                Toast(
                     message: "Complete your Vivint offer by scheduling your installation.",
                     linkText: Text("Schedule installation") .font(.subheadline)
                         .foregroundColor(colorToken(.grayscale000)).bold(),
