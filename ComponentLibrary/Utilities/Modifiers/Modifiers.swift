@@ -1,12 +1,13 @@
 //
-//  PageMarginModifier.swift
+//  Modifiers.swift
 //  ComponentLibrary
 //
-//  Created by UI/UX Development Team on 2/28/25.
+//   Created by UI/UX Development Team on 2/28/25.
 //
 
 import SwiftUI
 
+//Page Margins
 struct PageMarginModifier: ViewModifier, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) var brand
@@ -23,5 +24,19 @@ struct PageMarginModifier: ViewModifier, BrandStyleSupport {
 extension View {
     func pageMargins() -> some View {
         self.modifier(PageMarginModifier())
+    }
+}
+
+//Underline
+struct UnderlineModifier: ViewModifier {
+    let applyUnderline: Bool
+    let color: Color
+    
+    func body(content: Content) -> some View {
+        if applyUnderline {
+            content.underline(true, color: color)
+        } else {
+            content
+        }
     }
 }
