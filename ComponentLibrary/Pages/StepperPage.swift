@@ -9,15 +9,15 @@ struct StepperPage: View {
                     .typographyStyle(.h1)
                 VStack(spacing:120){
                     
-                    StepperComponent(
+                    Stepper(
                         currentStep: 2,
                         labels: ["New Address", "Transfer Dates", "Verification"]
                     )
-                    StepperComponent(
+                    Stepper(
                         currentStep: 3,
                         labels: ["New Address", "Transfer Dates", "Verification","Submit"]
                     )
-                    StepperComponent(
+                    Stepper(
                         currentStep:4,
                         intermediateSteps: [3],
                         labels: ["Select Plan", "About you", "StartDate","Add-ons","Review","Submit","final"]

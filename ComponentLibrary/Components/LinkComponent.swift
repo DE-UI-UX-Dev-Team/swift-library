@@ -1,9 +1,4 @@
-//
-//  LinkComponent.swift
-//  ComponentLibrary
-//
-//  Created by  UI/UX Development Team on 2/6/25.
-//
+
 import SwiftUI
 
 
@@ -12,7 +7,7 @@ enum LinkVariant {
     case accordion(isExpanded: Bool)
 }
 
-struct LinkComponent: View, BrandStyleSupport {
+struct Link: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand)  var brand
 
@@ -36,7 +31,7 @@ init(
 var body: some View {
     let style = LinkStyleConfig.get(for: self)
     
-    Button(action: action) {
+    SwiftUI.Button(action: action) {
         HStack(spacing: 4) {
             createStyledText(style: style)
 

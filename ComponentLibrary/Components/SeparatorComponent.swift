@@ -4,7 +4,7 @@ enum SeparatorType {
     case horizontal, vertical
 }
  
-struct SeparatorComponent: View, BrandStyleSupport {
+struct Separator: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) var brand
     
