@@ -16,75 +16,75 @@ struct IconsPage: View {
                             iconName: "month",
                             type: .utility,
                             size: .large,
-                            color: "secondaryBase"
+                            color: .secondaryBase
                         )
                         
                         Icon(
                             iconName: "clock",
                             type: .utility,
                             size: .medium,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         Icon(
                             iconName: "bell-regular-utility",
                             type: .utility,
                             size: .large,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         Icon(
                             iconName: "arrow-right-regular-utility",
                             type: .utility,
                             size: .small,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         Icon(
                             iconName: "arrow-left-regular-utility",
                             type: .utility,
                             size: .medium,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         Icon(
                             iconName: "arrow-up-regular-utility",
                             type: .utility,
                             size: .large,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         Icon(
                             iconName: "arrow-down-regular-utility",
                             type: .utility,
                             size: .large,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         Icon(
                             iconName: "circle-check-sharp-regular-utility",
                             type: .utility,
                             size: .large,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         
                         Icon(
                             iconName: "home",
                             type: .utility,
                             size: .small,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         Icon(
                             iconName: "bill",
                             type: .utility,
                             size: .medium,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         Icon(
                             iconName: "account",
                             type: .utility,
                             size: .large,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                         Icon(
                             iconName: "discover",
                             type: .utility,
                             size: .large,
-                            color: "grayscale900"
+                            color: .grayscale900
                         )
                     }
                 }
@@ -96,26 +96,25 @@ struct IconsPage: View {
                             iconName: "icon-ac-heat-sales-illustrative",
                             type: .illustrative,
                             size: .small,
-                            color: "iconDefaultPrimary"
+                            color: .iconDefaultPrimary
                         )
                         Icon(
                             iconName: "icon-ac-heat-protect-illustrative",
                             type: .illustrative,
                             size: .medium,
-                            color: "iconDefaultSecondary"
+                            color: .iconDefaultSecondary
                         )
                         Icon(
                             iconName: "icon-account-illustrative",
                             type: .illustrative,
                             size: .large,
-                            
-                            color: "iconDefaultTertiary"
+                            color: .iconFeedbackError
                         )
                         Icon(
                             iconName: "derocket",
                             type: .illustrative,
                             size: .xLarge,
-                            color: "iconDefaultPrimary"
+                            color: .iconDefaultPrimary
                         )
                     }
                 }

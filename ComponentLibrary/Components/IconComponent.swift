@@ -5,26 +5,23 @@ struct Icon: View {
     let iconName: String
     let type: IconType
     let size: IconSize
-    let color: String
+    let color: ColorToken 
 
     @Environment(\.colorScheme) private var colorScheme
     @Environment(\.brand) private var brand
 
     var body: some View {
-        
         let iconSize = IconTokenManager.shared.getIconSize(for: brand.identifier, type: type, size: size) ?? 24
-        let iconColor = ColorTokenManager.shared.color(for: brand, tokenName: color, colorScheme: colorScheme)
-        
         if !IconTokenManager.shared.iconExists(for: brand.identifier, iconName: iconName) {
             return AnyView(EmptyView())
         }
-        
+
         return AnyView(
             SVGImageView(
                 svgName: iconName,
                 frameSize: iconSize,
                 brand: brand,
-                color: iconColor,
+                colorToken: color, // Pass the ColorToken
                 iconType: type
             )
             .frame(width: iconSize, height: iconSize)
@@ -36,12 +33,13 @@ struct SVGImageView: UIViewRepresentable {
     let svgName: String
     let frameSize: CGFloat
     let brand: Brand
-    let color: Color // SwiftUI Color
+    let colorToken: ColorToken // Now using ColorToken instead of SwiftUI Color
     let iconType: IconType
 
+    @Environment(\.colorScheme) private var colorScheme
+
     func makeUIView(context: Context) -> SVGKFastImageView {
-       
-        guard let svgImage = SVGLoader.shared.loadSVG(named: svgName,  frameSize: frameSize) else {
+        guard let svgImage = SVGLoader.shared.loadSVG(named: svgName, frameSize: frameSize) else {
             return SVGKFastImageView(svgkImage: SVGKImage())
         }
         
@@ -50,18 +48,15 @@ struct SVGImageView: UIViewRepresentable {
     }
 
     func updateUIView(_ uiView: SVGKFastImageView, context: Context) {
-        @Environment(\.brand)  var brand
-        @Environment(\.colorScheme) var colorScheme
+        let resolvedColor = colorToken.color(brand: brand, colorScheme: colorScheme).toUIColor()
+        let strokeColor = ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme).toUIColor()
+
         if let rootLayer = uiView.image?.caLayerTree {
-            let uiColor = color.toUIColor()
-            let stroke = (ColorToken.grayscale900.color(brand: brand, colorScheme: colorScheme)).toUIColor()
-            
             if iconType == .illustrative {
-                
-                applyColorToStroke(layer: rootLayer, color:stroke )
-                applyFillColorToClass(layer: rootLayer, idName: "st0", color: uiColor)
+                applyColorToStroke(layer: rootLayer, color: strokeColor)
+                applyFillColorToClass(layer: rootLayer, idName: "st0", color: resolvedColor)
             } else if iconType == .utility {
-                applyColorToUtilityIcons(layer: rootLayer, color: uiColor)
+                applyColorToUtilityIcons(layer: rootLayer, color: resolvedColor)
             }
         }
     }
@@ -82,6 +77,7 @@ struct SVGImageView: UIViewRepresentable {
         }
         layer.sublayers?.forEach { applyColorToUtilityIcons(layer: $0, color: color) }
     }
+
     private func applyColorToStroke(layer: CALayer, color: UIColor) {
         if let shapeLayer = layer as? CAShapeLayer {
             shapeLayer.fillColor = color.cgColor
@@ -91,3 +87,4 @@ struct SVGImageView: UIViewRepresentable {
         layer.sublayers?.forEach { applyColorToStroke(layer: $0, color: color) }
     }
 }
+
