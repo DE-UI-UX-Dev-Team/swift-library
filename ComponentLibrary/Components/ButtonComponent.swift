@@ -76,7 +76,7 @@ struct ButtonStyleConfig {
     )
 }
 
-struct ButtonComponent: View, BrandStyleSupport  {
+struct Button: View, BrandStyleSupport  {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand)  var brand
 
@@ -109,7 +109,7 @@ struct ButtonComponent: View, BrandStyleSupport  {
                  }
              }()
 
-        Button(action: action) {
+        SwiftUI.Button(action: action) {
             Text(title)
                 .typographyStyle(styleConfig.typographyStyle)
                 .modifier(UnderlineModifier(applyUnderline: brand == .de && variant == .tertiary, color: styleConfig.foregroundColor))

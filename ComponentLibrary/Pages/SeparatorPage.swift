@@ -18,25 +18,25 @@ struct SeparatorDemoPage: View {
                Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
                    .typographyStyle(.p1)
                
-                   ButtonComponent(
+                   Button(
                 
                        title: "Button",
                        variant: .primary
                    )
                
-               SeparatorComponent( type: .horizontal, label: "OR")
+               Separator( type: .horizontal, label: "OR")
                
                
                Text("Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.").typographyStyle(.p1)
               
-                   ButtonComponent(
+                   Button(
                        title: "Button",
                        variant: .secondary
                    )
                
                Spacer().frame(height: 10)
                
-               SeparatorComponent( type: .horizontal)
+               Separator( type: .horizontal)
                
                Spacer().frame(height: 10)
                
@@ -63,7 +63,7 @@ struct SeparatorDemoPage: View {
                            .frame(maxWidth: .infinity, alignment: .center)
                    }
                    
-                   SeparatorComponent( type: .vertical)
+                   Separator( type: .vertical)
                    
                    VStack(spacing: 8) {
                        Text("Pricing")
@@ -94,27 +94,27 @@ struct SeparatorDemoPage: View {
                            .typographyStyle(.h5)
                            .frame(maxWidth: .infinity, alignment: .center)
                        
-                       ButtonComponent(
+                       Button(
                            title: "Continue with Email",
                            variant: .primary,
                            size: .small
                        )
                    }
                    
-                       SeparatorComponent( type: .vertical, label: "OR")
+                       Separator( type: .vertical, label: "OR")
                    
                    VStack(spacing: 8) {
                        Text("Sign In with Social Media")
                            .typographyStyle(.h5)
                            .frame(maxWidth: .infinity, alignment: .center)
                        
-                       ButtonComponent(
+                       Button(
                            title: "Continue with Google",
                            variant: .secondary,
                            size: .small
                        )
                        
-                       ButtonComponent(
+                       Button(
                            title: "Continue with Apple",
                            variant: .secondary,
                            size: .small

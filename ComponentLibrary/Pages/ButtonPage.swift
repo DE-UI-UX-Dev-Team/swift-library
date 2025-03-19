@@ -17,7 +17,7 @@ struct ButtonView: View, BrandStyleSupport {
         GeometryReader { geometry in
             ZStack {
                 VStack(spacing: 14) {
-                    ButtonComponent(
+                    Button(
                         title: "Button show toast",
                         variant: .primary
                     ) {
@@ -26,26 +26,26 @@ struct ButtonView: View, BrandStyleSupport {
                         }
                     }
                     
-                    ButtonComponent(
+                    Button(
                         title: "Button",
                         variant: .secondary
                     ) {
                         print("Secondary tapped")
                     }
                     
-                    ButtonComponent(
+                    Button(
                         title: "Button",
                         variant: .tertiary
                     ) {
                         print("Tertiary tapped")
                     }
                     
-                    ButtonComponent(
+                    Button(
                         title: "Button",
                         variant: .disabled
                     )
                     
-                    ButtonComponent(
+                    Button(
                         title: "Small Button",
                         variant: .primary,
                         size: .small
@@ -53,7 +53,7 @@ struct ButtonView: View, BrandStyleSupport {
                         print("Small Primary tapped")
                     }
                     
-                    ButtonComponent(
+                    Button(
                         title: "Small Button",
                         variant: .secondary,
                         size: .small
@@ -61,7 +61,7 @@ struct ButtonView: View, BrandStyleSupport {
                         print("Small Primary tapped")
                     }
                     
-                    ButtonComponent(
+                    Button(
                         title: "Small Button",
                         variant: .tertiary,
                         size: .small
@@ -69,7 +69,7 @@ struct ButtonView: View, BrandStyleSupport {
                         print("Small Primary tapped")
                     }
                     
-                    ButtonComponent(
+                    Button(
                         title: "Small Button",
                         variant: .disabled,
                         size: .small
@@ -81,7 +81,7 @@ struct ButtonView: View, BrandStyleSupport {
             .overlay(
                 VStack {
                     
-                    ToastComponent(
+                    Toast(
                         message: "Complete your Vivint offer by scheduling your installation.",
                         linkText: Text("Schedule installation")
                             .font(.subheadline)

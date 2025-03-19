@@ -1,9 +1,4 @@
-//
-//  InputComponent.swift
-//  ComponentLibrary
-//
-//  Created by susan ruan on 2/18/25.
-//
+
 
 import SwiftUI
 
@@ -83,7 +78,7 @@ struct InputStyleConfig {
     }
 }
 
-struct InputComponent: View, BrandStyleSupport {
+struct Input: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) var brand
     let variant: InputVariant
@@ -109,7 +104,7 @@ struct InputComponent: View, BrandStyleSupport {
                 ForEach(options, id: \.id) { option in
                     let selectedValues = value.split(separator: ",").map(String.init)
                     let isSelected = selectedValues.contains(option.value)
-                    Button(action: {
+                    SwiftUI.Button(action: {
                         guard !isDisabled else { return }
                         var newValues = Set(selectedValues)
                         if isSelected {
@@ -136,7 +131,7 @@ struct InputComponent: View, BrandStyleSupport {
             case .radio:
                 ForEach(options, id: \.id) { option in
                     let isSelected = (value == option.value)
-                    Button(action: {
+                    SwiftUI.Button(action: {
                         guard !isDisabled else { return }
                         value = option.value
                     }) {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CustomModalComponent: View {
+struct Modal: View {
     @Binding var isPresented: Bool 
 
     var body: some View {
@@ -20,7 +20,7 @@ struct CustomModalComponent: View {
                     .foregroundColor(.white)
                     .padding()
 
-                Button("Close Modal") {
+                SwiftUI.Button("Close Modal") {
                     isPresented = false
                 }
                 .padding()

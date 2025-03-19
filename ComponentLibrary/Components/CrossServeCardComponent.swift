@@ -2,21 +2,10 @@ import SwiftUI
 
 
 
-struct CrossServeCard: View {
+struct CrossServeCard: View , BrandStyleSupport  {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
-    
-    private var brandSpacing: BrandSpacing {
-        SpacingTokenManager.shared.spacing(for: brand)
-    }
-    
-    private var cornerRadius: BorderRadius {
-        BorderUtilities.cornerRadius(for: brand)
-    }
-    
-    private func colorToken(_ token: ColorToken) -> Color {
-        token.color(brand: brand, colorScheme: colorScheme)
-    }
+
     
     var image: String?
     var tag: String?
@@ -51,7 +40,7 @@ struct CrossServeCard: View {
                                     }
                                     
                                     if let tag = tag, let tagColor = tagColor {
-                                        TagView(
+                                        Tag(
                                             text: tag,
                                             style: .active(tagColor)
                                         )
@@ -96,7 +85,7 @@ struct CrossServeCard: View {
                             
                             VStack(alignment: .leading, spacing: 10) {
                                 if let tag = tag, let tagColor = tagColor {
-                                    TagView(
+                                    Tag(
                                         text: tag,
                                         style: .active(tagColor)
                                     )
@@ -117,7 +106,7 @@ struct CrossServeCard: View {
                                 CrossServeCardContent
                                 
                                 if let link = link {
-                                    LinkComponent(
+                                    Link(
                                         text: link,
                                         variant: .text,
                                         isInline: false
@@ -128,7 +117,7 @@ struct CrossServeCard: View {
                     }
                     
                     if let buttonText = buttonText, let buttonVariant = buttonVariant {
-                        ButtonComponent(
+                        Button(
                             title: buttonText,
                             variant: buttonVariant
                         ) {
@@ -137,7 +126,7 @@ struct CrossServeCard: View {
                     }
                 }
                 if price != nil || footerText != nil {
-                    SeparatorComponent(type: .horizontal)
+                    Separator(type: .horizontal)
                         .padding(.vertical, brandSpacing.containerSpacing.padding.s)
                     
                     CrossServeCardFooter
@@ -185,7 +174,7 @@ struct CrossServeCard: View {
                 HStack {
                     price
                     Spacer()
-                    LinkComponent(
+                    Link(
                         text: footerLink,
                         variant: .text,
                         isInline: false
@@ -195,20 +184,18 @@ struct CrossServeCard: View {
                 VStack {
                     Text(footerText)
                         .typographyStyle(.p1)
-                        .frame(maxWidth: .infinity, alignment: .center) // ✅ Centers the text properly
+                        .frame(maxWidth: .infinity, alignment: .center)
                 }
             }
         }
     }
 }
 
-struct CrossServeCardPrice: View {
+struct CrossServeCardPrice: View , BrandStyleSupport  {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
     
-    private func colorToken(_ token: ColorToken) -> Color {
-        token.color(brand: brand, colorScheme: colorScheme)
-    }
+
     
     var oldPrice: String? = nil
     var newPrice: String

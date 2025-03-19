@@ -65,14 +65,14 @@ struct InputPage: View {
                         Text("Single & Grouped Radios")
                             .typographyStyle(.h3)
                         
-                             InputComponent(
+                             Input(
                                                 variant: .radio,
                                                 value: $singleRadioValue,
                                                 options: singleRadioOption
                                                
                                             )
                                             
-                        InputComponent(
+                        Input(
                                            variant: .radio,
                                            value: $singleRadioDisValue,
                                            options: singleRadioDisOption,
@@ -80,13 +80,13 @@ struct InputPage: View {
                                           
                                        )
 
-                        InputComponent(
+                        Input(
                                               variant: .radio,
                                               value: $groupedRadioValue,
                                               options: groupRadioOptions
 
                                           )
-                        InputComponent(
+                        Input(
                          variant: .radio,
                         value: $groupRadioEValue,
                             options:groupRadioErrors,
@@ -100,19 +100,19 @@ struct InputPage: View {
                         
                         Text("Singl & Grouped Checkboxes")
                             .typographyStyle(.h3)
-                        InputComponent(
+                        Input(
                                                  variant: .checkbox,
                                                  value: $singleCheckboxValue,
                                                  options: singleCheckboxOption
                                              )
                         
-                        InputComponent(
+                        Input(
                                                  variant: .checkbox,
                                                  value: $singleCheckboxErrValue,
                                                  options: singleCheckboxErrOption,
                                                  hasError: true
                                              )
-                     InputComponent(
+                     Input(
                              variant: .checkbox,
                              value: $singleCheckboxDisValue,
                              options: singleCheckboxDisabled,
@@ -122,7 +122,7 @@ struct InputPage: View {
                         
                         
 
-                                            InputComponent(
+                                            Input(
                                                 variant: .checkbox,
                                                 value: $groupedCheckboxValue,
                                                 options: groupCheckboxOptions,

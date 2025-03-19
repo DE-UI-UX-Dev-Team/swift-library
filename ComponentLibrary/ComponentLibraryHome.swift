@@ -28,7 +28,7 @@ struct ComponentLibraryHome: View {
     var body: some View {
         NavigationStack {
             List {
-                Section(header: HeaderComponent(title: "NRG UI Components Library")) {
+                Section(header: Header(title: "NRG UI Components Library")) {
                     ForEach(filteredComponents, id: \.0) { item in
                         NavigationLink(destination: item.1) {
                             HStack {
