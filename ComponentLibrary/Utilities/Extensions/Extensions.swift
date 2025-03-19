@@ -6,6 +6,13 @@ extension Array {
     }
 }
 
+extension SwiftUI.Color {
+     func toUIColor() -> UIColor {
+         let uiColor = UIColor(self)  // Convert SwiftUI Color to UIColor
+         return uiColor
+     }
+}
+
 extension Color {
     init?(hex: String) {
         let sanitizedHex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
