@@ -21,7 +21,7 @@ struct Icon: View {
                 svgName: iconName,
                 frameSize: iconSize,
                 brand: brand,
-                colorToken: color, // Pass the ColorToken
+                colorToken: color,
                 iconType: type
             )
             .frame(width: iconSize, height: iconSize)
@@ -33,7 +33,7 @@ struct SVGImageView: UIViewRepresentable {
     let svgName: String
     let frameSize: CGFloat
     let brand: Brand
-    let colorToken: ColorToken // Now using ColorToken instead of SwiftUI Color
+    let colorToken: ColorToken 
     let iconType: IconType
 
     @Environment(\.colorScheme) private var colorScheme

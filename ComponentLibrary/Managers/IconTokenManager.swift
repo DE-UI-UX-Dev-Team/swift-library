@@ -36,14 +36,14 @@ final class IconTokenManager: ObservableObject {
         }
     }
 
-    // Get icon size for a brand & type
+   
     func getIconSize(for brand: String, type: IconType, size: IconSize) -> CGFloat? {
         allBrands[brand].flatMap { tokens in
             type == .utility ? tokens.utility[size.rawValue] : tokens.illustrative[size.rawValue]
         }
     }
 
-    // Check if an icon exists for a brand
+  
     func iconExists(for brand: String, iconName: String) -> Bool {
         iconLists[brand]?.contains(iconName) ?? false
     }
