@@ -1,0 +1,38 @@
+{
+  "brandDE": {
+    "icons": [
+      "derocket",
+      "month",
+      "clock",
+      "iconhour",
+      "bell-regular-utility",
+      "arrow-right-regular-utility",
+      "arrow-left-regular-utility",
+      "arrow-up-regular-utility",
+      "arrow-down-regular-utility",
+      "circle-check-sharp-regular-utility",
+      "icon-account-illustrative",
+      "icon-ac-heat-sales-illustrative",
+      "icon-ac-heat-protect-illustrative"
+      
+     
+    ]
+  },
+  "brandReliant": {
+    "icons": [
+      "icon-account-illustrative",
+      "icon-ac-heat-sales-illustrative",
+      "icon-ac-heat-protect-illustrative",
+      "derocket",
+      "account",
+      "discover",
+      "usage",
+      "home",
+      "info",
+      "bill",
+      "arrow-down-regular-utility",
+      "circle-check-sharp-regular-utility"
+    ]
+  }
+}
+
