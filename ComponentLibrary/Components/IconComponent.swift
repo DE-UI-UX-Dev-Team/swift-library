@@ -59,6 +59,9 @@ struct SVGImageView: UIViewRepresentable {
                 applyColorToUtilityIcons(layer: rootLayer, color: resolvedColor)
             }
         }
+        // SVGKFastImageView might not be refreshing its layer tree properly after the initial render.
+        // Force the view to redraw
+        uiView.setNeedsDisplay()
     }
 
     private func applyFillColorToClass(layer: CALayer, idName: String, color: UIColor) {
