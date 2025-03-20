@@ -13,21 +13,13 @@ final class TypographyTokenManager: ObservableObject {
     @Published private(set) var tokens: TypographyTokens?
 
     private init() {
-        loadTokens()
-    }
-
-    private func loadTokens() {
-        guard let url = Bundle.main.url(forResource: "TypographyTokens", withExtension: "json") else {
-            os_log(.error, "TypographyTokens.json not found in the app bundle.")
-            return
-        }
-        do {
-            let data = try Data(contentsOf: url)
-            tokens = try JSONDecoder().decode(TypographyTokens.self, from: data)
-        } catch {
-            os_log(.error, "Error decoding TypographyTokens.json: %@", error.localizedDescription)
-        }
-    }
+           if case .success(let decoded) = JSONTokenLoader.load(fileName: "TypographyTokens", type: TypographyTokens.self) {
+               self.tokens = decoded
+               os_log(.info, "Successfully loaded TypographyTokens.json")
+           } else {
+               os_log(.error, "Failed to load TypographyTokens.json")
+           }
+       }
 
     func font(for brand: Brand, styleName: String) -> Font {
         guard let styleToken = tokens?.value(for: brand, style: styleName) else {

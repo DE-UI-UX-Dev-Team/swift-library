@@ -14,19 +14,19 @@ struct TagDemoPage: View, BrandStyleSupport {
                     Text("Active Tags")
                         .font(.headline)
 
-                    TagView(
+                    Tag(
                         text: "Recommended",
                         style: .active(.tertiaryBase),
                         icon: Image(systemName: "star.fill"),
                         iconPosition: .left
                     )
 
-                    TagView(
+                    Tag(
                         text: "$200 Bill Credit",
                         style: .active(.primaryBase)
                     )
                     
-                    TagView(
+                    Tag(
                         text: "Tag Label",
                         style: .active(.greenBase)
                     )
@@ -36,7 +36,7 @@ struct TagDemoPage: View, BrandStyleSupport {
                     Text("Inactive Tags")
                         .font(.headline)
 
-                    TagView(
+                    Tag(
                         text: "Inactive",
                         style: .inactive
                     )
@@ -46,14 +46,14 @@ struct TagDemoPage: View, BrandStyleSupport {
                     Text("Status Tags")
                         .font(.headline)
 
-                    TagView(
+                    Tag(
                         text: "-10%",
                         style: .warning,
                         icon: Image(systemName: "arrow.down"),
                         iconPosition: .left
                     )
 
-                    TagView(
+                    Tag(
                         text: "+20%",
                         style: .success,
                         icon: Image(systemName: "arrow.up"),

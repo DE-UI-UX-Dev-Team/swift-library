@@ -16,7 +16,7 @@ struct LinkPage: View {
                 VStack(alignment: .leading, spacing: 24) {
                     Text("Standalone Link:")
                         .typographyStyle(.h3)
-                    LinkComponent(
+                    Link(
                         text: "Tap Me (Standalone)",
                         variant: .text,
                         isInline: false,
@@ -31,7 +31,7 @@ struct LinkPage: View {
                         .typographyStyle(.h3)
                     HStack(alignment: .firstTextBaseline, spacing: 0) {
                         Text("This is an ")
-                        LinkComponent(
+                        Link(
                             text: "inline link",
                             variant: .text,
                             isInline: true,
@@ -46,7 +46,7 @@ struct LinkPage: View {
                     
                     Text("Accordion Link (No Extra Content):")
                         .typographyStyle(.h3)
-                    LinkComponent(
+                    Link(
 
                         text: "Toggle Accordion",
                         variant: .accordion(isExpanded: isAccordionExpandedSimple),
@@ -64,7 +64,7 @@ struct LinkPage: View {
                     Text("Accordion Link (With Additional Content):")
                         .typographyStyle(.h3)
                     VStack(alignment: .leading, spacing: 8) {
-                        LinkComponent( 
+                        Link( 
                             text: "Show/Hide Details",
                             variant: .accordion(isExpanded: isAccordionExpandedWithContent),
                             isInline: false,

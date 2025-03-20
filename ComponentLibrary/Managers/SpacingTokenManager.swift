@@ -1,9 +1,3 @@
-////
-////  SpacingTokenManager.swift
-////  ComponentLibrary
-////
-////  Created by UI/UX Development Team  on 1/24/25.
-////
 import SwiftUI
 import os.log
 
@@ -12,19 +6,12 @@ final class SpacingTokenManager: ObservableObject {
     @Published private(set) var spacingSystem: SpacingSystem?
 
     private init() {
-        loadTokens()
-    }
-
-    private func loadTokens() {
-        guard let url = Bundle.main.url(forResource: "SpacingTokens", withExtension: "json") else {
-            os_log(.error, "SpacingTokens.json not found in the app bundle.")
-            return
-        }
-        do {
-            let data = try Data(contentsOf: url)
-            spacingSystem = try JSONDecoder().decode(SpacingSystem.self, from: data)
-        } catch {
-            os_log(.error, "Failed to load or decode SpacingTokens.json: %@", error.localizedDescription)
+        if case .success(let decoded) = JSONTokenLoader.load(fileName: "SpacingTokens", type: SpacingSystem.self) {
+            self.spacingSystem = decoded
+            os_log(.info, "✅ Successfully loaded SpacingTokens.json")
+        } else {
+            os_log(.error, "❌ Failed to load SpacingTokens.json, using default spacing")
+            self.spacingSystem = SpacingSystem(brands: [:])
         }
     }
 
@@ -46,12 +33,9 @@ final class SpacingTokenManager: ObservableObject {
                     none: 0, xs: 4, s: 8, m: 16, l: 24, xl: 24, twoXL: 24
                 ),
                 gaps: ContainerGaps(
-                    none: 0, xs: 2, s: 4, m: 8, l: 16, xl: 24,twoXL: 32, icon: 10
+                    none: 0, xs: 2, s: 4, m: 8, l: 16, xl: 24, twoXL: 32, icon: 10
                 )
             )
         )
     }
 }
-
-
-

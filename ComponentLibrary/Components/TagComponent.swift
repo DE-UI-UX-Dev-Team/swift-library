@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct TagView: View, BrandStyleSupport {
+struct Tag: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand)  var brand
     

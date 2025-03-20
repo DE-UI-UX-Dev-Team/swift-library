@@ -64,18 +64,18 @@ struct ConfirmationPage: View, BrandStyleSupport {
                         Text("2 FREE DAYS PER WEEK")
                             .typographyStyle(.h3)
                         HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
-                            TagView(
+                            Tag(
                                 text: "12 months",
                                 style: .inactive
                             )
                             
-                            TagView(
+                            Tag(
                                 text: "Fixed rate",
                                 style: .inactive
                                 
                             )
                             
-                            TagView(
+                            Tag(
                                 text: "100% solar",
                                 style: .inactive
                             )
@@ -89,13 +89,13 @@ struct ConfirmationPage: View, BrandStyleSupport {
                             .foregroundColor(.secondary)
                         
                         HStack(spacing: brandSpacing.containerSpacing.gaps.s) {
-                            TagView(
+                            Tag(
                                 text: "Recommended",
                                 style: .active(.tertiaryBase),
                                 iconPosition: .left
                             )
                             
-                            TagView(
+                            Tag(
                                 text: "$200 Bill Credit",
                                 style: .active(.primaryBase)
                             )
@@ -110,7 +110,7 @@ struct ConfirmationPage: View, BrandStyleSupport {
                                 .foregroundColor(.secondary)
                         }
                         
-                        LinkComponent(
+                        Link(
                             text: "View plan details",
                             variant: .text,
                             isInline: false,
@@ -127,7 +127,7 @@ struct ConfirmationPage: View, BrandStyleSupport {
                     )
 
                     
-                    ButtonComponent(
+                    Button(
                         title: "Button",
                         variant: .primary
                     ) {

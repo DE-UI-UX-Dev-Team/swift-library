@@ -1,13 +1,18 @@
-//
-//  ColorHexExtensions.swift
-//  ComponentLibrary
-//
-//  Created by UI/UX Development Team on 1/14/25.
-//
-
 import SwiftUI
 
-// Hex -> Color
+extension Array {
+    subscript(safe index: Index) -> Element? {
+        return indices.contains(index) ? self[index] : nil
+    }
+}
+
+extension SwiftUI.Color {
+     func toUIColor() -> UIColor {
+         let uiColor = UIColor(self)  // Convert SwiftUI Color to UIColor
+         return uiColor
+     }
+}
+
 extension Color {
     init?(hex: String) {
         let sanitizedHex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

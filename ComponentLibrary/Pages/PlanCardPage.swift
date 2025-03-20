@@ -13,16 +13,16 @@ struct PlanCardPage: View, BrandStyleSupport {
             priceRate: PriceRate(price: "12.5", unit: "/kWh"),
             priceDescription:"price at 1800 kWh",
             tags: [
-                TagView(text: "12 months", style: .inactive),
-                TagView(text: "Fixed rate", style: .inactive),
-                TagView(text: "100% solar", style: .inactive)
+                Tag(text: "12 months", style: .inactive),
+                Tag(text: "Fixed rate", style: .inactive),
+                Tag(text: "100% solar", style: .inactive)
             ],
             promotionalTags: [
-                TagView(text: "Recommended", style: .active(.tertiaryBase), iconPosition: .left),
-                TagView(text: "$200 Bill Credit", style: .active(.primaryBase), iconPosition: nil),
+                Tag(text: "Recommended", style: .active(.tertiaryBase), iconPosition: .left),
+                Tag(text: "$200 Bill Credit", style: .active(.primaryBase), iconPosition: nil),
                 
             ],
-            link: LinkComponent(
+            link: Link(
                 text: "View plan details",
                 variant: .text,
                 isInline: false,
@@ -38,11 +38,11 @@ struct PlanCardPage: View, BrandStyleSupport {
             priceRate: PriceRate(price: "17.5", unit: "/kWh"),
             priceDescription:"price at 2000 kWh",
             tags: [
-                TagView(text: "12 months", style: .inactive),
-                TagView(text: "Fixed rate", style: .inactive),
-                TagView(text: "100% solar", style: .inactive)
+                Tag(text: "12 months", style: .inactive),
+                Tag(text: "Fixed rate", style: .inactive),
+                Tag(text: "100% solar", style: .inactive)
             ],
-            link: LinkComponent(
+            link: Link(
                 text: "Check it out",
                 variant: .text,
                 isInline: false,
