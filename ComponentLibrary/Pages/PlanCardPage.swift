@@ -18,8 +18,8 @@ struct PlanCardPage: View, BrandStyleSupport {
                 Tag(text: "100% solar", style: .inactive)
             ],
             promotionalTags: [
-                Tag(text: "Recommended", style: .active(.tertiaryBase), iconPosition: .left),
-                Tag(text: "$200 Bill Credit", style: .active(.primaryBase), iconPosition: nil),
+                Tag(text: "Recommended", style: .active(.tertiaryBase)),
+                Tag(text: "$200 Bill Credit", style: .active(.primaryBase)),
                 
             ],
             link: Link(

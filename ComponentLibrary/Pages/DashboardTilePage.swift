@@ -19,7 +19,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                             color: .iconDefaultGreenUI
                                    ),
                             h4Text: "Weekly Usage",
-                            h6Text: "000.0 kWh | $00.00",
+                            p1BoldText: "000.0 kWh | $00.00",
                             p1Text: "-$0.00 than last week last week",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
@@ -34,7 +34,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                             color: .primaryBase
                       ),
                             h4Text: "AutoPay",
-                            h6Text: "Scheduled",
+                            p1BoldText: "Scheduled",
                             p1Text: "01/01/20XX",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
@@ -50,8 +50,12 @@ struct DashboardTilePage: View , BrandStyleSupport {
                             size: .medium,
                             color: .tertiaryBase
                                    ),
+                            tag: Tag(
+                                text: "Time to renew",
+                                style: .active(.tertiaryBase)
+                            ),
                             h4Text: "My plan",
-                            h6Text: "90 days",
+                            p1BoldText: "90 days",
                             p1Text: "Left until contract ends (estimated)",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
@@ -82,7 +86,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                             color: .iconDefaultGreenUI
                                    ),
                             h4Text: "Electric vehicle",
-                            h6Text: "Charging status",
+                            p1BoldText: "Charging status",
                             p1Text: "Cost to charge",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
@@ -97,7 +101,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                             color: .iconDefaultSecondary
                       ),
                             h4Text: "Nest thermostat",
-                            h6Text: "Card details",
+                            p1BoldText: "Card details",
                             p1Text: "Link your Nest",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
@@ -129,7 +133,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                             color: .tertiaryBase
                       ),
                             h4Text: "Rack up rewards",
-                            h6Text: "000 points",
+                            p1BoldText: "000 points",
                             p1Text: "Earn more points",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
@@ -181,7 +185,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                                             color: .iconDefaultSolar
                                                    ),
                                            h3Text: "Solar",
-                                           h6Text: "Home Energy",
+                                           p1BoldText: "Home Energy",
                                            p1Text: "+4.3 kWh Daily Net",
                                            tileAlignment: .centerAlignment
                                        )
