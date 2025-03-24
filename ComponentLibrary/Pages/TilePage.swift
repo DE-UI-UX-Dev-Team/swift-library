@@ -2,7 +2,7 @@
 import SwiftUI
 
 
-struct DashboardTilePage: View , BrandStyleSupport {
+struct TilePage: View , BrandStyleSupport {
     @Environment(\.brand)  var brand
     @Environment(\.colorScheme)  var colorScheme
     @State private var isAccordionExpandedSimple = false
@@ -11,7 +11,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
                     HStack{
-                        DashboardTile(
+                        Tile(
                             icon: Icon(
                             iconName: "monitoring",
                             type: .utility,
@@ -26,7 +26,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                                     )
                 
                         
-                        DashboardTile(
+                        Tile(
                             icon: Icon(
                             iconName: "paid",
                             type: .utility,
@@ -43,7 +43,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                       
                     }
                     HStack{
-                        DashboardTile(
+                        Tile(
                             icon: Icon(
                             iconName: "article",
                             type: .utility,
@@ -62,7 +62,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                                     )
                 
                         
-                        DashboardTile(
+                        Tile(
                             icon: Icon(
                             iconName: "difference",
                             type: .utility,
@@ -78,7 +78,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                       
                     }
                     HStack{
-                        DashboardTile(
+                        Tile(
                             icon: Icon(
                             iconName: "electric_car",
                             type: .utility,
@@ -93,7 +93,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                                     )
                 
                         
-                        DashboardTile(
+                        Tile(
                             icon: Icon(
                             iconName: "thermostat",
                             type: .utility,
@@ -111,7 +111,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                     }
                     
                     HStack{
-                        DashboardTile(
+                        Tile(
                             icon: Icon(
                             iconName: "solar_power",
                             type: .utility,
@@ -125,7 +125,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                                     )
                 
                         
-                        DashboardTile(
+                        Tile(
                             icon: Icon(
                             iconName: "stars",
                             type: .utility,
@@ -138,14 +138,13 @@ struct DashboardTilePage: View , BrandStyleSupport {
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
                         )
-                   
                       
                     }
                     
 
                     
                     
-                        DashboardTile(
+                        Tile(
                                      icon: Icon(
                                    iconName: "request_quote",
                                    type: .utility,
@@ -177,7 +176,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                                        )
                       
                                        
-                            DashboardTile(
+                            Tile(
                                            icon: Icon(
                                             iconName: "solar_power",
                                             type: .utility,
@@ -190,7 +189,7 @@ struct DashboardTilePage: View , BrandStyleSupport {
                                            tileAlignment: .centerAlignment
                                        )
                     
-                     DashboardTile(
+                     Tile(
                                  icon: Icon(
                                iconName: "checkmark_alt",
                                type: .utility,
@@ -211,9 +210,9 @@ struct DashboardTilePage: View , BrandStyleSupport {
         }
 }
 
-struct DashboardTilePage_Previews: PreviewProvider {
+struct TilePage_Previews: PreviewProvider {
     static var previews: some View {
-            DashboardTilePage()
-        }
+            TilePage()
+    }
 }
 

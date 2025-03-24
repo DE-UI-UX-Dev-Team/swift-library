@@ -5,7 +5,7 @@ enum TileAlignment {
     case leftAlignment, centerAlignment
 }
 
-struct DashboardTile: View , BrandStyleSupport {
+struct Tile: View , BrandStyleSupport {
     @Environment(\.brand)  var brand
     @Environment(\.colorScheme)  var colorScheme
 
