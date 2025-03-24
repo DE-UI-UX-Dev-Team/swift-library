@@ -35,7 +35,7 @@ struct NavFooter<Content: View>: View, BrandStyleSupport {
             .frame(maxWidth: .infinity, alignment: brand == .de ?.center : .top)
             .padding(.horizontal, brand == .de ? brandSpacing.containerSpacing.padding.s :  brandSpacing.containerSpacing.padding.l)
             .padding(.top, brandSpacing.containerSpacing.padding.s)
-            .padding(.bottom, brandSpacing.containerSpacing.padding.xl)
+            .padding(.bottom,brand == .de ? brandSpacing.containerSpacing.padding.none :  brandSpacing.containerSpacing.padding.s)
            .background(brand == .de ? colorToken(.pageFillGrayDefault):colorToken(.pageFillGray1))
         }
     }

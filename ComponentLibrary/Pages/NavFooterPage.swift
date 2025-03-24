@@ -115,7 +115,6 @@ struct NavFooterPage: View , BrandStyleSupport {
                 pageMap[selectedTab] ?? AnyView(Text("Unknown Page").typographyStyle(.h2))
                         }
                     )
-        .ignoresSafeArea(.all, edges: .bottom)
     }
 }
 
