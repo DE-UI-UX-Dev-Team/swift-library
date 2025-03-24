@@ -1,17 +1,17 @@
 import SwiftUI
 
 
-struct NavTab: Identifiable {
+struct BarTab: Identifiable {
     let id = UUID()
     let icon: Icon?
     let title: String
 }
 
-struct NavFooter<Content: View>: View, BrandStyleSupport {
+struct BottomBar<Content: View>: View, BrandStyleSupport {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
     @Binding var selectedTab: Int
-    let NavTabItems: [NavTab]
+    let BarTabItems: [BarTab]
     let content: (Int) -> Content
     
     var body: some View {
@@ -20,8 +20,8 @@ struct NavFooter<Content: View>: View, BrandStyleSupport {
             Spacer()
             Separator(type: .horizontal)
             HStack(alignment: brand == .de ?.center : .top) {
-                ForEach(Array(NavTabItems.enumerated()), id: \.element.id) { index, item in
-                                    NavTabItem(
+                ForEach(Array(BarTabItems.enumerated()), id: \.element.id) { index, item in
+                                    BarTabItem(
                                         icon: item.icon,
                                         title: item.title,
                                         isSelected: selectedTab == index,

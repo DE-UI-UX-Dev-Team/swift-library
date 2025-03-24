@@ -1,7 +1,7 @@
 import SwiftUI
 
 
-struct NavTabItem: View, BrandStyleSupport {
+struct BarTabItem: View, BrandStyleSupport {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
     let icon: Icon?

@@ -1,26 +1,26 @@
 
 import SwiftUI
 
-struct NavFooterPage: View , BrandStyleSupport {
+struct BottomBarPage: View , BrandStyleSupport {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
     @State private var selectedTab = 0
 
     private let tabItemsDE = [
-        NavTab(
+        BarTab(
             icon: Icon( iconName: "home-de",
             type: .utility,
             size: .medium,
             color: .secondaryBase
         ), title: "Home"),
-        NavTab(
+        BarTab(
             icon: Icon(
             iconName: "usage-de",
             type: .utility,
             size: .medium,
             color: .secondaryBase
         ), title: "Usage"),
-        NavTab(
+        BarTab(
             icon: Icon(
             iconName: "support-de",
             type: .utility,
@@ -28,7 +28,7 @@ struct NavFooterPage: View , BrandStyleSupport {
             color: .grayscale600
         ), title: "Support"),
         
-        NavTab(
+        BarTab(
             icon:  Icon(
             iconName: "account-de",
             type: .utility,
@@ -45,34 +45,34 @@ struct NavFooterPage: View , BrandStyleSupport {
     ]
     
     private let tabItemsRE = [
-        NavTab(
+        BarTab(
             icon: Icon( iconName: "home",
                               type: .utility,
                               size: .medium,
                               color: .grayscale900
                           ), title: "Home"),
-        NavTab(
+        BarTab(
             icon: Icon(
             iconName: "bill",
             type: .utility,
             size: .medium,
             color: .grayscale900
         ), title: "Bill"),
-        NavTab(
+        BarTab(
             icon:Icon(
             iconName: "usage",
             type: .utility,
             size: .medium,
             color: .grayscale900
         ), title: "Usage"),
-        NavTab(
+        BarTab(
             icon:Icon(
             iconName: "discover",
             type: .utility,
             size: .medium,
             color: .grayscale900
         ), title: "Discover"),
-        NavTab(
+        BarTab(
             icon:  Icon(
             iconName: "account",
             type: .utility,
@@ -89,7 +89,7 @@ struct NavFooterPage: View , BrandStyleSupport {
         4: AnyView(Text("Account Page").typographyStyle(.h2))
     ]
     
-    private var tabItems: [NavTab] {
+    private var tabItems: [BarTab] {
                 switch brand {
                 case .reliant:
                     return tabItemsRE
@@ -108,9 +108,9 @@ struct NavFooterPage: View , BrandStyleSupport {
             }
 
     var body: some View {
-        NavFooter(
+        BottomBar(
                 selectedTab: $selectedTab,
-                NavTabItems: tabItems,
+                BarTabItems: tabItems,
                 content: { selectedTab in
                 pageMap[selectedTab] ?? AnyView(Text("Unknown Page").typographyStyle(.h2))
                         }
@@ -118,10 +118,10 @@ struct NavFooterPage: View , BrandStyleSupport {
     }
 }
 
-struct NavFooterPage_Previews: PreviewProvider {
+struct BottomBarPage_Previews: PreviewProvider {
     static var previews: some View {
         PreviewWrapper { brand in
-            NavFooterPage()
+            BottomBarPage()
         }
     }
 }
