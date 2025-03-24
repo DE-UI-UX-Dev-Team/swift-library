@@ -11,13 +11,14 @@ struct Tile: View , BrandStyleSupport {
 
     let icon: Icon?
     let tag: Tag?
-    let h3Text: String?
-    let h3TextColor: Color?
+    let title: String?
+    let titleColor: Color?
     let link: Link?
-    let h4Text: String?
-    let p1BoldText: String?
-    let p1Text: String?
+    let subTitle: String?
+    let detailsText: String?
+    let descText: String?
     let withChevronIcon: Bool?
+    let button: Button?
     let accordionLink: Link?
     let tileAlignment: TileAlignment
     
@@ -25,25 +26,27 @@ struct Tile: View , BrandStyleSupport {
     init(
         icon: Icon? = nil,
         tag: Tag? = nil,
-        h3Text: String? = nil,
-        h3TextColor: Color? = nil,
+        title: String? = nil,
+        titleColor: Color? = nil,
         link: Link? = nil,
-        h4Text: String? = nil,
-        p1BoldText: String? = nil,
-        p1Text: String? = nil,
+        subTitle: String? = nil,
+        detailsText: String? = nil,
+        descText: String? = nil,
         withChevronIcon: Bool = false,
+        button: Button? = nil,
         accordionLink: Link? = nil,
         tileAlignment: TileAlignment
     ) {
         self.icon =  icon
         self.tag = tag
-        self.h3Text = h3Text
-        self.h3TextColor = h3TextColor
+        self.title = title
+        self.titleColor = titleColor
         self.link = link
-        self.h4Text = h4Text
-        self.p1BoldText = p1BoldText
-        self.p1Text = p1Text
+        self.subTitle = subTitle
+        self.detailsText = detailsText
+        self.descText = descText
         self.withChevronIcon = withChevronIcon
+        self.button =  button
         self.accordionLink = accordionLink
         self.tileAlignment = tileAlignment
     }
@@ -64,10 +67,10 @@ struct Tile: View , BrandStyleSupport {
             }
           
             
-            if let h3Text = h3Text {
-                Text(h3Text)
-                    .typographyStyle(.h3)
-                    .foregroundColor(h3TextColor)
+            if let title = title {
+                Text(title)
+                    .typographyStyle( brand == .de ? .h6 : .h3)
+                    .foregroundColor(titleColor)
             }
             
   
@@ -76,25 +79,25 @@ struct Tile: View , BrandStyleSupport {
             }
             
       
-            if let h4Text = h4Text {
-                Text(h4Text)
-                    .typographyStyle(.h4)
+            if let subTitle = subTitle {
+                Text(subTitle)
+                    .typographyStyle( brand == .de ? .h6 : .h4)
             }
             
    
             HStack{
-                if let p1BoldText = p1BoldText {
-                    Text(p1BoldText)
-                        .typographyStyle(.h6)
+                if let detailsText = detailsText {
+                    Text(detailsText)
+                        .typographyStyle(brand == .de ? .p2 : .h6)
                 }
             }
             .frame(minHeight: tileAlignment == .leftAlignment ? 18 : nil )
             
-            if let p1Text = p1Text {
+            if let descText = descText {
                 if let withChevronIcon = withChevronIcon, withChevronIcon {
                     HStack(alignment: .center) {
-                        Text(p1Text)
-                            .typographyStyle(.p1)
+                        Text(descText)
+                            .typographyStyle(brand == .de ? .p3 : .p1)
                             .fixedSize(horizontal: false, vertical: true)
                         Spacer()
                         Icon(
@@ -106,9 +109,15 @@ struct Tile: View , BrandStyleSupport {
                     }
                 } else {
                     HStack(alignment: .center) {
-                        Text(p1Text).typographyStyle(.p1)}
+                        Text(descText).typographyStyle(brand == .de ? .p3 : .p1)}
                 
                 }
+            }
+            
+          
+            if let button = button {
+                    button
+           
             }
            
             if let accordionLink = accordionLink {

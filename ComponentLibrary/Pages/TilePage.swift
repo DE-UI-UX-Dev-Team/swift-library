@@ -18,9 +18,9 @@ struct TilePage: View , BrandStyleSupport {
                             size: .medium,
                             color: .iconDefaultGreenUI
                                    ),
-                            h4Text: "Weekly Usage",
-                            p1BoldText: "000.0 kWh | $00.00",
-                            p1Text: "-$0.00 than last week last week",
+                            subTitle: "Weekly Usage",
+                            detailsText: "000.0 kWh | $00.00",
+                            descText: "-$0.00 than last week last week",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
                                     )
@@ -33,9 +33,9 @@ struct TilePage: View , BrandStyleSupport {
                             size: .medium,
                             color: .primaryBase
                       ),
-                            h4Text: "AutoPay",
-                            p1BoldText: "Scheduled",
-                            p1Text: "01/01/20XX",
+                            subTitle: "AutoPay",
+                            detailsText: "Scheduled",
+                            descText: "01/01/20XX",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
                         )
@@ -54,9 +54,9 @@ struct TilePage: View , BrandStyleSupport {
                                 text: "Time to renew",
                                 style: .active(.tertiaryBase)
                             ),
-                            h4Text: "My plan",
-                            p1BoldText: "90 days",
-                            p1Text: "Left until contract ends (estimated)",
+                            subTitle: "My plan",
+                            detailsText: "90 days",
+                            descText: "Left until contract ends (estimated)",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
                                     )
@@ -69,8 +69,8 @@ struct TilePage: View , BrandStyleSupport {
                             size: .medium,
                             color: .primaryBase
                       ),
-                            h4Text: "Average billing",
-                            p1Text: "Sign up now",
+                            subTitle: "Average billing",
+                            descText: "Sign up now",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
                         )
@@ -85,9 +85,9 @@ struct TilePage: View , BrandStyleSupport {
                             size: .medium,
                             color: .iconDefaultGreenUI
                                    ),
-                            h4Text: "Electric vehicle",
-                            p1BoldText: "Charging status",
-                            p1Text: "Cost to charge",
+                            subTitle: "Electric vehicle",
+                            detailsText: "Charging status",
+                            descText: "Cost to charge",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
                                     )
@@ -100,9 +100,9 @@ struct TilePage: View , BrandStyleSupport {
                             size: .medium,
                             color: .iconDefaultSecondary
                       ),
-                            h4Text: "Nest thermostat",
-                            p1BoldText: "Card details",
-                            p1Text: "Link your Nest",
+                            subTitle: "Nest thermostat",
+                            detailsText: "Card details",
+                            descText: "Link your Nest",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
                         )
@@ -118,8 +118,8 @@ struct TilePage: View , BrandStyleSupport {
                             size: .medium,
                             color: .iconDefaultSolar
                                    ),
-                            h4Text: "Solar",
-                            p1Text: "Sync your Enphase account",
+                            subTitle: "Solar",
+                            descText: "Sync your Enphase account",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
                                     )
@@ -132,9 +132,9 @@ struct TilePage: View , BrandStyleSupport {
                             size: .medium,
                             color: .tertiaryBase
                       ),
-                            h4Text: "Rack up rewards",
-                            p1BoldText: "000 points",
-                            p1Text: "Earn more points",
+                            subTitle: "Rack up rewards",
+                            detailsText: "000 points",
+                            descText: "Earn more points",
                             withChevronIcon:true,
                             tileAlignment: .leftAlignment
                         )
@@ -151,7 +151,7 @@ struct TilePage: View , BrandStyleSupport {
                                    size: .medium,
                                    color: .primaryBase
                                ),
-                               h3Text: "$000.00 Due",
+                               title: "$000.00 Due",
                               link:Link(
                                          text: "Pay Bill",
                                          variant: .text,
@@ -160,7 +160,7 @@ struct TilePage: View , BrandStyleSupport {
                                              print("Standalone link tapped")
                                          }
                                      ),
-                              p1Text: "Due: 01/01/20XX – AutoPay On",
+                              descText: "Due: 01/01/20XX – AutoPay On",
                             accordionLink: Link(
                                          text: "View bill details",
                                          variant: .accordion(isExpanded: isAccordionExpandedSimple),
@@ -183,9 +183,9 @@ struct TilePage: View , BrandStyleSupport {
                                             size: .medium,
                                             color: .iconDefaultSolar
                                                    ),
-                                           h3Text: "Solar",
-                                           p1BoldText: "Home Energy",
-                                           p1Text: "+4.3 kWh Daily Net",
+                                           title: "Solar",
+                                           detailsText: "Home Energy",
+                                           descText: "+4.3 kWh Daily Net",
                                            tileAlignment: .centerAlignment
                                        )
                     
@@ -196,9 +196,9 @@ struct TilePage: View , BrandStyleSupport {
                                size: .medium,
                                color: .iconDefaultGreenUI
                            ),
-                                       h3Text: "Thank you for signing up!",
-                                 h3TextColor: colorToken(.iconDefaultGreenUI),
-                                 p1Text: "  We are processing your sign up for <plan name>.  Please check your email  nrgtest1050@nrg.com for confirmation.",
+                                       title: "Thank you for signing up!",
+                                 titleColor: colorToken(.iconDefaultGreenUI),
+                                 descText: "  We are processing your sign up for <plan name>.  Please check your email  nrgtest1050@nrg.com for confirmation.",
                                  tileAlignment: .centerAlignment
                                    )
                    
@@ -212,7 +212,9 @@ struct TilePage: View , BrandStyleSupport {
 
 struct TilePage_Previews: PreviewProvider {
     static var previews: some View {
+        PreviewWrapper { brand in
             TilePage()
+        }
     }
 }
 

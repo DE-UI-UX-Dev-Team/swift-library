@@ -37,7 +37,7 @@
     },
     "h6": {
       "fontName": "Inter18pt-Bold",
-      "weight": "semibold",
+      "weight": "bold",
       "fontSize": 16,
       "lineHeight": 24,
       "letterSpacing": 0.5
