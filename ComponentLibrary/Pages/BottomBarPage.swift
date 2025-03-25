@@ -1,120 +1,120 @@
 
 import SwiftUI
 
-struct BottomBarPage: View , BrandStyleSupport {
-    @Environment(\.brand) var brand
-    @Environment(\.colorScheme) var colorScheme
-    @State private var selectedTab = 0
+protocol BrandConfiguration {
+    var tabItems: [BarTab] { get }
+    var pageMap: [Int: AnyView] { get }
+}
 
-    private let tabItemsDE = [
+
+struct DEBrandConfig: BrandConfiguration {
+    let tabItems = [
         BarTab(
-            icon: Icon( iconName: "home-de",
-            type: .utility,
-            size: .medium,
-            color: .secondaryBase
-        ), title: "Home"),
+            icon: Icon(iconName: "home-de",
+                      type: .utility,
+                      size: .medium,
+                      color: .secondaryBase),
+            title: "Home"),
         BarTab(
-            icon: Icon(
-            iconName: "usage-de",
-            type: .utility,
-            size: .medium,
-            color: .secondaryBase
-        ), title: "Usage"),
+            icon: Icon(iconName: "usage-de",
+                      type: .utility,
+                      size: .medium,
+                      color: .secondaryBase),
+            title: "Usage"),
         BarTab(
-            icon: Icon(
-            iconName: "support-de",
-            type: .utility,
-            size: .medium,
-            color: .grayscale600
-        ), title: "Support"),
-        
+            icon: Icon(iconName: "support-de",
+                      type: .utility,
+                      size: .medium,
+                      color: .grayscale600),
+            title: "Support"),
         BarTab(
-            icon:  Icon(
-            iconName: "account-de",
-            type: .utility,
-            size: .medium,
-            color: .grayscale600
-        ), title: "Account")
+            icon: Icon(iconName: "account-de",
+                      type: .utility,
+                      size: .medium,
+                      color: .grayscale600),
+            title: "Account")
     ]
     
-    private let pageMapDE = [
+    let pageMap = [
         0: AnyView(LinkPage()),
         1: AnyView(InputPage()),
         2: AnyView(Text("Support Page").typographyStyle(.h2)),
         3: AnyView(Text("Account Page").typographyStyle(.h2))
     ]
-    
-    private let tabItemsRE = [
+}
+
+struct ReliantBrandConfig: BrandConfiguration {
+    let tabItems = [
         BarTab(
-            icon: Icon( iconName: "home",
-                              type: .utility,
-                              size: .medium,
-                              color: .grayscale900
-                          ), title: "Home"),
+            icon: Icon(iconName: "home",
+                      type: .utility,
+                      size: .medium,
+                      color: .grayscale900),
+            title: "Home"),
         BarTab(
-            icon: Icon(
-            iconName: "bill",
-            type: .utility,
-            size: .medium,
-            color: .grayscale900
-        ), title: "Bill"),
+            icon: Icon(iconName: "bill",
+                      type: .utility,
+                      size: .medium,
+                      color: .grayscale900),
+            title: "Bill"),
         BarTab(
-            icon:Icon(
-            iconName: "usage",
-            type: .utility,
-            size: .medium,
-            color: .grayscale900
-        ), title: "Usage"),
+            icon: Icon(iconName: "usage",
+                      type: .utility,
+                      size: .medium,
+                      color: .grayscale900),
+            title: "Usage"),
         BarTab(
-            icon:Icon(
-            iconName: "discover",
-            type: .utility,
-            size: .medium,
-            color: .grayscale900
-        ), title: "Discover"),
+            icon: Icon(iconName: "discover",
+                      type: .utility,
+                      size: .medium,
+                      color: .grayscale900),
+            title: "Discover"),
         BarTab(
-            icon:  Icon(
-            iconName: "account",
-            type: .utility,
-            size: .medium,
-            color: .grayscale900
-        ), title: "Account")
+            icon: Icon(iconName: "account",
+                      type: .utility,
+                      size: .medium,
+                      color: .grayscale900),
+            title: "Account")
     ]
     
-    private  let pageMapRE = [
+    let pageMap = [
         0: AnyView(PlanCardPage()),
         1: AnyView(ConfirmationPage()),
         2: AnyView(Text("Usage Page").typographyStyle(.h2)),
         3: AnyView(Text("Discover Page").typographyStyle(.h2)),
         4: AnyView(Text("Account Page").typographyStyle(.h2))
     ]
-    
-    private var tabItems: [BarTab] {
-                switch brand {
-                case .reliant:
-                    return tabItemsRE
-                case .de:
-                    return tabItemsDE
-                }
-            }
-            
-        private var pageMap: [Int: AnyView] {
-                switch brand {
-                case .reliant:
-                    return pageMapRE
-                case .de:
-                    return pageMapDE
-                }
-            }
+}
 
+
+struct BrandConfigProvider {
+    static let configurations: [Brand: BrandConfiguration] = [
+        .de: DEBrandConfig(),
+        .reliant: ReliantBrandConfig()
+    ]
+    
+    static func config(for brand: Brand) -> BrandConfiguration {
+        configurations[brand] ?? DEBrandConfig()
+    }
+}
+
+struct BottomBarPage: View, BrandStyleSupport {
+    @Environment(\.brand) var brand
+    @Environment(\.colorScheme) var colorScheme
+    @State private var selectedTab = 0
+    
+    private var brandConfig: BrandConfiguration {
+        BrandConfigProvider.config(for: brand)
+    }
+    
     var body: some View {
         BottomBar(
-                selectedTab: $selectedTab,
-                BarTabItems: tabItems,
-                content: { selectedTab in
-                pageMap[selectedTab] ?? AnyView(Text("Unknown Page").typographyStyle(.h2))
-                        }
-                    )
+            selectedTab: $selectedTab,
+            BarTabItems: brandConfig.tabItems,
+            content: { selectedTab in
+                brandConfig.pageMap[selectedTab] ?? AnyView(Text("Unknown Page").typographyStyle(.h2))
+            }
+        )
     }
 }
 
@@ -125,4 +125,3 @@ struct BottomBarPage_Previews: PreviewProvider {
         }
     }
 }
-
