@@ -1,102 +1,91 @@
 import SwiftUI
 
-
+struct CrossServeCardConfig {
+    var image: String
+    var tag: Tag? = nil
+    var brandImage: String? = nil
+    var enrollText: String? = nil
+    var title: String
+    var description: String
+    var link: Link? = nil
+    var button: Button? = nil
+    var buttonVariant: ButtonVariant? = nil
+    var footerHelpText: String? = nil
+    var price: CrossServeCardPrice? = nil
+    var footerLink: Link? = nil
+    var imageOnRight: Bool = false
+    var backgroundColor: ColorToken? = nil
+    var isSelected: Bool = false
+}
 
 struct CrossServeCard: View , BrandStyleSupport  {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
 
+    var config: CrossServeCardConfig
     
-    var image: String?
-    var tag: String?
-    var tagColor: ColorToken?
-    var brandImage: String?
-    var enrollText: String?
-    var title: String
-    var description: String?
-    var link: String?
-    var buttonText: String?
-    var buttonVariant: ButtonVariant?
-    var footerText: String?
-    var price: CrossServeCardPrice?
-    var footerLink: String?
-    var imageOnRight: Bool = false
-    var backgroundColor: ColorToken?
-    var isSelected: Bool = false
-
     var body: some View {
         ZStack(alignment: .topTrailing) {
             VStack(alignment: .leading) {
                 VStack{
-                    if imageOnRight {
-                        VStack{
+                    if config.imageOnRight {
+                        VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.s) {
                             HStack(alignment: .top) {
-                                VStack(alignment: .leading) {
-                                    if let brandImage = brandImage {
+                                VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.s) {
+                                    if let brandImage = config.brandImage {
                                         Image(brandImage)
                                             .resizable()
                                             .scaledToFit()
                                             .frame(height: 19)
                                     }
                                     
-                                    if let tag = tag, let tagColor = tagColor {
-                                        Tag(
-                                            text: tag,
-                                            style: .active(tagColor)
-                                        )
+                                    if let tag = config.tag{
+                                        tag
                                     }
                                     
-                                    if let enrollText = enrollText {
+                                    if let enrollText = config.enrollText {
                                         Text(enrollText)
                                             .typographyStyle(.p2)
                                     }
                                     
-                                    if brandImage == nil && tag == nil && enrollText == nil {
+                                    if config.brandImage == nil && config.tag == nil && config.enrollText == nil {
                                         CrossServeCardContent
                                     }
                                 }
                                 Spacer()
                                 VStack{
+                                    Image(config.image)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 64, height: 64)
+                                        .cornerRadius(cornerRadius.m)
                                     
-                                    if let image = image {
-                                        Image(image)
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 64, height: 64)
-                                            .cornerRadius(10)
-                                    }
                                 }
                             }
-                            if brandImage != nil || tag != nil || enrollText != nil {
+                            if config.brandImage != nil || config.tag != nil || config.enrollText != nil {
                                 CrossServeCardContent
                             }
                         }
                     } else {
-                        HStack(alignment: .top) {
-                            if let image = image {
-                                Image(image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 64)
-                                    .cornerRadius(10)
-                            }
+                        HStack(alignment: .top,spacing: brandSpacing.containerSpacing.padding.m) {
+                           
+                            Image(config.image)
+                                .resizable()
+                                .scaledToFit()
+                                .frame(height: 64)
+                                .cornerRadius(cornerRadius.m)
                             
-                            Spacer()
-                            
-                            VStack(alignment: .leading, spacing: 10) {
-                                if let tag = tag, let tagColor = tagColor {
-                                    Tag(
-                                        text: tag,
-                                        style: .active(tagColor)
-                                    )
+                            VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.s) {
+                                if let tag = config.tag{
+                                    tag
                                 }
                                 
-                                if let enrollText = enrollText {
+                                if let enrollText = config.enrollText {
                                     Text(enrollText)
                                         .typographyStyle(.p2)
                                 }
                                 
-                                if let brandImage = brandImage {
+                                if let brandImage = config.brandImage {
                                     Image(brandImage)
                                         .resizable()
                                         .scaledToFit()
@@ -105,27 +94,18 @@ struct CrossServeCard: View , BrandStyleSupport  {
                                 
                                 CrossServeCardContent
                                 
-                                if let link = link {
-                                    Link(
-                                        text: link,
-                                        variant: .text,
-                                        isInline: false
-                                    )
+                                if let link = config.link {
+                                    link
                                 }
                             }
                         }
                     }
                     
-                    if let buttonText = buttonText, let buttonVariant = buttonVariant {
-                        Button(
-                            title: buttonText,
-                            variant: buttonVariant
-                        ) {
-                            print("Button tapped")
-                        }
+                    if let button = config.button {
+                        button
                     }
                 }
-                if price != nil || footerText != nil {
+                if config.price != nil || config.footerHelpText != nil {
                     Separator(type: .horizontal)
                         .padding(.vertical, brandSpacing.containerSpacing.padding.s)
                     
@@ -135,14 +115,22 @@ struct CrossServeCard: View , BrandStyleSupport  {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.horizontal, brand == .de ? brandSpacing.containerSpacing.padding.l : brandSpacing.containerSpacing.padding.m)
             .padding(.vertical, brandSpacing.containerSpacing.padding.m)
-            .background(colorToken(backgroundColor ?? .grayscale000))
             .brandBorderOverlay(
                 radiusKey: .l,
                 strokeKey: .regular,
-                color: isSelected ? colorToken(brand == .de ? .borderDefaultPrimary : .primaryBase) : colorToken(brand == .de ? .borderDefaultSecondary : .borderDefaultTertiary)
+                color: config.isSelected ? colorToken(brand == .de ? .borderDefaultPrimary : .primaryBase) : colorToken(brand == .de ? .borderDefaultSecondary : .borderDefaultTertiary)
             )
               
-            if isSelected {
+            .background(
+                UnevenRoundedRectangle(cornerRadii: RectangleCornerRadii(
+                    topLeading: cornerRadius.l,
+                    bottomLeading: cornerRadius.l,
+                    bottomTrailing: cornerRadius.l,
+                    topTrailing: cornerRadius.l
+                ))
+                .fill(colorToken(config.backgroundColor ?? .grayscale000))
+            )
+            if config.isSelected {
                 Image(systemName: "checkmark.circle.fill")
                     .resizable()
                     .foregroundColor(colorToken(.iconDefaultPrimary))
@@ -154,35 +142,31 @@ struct CrossServeCard: View , BrandStyleSupport  {
     
     @ViewBuilder
     private var CrossServeCardContent: some View {
-        VStack(alignment: .leading) {
-            Text(title)
+        VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.xs)  {
+            Text(config.title)
                 .typographyStyle(.h4)
-                .fontWeight(.bold)
+                .fixedSize(horizontal: false, vertical: true)
             
-            if let description = description {
-                Text(description)
-                    .typographyStyle(.p1)
-                    .foregroundColor(colorToken(.grayscale700))
-            }
+
+            Text(config.description)
+                .typographyStyle(.p1)
+                .foregroundColor(colorToken(.grayscale700))
+                .fixedSize(horizontal: false, vertical: true)
         }
     }
     
     @ViewBuilder
     private var CrossServeCardFooter: some View {
         VStack {
-            if let price = price, let footerLink = footerLink {
+            if let price = config.price, let footerLink = config.footerLink {
                 HStack {
                     price
                     Spacer()
-                    Link(
-                        text: footerLink,
-                        variant: .text,
-                        isInline: false
-                    )
+                    footerLink
                 }
-            } else if let footerText = footerText {
+            } else if let footerHelpText = config.footerHelpText {
                 VStack {
-                    Text(footerText)
+                    Text(footerHelpText)
                         .typographyStyle(.p1)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
@@ -195,13 +179,11 @@ struct CrossServeCardPrice: View , BrandStyleSupport  {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
     
-
-    
     var oldPrice: String? = nil
     var newPrice: String
     var subtext: String? = nil
     var subtextColor: ColorToken = .grayscale700
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             HStack {
@@ -223,5 +205,3 @@ struct CrossServeCardPrice: View , BrandStyleSupport  {
         }
     }
 }
-
-
