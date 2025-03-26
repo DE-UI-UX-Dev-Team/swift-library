@@ -13,7 +13,8 @@ struct ComponentLibraryApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ComponentLibraryHome()
+//            ComponentLibraryHome()
+            ContentView()
                
         }
     }

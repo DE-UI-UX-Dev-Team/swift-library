@@ -1,5 +1,5 @@
-import SwiftUI
 
+import SwiftUI
 
 struct BarTab: Identifiable {
     let id = UUID()
@@ -9,18 +9,22 @@ struct BarTab: Identifiable {
 
 struct BottomBar<Content: View>: View, BrandStyleSupport {
     @Environment(\.brand) var brand
-    @Environment(\.colorScheme) var colorScheme
-    @Binding var selectedTab: Int
-    let BarTabItems: [BarTab]
-    let content: (Int) -> Content
+        @Environment(\.colorScheme) var colorScheme
+        @Binding var selectedTab: Int
+        let content: (Int) -> Content
+    
+        private var bottomBarconfig: BottomBarConfig {
+            BottomBarConfigProvider.configurations[brand] ?? DEBottomBarConfig()
+            }
+        
     
     var body: some View {
-        VStack(spacing:0) {
-            content(selectedTab)
-            Spacer()
-            Separator(type: .horizontal)
-            HStack(alignment: brand == .de ?.center : .top) {
-                ForEach(Array(BarTabItems.enumerated()), id: \.element.id) { index, item in
+            VStack(spacing: 0) {
+                content(selectedTab)
+                Spacer()
+                Separator(type: .horizontal)
+                HStack(alignment: brand == .de ? .center : .top) {
+                                ForEach(Array(bottomBarconfig.tabItems.enumerated()), id: \.1.id) { (index: Int, item: BarTab) in
                                     BarTabItem(
                                         icon: item.icon,
                                         title: item.title,
@@ -30,13 +34,16 @@ struct BottomBar<Content: View>: View, BrandStyleSupport {
                                         }
                                     )
                                     .frame(maxWidth: .infinity)
-                                }
+                    }
+                }
+
+                .frame(maxWidth: .infinity, alignment: brand == .de ? .center : .top)
+                .padding(.horizontal, brand == .de ? brandSpacing.containerSpacing.padding.s : brandSpacing.containerSpacing.padding.l)
+                .padding(.top, brandSpacing.containerSpacing.padding.s)
+                .padding(.bottom, brand == .de ? brandSpacing.containerSpacing.padding.none : brandSpacing.containerSpacing.padding.s)
+                .background(brand == .de ? colorToken(.pageFillGrayDefault) : colorToken(.pageFillGray1))
             }
-            .frame(maxWidth: .infinity, alignment: brand == .de ?.center : .top)
-            .padding(.horizontal, brand == .de ? brandSpacing.containerSpacing.padding.s :  brandSpacing.containerSpacing.padding.l)
-            .padding(.top, brandSpacing.containerSpacing.padding.s)
-            .padding(.bottom,brand == .de ? brandSpacing.containerSpacing.padding.none :  brandSpacing.containerSpacing.padding.s)
-           .background(brand == .de ? colorToken(.pageFillGrayDefault):colorToken(.pageFillGray1))
         }
-    }
 }
+
+
