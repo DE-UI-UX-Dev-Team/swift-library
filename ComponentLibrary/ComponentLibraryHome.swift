@@ -10,7 +10,7 @@ struct ComponentLibraryHome: View {
         ("Input", AnyView(InputPage()), "rectangle.grid.1x2"),
         ("Stepper", AnyView(StepperPage()), "rectangle.grid.1x2"),
         ("Plan Card", AnyView(PlanCardPage()), "inset.filled.rectangle"),
-        ("CrossServe Card", AnyView(CrossServeCardPage()), "inset.filled.rectangle"),
+        ("Card", AnyView(CardPage()), "inset.filled.rectangle"),
         ("ColorTokenSystem", AnyView(ColorSwatches()), "rectangle.fill.on.rectangle.fill"),
         ("TypographyTokenSystem", AnyView(FontsPage()), "rectangle.fill.on.rectangle.fill"),
         ("BorderTokenSystem", AnyView(BorderPage()), "rectangle.fill.on.rectangle.fill"),

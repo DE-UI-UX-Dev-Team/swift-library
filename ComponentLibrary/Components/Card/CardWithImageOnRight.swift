@@ -1,23 +1,26 @@
 import SwiftUI
-
-struct CrossServeCardWithLink: View {
+struct CardWithImageOnRight: View {
     var image: String
     var tag: Tag? = nil
     var brandImage: String? = nil
     var enrollText: String? = nil
     var title: String
     var description: String
-    var link: Link
+    var button: Button
+    var footerHelpText: String? = nil
+    var imageOnRight: Bool = true
 
     var body: some View {
-        CrossServeCard(config: CrossServeCardConfig(
+        Card(config: CardConfig(
             image: image,
             tag: tag,
             brandImage: brandImage,
             enrollText: enrollText,
             title: title,
             description: description,
-            link: link
+            button: button,
+            footerHelpText: footerHelpText,
+            imageOnRight: imageOnRight
             )
         )
     }

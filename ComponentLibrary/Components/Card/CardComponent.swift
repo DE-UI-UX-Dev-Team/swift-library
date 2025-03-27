@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CrossServeCardConfig {
+struct CardConfig {
     var image: String
     var tag: Tag? = nil
     var brandImage: String? = nil
@@ -11,18 +11,18 @@ struct CrossServeCardConfig {
     var button: Button? = nil
     var buttonVariant: ButtonVariant? = nil
     var footerHelpText: String? = nil
-    var price: CrossServeCardPrice? = nil
+    var price: CardPrice? = nil
     var footerLink: Link? = nil
     var imageOnRight: Bool = false
     var backgroundColor: ColorToken? = nil
     var isSelected: Bool = false
 }
 
-struct CrossServeCard: View , BrandStyleSupport  {
+struct Card: View , BrandStyleSupport  {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
 
-    var config: CrossServeCardConfig
+    var config: CardConfig
     
     var body: some View {
         ZStack(alignment: .topTrailing) {
@@ -49,7 +49,7 @@ struct CrossServeCard: View , BrandStyleSupport  {
                                     }
                                     
                                     if config.brandImage == nil && config.tag == nil && config.enrollText == nil {
-                                        CrossServeCardContent
+                                        CardContent
                                     }
                                 }
                                 Spacer()
@@ -63,7 +63,7 @@ struct CrossServeCard: View , BrandStyleSupport  {
                                 }
                             }
                             if config.brandImage != nil || config.tag != nil || config.enrollText != nil {
-                                CrossServeCardContent
+                                CardContent
                             }
                         }
                     } else {
@@ -92,7 +92,7 @@ struct CrossServeCard: View , BrandStyleSupport  {
                                         .frame(height: 19)
                                 }
                                 
-                                CrossServeCardContent
+                                CardContent
                                 
                                 if let link = config.link {
                                     link
@@ -109,7 +109,7 @@ struct CrossServeCard: View , BrandStyleSupport  {
                     Separator(type: .horizontal)
                         .padding(.vertical, brandSpacing.containerSpacing.padding.s)
                     
-                    CrossServeCardFooter
+                    CardFooter
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -141,7 +141,7 @@ struct CrossServeCard: View , BrandStyleSupport  {
     }
     
     @ViewBuilder
-    private var CrossServeCardContent: some View {
+    private var CardContent: some View {
         VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.xs)  {
             Text(config.title)
                 .typographyStyle(.h4)
@@ -156,7 +156,7 @@ struct CrossServeCard: View , BrandStyleSupport  {
     }
     
     @ViewBuilder
-    private var CrossServeCardFooter: some View {
+    private var CardFooter: some View {
         VStack {
             if let price = config.price, let footerLink = config.footerLink {
                 HStack {
@@ -175,7 +175,7 @@ struct CrossServeCard: View , BrandStyleSupport  {
     }
 }
 
-struct CrossServeCardPrice: View , BrandStyleSupport  {
+struct CardPrice: View , BrandStyleSupport  {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
     

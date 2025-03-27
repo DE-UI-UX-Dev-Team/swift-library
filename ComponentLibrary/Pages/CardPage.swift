@@ -1,16 +1,16 @@
 import SwiftUI
-struct CrossServeCardPage: View, BrandStyleSupport {
+struct CardPage: View, BrandStyleSupport {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ScrollView {
             VStack(spacing: brandSpacing.pageLayout.sectionSpacing.xl) {
-                Text("CrossServe Card Demo Page")
+                Text("Card Demo Page")
                     .typographyStyle(.h1)
                 VStack(spacing: 8) {
-                    Text("CrossServe Card With Link")
+                    Text("Card With Link")
                         .typographyStyle(.h4)
-                    CrossServeCardWithLink(
+                    CardWithLink(
                         image: "doorbell",
                         tag: Tag(text: "Included", style: .active(.greenAccessible)),
                         enrollText:"Enrolled on 08/23/2024",
@@ -25,10 +25,10 @@ struct CrossServeCardPage: View, BrandStyleSupport {
                     )
                 }
                 VStack(spacing: brandSpacing.containerSpacing.gaps.s) {
-                    Text("CrossServe Card With Button")
+                    Text("Card With Button")
                         .typographyStyle(.h4)
                     
-                    CrossServeCardWithButton(
+                    CardWithButton(
                         image: "mask",
                         tag: Tag(text: "Included", style: .active(.greenAccessible)),
                         enrollText:"Enrolled on 08/23/2024",
@@ -41,10 +41,10 @@ struct CrossServeCardPage: View, BrandStyleSupport {
                     )
                 }
                 VStack(spacing: brandSpacing.containerSpacing.gaps.s) {
-                    Text("CrossServe Card With Price Footer")
+                    Text("Card With Price Footer")
                         .typographyStyle(.h4)
                     
-                    CrossServeCardWithPriceFooter(
+                    CardWithPriceFooter(
                         image: "mask",
                         tag: Tag(text: "Included", style: .active(.greenAccessible)),
                         enrollText:"Enrolled on 08/23/2024",
@@ -56,7 +56,7 @@ struct CrossServeCardPage: View, BrandStyleSupport {
                             isInline: false,
                             action: { print("View details") }
                         ),
-                        price: CrossServeCardPrice(oldPrice: "$299", newPrice: "Free", subtext: "Installation included", subtextColor: .iconDefaultGreenUI),
+                        price: CardPrice(oldPrice: "$299", newPrice: "Free", subtext: "Installation included", subtextColor: .iconDefaultGreenUI),
                         footerLink: Link(
                             text: "Activate",
                             variant: .text,
@@ -67,9 +67,9 @@ struct CrossServeCardPage: View, BrandStyleSupport {
                 }
                 
                 VStack(spacing: brandSpacing.containerSpacing.gaps.s) {
-                    Text("CrossServe Card With Help text Footer")
+                    Text("Card With Help text Footer")
                         .typographyStyle(.h4)
-                    CrossServeCardWithHelpFooter(
+                    CardWithHelpFooter(
                         image: "mask",
                         tag: Tag(text: "Included", style: .active(.greenAccessible)),
                         enrollText:"Enrolled on 08/23/2024",
@@ -83,9 +83,9 @@ struct CrossServeCardPage: View, BrandStyleSupport {
                     )
                 }
                 VStack(spacing: brandSpacing.containerSpacing.gaps.s) {
-                    Text("CrossServe Card With Image on Right")
+                    Text("Card With Image on Right")
                         .typographyStyle(.h4)
-                    CrossServeCardWithImageOnRight(
+                    CardWithImageOnRight(
                         image: "mask",
                         tag: Tag(text: "Included", style: .active(.greenAccessible)),
                         enrollText:"Enrolled on 08/23/2024",
@@ -96,11 +96,9 @@ struct CrossServeCardPage: View, BrandStyleSupport {
                             variant: .primary
                         ),
                         footerHelpText: "Need more help? Talk to an agent 1-XXX-XXX-XXXX"
-                        
                     )
                     
-                    
-                    CrossServeCardWithImageOnRight(
+                    CardWithImageOnRight(
                         image: "update",
                         title: "You are eligible to renew your plan",
                         description: "Your current plan is ending soon, and you are eligible to renew now.",
@@ -120,8 +118,9 @@ struct CrossServeCardPage: View, BrandStyleSupport {
 
 struct CrossServeCardView_Previews: PreviewProvider {
     static var previews: some View {
-        
-            CrossServeCardPage()
+        PreviewWrapper { brand in
+            CardPage()
+        }
         
     }
 }

@@ -1,5 +1,5 @@
 import SwiftUI
-struct CrossServeCardWithHelpFooter: View {
+struct CardWithHelpFooter: View {
     var image: String
     var tag: Tag? = nil
     var brandImage: String? = nil
@@ -10,7 +10,7 @@ struct CrossServeCardWithHelpFooter: View {
     var footerHelpText: String
 
     var body: some View {
-        CrossServeCard(config: CrossServeCardConfig(
+        Card(config: CardConfig(
             image: image,
             tag: tag,
             brandImage: brandImage,

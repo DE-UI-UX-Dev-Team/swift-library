@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CrossServeCardWithPriceFooter: View {
+struct CardWithLink: View {
     var image: String
     var tag: Tag? = nil
     var brandImage: String? = nil
@@ -8,20 +8,16 @@ struct CrossServeCardWithPriceFooter: View {
     var title: String
     var description: String
     var link: Link
-    var price: CrossServeCardPrice
-    var footerLink: Link
 
     var body: some View {
-        CrossServeCard(config: CrossServeCardConfig(
+        Card(config: CardConfig(
             image: image,
             tag: tag,
             brandImage: brandImage,
             enrollText: enrollText,
             title: title,
             description: description,
-            link: link,
-            price: price,
-            footerLink: footerLink
+            link: link
             )
         )
     }
