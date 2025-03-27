@@ -28,7 +28,7 @@ struct BottomBar<Content: View>: View, BrandStyleSupport {
             if isBottomBarVisible {
                 Separator(type: .horizontal)
                 HStack(alignment: brand == .de ? .center : .top) {
-                    ForEach(Array(bottomBarconfig.tabItems.enumerated()), id: \.1.id) { (index: Int, item: BarTab) in
+                    ForEach(Array(bottomBarconfig.tabItems().enumerated()), id: \.1.id) { (index: Int, item: BarTab) in
                         BarTabItem(
                             icon: item.icon,
                             title: item.title,

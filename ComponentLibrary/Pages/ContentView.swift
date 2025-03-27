@@ -18,11 +18,11 @@ struct ContentView: View , BrandStyleSupport {
 
     var body: some View {
         BottomBar(
-            selectedTab: $navigationManager.selectedTab,
-            isBottomBarVisible: $navigationManager.isBottomBarVisible
-        ) { selectedTab in
-            bottomBarconfig.pageMap[selectedTab] ?? AnyView(Text("Unknown Page"))
-        }
+                    selectedTab: $navigationManager.selectedTab,
+                    isBottomBarVisible: $navigationManager.isBottomBarVisible
+                ) { selectedTab in
+                    bottomBarconfig.pageMap[selectedTab]?() ?? AnyView(Text("Unknown Page"))
+                }
         .environmentObject(navigationManager)
     }
 }
