@@ -9,6 +9,7 @@ struct ComponentLibraryHome: View {
         ("Separator", AnyView(SeparatorDemoPage()), "rectangle.grid.1x2"),
         ("Input", AnyView(InputPage()), "rectangle.grid.1x2"),
         ("Stepper", AnyView(StepperPage()), "rectangle.grid.1x2"),
+        ("Hero", AnyView(HeroPage()), "inset.filled.rectangle"),
         ("Plan Card", AnyView(PlanCardPage()), "inset.filled.rectangle"),
         ("Confirmation Page", AnyView(ConfirmationPage()), "dock.rectangle"),
         ("ColorTokenSystem", AnyView(ColorSwatches()), "rectangle.fill.on.rectangle.fill"),
