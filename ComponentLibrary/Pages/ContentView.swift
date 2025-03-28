@@ -71,7 +71,7 @@ struct ContentView: View, BrandStyleSupport {
                     }
                     
                     
-                    Card(
+                    CardComponent(
                                         title: "What should I expect when I enroll in Home Base Essentials?",
                                         items: cardItems,
                                        iconColor:colorToken(.iconFeedbackSuccess),
