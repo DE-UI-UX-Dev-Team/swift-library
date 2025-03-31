@@ -32,7 +32,7 @@ struct TypographyTokens: Decodable {
 
 enum MyTextStyle: String {
     case h1, h2, h3, h4, h5, h6
-    case p1, p2, p3
+    case p1, p2, p3,p4
     case button
     case link
     case cardRate
