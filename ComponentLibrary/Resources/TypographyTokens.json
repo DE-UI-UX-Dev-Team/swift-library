@@ -38,6 +38,7 @@
     "h6": {
       "fontName": "Inter-SemiBold",
       "weight": "semibold",
+
       "fontSize": 16,
       "lineHeight": 24,
       "letterSpacing": 0.5

@@ -17,8 +17,29 @@
       "circle-check-sharp-regular-utility",
       "icon-account-illustrative",
       "icon-ac-heat-sales-illustrative",
-      "icon-ac-heat-protect-illustrative"
-     
+      "icon-ac-heat-protect-illustrative",
+      "chevron_right",
+      "shield_with_house",
+      "group_add",
+      "monitoring",
+      "article",
+      "device_thermostat",
+      "electric_car",
+      "ev_station",
+      "local_shipping",
+      "paid",
+      "request_quote",
+      "solar_power",
+      "stars",
+      "thermostat",
+      "difference",
+      "energy_savings_leaf",
+      "partly_cloudy_day",
+      "power",
+      "wb_twilight",
+      "checkmark_alt",
+      "expand_more"
+
     ]
   },
   "brandReliant": {
@@ -34,7 +55,29 @@
       "info",
       "bill",
       "arrow-down-regular-utility",
-      "circle-check-sharp-regular-utility"
+      "circle-check-sharp-regular-utility",
+      "chevron-right-regular-utility",
+      "chevron_right",
+      "shield_with_house",
+      "group_add",
+      "monitoring",
+      "article",
+      "device_thermostat",
+      "electric_car",
+      "ev_station",
+      "local_shipping",
+      "paid",
+      "request_quote",
+      "solar_power",
+      "stars",
+      "thermostat",
+      "difference",
+      "energy_savings_leaf",
+      "partly_cloudy_day",
+      "power",
+      "wb_twilight",
+      "checkmark_alt",
+      "expand_more"
     ]
   }
 }
