@@ -4,10 +4,6 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Inter18pt-Black.ttf</string>
-		<string>Inter18pt-Bold.ttf</string>
-		<string>Inter18pt-Medium.ttf</string>
-		<string>Inter18pt-Light.ttf</string>
 		<string>NRGEffraApp-Bold.ttf</string>
 		<string>NRGEffraApp-Italic.ttf</string>
 		<string>NRGEffraApp-Medium.ttf</string>
@@ -17,6 +13,13 @@
 		<string>BasicSans-Light.otf</string>
 		<string>BasicSans-Regular.otf</string>
 		<string>BasicSans-SemiBold.otf</string>
+		<string>Inter-Regular.ttf</string>
+		<string>Inter-Bold.ttf</string>
+		<string>Inter-Black.ttf</string>
+		<string>Inter-Medium.ttf</string>
+		<string>Inter-SemiBold.ttf</string>
+		<string>Inter-Italic.ttf</string>
+		<string>Inter-Light.ttf</string>
 	</array>
 </dict>
 </plist>
