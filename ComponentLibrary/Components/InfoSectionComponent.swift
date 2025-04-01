@@ -13,7 +13,6 @@ struct InfoSection: View, BrandStyleSupport {
     let heading: String?
     let items: [InfoItemModel]
 
-    // Provide default value for `heading`
     init(heading: String? = nil, items: [InfoItemModel]) {
         self.heading = heading
         self.items = items
