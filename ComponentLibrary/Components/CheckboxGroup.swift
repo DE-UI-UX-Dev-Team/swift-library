@@ -12,28 +12,26 @@ struct CheckboxGroupItem: Identifiable {
 struct CheckboxGroup: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) var brand
-    let title: String
     @State private var selectedValues: String = ""
     @State private var items: [CheckboxGroupItem]
+    
+    let title: String
+    let termsText: String?
+    let termUrl: String?
     let buttonTitle: String
     let buttonAction: () -> Void
-    
-    
-    private let maxTruncatedLength: Int = 100
-    
-
-    private var areAllItemsSelected: Bool {
-        let selectedCount = selectedValues.isEmpty ? 0 : selectedValues.split(separator: ",").count
-        return selectedCount == items.count
-    }
     
     init(
         title: String,
         items: [String],
+        termsText: String? = nil,
+        termUrl: String? = nil,
         buttonTitle: String,
         buttonAction: @escaping () -> Void
     ) {
         self.title = title
+        self.termsText = termsText
+        self.termUrl = termUrl
         self.buttonTitle = buttonTitle
         self.buttonAction = buttonAction
         self._items = State(initialValue: items.enumerated().map { (index, label) in
@@ -44,13 +42,39 @@ struct CheckboxGroup: View, BrandStyleSupport {
             )
         })
     }
+ 
+    
+    private let maxTruncatedLength: Int = 110
+
+    private var areAllItemsSelected: Bool {
+        let selectedCount = selectedValues.isEmpty ? 0 : selectedValues.split(separator: ",").count
+        return selectedCount == items.count
+    }
+    
+    
+    private func createAttributedText(from label: String) -> AttributedString {
+            let linkPlaceholder = "<termText>"
+            let displayTermsPlaceholder = termsText ?? "terms and conditions"
+            let displayURL = termUrl ?? "https://example.com"
+            
+            let modifiedLabel = label.replacingOccurrences(of: linkPlaceholder, with: displayTermsPlaceholder)
+            var attributedString = AttributedString(modifiedLabel)
+            
+            if let linkRange = attributedString.range(of: displayTermsPlaceholder) {
+                attributedString[linkRange].link = URL(string: displayURL)!
+                attributedString[linkRange].foregroundColor = brand == .de ? colorToken(.primaryDarkest) :colorToken(.primaryBase)
+            }
+            
+            return attributedString
+        }
+    
     
     var body: some View {
         VStack(alignment: .leading, spacing: brandSpacing.pageLayout.sectionSpacing.s) {
             Text(title)
                 .typographyStyle(.h4)
             
-            VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.s){
+            VStack(alignment: .leading, spacing: brand == .de ? brandSpacing.containerSpacing.gaps.m : brandSpacing.containerSpacing.gaps.s){
                 ForEach($items) { $item in
                     
                     SwiftUI.Button(action: {
@@ -62,7 +86,7 @@ struct CheckboxGroup: View, BrandStyleSupport {
                         }
                         selectedValues = newValues.joined(separator: ",")
                     }) {
-                        HStack(alignment: .center, spacing: brand == .de ? brandSpacing.containerSpacing.gaps.m : brandSpacing.containerSpacing.gaps.s) {
+                        HStack(alignment: .top, spacing: brand == .de ? brandSpacing.containerSpacing.gaps.m : brandSpacing.containerSpacing.gaps.s) {
                             
                             CustomCheckbox(
                                 isSelected: selectedValues.split(separator: ",").map(String.init).contains(item.value),
@@ -70,31 +94,33 @@ struct CheckboxGroup: View, BrandStyleSupport {
                                 isError: false
                             )
                             
-                            
                             VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.s) {
-                           
-                                    if item.label.count > maxTruncatedLength && !item.isExpanded {
-                                        HStack{
-                                            Text(item.label.prefix(maxTruncatedLength) + "...")
+                                if item.label.contains("<termText>") {
+                                    let attributedText = createAttributedText(from: item.label)
+                                            Text(attributedText)
                                                 .typographyStyle(.p1)
-                                            Text("terms")}
-                                    } else {
-                                        HStack{
-                                            Text(item.label)
-                                                .typographyStyle(.p1)
-                                            Text("terms")}
-                                    }
-                               
-                                
-                                if item.label.count > maxTruncatedLength {
-                                    Text(item.isExpanded ? "Show less" : "Show more")
-                                        .typographyStyle(.p1)
-                                        .foregroundColor(colorToken(.primaryBase))
-                                        .onTapGesture {
-                                            item.isExpanded.toggle()
+                                                        } else {
+                                       if item.label.count > maxTruncatedLength && !item.isExpanded {
+                                                         Text(item.label.prefix(maxTruncatedLength) + "...")
+                                                                .typographyStyle(.p1)
+                                                                      
+                                                         } else {
+                                                         Text(item.label)
+                                                               .typographyStyle(.p1)
+
+                                                                        }
+                                     if item.label.count > maxTruncatedLength {
+                                                 Text(item.isExpanded ? "Show less" : "Show more")
+                                                  .typographyStyle(.p1)
+                                                  .foregroundColor(colorToken(brand == .de ? .primaryDarkest : .primaryBase))
+                                               .onTapGesture {
+                                                 item.isExpanded.toggle()
+                                                            } }
+                                                         }
                                         }
-                                }
-                            }
+                            
+                            
+
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(.horizontal,brandSpacing.containerSpacing.padding.m)
@@ -127,5 +153,3 @@ struct CheckboxGroup: View, BrandStyleSupport {
        
     }
 }
-
-
