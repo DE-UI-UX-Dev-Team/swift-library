@@ -9,8 +9,6 @@ struct CheckboxGroupItem: Identifiable {
 }
 
 
-
-
 struct CheckboxGroup: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) var brand
@@ -20,20 +18,24 @@ struct CheckboxGroup: View, BrandStyleSupport {
     let buttonTitle: String
     let buttonAction: () -> Void
     
-   
+    
     private let maxTruncatedLength: Int = 100
     
-   
+
     private var areAllItemsSelected: Bool {
         let selectedCount = selectedValues.isEmpty ? 0 : selectedValues.split(separator: ",").count
         return selectedCount == items.count
     }
     
-    init(title: String, items: [String], buttonTitle: String, buttonAction: @escaping () -> Void) {
+    init(
+        title: String,
+        items: [String],
+        buttonTitle: String,
+        buttonAction: @escaping () -> Void
+    ) {
         self.title = title
         self.buttonTitle = buttonTitle
         self.buttonAction = buttonAction
-     
         self._items = State(initialValue: items.enumerated().map { (index, label) in
             CheckboxGroupItem(
                 label: label,
@@ -44,16 +46,13 @@ struct CheckboxGroup: View, BrandStyleSupport {
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.m) {
-
+        VStack(alignment: .leading, spacing: brandSpacing.pageLayout.sectionSpacing.s) {
             Text(title)
-                .typographyStyle(.h2)
-                .foregroundColor(colorToken(.grayscale900))
+                .typographyStyle(.h4)
             
-   
-            ForEach($items) { $item in
-                VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.s) {
-    
+            VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.s){
+                ForEach($items) { $item in
+                    
                     SwiftUI.Button(action: {
                         var newValues = Set(selectedValues.split(separator: ",").map(String.init))
                         if newValues.contains(item.value) {
@@ -63,49 +62,69 @@ struct CheckboxGroup: View, BrandStyleSupport {
                         }
                         selectedValues = newValues.joined(separator: ",")
                     }) {
-                        HStack {
+                        HStack(alignment: .center, spacing: brand == .de ? brandSpacing.containerSpacing.gaps.m : brandSpacing.containerSpacing.gaps.s) {
+                            
                             CustomCheckbox(
                                 isSelected: selectedValues.split(separator: ",").map(String.init).contains(item.value),
                                 isDisabled: false,
                                 isError: false
                             )
-                            // Display truncated or full text based on isExpanded
-                            if item.label.count > maxTruncatedLength && !item.isExpanded {
-                                Text(item.label.prefix(maxTruncatedLength) + "...")
-                                    .typographyStyle(.p2)
-                                    .foregroundColor(colorToken(.grayscale900))
-                            } else {
-                                Text(item.label)
-                                    .typographyStyle(.p2)
-                                    .foregroundColor(colorToken(.grayscale900))
+                            
+                            
+                            VStack(alignment: .leading, spacing: brandSpacing.containerSpacing.gaps.s) {
+                           
+                                    if item.label.count > maxTruncatedLength && !item.isExpanded {
+                                        HStack{
+                                            Text(item.label.prefix(maxTruncatedLength) + "...")
+                                                .typographyStyle(.p1)
+                                            Text("terms")}
+                                    } else {
+                                        HStack{
+                                            Text(item.label)
+                                                .typographyStyle(.p1)
+                                            Text("terms")}
+                                    }
+                               
+                                
+                                if item.label.count > maxTruncatedLength {
+                                    Text(item.isExpanded ? "Show less" : "Show more")
+                                        .typographyStyle(.p1)
+                                        .foregroundColor(colorToken(.primaryBase))
+                                        .onTapGesture {
+                                            item.isExpanded.toggle()
+                                        }
+                                }
                             }
                         }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal,brandSpacing.containerSpacing.padding.m)
+                        .padding(.vertical,brandSpacing.containerSpacing.padding.s)
+                        .brandBorderOverlay(
+                            radiusKey: .s,
+                            strokeKey: .thin,
+                            color: selectedValues.split(separator: ",").map(String.init).contains(item.value)
+                            ? colorToken(brand == .de ? .borderDefaultPrimary : .primaryBase)
+                            : colorToken(brand == .de ? .borderDefaultSecondary : .borderDefaultTertiary)
+                        )
                     }
                     .buttonStyle(PlainButtonStyle())
-                    
-                    if item.label.count > maxTruncatedLength {
-                        Text(item.isExpanded ? "Show less" : "Show more")
-                            .typographyStyle(.p2)
-                            .foregroundColor(colorToken(.primaryBase))
-                            .onTapGesture {
-                                item.isExpanded.toggle()
-                            }
-                    }
                 }
             }
+           
+    
             
-
             Button(
                 title: buttonTitle,
-                variant: areAllItemsSelected ? .secondary : .disabled
+                variant: areAllItemsSelected ? .primary : .disabled
             ) {
                 if areAllItemsSelected {
                     buttonAction()
                 }
             }
             .disabled(!areAllItemsSelected)
+            .padding(.top,brandSpacing.containerSpacing.padding.s)
         }
-        .padding(brandSpacing.containerSpacing.padding.l)
+       
     }
 }
 
