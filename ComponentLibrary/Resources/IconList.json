@@ -5,6 +5,10 @@
       "month",
       "clock",
       "iconhour",
+      "account-de",
+      "home-de",
+      "usage-de",
+      "support-de",
       "bell-regular-utility",
       "arrow-right-regular-utility",
       "arrow-left-regular-utility",
@@ -35,8 +39,7 @@
       "wb_twilight",
       "checkmark_alt",
       "expand_more"
-      
-     
+
     ]
   },
   "brandReliant": {
