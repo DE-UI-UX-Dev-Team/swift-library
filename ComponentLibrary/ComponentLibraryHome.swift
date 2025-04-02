@@ -11,6 +11,7 @@ struct ComponentLibraryHome: View {
         ("Stepper", AnyView(StepperPage()), "rectangle.grid.1x2"),
         ("Plan Card", AnyView(PlanCardPage()), "inset.filled.rectangle"),
         ("Card", AnyView(CardPage()), "inset.filled.rectangle"),
+        ("Checkbox Group", AnyView(CheckboxGroupPage()), "inset.filled.rectangle"),
         ("ColorTokenSystem", AnyView(ColorSwatches()), "rectangle.fill.on.rectangle.fill"),
         ("TypographyTokenSystem", AnyView(FontsPage()), "rectangle.fill.on.rectangle.fill"),
         ("BorderTokenSystem", AnyView(BorderPage()), "rectangle.fill.on.rectangle.fill"),
