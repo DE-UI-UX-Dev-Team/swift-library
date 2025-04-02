@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2291DFE32D9738F300E25130 /* SVGKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2291DFE22D9738F300E25130 /* SVGKit */; };
+		2291DFE52D9738F300E25130 /* SVGKitSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2291DFE42D9738F300E25130 /* SVGKitSwift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		22B3C8D82D305FAB00E14D28 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2291DFE52D9738F300E25130 /* SVGKitSwift in Frameworks */,
+				2291DFE32D9738F300E25130 /* SVGKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +124,8 @@
 			);
 			name = ComponentLibrary;
 			packageProductDependencies = (
+				2291DFE22D9738F300E25130 /* SVGKit */,
+				2291DFE42D9738F300E25130 /* SVGKitSwift */,
 			);
 			productName = ComponentLibrary;
 			productReference = 22ED66C12D35B9F300F53E6D /* ComponentLibrary.app */;
@@ -200,6 +209,9 @@
 			);
 			mainGroup = 22B3C8BD2D305FA900E14D28;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2291DFE12D9738F300E25130 /* XCRemoteSwiftPackageReference "SVGKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 22B3C8BD2D305FA900E14D28;
 			projectDirPath = "";
@@ -590,6 +602,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2291DFE12D9738F300E25130 /* XCRemoteSwiftPackageReference "SVGKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVGKit/SVGKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2291DFE22D9738F300E25130 /* SVGKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2291DFE12D9738F300E25130 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKit;
+		};
+		2291DFE42D9738F300E25130 /* SVGKitSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2291DFE12D9738F300E25130 /* XCRemoteSwiftPackageReference "SVGKit" */;
+			productName = SVGKitSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 22B3C8BE2D305FA900E14D28 /* Project object */;
 }
