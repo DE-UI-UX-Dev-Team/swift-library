@@ -29,56 +29,64 @@
       "letterSpacing": 0.15
     },
     "h5": {
-      "fontName": "Inter18pt-Bold",
+      "fontName": "Inter-Bold",
       "weight": "bold",
       "fontSize": 18,
       "lineHeight": 24,
       "letterSpacing": 0.5
     },
     "h6": {
-      "fontName": "Inter18pt-Bold",
+      "fontName": "Inter-SemiBold",
       "weight": "semibold",
+
       "fontSize": 16,
       "lineHeight": 24,
       "letterSpacing": 0.5
     },
     "p1": {
-      "fontName": "Inter18pt-Regular",
+      "fontName": "Inter-Regular",
       "weight": "regular",
       "fontSize": 16,
       "lineHeight": 24,
       "letterSpacing": 0.5
     },
     "p2": {
-      "fontName": "Inter18pt-Regular",
+      "fontName": "Inter-Regular",
       "weight": "regular",
       "fontSize": 14,
       "lineHeight": 22,
       "letterSpacing": 0.5
     },
     "p3": {
-      "fontName": "Inter18pt-Regular",
+      "fontName": "Inter-Regular",
       "weight": "regular",
       "fontSize": 12,
       "lineHeight": 18,
       "letterSpacing": 0.25
     },
+    "p4": {
+      "fontName": "Inter18pt-Bold",
+      "weight": "bold",
+      "fontSize": 10,
+      "lineHeight": 16,
+      "letterSpacing": 0.25
+    },
     "link": {
-      "fontName": "Inter18pt-Regular",
+      "fontName": "Inter-Regular",
       "weight": "regular",
       "fontSize": 16,
       "lineHeight": 24,
       "letterSpacing": 0.5
     },
     "button": {
-      "fontName": "Inter18pt-Bold",
+      "fontName": "Inter-Bold",
       "weight": "bold",
       "fontSize": 16,
       "lineHeight": 24,
       "letterSpacing": 0.4
     },
     "cardRate": {
-      "fontName": "Inter18pt-Regular",
+      "fontName": "Inter-Regular",
       "weight": "regular",
       "fontSize": 32,
       "lineHeight": 24,
