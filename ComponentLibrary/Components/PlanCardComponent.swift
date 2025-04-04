@@ -7,7 +7,7 @@ struct PlanCard: View, Identifiable, BrandStyleSupport {
     @Environment(\.colorScheme)  var colorScheme
 
     @State private var isToggleOn: Bool = false
-    @State private var isSelected: Bool = false
+    @Binding var isSelected: Bool
 
     
     let cardTitle: String
@@ -21,6 +21,7 @@ struct PlanCard: View, Identifiable, BrandStyleSupport {
     let planImage: Image?
     let withAutoPay: Bool
 
+
     
     init(
         cardTitle: String,
@@ -33,7 +34,7 @@ struct PlanCard: View, Identifiable, BrandStyleSupport {
         link: Link? = nil,
         planImage: Image? = nil,
         withAutoPay: Bool = false,
-        isSelected: Bool = false
+        isSelected: Binding<Bool>
     ) {
         self.cardTitle = cardTitle
         self.title = title
@@ -45,7 +46,7 @@ struct PlanCard: View, Identifiable, BrandStyleSupport {
         self.link = link
         self.planImage = planImage
         self.withAutoPay = withAutoPay
-        self._isSelected = State(initialValue: isSelected)
+        self._isSelected = isSelected
     }
     
 

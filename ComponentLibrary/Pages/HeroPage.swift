@@ -45,7 +45,8 @@ struct HeroPage: View , BrandStyleSupport {
                                 action: { print("Link clicked for Plan B") }
                             ),
                             planImage: Image("monitor"),
-                            withAutoPay: false
+                            withAutoPay: false,
+                            isSelected: .constant(false)
                         )
                         PlanCard(
                             cardTitle: "FREE FROM 8 P.M. FRIDAY TO 12",
@@ -60,7 +61,8 @@ struct HeroPage: View , BrandStyleSupport {
                                 action: { print("Link clicked for Plan B") }
                             ),
                             planImage: Image("placeholder"),
-                            withAutoPay: false
+                            withAutoPay: false,
+                            isSelected: .constant(false)
                         )
                     }}
                 
