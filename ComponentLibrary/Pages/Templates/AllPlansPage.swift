@@ -35,7 +35,7 @@ struct AllPlansPage: View, BrandStyleSupport {
                             ),
         PlanCard(
             cardTitle: "FREE FROM 8 P.M. FRIDAY TO 12 A.M. MONDAY",
-            title: "susanReliant Truly Free Weekends 100% Solar 12 plan",
+            title: "Reliant Truly Free Weekends 100% Solar 12 plan",
             subtitle: "Save on electricity all weekend long",
             priceRate: PriceRate(price: "18.5", unit: "/kWh"),
             priceDescription: "price at 1800 kWh",
@@ -50,6 +50,7 @@ struct AllPlansPage: View, BrandStyleSupport {
                 isInline: false,
                 action: { print("View plan details for Truly Free Weekends") }
             ),
+            withAutoPay: true,
             isSelected: .constant(false)
         ),
         PlanCard(

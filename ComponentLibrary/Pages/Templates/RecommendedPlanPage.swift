@@ -8,6 +8,35 @@ struct RecommendedPlanPage: View, BrandStyleSupport {
     @State private var navigateToChangePlan = false
     @State private var navigateToAllPlans = false
     
+    @State private var recommendedPlanID: UUID? = nil
+    
+    private let recommendedPlans: [PlanCard] = [
+                                PlanCard(
+                                    cardTitle: "2 FREE DAYS PER WEEK",
+                                    title: "Reliant Truly Free Weekends 100% Solar 12 plan",
+                                    subtitle: "Everything is greener in Texas! Enjoy 18 months of electricity at a fixed rate ",
+                                    priceRate: PriceRate(price: "12.5", unit: "/kWh"),
+                                    priceDescription:"price at 1800 kWh",
+                                    tags: [
+                                        Tag(text: "12 months", style: .inactive),
+                                        Tag(text: "Fixed rate", style: .inactive),
+                                        Tag(text: "100% solar", style: .inactive)
+                                    ],
+                                    promotionalTags: [
+                                        Tag(text: "Recommended", style: .active(.tertiaryBase)),
+                                        Tag(text: "$200 Bill Credit", style: .active(.primaryBase)),
+        
+                                    ],
+                                    link: Link(
+                                        text: "View plan details",
+                                        variant: .text,
+                                        isInline: false,
+                                        action: { print("View plan details") }
+                                    ),
+                                    isSelected: .constant(false)
+                                )
+    ]
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -28,32 +57,11 @@ struct RecommendedPlanPage: View, BrandStyleSupport {
                                 .typographyStyle(brand == .de ? .p3 : .p1)
                                                 
                         }
+                        
+                        PlanCardList(selectedPlanID: $recommendedPlanID, plans: recommendedPlans)
                      
                         
-                        PlanCard(
-                            cardTitle: "2 FREE DAYS PER WEEK",
-                            title: "Reliant Truly Free Weekends 100% Solar 12 plan",
-                            subtitle: "Everything is greener in Texas! Enjoy 18 months of electricity at a fixed rate ",
-                            priceRate: PriceRate(price: "12.5", unit: "/kWh"),
-                            priceDescription:"price at 1800 kWh",
-                            tags: [
-                                Tag(text: "12 months", style: .inactive),
-                                Tag(text: "Fixed rate", style: .inactive),
-                                Tag(text: "100% solar", style: .inactive)
-                            ],
-                            promotionalTags: [
-                                Tag(text: "Recommended", style: .active(.tertiaryBase)),
-                                Tag(text: "$200 Bill Credit", style: .active(.primaryBase)),
-                                
-                            ],
-                            link: Link(
-                                text: "View plan details",
-                                variant: .text,
-                                isInline: false,
-                                action: { print("View plan details") }
-                            ),
-                            isSelected: .constant(false)
-                        )
+
                         
                         
                         HStack() {
