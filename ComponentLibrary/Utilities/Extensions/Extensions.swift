@@ -39,3 +39,28 @@ extension Color {
         }
     }
 }
+
+extension View {
+    @ViewBuilder
+    func `if`<Content: View>(
+        _ condition: Bool,
+        transform: (Self) -> Content
+    ) -> some View {
+        if condition {
+            transform(self)
+        } else {
+            self
+        }
+    }
+    
+   
+    func pageMargins() -> some View {
+        self.modifier(PageMarginModifier())
+    }
+    
+    func adaptiveSheet<Content: View>(isPresent: Binding<Bool>, @ViewBuilder sheetContent: @escaping () -> Content) -> some View {
+        modifier(AdaptiveSheetModifier(isPresented: isPresent, sheetContent: sheetContent))
+    }
+    
+}
+

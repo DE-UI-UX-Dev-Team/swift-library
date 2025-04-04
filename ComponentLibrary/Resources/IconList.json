@@ -15,6 +15,7 @@
       "arrow-up-regular-utility",
       "arrow-down-regular-utility",
       "circle-check-sharp-regular-utility",
+      "circle-plus-regular-utility",
       "icon-account-illustrative",
       "icon-ac-heat-sales-illustrative",
       "icon-ac-heat-protect-illustrative",
@@ -38,7 +39,10 @@
       "power",
       "wb_twilight",
       "checkmark_alt",
-      "expand_more"
+      "expand_more",
+      "download",
+      "bill",
+      "circle-dollar-regular-utility"
 
     ]
   },
@@ -56,6 +60,8 @@
       "bill",
       "arrow-down-regular-utility",
       "circle-check-sharp-regular-utility",
+      "circle-dollar-regular-utility",
+      "circle-plus-regular-utility",
       "chevron-right-regular-utility",
       "chevron_right",
       "shield_with_house",
@@ -77,7 +83,8 @@
       "power",
       "wb_twilight",
       "checkmark_alt",
-      "expand_more"
+      "expand_more",
+      "download"
     ]
   }
 }
