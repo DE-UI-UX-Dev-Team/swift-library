@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct CheckboxGroup: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) var brand
@@ -13,7 +12,7 @@ struct CheckboxGroup: View, BrandStyleSupport {
     let termUrl: String?
     let buttonTitle: String
     let buttonAction: () -> Void
-    let maxTruncatedLength: Int
+    let maxLines: Int
     
     init(
         title: String,
@@ -22,14 +21,14 @@ struct CheckboxGroup: View, BrandStyleSupport {
         termUrl: String? = nil,
         buttonTitle: String,
         buttonAction: @escaping () -> Void,
-        maxTruncatedLength: Int = 110
+        maxLines: Int = 2
     ) {
         self.title = title
         self.termsText = termsText
         self.termUrl = termUrl
         self.buttonTitle = buttonTitle
         self.buttonAction = buttonAction
-        self.maxTruncatedLength = maxTruncatedLength
+        self.maxLines = maxLines
         self._items = State(initialValue: items)
     }
     
@@ -54,7 +53,7 @@ struct CheckboxGroup: View, BrandStyleSupport {
                                 selectedValues.insert(item.value)
                             }
                         },
-                        maxTruncatedLength: maxTruncatedLength
+                        maxLines: maxLines
                     )
                 }
             }

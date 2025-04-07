@@ -1,13 +1,12 @@
 import SwiftUI
 
-
 struct CheckboxGroupItem: Identifiable {
     let id = UUID()
     let label: String
     let inlineLinkLabel: [(text: String, url: URL)]?
     let value: String
     var isExpanded: Bool = false
-    
+
     init(label: String, inlineLinkLabel: [(text: String, url: URL)]? = nil, value: String, isExpanded: Bool = false) {
         self.label = label
         self.inlineLinkLabel = inlineLinkLabel
@@ -16,14 +15,15 @@ struct CheckboxGroupItem: Identifiable {
     }
 }
 
-
 struct CheckboxRow: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) var brand
     @Binding var item: CheckboxGroupItem
     let isSelected: Bool
     let toggleAction: () -> Void
-    let maxTruncatedLength: Int
+    let maxLines: Int
+    
+    @State private var isTruncated: Bool = false
     
     var body: some View {
         SwiftUI.Button(action: toggleAction) {
@@ -42,16 +42,27 @@ struct CheckboxRow: View, BrandStyleSupport {
                             isInline: true
                         )
                         .typographyStyle(.p1)
-                    } else if item.label.count > maxTruncatedLength && !item.isExpanded {
-                        Text(item.label.prefix(maxTruncatedLength) + "...")
-                            .typographyStyle(.p1)
                     } else {
                         Text(item.label)
                             .typographyStyle(.p1)
+                            .lineLimit(item.isExpanded ? nil : maxLines)
+                            .background(
+                                GeometryReader { geometry in
+                                    Color.clear.onAppear {
+                                        // Check if text is truncated
+                                        let size = item.label.boundingRect(
+                                            with: CGSize(width: geometry.size.width, height: .greatestFiniteMagnitude),
+                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                            attributes: [.font: UIFont.preferredFont(forTextStyle: .body)],
+                                            context: nil
+                                        )
+                                        isTruncated = size.height > geometry.size.height
+                                    }
+                                }
+                            )
                     }
                     
-                    
-                    if item.inlineLinkLabel == nil && item.label.count > maxTruncatedLength {
+                    if item.inlineLinkLabel == nil && isTruncated {
                         Text(item.isExpanded ? "Show less" : "Show more")
                             .typographyStyle(.p1)
                             .underline(brand == .de)
@@ -76,5 +87,5 @@ struct CheckboxRow: View, BrandStyleSupport {
         }
         .buttonStyle(PlainButtonStyle())
     }
-    
 }
+

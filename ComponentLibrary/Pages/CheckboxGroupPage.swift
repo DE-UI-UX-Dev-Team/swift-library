@@ -38,6 +38,7 @@ struct CheckboxGroupPage: View , BrandStyleSupport {
                 items: singleItem,
                 buttonTitle: "Submit",
                 buttonAction: { print("Form submitted successfully") }
+//                maxLines: 2
             )
             
             Text("Single Checkbox Group")
