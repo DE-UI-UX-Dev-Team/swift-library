@@ -97,6 +97,7 @@ struct AdaptiveSheetModifier<SheetContent: View>: ViewModifier, BrandStyleSuppor
                     .id(subHeight)
                     .presentationDetents([.height(subHeight)])
                     .presentationCornerRadius(16)
+                    .presentationDragIndicator(.visible)
             }
     }
 }
