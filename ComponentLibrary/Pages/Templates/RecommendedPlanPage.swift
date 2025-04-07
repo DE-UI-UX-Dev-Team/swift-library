@@ -59,10 +59,7 @@ struct RecommendedPlanPage: View, BrandStyleSupport {
                         }
                         
                         PlanCardList(selectedPlanID: $recommendedPlanID, plans: recommendedPlans)
-                     
-                        
-
-                        
+ 
                         
                         HStack() {
                             Text("Why you should stay with Reliant?")
@@ -76,32 +73,6 @@ struct RecommendedPlanPage: View, BrandStyleSupport {
                   
                             }
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.m)
-                    .padding(.bottom, brandSpacing.containerSpacing.padding.m)
-                                        
-                                   
-                    
- 
-                        VStack(alignment: .center, spacing: 16){
-                            Button(
-                                title: "Continue with this plan",
-                                variant: .primary
-                            ){
-                                navigateToChangePlan = true
-                            }
-                            .padding(.horizontal, 16)
-                            .padding(.top, 16)
-                            Link(
-                                text: "View all plans",
-                                variant: .text,
-                                isInline: false,
-                                action: {
-                                    navigateToAllPlans = true
-                                }
-                            )
-                            .padding(.bottom, 0)
-                        }
-                        .background(Color.white)
-                        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: -10)
 
                 }
 
@@ -113,6 +84,27 @@ struct RecommendedPlanPage: View, BrandStyleSupport {
             }
             .navigationDestination(isPresented: $navigateToAllPlans) {
                 AllPlansPage()
+            }
+            BottomSticky{
+                VStack(alignment: .center, spacing: 16){
+                    Button(
+                        title: "Continue with this plan",
+                        variant: .primary
+                    ){
+                        navigateToChangePlan = true
+                    }
+                    .padding(.horizontal, 16)
+                    Link(
+                        text: "View all plans",
+                        variant: .text,
+                        isInline: false,
+                        action: {
+                            navigateToAllPlans = true
+                        }
+                    )
+                .padding(.bottom, 0)
+                }
+                
             }
         }
     }
