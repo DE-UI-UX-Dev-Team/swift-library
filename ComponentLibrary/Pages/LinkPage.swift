@@ -29,18 +29,14 @@ struct LinkPage: View {
                     
                     Text("Inline Link:")
                         .typographyStyle(.h3)
-                    HStack(alignment: .firstTextBaseline, spacing: 0) {
-                        Text("This is an ")
-                        Link(
-                            text: "inline link",
-                            variant: .text,
-                            isInline: true,
-                            action: {
-                                print("Inline link tapped")
-                            }
-                        )
-                        Text(" embedded.")
-                    }.typographyStyle(.p1)
+                    Link(
+                        text: "This is an example of multiple inline links embedded within a single line of text",
+                        variant: .inlineURL(links: [
+                            (text: "links", url: URL(string: "https://examples.com")!),
+                            (text: "single", url: URL(string: "https://examples.com")!)
+                        ]),
+                        isInline: true
+                    ).typographyStyle(.p1)
                     
                     Divider()
                     

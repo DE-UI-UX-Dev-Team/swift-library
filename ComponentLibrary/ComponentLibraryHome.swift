@@ -13,6 +13,7 @@ struct ComponentLibraryHome: View {
         ("Plan Card", AnyView(PlanCardPage()), "inset.filled.rectangle"),
         ("Card", AnyView(CardPage()), "inset.filled.rectangle"),
         ("List", AnyView(ListPage()), "inset.filled.rectangle"),
+        ("Checkbox Group", AnyView(CheckboxGroupPage()), "inset.filled.rectangle"),
         ("Information", AnyView(InformationPage()), "inset.filled.rectangle"),
         ("Tabs", AnyView(TabsPage()), "inset.filled.rectangle"),
         ("ColorTokenSystem", AnyView(ColorSwatches()), "rectangle.fill.on.rectangle.fill"),
