@@ -12,6 +12,7 @@ struct ComponentLibraryHome: View {
         ("Hero", AnyView(HeroPage()), "inset.filled.rectangle"),
         ("Plan Card", AnyView(PlanCardPage()), "inset.filled.rectangle"),
         ("Card", AnyView(CardPage()), "inset.filled.rectangle"),
+        ("List", AnyView(ListPage()), "inset.filled.rectangle"),
         ("Checkbox Group", AnyView(CheckboxGroupPage()), "inset.filled.rectangle"),
         ("Information", AnyView(InformationPage()), "inset.filled.rectangle"),
         ("Tabs", AnyView(TabsPage()), "inset.filled.rectangle"),
@@ -20,7 +21,7 @@ struct ComponentLibraryHome: View {
         ("BorderTokenSystem", AnyView(BorderPage()), "rectangle.fill.on.rectangle.fill"),
         ("SpacingTokenSystem", AnyView(SpacingPage()), "rectangle.fill.on.rectangle.fill"),
     ]
-1
+
     var filteredComponents: [(String, AnyView, String)] {
         if searchText.isEmpty {
             return components
