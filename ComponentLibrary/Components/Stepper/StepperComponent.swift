@@ -50,7 +50,7 @@ struct Stepper: View, BrandStyleSupport  {
         VStack(spacing: StepConstants.textOffset) {
             HStack(spacing: 0) {
                 ForEach(allSteps.indices, id: \.self) { index in
-                    HStack(spacing: 0) {
+                    VStack(spacing: 0) {
                         ZStack {
                             StepView(
                                 stepNumber: allSteps[index],
@@ -61,24 +61,25 @@ struct Stepper: View, BrandStyleSupport  {
                             )
                             
                             Text(labels[safe: index] ?? "")
-                                .typographyStyle(.p3)
-                                .foregroundColor(colorToken(.grayscale900))
+                                .typographyStyle(brand == .de ? .p3 : .p1)
+                                .foregroundColor(colorToken(brand == .de ? .grayscale900 : .grayscale700))
                                 .multilineTextAlignment(.center)
                                 .offset(y: StepConstants.textOffset)
                         }
                         
-                        if index < allSteps.count - 1 {
-                            StepConnector(
-                                isActive: allSteps[index] < currentStep || ((intermediateSteps?.contains(allSteps[index]) ?? false) && allSteps[index] <= currentStep),
-                                isDotted: allSteps[index + 1] >= StepConstants.intermediateStepOffset || allSteps[index] >= StepConstants.intermediateStepOffset,
-                                isIntermediate: allSteps[index + 1] >= StepConstants.intermediateStepOffset,
-                                isIntermediateComplete: (intermediateSteps?.contains(where: { $0 < currentStep }) ?? false)
-                            )
-                        }
+                    }
+                    if index < allSteps.count - 1 {
+                        StepConnector(
+                            isActive: allSteps[index] < currentStep || ((intermediateSteps?.contains(allSteps[index]) ?? false) && allSteps[index] <= currentStep),
+                            isDotted: allSteps[index + 1] >= StepConstants.intermediateStepOffset || allSteps[index] >= StepConstants.intermediateStepOffset,
+                            isIntermediate: allSteps[index + 1] >= StepConstants.intermediateStepOffset,
+                            isIntermediateComplete: (intermediateSteps?.contains(where: { $0 < currentStep }) ?? false)
+                        )
                     }
                 }
             }
         }
+        .padding(.bottom, StepConstants.textOffset)
     }
 }
 

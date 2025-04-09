@@ -6,6 +6,48 @@ struct HeroPage: View , BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand)  var brand
 
+    @State private var heroSelectedPlanID: UUID? = nil
+    
+    private let allHeroPlans: [PlanCard] = [
+        PlanCard(
+            cardTitle: "FREE FROM 8 P.M. FRIDAY TO 12 A.M. MONDAY",
+            title: "Reliant Truly Free Weekends 100% Solar 12 plan",
+            subtitle: "Everything is greener in Texas! Enjoy 18 months of electricity at a fixed rate",
+            priceRate: PriceRate(price: "17.5", unit: "/kWh"),
+            priceDescription:"price at 2000 kWh",
+            tags: [
+                Tag(text: "12 months", style: .inactive),
+                Tag(text: "Fixed rate", style: .inactive),
+                Tag(text: "100% solar", style: .inactive)
+            ],
+            link: Link(
+                text: "Check it out",
+                variant: .text,
+                isInline: false,
+                action: { print("Link clicked for Plan B") }
+            ),
+            planImage: Image("monitor"),
+            withAutoPay: false,
+            isSelected: .constant(false)
+        ),
+        PlanCard(
+            cardTitle: "FREE FROM 8 P.M. FRIDAY TO 12",
+            title: "Reliant Truly Free Weekends 100% Solar",
+            subtitle: "Everything is greener in Texas! Enjoy 18 months of electricity at a fixed rate",
+            priceRate: PriceRate(price: "17.5", unit: "/kWh"),
+            priceDescription:"price at 2000 kWh",
+            link: Link(
+                text: "Check it out",
+                variant: .text,
+                isInline: false,
+                action: { print("Link clicked for Plan B") }
+            ),
+            planImage: Image("placeholder"),
+            withAutoPay: false,
+            isSelected: .constant(false)
+        )
+    ]
+    
     var body: some View {
         ScrollView{
             VStack( spacing:20){
@@ -27,41 +69,8 @@ struct HeroPage: View , BrandStyleSupport {
                     hasCard: true
                 ){
                     VStack{
-                        PlanCard(
-                            cardTitle: "FREE FROM 8 P.M. FRIDAY TO 12 A.M. MONDAY",
-                            title: "Reliant Truly Free Weekends 100% Solar 12 plan",
-                            subtitle: "Everything is greener in Texas! Enjoy 18 months of electricity at a fixed rate",
-                            priceRate: PriceRate(price: "17.5", unit: "/kWh"),
-                            priceDescription:"price at 2000 kWh",
-                            tags: [
-                                Tag(text: "12 months", style: .inactive),
-                                Tag(text: "Fixed rate", style: .inactive),
-                                Tag(text: "100% solar", style: .inactive)
-                            ],
-                            link: Link(
-                                text: "Check it out",
-                                variant: .text,
-                                isInline: false,
-                                action: { print("Link clicked for Plan B") }
-                            ),
-                            planImage: Image("monitor"),
-                            withAutoPay: false
-                        )
-                        PlanCard(
-                            cardTitle: "FREE FROM 8 P.M. FRIDAY TO 12",
-                            title: "Reliant Truly Free Weekends 100% Solar",
-                            subtitle: "Everything is greener in Texas! Enjoy 18 months of electricity at a fixed rate",
-                            priceRate: PriceRate(price: "17.5", unit: "/kWh"),
-                            priceDescription:"price at 2000 kWh",
-                            link: Link(
-                                text: "Check it out",
-                                variant: .text,
-                                isInline: false,
-                                action: { print("Link clicked for Plan B") }
-                            ),
-                            planImage: Image("placeholder"),
-                            withAutoPay: false
-                        )
+                        
+                        PlanCardList(selectedPlanID: $heroSelectedPlanID, plans: allHeroPlans)
                     }}
                 
                 Text("Hero")

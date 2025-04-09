@@ -77,7 +77,8 @@ struct TabsPage: View , BrandStyleSupport {
                                 action: { print("Link clicked for Plan B") }
                             ),
                             planImage: Image("monitor"),
-                            withAutoPay: false
+                            withAutoPay: false,
+                            isSelected: .constant(false)
                         )
                     } else if selectedTab2 == 3{
                         CardWithButton(

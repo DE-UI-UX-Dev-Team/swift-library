@@ -5,6 +5,8 @@ struct PlanCardPage: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand)  var brand
     
+    @State private var selectedMimicPlanID: UUID? = nil
+    
     private let mimicPlans: [PlanCard] = [
         PlanCard(
             cardTitle: "2 FREE DAYS PER WEEK",
@@ -29,7 +31,8 @@ struct PlanCardPage: View, BrandStyleSupport {
                 action: { print("View plan details") }
             ),
             planImage: Image("placeholder"),
-            withAutoPay: true
+            withAutoPay: true,
+            isSelected: .constant(false)
         ),
         PlanCard(
             cardTitle: "FREE FROM 8 P.M. FRIDAY TO 12 A.M. MONDAY",
@@ -49,13 +52,14 @@ struct PlanCardPage: View, BrandStyleSupport {
                 action: { print("Link clicked for Plan B") }
             ),
             planImage: Image("monitor"),
-            withAutoPay: false
+            withAutoPay: false,
+            isSelected: .constant(false)
         )
     ]
     
     var body: some View {
         VStack(spacing: 0) {
-            PlanCardList(plans: mimicPlans)
+            PlanCardList(selectedPlanID: $selectedMimicPlanID, plans: mimicPlans)
         }
         .pageMargins()
     }
