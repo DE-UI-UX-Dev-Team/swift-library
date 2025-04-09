@@ -58,29 +58,31 @@ struct Tag: View, BrandStyleSupport {
     }
 
     var body: some View {
-        HStack(spacing: 6) {
-            if let icon = icon, iconPosition == .left {
-                icon
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 14, height: 14)
+            HStack(spacing: 4) {
+                if let icon = icon, iconPosition == .left {
+                    icon
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 14, height: 14)
+                }
+
+                Text(text)
+    //                .font(.system(size: 13, weight: .medium))
+                    .typographyStyle(brand == .de ? .p3 : .p1)
+
+
+                if let icon = icon, iconPosition == .right {
+                    icon
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 16, height: 16)
+                }
             }
-            
-            Text(text)
-                .font(.system(size: 13, weight: .medium))
-            
-            if let icon = icon, iconPosition == .right {
-                icon
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 16, height: 16)
-            }
+            .padding(.horizontal, 8)
+            .padding(.vertical, 4)
+            .background(backgroundColor)
+            .foregroundColor(textColor)
+            .clipShape(RoundedRectangle(cornerRadius: brand == .de ? cornerRadius.full: cornerRadius.s))
         }
-        .padding(.horizontal, 12)
-        .padding(.vertical, 5)
-        .background(backgroundColor)
-        .foregroundColor(textColor)
-        .clipShape(RoundedRectangle(cornerRadius: brand == .de ? cornerRadius.full: cornerRadius.s))
     }
-}
 
