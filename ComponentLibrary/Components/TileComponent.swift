@@ -21,6 +21,7 @@ struct Tile: View , BrandStyleSupport {
     let button: Button?
     let accordionLink: Link?
     let tileAlignment: TileAlignment
+    let withBorder: Bool?
     
     
     init(
@@ -35,7 +36,8 @@ struct Tile: View , BrandStyleSupport {
         withChevronIcon: Bool = false,
         button: Button? = nil,
         accordionLink: Link? = nil,
-        tileAlignment: TileAlignment
+        tileAlignment: TileAlignment,
+        withBorder: Bool = false
     ) {
         self.icon =  icon
         self.tag = tag
@@ -49,6 +51,7 @@ struct Tile: View , BrandStyleSupport {
         self.button =  button
         self.accordionLink = accordionLink
         self.tileAlignment = tileAlignment
+        self.withBorder = withBorder 
     }
     
     var body: some View {
@@ -129,6 +132,14 @@ struct Tile: View , BrandStyleSupport {
         .padding(brandSpacing.containerSpacing.padding.m)
         .background(colorToken(.pageFillGrayDefault))
         .cornerRadius(cornerRadius.s)
+        .if(withBorder ?? false) { view in
+            view.brandBorderOverlay(
+                radiusKey: .l,
+                strokeKey: .regular,
+                color: colorToken(brand == .de ? .borderDefaultSecondary : .borderDefaultTertiary)
+            )
+        }
+
     }
 }
 

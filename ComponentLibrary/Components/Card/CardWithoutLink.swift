@@ -1,15 +1,14 @@
+
 import SwiftUI
-struct CardWithImageOnRight: View {
+
+struct CardWithoutLink: View {
     var image: String
     var tag: Tag? = nil
     var brandImage: String? = nil
     var enrollText: String? = nil
     var title: String
     var description: String
-    var button: Button
-    var footerHelpText: String? = nil
-    var imageOnRight: Bool = true
-    var backgroundColor: ColorToken?
+    
 
     var body: some View {
         Card(config: CardConfig(
@@ -18,11 +17,7 @@ struct CardWithImageOnRight: View {
             brandImage: brandImage,
             enrollText: enrollText,
             title: title,
-            description: description,
-            button: button,
-            footerHelpText: footerHelpText,
-            imageOnRight: imageOnRight,
-            backgroundColor: backgroundColor
+            description: description
             )
         )
     }
