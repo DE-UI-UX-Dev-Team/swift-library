@@ -19,9 +19,13 @@ struct BottomSticky<Content: View>: View, BrandStyleSupport {
         .padding(.horizontal, brandSpacing.containerSpacing.padding.m)
         .padding(.vertical, brandSpacing.containerSpacing.padding.m)
         .frame(maxWidth: .infinity)
-        .background(colorToken(.containerFillGrayDefault))
-        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: -10)
+        .background(
+                    Rectangle()
+                        .fill(colorToken(.containerFillGrayDefault))
+                        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: -10)
+                )
     }
+
 }
 
 
@@ -36,7 +40,7 @@ struct BottomSticky_Previews: PreviewProvider {
                             .typographyStyle(.h6)
                         Button(
                             title: "Action",
-                            variant: .primary
+                            variant: .secondary
                         ) {
                             print("Action tapped")
                         }
