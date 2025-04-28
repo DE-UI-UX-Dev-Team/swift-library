@@ -2,10 +2,15 @@ import SwiftUI
 
 struct InfoItemModel: Identifiable {
     let id = UUID()
-    let title: String
-    let value: String
-}
+    var title: String?
+    var value: String
 
+    // ✅ Title first, value required, title has default
+    init(title: String? = nil, value: String) {
+        self.title = title
+        self.value = value
+    }
+}
 struct InfoSection: View, BrandStyleSupport {
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.brand) var brand
