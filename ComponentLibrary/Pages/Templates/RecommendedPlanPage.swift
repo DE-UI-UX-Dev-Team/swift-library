@@ -5,10 +5,76 @@ import SwiftUI
 struct RecommendedPlanPage: View, BrandStyleSupport {
     @Environment(\.brand) var brand
     @Environment(\.colorScheme) var colorScheme
-    @State private var navigateToChangePlan = false
+    @State private var navigateToReviewPlan = false
     @State private var navigateToAllPlans = false
     
     @State private var recommendedPlanID: UUID? = nil
+    
+    
+    var listItems3: [ListItem] {
+        [
+            ListItem(
+                leftIcon: Icon(
+                    iconName: "bill",
+                    type: .utility,
+                    size: .medium,
+                    color: .primaryBase
+                ),
+                text: "Benefits of staying with Reliant",
+                textStyle:.h4,
+                rightIcon: Icon(
+                    iconName: "chevron_right",
+                    type: .utility,
+                    size: .medium,
+                    color: .grayscale900
+                ),
+                action: .showBottomSheet(sheetContent:
+                        AnyView(
+                            VStack(alignment: .leading){
+                                ListView(title: "Why you should stay with Reliant", items: listItems4, isInteractive: false)
+                            }
+                        )
+                    )
+            )
+        ]
+    }
+    
+    var listItems4: [ListItem] {
+        [
+            ListItem(
+                leftIcon: Icon(
+                    iconName: "circle-check-sharp-regular-utility",
+                    type: .utility,
+                    size: .medium,
+                    color: .iconDefaultGreenUI
+                ),
+                text: "Lorem ipsum dolor emit",
+                textStyle:.p1
+            ),
+            ListItem(
+                leftIcon: Icon(
+                    iconName: "circle-dollar-regular-utility",
+                    type: .utility,
+                    size: .medium,
+                    color: .primaryBase
+                ),
+                text: "Gain greater price stability for the length of your term",
+                textStyle:.p1
+            ),
+            ListItem(
+                leftIcon: Icon(
+                    iconName: "circle-plus-regular-utility",
+                    type: .utility,
+                    size: .medium,
+                    color: .iconDefaultTertiary
+                ),
+                text: "Exclusive offers, helpful tools, and detailed usage tracking",
+                textStyle:.p1
+            )
+           
+        ]
+    }
+
     
     private let recommendedPlans: [PlanCard] = [
                                 PlanCard(
@@ -58,18 +124,13 @@ struct RecommendedPlanPage: View, BrandStyleSupport {
                                                 
                         }
                         
+                        
                         PlanCardList(selectedPlanID: $recommendedPlanID, plans: recommendedPlans)
  
-                        
-                        HStack() {
-                            Text("Why you should stay with Reliant?")
-                                .font(.title3)
-                                .padding(brandSpacing.containerSpacing.padding.l)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .background(Color.white)
-                        .cornerRadius(16)
-                        .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
+                        ListView(items: listItems3, isInteractive: true)  .padding(brandSpacing.containerSpacing.padding.m)
+                            .background(colorToken(.grayscale000))
+                            .cornerRadius(16)
+                            .shadow(color: Color.black.opacity(0.1), radius: 8, x: 0, y: 4)
                   
                             }
                     .padding(.horizontal, brandSpacing.containerSpacing.padding.m)
@@ -79,8 +140,8 @@ struct RecommendedPlanPage: View, BrandStyleSupport {
             }
             .navigationTitle("Change plan")
             .navigationBarTitleDisplayMode(.inline)
-            .navigationDestination(isPresented: $navigateToChangePlan) {
-                ChangePlanPage()
+            .navigationDestination(isPresented: $navigateToReviewPlan) {
+                ReviewPlanPage()
             }
             .navigationDestination(isPresented: $navigateToAllPlans) {
                 AllPlansPage()
@@ -91,7 +152,7 @@ struct RecommendedPlanPage: View, BrandStyleSupport {
                         title: "Continue with this plan",
                         variant: .primary
                     ){
-                        navigateToChangePlan = true
+                        navigateToReviewPlan = true
                     }
                     .padding(.horizontal, 16)
                     Link(

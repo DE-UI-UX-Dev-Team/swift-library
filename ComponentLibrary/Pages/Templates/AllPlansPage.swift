@@ -20,6 +20,7 @@ struct AllPlansPage: View, BrandStyleSupport {
                                     ],
                                     promotionalTags: [
                                         Tag(text: "Recommended", style: .active(.tertiaryBase)),
+//                                             Tag(text: "100% Solar", style: .active(.yellowBase)),
                                         Tag(text: "$200 Bill Credit", style: .active(.primaryBase)),
     
                                     ],
